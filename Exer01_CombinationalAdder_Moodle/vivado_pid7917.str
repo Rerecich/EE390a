@@ -233,3 +233,5 @@ dismissDialog("Add Repository"); // b
 // TclEventType: RSB_SAVE_DIAGRAM
 // Tcl Message: save_bd_design 
 // Tcl Message: Wrote  : </home/rerecich/EE-390a/Week02/Exer01_CombinationalAdder_Moodle/project_simpleAdder/project_simpleAdder.srcs/sources_1/bd/design_1/design_1.bd>  Wrote  : </home/rerecich/EE-390a/Week02/Exer01_CombinationalAdder_Moodle/project_simpleAdder/project_simpleAdder.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui>  
+// [GUI Memory]: 167 MB (+4194kb) [00:24:44]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,536 MB. GUI used memory: 99 MB. Current time: 3/13/25, 6:40:03 PM CET
