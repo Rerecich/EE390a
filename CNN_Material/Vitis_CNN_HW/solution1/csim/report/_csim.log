@@ -1,0 +1,82 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp in debug mode
+In file included from ../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:10:
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:13:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x10
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:15:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x18
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:17:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x20
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:20:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x28
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:22:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x30
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:24:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x38
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:26:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x40
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:28:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x48
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp:30:7: error: declaration does not declare anything [-fpermissive]
+       uint32_t ; // 0x50
+       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp: In function ‘bool InitDevice(CConv2DDriver&, TFXP*&, TFXP*&, TFXP*&, bool)’:
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:113:23: error: ‘CONV2D_HW_ADDR’ was not declared in this scope
+   if ( convolver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK ) {
+                       ^~~~~~~~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:113:23: note: suggested alternative: ‘CCONV2D_HPP’
+   if ( convolver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK ) {
+                       ^~~~~~~~~~~~~~
+                       CCONV2D_HPP
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:113:39: error: ‘MAP_SIZE’ was not declared in this scope
+   if ( convolver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK ) {
+                                       ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:113:39: note: suggested alternative: ‘EMSGSIZE’
+   if ( convolver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK ) {
+                                       ^~~~~~~~
+                                       EMSGSIZE
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:120:13: error: ‘CONV2D_HW_ADDR’ was not declared in this scope
+             CONV2D_HW_ADDR);
+             ^~~~~~~~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:120:13: note: suggested alternative: ‘CCONV2D_HPP’
+             CONV2D_HW_ADDR);
+             ^~~~~~~~~~~~~~
+             CCONV2D_HPP
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:130:63: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Input: Virtual address: 0x%08X (%u)\n", (uint32_t)inputHW, (uint32_t)inputHW);
+                                                               ^~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:130:82: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Input: Virtual address: 0x%08X (%u)\n", (uint32_t)inputHW, (uint32_t)inputHW);
+                                                                                  ^~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:131:64: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Output: Virtual address: 0x%08X (%u)\n", (uint32_t)outputHW, (uint32_t)outputHW);
+                                                                ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:131:84: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Output: Virtual address: 0x%08X (%u)\n", (uint32_t)outputHW, (uint32_t)outputHW);
+                                                                                    ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:132:64: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Coeffs: Virtual address: 0x%08X (%u)\n", (uint32_t)coeffsHW, (uint32_t)coeffsHW);
+                                                                ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:132:84: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Coeffs: Virtual address: 0x%08X (%u)\n", (uint32_t)coeffsHW, (uint32_t)coeffsHW);
+                                                                                    ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp: In function ‘int main(int, char**)’:
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:194:5: error: ‘elapsedTimeHW’ was not declared in this scope
+     elapsedTimeHW = 0;
+     ^~~~~~~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:194:5: note: suggested alternative: ‘elapsedTimeSW’
+     elapsedTimeHW = 0;
+     ^~~~~~~~~~~~~
+     elapsedTimeSW
+make: *** [csim.mk:78: obj/conv2DTestbench.o] Error 1
+ERR: [SIM 100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 3] *************** CSIM finish ***************

@@ -1,0 +1,38 @@
+INFO: [HLS 200-10] Running '/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'rerecich' on host 'diskless' (Linux_x86_64 version 5.15.0-60-generic) on Thu Mar 20 17:49:39 CET 2025
+INFO: [HLS 200-10] On os Ubuntu 22.04 LTS
+INFO: [HLS 200-10] In directory '/home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version'
+Sourcing Tcl script '/home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1/csim.tcl'
+INFO: [HLS 200-1510] Running: source /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1/csim.tcl
+INFO: [HLS 200-1510] Running: open_project CNN 
+INFO: [HLS 200-10] Opening project '/home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN'.
+INFO: [HLS 200-1510] Running: add_files ../Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/SW_TEST_CONV2D_ONLY_SW/util.cpp 
+INFO: [HLS 200-10] Adding design file '../Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/SW_TEST_CONV2D_ONLY_SW/util.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files ../Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/SW_TEST_CONV2D_ONLY_SW/util.hpp 
+INFO: [HLS 200-10] Adding design file '../Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/SW_TEST_CONV2D_ONLY_SW/util.hpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb ../Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/HLS/conv2DTestbench.cpp 
+INFO: [HLS 200-10] Adding test bench file '../Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/HLS/conv2DTestbench.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+Running Dispatch Server on port: 40681
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+make: 'csim.exe' is up to date.
+Measuring SW time for 3 --> 32 .(SW) Image size: [128 x 128], Channels=3, Filters=32 --> 0.154 s (153776339 ns)
+Measuring SW time for 16 --> 16 .(SW) Image size: [128 x 128], Channels=16, Filters=16 --> 0.420 s (419789450 ns)
+Measuring SW time for 32 --> 32 .(SW) Image size: [128 x 128], Channels=32, Filters=32 --> 1.674 s (1674048147 ns)
+Measuring SW time for 64 --> 64 .(SW) Image size: [128 x 128], Channels=64, Filters=64 --> 7.466 s (7466461132 ns)
+Measuring SW time for 128 --> 128 .(SW) Image size: [128 x 128], Channels=128, Filters=128 --> 30.861 s (30860616091 ns)
+Measuring SW time for 256 --> 256 .(SW) Image size: [128 x 128], Channels=256, Filters=256 --> 143.519 s (143519141295 ns)
+
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 184.11 seconds. CPU system time: 0.11 seconds. Elapsed time: 184.33 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-112] Total CPU user time: 185.64 seconds. Total CPU system time: 0.44 seconds. Total elapsed time: 196.56 seconds; peak allocated memory: 202.715 MB.

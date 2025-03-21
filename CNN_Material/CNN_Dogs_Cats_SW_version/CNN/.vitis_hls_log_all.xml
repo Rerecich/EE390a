@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <csimLog>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:53:45.381+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:52:45.848+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:47:31.969+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:45:37.086+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:35:44.486+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:34:45.630+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:34:17.721+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:27:40.272+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:22:46.317+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:21:52.988+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:17:24.223+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:12:20.481+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T16:11:15.327+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T15:56:31.569+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="CNN" solutionName="solution1" date="2025-03-20T15:23:06.210+0100"/>
+      </csimLog>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

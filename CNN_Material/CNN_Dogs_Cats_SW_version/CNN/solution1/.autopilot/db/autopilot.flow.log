@@ -1,0 +1,1150 @@
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 15:22:54 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020clg400-1 
+Execute       create_platform xc7z020clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.85 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.16 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 1.02 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 1.13 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.11 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.32 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.08 seconds. CPU system time: 0.1 seconds. Elapsed time: 0.32 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.6 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 15:56:20 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.7 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.12 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.82 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.95 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.11 sec.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.12 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.24 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.08 seconds. CPU system time: 0.11 seconds. Elapsed time: 0.24 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.34 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:11:04 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.68 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.12 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.81 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.91 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.13 sec.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.14 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.21 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.08 seconds. CPU system time: 0.07 seconds. Elapsed time: 0.21 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.29 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:12:09 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.7 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.12 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.83 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.97 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.11 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.2 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.06 seconds. CPU system time: 0.09 seconds. Elapsed time: 0.2 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.33 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:17:12 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.67 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Command         ap_source done; 0.11 sec.
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.14 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.82 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.93 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Command       ap_source done; 0.13 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.16 sec.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.18 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.22 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.1 seconds. CPU system time: 0.06 seconds. Elapsed time: 0.22 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.36 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:21:41 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.6 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.13 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.73 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.84 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.12 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.21 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.06 seconds. CPU system time: 0.08 seconds. Elapsed time: 0.21 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.19 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:22:33 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.46 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.58 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.69 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.11 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 1.75 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 1.31 seconds. CPU system time: 0.18 seconds. Elapsed time: 1.75 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 12.61 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:27:27 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.66 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.11 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.78 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.89 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.12 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 1.69 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 1.34 seconds. CPU system time: 0.2 seconds. Elapsed time: 1.69 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 12.72 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:34:04 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.63 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.11 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.74 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.84 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.12 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 1.74 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 1.4 seconds. CPU system time: 0.2 seconds. Elapsed time: 1.74 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 12.76 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:34:33 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.55 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.12 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.68 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.83 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.11 sec.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.13 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 1.62 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 1.27 seconds. CPU system time: 0.22 seconds. Elapsed time: 1.63 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 12.62 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:35:29 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.64 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.75 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.86 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.12 sec.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.14 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 3.7 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 3.1 seconds. CPU system time: 0.31 seconds. Elapsed time: 3.7 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 14.71 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:37:54 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.78 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.88 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.99 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.11 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     source run_sim.tcl 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:45:25 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.63 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.12 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.76 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.87 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.13 sec.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.15 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.27 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.08 seconds. CPU system time: 0.08 seconds. Elapsed time: 0.27 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.32 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:47:20 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.81 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.12 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.93 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 1.07 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.11 sec.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.12 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.19 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.08 seconds. CPU system time: 0.07 seconds. Elapsed time: 0.19 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.41 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:52:34 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.74 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.11 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.85 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.96 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.11 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.22 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.07 seconds. CPU system time: 0.09 seconds. Elapsed time: 0.22 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.31 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:53:34 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.53 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.11 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.65 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 0.76 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.13 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO-FLOW: Caught error in csim_design: 4
+    while executing
+"ap_internal_csim_design "
+Command   csim_design done; error code: 2; 0.22 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.09 seconds. CPU system time: 0.08 seconds. Elapsed time: 0.22 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; error code: 1; 11.13 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 16:56:16 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.79 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.13 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.93 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 1.1 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command     ap_source done; 0.12 sec.
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.13 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     source run_sim.tcl 
+Command     ap_source done; 203.56 sec.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+Command   csim_design done; 203.99 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 203.7 seconds. CPU system time: 0.15 seconds. Elapsed time: 203.99 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; 215.26 sec.
+Execute cleanup_all 
+INFO-FLOW: Workspace /home/rerecich/EE-390a/CNN/CNN_Dogs_Cats_SW_version/CNN/solution1 opened at Thu Mar 20 17:49:39 CET 2025
+Execute     ap_set_clock -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     set_part xc7z020-clg400-1 
+Execute       create_platform xc7z020-clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/lib/lnx64.o/libxv_hlsvwrap.so
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: /scrap/users/Xilinx2022.2/Vivado/2022.2/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.77 sec.
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Command       ap_source done; 0.11 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.88 sec.
+Execute     send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Command   open_solution done; 1 sec.
+Execute   set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute     create_platform xc7z020clg400-1 -board  
+Execute     source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/common/xilinx.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/plb46.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/axi4.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute         source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/saxilite.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfir.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/util.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/ip/xfft.gen 
+Execute       source /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/xilinx/DSP48/dsp48.gen 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     config_compile -quiet -complex-mul-dsp=0 
+Command   set_part done; 0.11 sec.
+Execute   create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute   csim_design -quiet 
+INFO: [HLS 200-1510] Running: csim_design -quiet 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute     source csim/.lst_opt.tcl 
+Execute     ap_part_info -name xc7z020-clg400-1 -data info 
+Execute     source run_sim.tcl 
+Command     ap_source done; 184.2 sec.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+Command   csim_design done; 184.33 sec.
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 184.11 seconds. CPU system time: 0.11 seconds. Elapsed time: 184.33 seconds; current allocated memory: 0.000 MB.
+Command ap_source done; 195.47 sec.
+Execute cleanup_all 
