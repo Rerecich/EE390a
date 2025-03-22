@@ -1,5 +1,7 @@
 #ifndef CACCELDRIVE_HPP
 #define CACCELDRIVE_HPP
+#include <map>
+#include <stdint.h>
 
 // Requires <map>, <stdint.h>
 

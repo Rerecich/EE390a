@@ -41,6 +41,7 @@ void Conv2D_SW(TFXP *input, TFXP * output, TFXP * filters,
 	  ap_uint<32> convWidth = 3, ap_uint<32> convHeight = 3)
 /** Copy here the code of the application whose functionality we want to match @todo */
 {
+	printf("Conv2D_SW Initialized");
 	for (uint32_t iFilter = 0; iFilter < numFilters; ++ iFilter) {
 	    for (uint32_t y = 0; y < (inputHeight-2); ++y) {
 	      for (uint32_t x = 0; x < (inputWidth-2); ++ x) {

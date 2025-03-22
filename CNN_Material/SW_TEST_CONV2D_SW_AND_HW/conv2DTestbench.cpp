@@ -10,16 +10,21 @@
 #include "CConv2DDriver.hpp"
 #include "util.hpp"
 
+const uint32_t MAP_SIZE = 64*1024; // Size of address range mapped to the adder registers
+const uint32_t CONV2D_HW_ADDR = 0x40000000; // From Vivado's address editor
+
 const uint32_t DECIMALS = 20;
 typedef int32_t TFXP;     // Parameters and activations
 typedef int64_t TFXP_MULT;// Intermmediate results of multiplications
 
 #define MAX_WIDTH 128
 #define MAX_HEIGHT 128
-#define MAX_CHANNELS 256
-#define MAX_FILTERS 256
+#define MAX_CHANNELS 128 // was 256
+#define MAX_FILTERS 128 // was 256
+
 TFXP input[MAX_WIDTH * MAX_HEIGHT * MAX_CHANNELS];
-TFXP output[MAX_WIDTH * MAX_HEIGHT * MAX_FILTERS];
+TFXP outputSW[MAX_WIDTH * MAX_HEIGHT * MAX_FILTERS];
+TFXP outputHW[MAX_WIDTH * MAX_HEIGHT * MAX_FILTERS];
 TFXP coeffs[MAX_CHANNELS * MAX_FILTERS * 9];
 
 // Use a higher value once done debugging
@@ -145,7 +150,7 @@ bool InitDevice(CConv2DDriver & convolver, TFXP* &inputHW, TFXP* &outputHW, TFXP
 int main(int argc, char ** argv)
 {
   struct timespec start, end;
-  uint64_t elapsedTimeSW;
+  uint64_t elapsedTimeSW, elapsedTimeHW;
   uint32_t width = MAX_WIDTH, height = MAX_HEIGHT;
   uint32_t channels, filters;
   uint32_t currentOutputSize;
@@ -169,20 +174,23 @@ int main(int argc, char ** argv)
     // Output convolution for 3x3 filters with no padding is 2 pixels narrower and 2 pixels shorter
     currentOutputSize = (MAX_WIDTH-2) * (MAX_HEIGHT-2) * filters;
 
-    printf("Measuring SW time for %" PRIu32 " --> %" PRIu32 " ", channels, filters);
-    fflush(stdout);
-    elapsedTimeSW = 0;
+
     /**
      * SW execution
     */
+    printf("Measuring SW time for %" PRIu32 " --> %" PRIu32 " ", channels, filters);
+        fflush(stdout);
+        elapsedTimeSW = 0;
+
     for (uint32_t repe = 0; repe < NUM_REPES; ++ repe) {
       printf("%s", repe % 2 == 0 ? "." : "*"); fflush(stdout);
-      memset(output, 0, currentOutputSize * sizeof(TFXP));
+      memset(outputSW, 0, currentOutputSize * sizeof(TFXP));
       clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-      Conv2D(input, output, coeffs, channels, filters, width, height, 3, 3);
+      Conv2D(input, outputSW, coeffs, channels, filters, width, height, 3, 3);
       clock_gettime(CLOCK_MONOTONIC_RAW, &end);
       elapsedTimeSW += CalcTimeDiff(end, start);
     }
+
     printf("\r(SW) Image size: [%" PRIu32 " x %" PRIu32 "], Channels=%" PRIu32 ", Filters=%" PRIu32 " --> %0.3lf s (%" PRIu64 " ns)\n", width, height, channels, filters,
       (elapsedTimeSW/1e9)/NUM_REPES, elapsedTimeSW/NUM_REPES);
 
@@ -192,21 +200,36 @@ int main(int argc, char ** argv)
     printf("Measuring HW time for %" PRIu32 " --> %" PRIu32 " ", channels, filters);
     fflush(stdout);
     elapsedTimeHW = 0;
+
     for (uint32_t repe = 0; repe < NUM_REPES; ++ repe) {
       printf("%s", repe % 2 == 0 ? "." : "*"); fflush(stdout);
       memset(outputHW, 0, currentOutputSize * sizeof(TFXP));
       clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-      printf("You were supposed to add your code here\n"); /** Call the accelerator @todo */
+      convolver.Conv2D_HW(inputHW, outputHW, coeffsHW, channels, filters, width, height, 3, 3);
       clock_gettime(CLOCK_MONOTONIC_RAW, &end);
       elapsedTimeHW += CalcTimeDiff(end, start);
-      /** Compare the output of the accelerator with the previously generated output from the SW @todo */
-      printf("You were supposed to add your code here\n"); /** Compare the HW and SW outputs @todo */
     }
+
+    printf("\r(HW) Image size: [%" PRIu32 " x %" PRIu32 "], Channels=%" PRIu32 ", Filters=%" PRIu32 " --> %0.3lf s (%" PRIu64 " ns)\n", width, height, channels, filters,
+          (elapsedTimeHW/1e9)/NUM_REPES, elapsedTimeHW/NUM_REPES);
+
+    // Make sure outputs are the same
+
+      if (!CompareVectors(outputSW, outputHW, currentOutputSize))
+            printf("\n\n====== ERROR COMPARING RESULTS WITH REFERENCE!!! ======\n\n");
+          else
+            printf("  --> OK!\n");
   }
 
 
   // Free the DMA memory. ---IMPORTANT--- DMA memory is a system-wide resource!!!!!! It's not freed automatically when the app is closed.
   /** @todo */
+ if (inputHW != NULL)
+	 convolver.FreeDMACompatible(inputHW);
+ if (outputHW != NULL)
+	 convolver.FreeDMACompatible(outputHW);
+ if (coeffsHW != NULL)
+	 convolver.FreeDMACompatible(coeffsHW);
 
   return 0;
 }

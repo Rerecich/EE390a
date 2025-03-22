@@ -3,6 +3,17 @@
   <errorLogs>
     <logs>
       <csimLog>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T21:46:21.810+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T21:45:29.655+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T21:43:03.546+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T21:33:38.320+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T21:25:00.072+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T21:17:30.813+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T21:11:49.502+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T20:22:29.776+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T20:21:37.882+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T19:25:13.147+0100"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-22T18:35:07.737+0100"/>
         <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Vitis_CNN_HW" solutionName="solution1" date="2025-03-21T15:54:35.616+0100"/>
       </csimLog>
     </logs>
