@@ -4,7 +4,7 @@
 == Synthesis Summary Report of 'Conv2D_HW'
 ================================================================
 + General Information: 
-    * Date:           Sat Mar 22 17:30:52 2025
+    * Date:           Sun Mar 23 15:50:56 2025
     * Version:        2022.2 (Build 3670227 on Oct 13 2022)
     * Project:        Vitis_CNN_HLS
     * Solution:       solution1 (Vivado IP Flow Target)
@@ -57,8 +57,8 @@
 | s_axi_control | input_r_2   | 0x14   | 32    | W      | Data signal of input_r           |                                                                      |
 | s_axi_control | output_r_1  | 0x1c   | 32    | W      | Data signal of output_r          |                                                                      |
 | s_axi_control | output_r_2  | 0x20   | 32    | W      | Data signal of output_r          |                                                                      |
-| s_axi_control | filters_1   | 0x28   | 32    | W      | Data signal of filters           |                                                                      |
-| s_axi_control | filters_2   | 0x2c   | 32    | W      | Data signal of filters           |                                                                      |
+| s_axi_control | coeffs_1    | 0x28   | 32    | W      | Data signal of coeffs            |                                                                      |
+| s_axi_control | coeffs_2    | 0x2c   | 32    | W      | Data signal of coeffs            |                                                                      |
 | s_axi_control | numChannels | 0x34   | 32    | W      | Data signal of numChannels       |                                                                      |
 | s_axi_control | numFilters  | 0x3c   | 32    | W      | Data signal of numFilters        |                                                                      |
 | s_axi_control | inputWidth  | 0x44   | 32    | W      | Data signal of inputWidth        |                                                                      |
@@ -87,7 +87,7 @@
 +-------------+-----------+-------------+
 | input       | inout     | int*        |
 | output      | inout     | int*        |
-| filters     | inout     | int*        |
+| coeffs      | inout     | int*        |
 | numChannels | in        | ap_uint<32> |
 | numFilters  | in        | ap_uint<32> |
 | inputWidth  | in        | ap_uint<32> |
@@ -104,9 +104,9 @@
 | input       | s_axi_control | interface | offset   |                                       |
 | output      | m_axi_gmem    | interface |          |                                       |
 | output      | s_axi_control | interface | offset   |                                       |
-| filters     | m_axi_gmem    | interface |          |                                       |
-| filters     | s_axi_control | register  | offset   | name=filters_1 offset=0x28 range=32   |
-| filters     | s_axi_control | register  | offset   | name=filters_2 offset=0x2c range=32   |
+| coeffs      | m_axi_gmem    | interface |          |                                       |
+| coeffs      | s_axi_control | register  | offset   | name=coeffs_1 offset=0x28 range=32    |
+| coeffs      | s_axi_control | register  | offset   | name=coeffs_2 offset=0x2c range=32    |
 | numChannels | s_axi_control | register  |          | name=numChannels offset=0x34 range=32 |
 | numFilters  | s_axi_control | register  |          | name=numFilters offset=0x3c range=32  |
 | inputWidth  | s_axi_control | register  |          | name=inputWidth offset=0x44 range=32  |
@@ -133,10 +133,10 @@
 | HW Interface | Variable | Loop            | Problem                                                                                               | Resolution | Location             |
 +--------------+----------+-----------------+-------------------------------------------------------------------------------------------------------+------------+----------------------+
 | m_axi_gmem   | input    | VITIS_LOOP_38_5 | Stride is incompatible                                                                                | 214-230    | HLS/conv2d.cpp:38:29 |
-| m_axi_gmem   | filters  | VITIS_LOOP_37_4 | Stride is incompatible                                                                                | 214-230    | HLS/conv2d.cpp:37:27 |
+| m_axi_gmem   | coeffs   | VITIS_LOOP_37_4 | Stride is incompatible                                                                                | 214-230    | HLS/conv2d.cpp:37:27 |
 | m_axi_gmem   | output   | VITIS_LOOP_33_2 | Stride is incompatible                                                                                | 214-230    | HLS/conv2d.cpp:33:23 |
 | m_axi_gmem   | output   | VITIS_LOOP_34_3 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS/conv2d.cpp:34:25 |
-| m_axi_gmem   | filters  | VITIS_LOOP_39_6 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS/conv2d.cpp:39:31 |
+| m_axi_gmem   | coeffs   | VITIS_LOOP_39_6 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS/conv2d.cpp:39:31 |
 | m_axi_gmem   | input    | VITIS_LOOP_39_6 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS/conv2d.cpp:39:31 |
 | m_axi_gmem   |          |                 | Could not burst due to multiple potential reads to the same bundle in the same region.                | 214-224    | HLS/conv2d.cpp:38:29 |
 +--------------+----------+-----------------+-------------------------------------------------------------------------------------------------------+------------+----------------------+
@@ -203,19 +203,19 @@
 == Pragma Report
 ================================================================
 * Valid Pragma Syntax
-+-----------+--------------------------------------------+---------------------------------------------+
-| Type      | Options                                    | Location                                    |
-+-----------+--------------------------------------------+---------------------------------------------+
-| interface | s_axilite port=return                      | HLS/conv2d.cpp:21 in conv2d_hw, return      |
-| interface | s_axilite port=numChannels                 | HLS/conv2d.cpp:22 in conv2d_hw, numChannels |
-| interface | s_axilite port=numFilters                  | HLS/conv2d.cpp:23 in conv2d_hw, numFilters  |
-| interface | s_axilite port=inputWidth                  | HLS/conv2d.cpp:24 in conv2d_hw, inputWidth  |
-| interface | s_axilite port=inputHeight                 | HLS/conv2d.cpp:25 in conv2d_hw, inputHeight |
-| interface | s_axilite port=convWidth                   | HLS/conv2d.cpp:26 in conv2d_hw, convWidth   |
-| interface | s_axilite port=convHeight                  | HLS/conv2d.cpp:27 in conv2d_hw, convHeight  |
-| interface | m_axi depth=1024 port=input offset=slave   | HLS/conv2d.cpp:28 in conv2d_hw, input       |
-| interface | m_axi depth=1024 port=output offset=slave  | HLS/conv2d.cpp:29 in conv2d_hw, output      |
-| interface | m_axi depth=1024 port=filters offset=slave | HLS/conv2d.cpp:30 in conv2d_hw, filters     |
-+-----------+--------------------------------------------+---------------------------------------------+
++-----------+---------------------------------------------+---------------------------------------------+
+| Type      | Options                                     | Location                                    |
++-----------+---------------------------------------------+---------------------------------------------+
+| interface | s_axilite port=return                       | HLS/conv2d.cpp:21 in conv2d_hw, return      |
+| interface | s_axilite port=numChannels                  | HLS/conv2d.cpp:22 in conv2d_hw, numChannels |
+| interface | s_axilite port=numFilters                   | HLS/conv2d.cpp:23 in conv2d_hw, numFilters  |
+| interface | s_axilite port=inputWidth                   | HLS/conv2d.cpp:24 in conv2d_hw, inputWidth  |
+| interface | s_axilite port=inputHeight                  | HLS/conv2d.cpp:25 in conv2d_hw, inputHeight |
+| interface | s_axilite port=convWidth                    | HLS/conv2d.cpp:26 in conv2d_hw, convWidth   |
+| interface | s_axilite port=convHeight                   | HLS/conv2d.cpp:27 in conv2d_hw, convHeight  |
+| interface | m_axi depth=200000 port=input offset=slave  | HLS/conv2d.cpp:28 in conv2d_hw, input       |
+| interface | m_axi depth=200000 port=output offset=slave | HLS/conv2d.cpp:29 in conv2d_hw, output      |
+| interface | m_axi depth=200000 port=coeffs offset=slave | HLS/conv2d.cpp:30 in conv2d_hw, coeffs      |
++-----------+---------------------------------------------+---------------------------------------------+
 
 

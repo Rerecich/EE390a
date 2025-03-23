@@ -7,11 +7,14 @@
 void MaxPool(TFXP * input, TFXP * output, uint32_t channels, uint32_t width, uint32_t height)
 {
   // The input width is the argument received. The output width can be one less if the dimensions are not even numbers.
+  printf("Beginning MaxPool calculations...\n");
   uint32_t outWidth, outHeight;
   outWidth = ( (width % 2) == 0) ? width : width - 1;
   outHeight = ( (height % 2) == 0) ? height : height - 1;
 
   TFXP * p = input;
+  //printf("Beginning for loop...\n");
+
   for (uint32_t iChannel = 0; iChannel < channels; ++ iChannel) {
     for (uint32_t iRow = 0; iRow < outHeight; iRow += 2) {
       for (uint32_t iCol = 0; iCol < outWidth; iCol += 2) {
@@ -28,9 +31,12 @@ void MaxPool(TFXP * input, TFXP * output, uint32_t channels, uint32_t width, uin
       if (width != outWidth)
         ++p; // Skip also the last column of the previous one
     }
+
     if (width != outWidth)
       p += width; // When crossing channels, also skip the last row if odd number.
+    //printf("iChannel = %u\n", iChannel);
   }
+  //printf("MaxPool complete for channels = %u\n", channels);
 }
 
 void ReLU(TFXP * input, uint32_t channels, uint32_t width, uint32_t height)
@@ -43,12 +49,16 @@ void ReLU(TFXP * input, uint32_t channels, uint32_t width, uint32_t height)
 
 void AddBiases(TFXP * input, TFXP * biases, uint32_t channels, uint32_t width, uint32_t height)
 {
+  
   for (uint32_t iChannel = 0; iChannel < channels; ++ iChannel) {
+    //printf("iChannel = %u\n", iChannel);
     for (uint32_t iPixel = 0; iPixel < width * height; ++ iPixel) {
       *input = *input + *biases;
       ++ input;
+      //printf("iChannel = %u\n", iChannel);
     }
     ++ biases;
+    //printf("iChannel = %u\n", iChannel);
   }
 }
 

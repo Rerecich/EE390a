@@ -32,7 +32,7 @@ module Conv2D_HW_control_s_axi
     output wire                          interrupt,
     output wire [63:0]                   input_r,
     output wire [63:0]                   output_r,
-    output wire [63:0]                   filters,
+    output wire [63:0]                   coeffs,
     output wire [31:0]                   numChannels,
     output wire [31:0]                   numFilters,
     output wire [31:0]                   inputWidth,
@@ -74,10 +74,10 @@ module Conv2D_HW_control_s_axi
 // 0x20 : Data signal of output_r
 //        bit 31~0 - output_r[63:32] (Read/Write)
 // 0x24 : reserved
-// 0x28 : Data signal of filters
-//        bit 31~0 - filters[31:0] (Read/Write)
-// 0x2c : Data signal of filters
-//        bit 31~0 - filters[63:32] (Read/Write)
+// 0x28 : Data signal of coeffs
+//        bit 31~0 - coeffs[31:0] (Read/Write)
+// 0x2c : Data signal of coeffs
+//        bit 31~0 - coeffs[63:32] (Read/Write)
 // 0x30 : reserved
 // 0x34 : Data signal of numChannels
 //        bit 31~0 - numChannels[31:0] (Read/Write)
@@ -111,9 +111,9 @@ localparam
     ADDR_OUTPUT_R_DATA_0    = 7'h1c,
     ADDR_OUTPUT_R_DATA_1    = 7'h20,
     ADDR_OUTPUT_R_CTRL      = 7'h24,
-    ADDR_FILTERS_DATA_0     = 7'h28,
-    ADDR_FILTERS_DATA_1     = 7'h2c,
-    ADDR_FILTERS_CTRL       = 7'h30,
+    ADDR_COEFFS_DATA_0      = 7'h28,
+    ADDR_COEFFS_DATA_1      = 7'h2c,
+    ADDR_COEFFS_CTRL        = 7'h30,
     ADDR_NUMCHANNELS_DATA_0 = 7'h34,
     ADDR_NUMCHANNELS_CTRL   = 7'h38,
     ADDR_NUMFILTERS_DATA_0  = 7'h3c,
@@ -164,7 +164,7 @@ localparam
     reg  [1:0]                    int_isr = 2'b0;
     reg  [63:0]                   int_input_r = 'b0;
     reg  [63:0]                   int_output_r = 'b0;
-    reg  [63:0]                   int_filters = 'b0;
+    reg  [63:0]                   int_coeffs = 'b0;
     reg  [31:0]                   int_numChannels = 'b0;
     reg  [31:0]                   int_numFilters = 'b0;
     reg  [31:0]                   int_inputWidth = 'b0;
@@ -292,11 +292,11 @@ always @(posedge ACLK) begin
                 ADDR_OUTPUT_R_DATA_1: begin
                     rdata <= int_output_r[63:32];
                 end
-                ADDR_FILTERS_DATA_0: begin
-                    rdata <= int_filters[31:0];
+                ADDR_COEFFS_DATA_0: begin
+                    rdata <= int_coeffs[31:0];
                 end
-                ADDR_FILTERS_DATA_1: begin
-                    rdata <= int_filters[63:32];
+                ADDR_COEFFS_DATA_1: begin
+                    rdata <= int_coeffs[63:32];
                 end
                 ADDR_NUMCHANNELS_DATA_0: begin
                     rdata <= int_numChannels[31:0];
@@ -330,7 +330,7 @@ assign task_ap_ready     = ap_ready && !int_auto_restart;
 assign auto_restart_done = auto_restart_status && (ap_idle && !int_ap_idle);
 assign input_r           = int_input_r;
 assign output_r          = int_output_r;
-assign filters           = int_filters;
+assign coeffs            = int_coeffs;
 assign numChannels       = int_numChannels;
 assign numFilters        = int_numFilters;
 assign inputWidth        = int_inputWidth;
@@ -509,23 +509,23 @@ always @(posedge ACLK) begin
     end
 end
 
-// int_filters[31:0]
+// int_coeffs[31:0]
 always @(posedge ACLK) begin
     if (ARESET)
-        int_filters[31:0] <= 0;
+        int_coeffs[31:0] <= 0;
     else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_FILTERS_DATA_0)
-            int_filters[31:0] <= (WDATA[31:0] & wmask) | (int_filters[31:0] & ~wmask);
+        if (w_hs && waddr == ADDR_COEFFS_DATA_0)
+            int_coeffs[31:0] <= (WDATA[31:0] & wmask) | (int_coeffs[31:0] & ~wmask);
     end
 end
 
-// int_filters[63:32]
+// int_coeffs[63:32]
 always @(posedge ACLK) begin
     if (ARESET)
-        int_filters[63:32] <= 0;
+        int_coeffs[63:32] <= 0;
     else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_FILTERS_DATA_1)
-            int_filters[63:32] <= (WDATA[31:0] & wmask) | (int_filters[63:32] & ~wmask);
+        if (w_hs && waddr == ADDR_COEFFS_DATA_1)
+            int_coeffs[63:32] <= (WDATA[31:0] & wmask) | (int_coeffs[63:32] & ~wmask);
     end
 end
 

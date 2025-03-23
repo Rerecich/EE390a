@@ -88,19 +88,19 @@ void * CAccelDriver::AllocDMACompatible(uint32_t Size, uint32_t Cacheable)
   uint32_t physicalAddr = 0;
 
   if (logging)
-    printf("CAccelDriver::AllocDMACompatible(Size = %u, Cacheable = %u)\n", Size, Cacheable);
+    printf("\n\nCAccelDriver::AllocDMACompatible(Size = %u, Cacheable = %u)\n", Size, Cacheable);
 
   virtualAddr = cma_alloc(Size, Cacheable);
   if ( (int32_t)virtualAddr == -1) {
     if (logging)
-      printf("Error allocating DMA memory for %u bytes.\n", Size);
+      printf("\n\nError allocating DMA memory for %u bytes.\n", Size);
     return NULL;
   }
 
   physicalAddr = cma_get_phy_addr(virtualAddr);
   if (physicalAddr == 0) {
     if (logging)
-      printf("Error obtaining physical addr for virtual address 0x%08X (%u).\n", (uint32_t)virtualAddr, (uint32_t)virtualAddr);
+      printf("\n\nError obtaining physical addr for virtual address 0x%08X (%u).\n", (uint32_t)virtualAddr, (uint32_t)virtualAddr);
     cma_free(virtualAddr);
     return NULL;
   }
@@ -108,7 +108,7 @@ void * CAccelDriver::AllocDMACompatible(uint32_t Size, uint32_t Cacheable)
   dmaMappings[(uint32_t)virtualAddr] = physicalAddr;
 
   if (logging)
-    printf("DMA memory allocated - Virtual addr: 0x%08X (%u) // Physical addr: 0x%08X (%u)\n",
+    printf("\n\nDMA memory allocated - Virtual addr: 0x%08X (%u) // Physical addr: 0x%08X (%u)\n",
             (uint32_t)virtualAddr, (uint32_t)virtualAddr, physicalAddr, physicalAddr);
 
   return virtualAddr;
@@ -122,11 +122,11 @@ void * CAccelDriver::AllocDMACompatible(uint32_t Size, uint32_t Cacheable)
 bool CAccelDriver::FreeDMACompatible(void * VirtAddr)
 {
   if (logging)
-    printf("CAccelDriver::FreeDMACompatible(Addr = 0x%08X)\n", (uint32_t)VirtAddr);
+    printf("\n\nCAccelDriver::FreeDMACompatible(Addr = 0x%08X)\n", (uint32_t)VirtAddr);
 
   if (logging) {
     if (dmaMappings.count((uint32_t)VirtAddr) == 0)
-      printf("No virtual address 0x%08X present in the dictionary of mappings.\n", (uint32_t)VirtAddr);
+      printf("\n\nNo virtual address 0x%08X present in the dictionary of mappings.\n", (uint32_t)VirtAddr);
   }
 
   dmaMappings.erase((uint32_t)VirtAddr);

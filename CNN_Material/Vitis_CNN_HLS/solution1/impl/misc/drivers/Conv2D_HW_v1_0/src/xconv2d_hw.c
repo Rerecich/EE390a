@@ -112,22 +112,22 @@ u64 XConv2d_hw_Get_output_r(XConv2d_hw *InstancePtr) {
     return Data;
 }
 
-void XConv2d_hw_Set_filters(XConv2d_hw *InstancePtr, u64 Data) {
+void XConv2d_hw_Set_coeffs(XConv2d_hw *InstancePtr, u64 Data) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    XConv2d_hw_WriteReg(InstancePtr->Control_BaseAddress, XCONV2D_HW_CONTROL_ADDR_FILTERS_DATA, (u32)(Data));
-    XConv2d_hw_WriteReg(InstancePtr->Control_BaseAddress, XCONV2D_HW_CONTROL_ADDR_FILTERS_DATA + 4, (u32)(Data >> 32));
+    XConv2d_hw_WriteReg(InstancePtr->Control_BaseAddress, XCONV2D_HW_CONTROL_ADDR_COEFFS_DATA, (u32)(Data));
+    XConv2d_hw_WriteReg(InstancePtr->Control_BaseAddress, XCONV2D_HW_CONTROL_ADDR_COEFFS_DATA + 4, (u32)(Data >> 32));
 }
 
-u64 XConv2d_hw_Get_filters(XConv2d_hw *InstancePtr) {
+u64 XConv2d_hw_Get_coeffs(XConv2d_hw *InstancePtr) {
     u64 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    Data = XConv2d_hw_ReadReg(InstancePtr->Control_BaseAddress, XCONV2D_HW_CONTROL_ADDR_FILTERS_DATA);
-    Data += (u64)XConv2d_hw_ReadReg(InstancePtr->Control_BaseAddress, XCONV2D_HW_CONTROL_ADDR_FILTERS_DATA + 4) << 32;
+    Data = XConv2d_hw_ReadReg(InstancePtr->Control_BaseAddress, XCONV2D_HW_CONTROL_ADDR_COEFFS_DATA);
+    Data += (u64)XConv2d_hw_ReadReg(InstancePtr->Control_BaseAddress, XCONV2D_HW_CONTROL_ADDR_COEFFS_DATA + 4) << 32;
     return Data;
 }
 

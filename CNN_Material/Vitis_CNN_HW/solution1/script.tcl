@@ -12,7 +12,7 @@ add_files SW_TEST_CONV2D_SW_AND_HW/util.cpp
 add_files SW_TEST_CONV2D_SW_AND_HW/util.hpp
 add_files -tb SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp
 open_solution "solution1" -flow_target vivado
-set_part {xc7z020clg400-1}
+set_part {xc7z020-clg400-1}
 create_clock -period 10 -name default
 #source "./Vitis_CNN_HW/solution1/directives.tcl"
 csim_design

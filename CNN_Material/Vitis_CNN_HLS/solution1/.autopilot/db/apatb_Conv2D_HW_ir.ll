@@ -8,23 +8,23 @@ target triple = "fpga64-xilinx-none"
 %"struct.ssdm_int<32, false>" = type { i32 }
 
 ; Function Attrs: noinline
-define void @apatb_Conv2D_HW_ir(i32* noalias nonnull readonly %input, i32* noalias nonnull %output, i32* noalias nonnull readonly %filters, %"struct.ap_uint<32>"* nocapture readonly %numChannels, %"struct.ap_uint<32>"* nocapture readonly %numFilters, %"struct.ap_uint<32>"* nocapture readonly %inputWidth, %"struct.ap_uint<32>"* nocapture readonly %inputHeight, %"struct.ap_uint<32>"* nocapture readonly %convWidth, %"struct.ap_uint<32>"* nocapture readonly %convHeight) local_unnamed_addr #0 {
+define void @apatb_Conv2D_HW_ir(i32* noalias nonnull readonly %input, i32* noalias nonnull %output, i32* noalias nonnull readonly %coeffs, %"struct.ap_uint<32>"* nocapture readonly %numChannels, %"struct.ap_uint<32>"* nocapture readonly %numFilters, %"struct.ap_uint<32>"* nocapture readonly %inputWidth, %"struct.ap_uint<32>"* nocapture readonly %inputHeight, %"struct.ap_uint<32>"* nocapture readonly %convWidth, %"struct.ap_uint<32>"* nocapture readonly %convHeight) local_unnamed_addr #0 {
 entry:
-  %malloccall = tail call i8* @malloc(i64 4096)
-  %input_copy = bitcast i8* %malloccall to [1024 x i32]*
-  %malloccall1 = tail call i8* @malloc(i64 4096)
-  %output_copy = bitcast i8* %malloccall1 to [1024 x i32]*
-  %malloccall2 = tail call i8* @malloc(i64 4096)
-  %filters_copy = bitcast i8* %malloccall2 to [1024 x i32]*
-  %0 = bitcast i32* %input to [1024 x i32]*
-  %1 = bitcast i32* %output to [1024 x i32]*
-  %2 = bitcast i32* %filters to [1024 x i32]*
-  call fastcc void @copy_in([1024 x i32]* nonnull %0, [1024 x i32]* %input_copy, [1024 x i32]* nonnull %1, [1024 x i32]* %output_copy, [1024 x i32]* nonnull %2, [1024 x i32]* %filters_copy)
-  %3 = getelementptr inbounds [1024 x i32], [1024 x i32]* %input_copy, i32 0, i32 0
-  %4 = getelementptr inbounds [1024 x i32], [1024 x i32]* %output_copy, i32 0, i32 0
-  %5 = getelementptr inbounds [1024 x i32], [1024 x i32]* %filters_copy, i32 0, i32 0
+  %malloccall = tail call i8* @malloc(i64 800000)
+  %input_copy = bitcast i8* %malloccall to [200000 x i32]*
+  %malloccall1 = tail call i8* @malloc(i64 800000)
+  %output_copy = bitcast i8* %malloccall1 to [200000 x i32]*
+  %malloccall2 = tail call i8* @malloc(i64 800000)
+  %coeffs_copy = bitcast i8* %malloccall2 to [200000 x i32]*
+  %0 = bitcast i32* %input to [200000 x i32]*
+  %1 = bitcast i32* %output to [200000 x i32]*
+  %2 = bitcast i32* %coeffs to [200000 x i32]*
+  call fastcc void @copy_in([200000 x i32]* nonnull %0, [200000 x i32]* %input_copy, [200000 x i32]* nonnull %1, [200000 x i32]* %output_copy, [200000 x i32]* nonnull %2, [200000 x i32]* %coeffs_copy)
+  %3 = getelementptr inbounds [200000 x i32], [200000 x i32]* %input_copy, i32 0, i32 0
+  %4 = getelementptr inbounds [200000 x i32], [200000 x i32]* %output_copy, i32 0, i32 0
+  %5 = getelementptr inbounds [200000 x i32], [200000 x i32]* %coeffs_copy, i32 0, i32 0
   call void @apatb_Conv2D_HW_hw(i32* %3, i32* %4, i32* %5, %"struct.ap_uint<32>"* %numChannels, %"struct.ap_uint<32>"* %numFilters, %"struct.ap_uint<32>"* %inputWidth, %"struct.ap_uint<32>"* %inputHeight, %"struct.ap_uint<32>"* %convWidth, %"struct.ap_uint<32>"* %convHeight)
-  call void @copy_back([1024 x i32]* %0, [1024 x i32]* %input_copy, [1024 x i32]* %1, [1024 x i32]* %output_copy, [1024 x i32]* %2, [1024 x i32]* %filters_copy)
+  call void @copy_back([200000 x i32]* %0, [200000 x i32]* %input_copy, [200000 x i32]* %1, [200000 x i32]* %output_copy, [200000 x i32]* %2, [200000 x i32]* %coeffs_copy)
   tail call void @free(i8* %malloccall)
   tail call void @free(i8* %malloccall1)
   tail call void @free(i8* %malloccall2)
@@ -34,19 +34,19 @@ entry:
 declare noalias i8* @malloc(i64) local_unnamed_addr
 
 ; Function Attrs: argmemonly noinline norecurse
-define internal fastcc void @copy_in([1024 x i32]* noalias readonly, [1024 x i32]* noalias, [1024 x i32]* noalias readonly, [1024 x i32]* noalias, [1024 x i32]* noalias readonly, [1024 x i32]* noalias) unnamed_addr #1 {
+define internal fastcc void @copy_in([200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias) unnamed_addr #1 {
 entry:
-  call fastcc void @onebyonecpy_hls.p0a1024i32([1024 x i32]* %1, [1024 x i32]* %0)
-  call fastcc void @onebyonecpy_hls.p0a1024i32([1024 x i32]* %3, [1024 x i32]* %2)
-  call fastcc void @onebyonecpy_hls.p0a1024i32([1024 x i32]* %5, [1024 x i32]* %4)
+  call fastcc void @onebyonecpy_hls.p0a200000i32([200000 x i32]* %1, [200000 x i32]* %0)
+  call fastcc void @onebyonecpy_hls.p0a200000i32([200000 x i32]* %3, [200000 x i32]* %2)
+  call fastcc void @onebyonecpy_hls.p0a200000i32([200000 x i32]* %5, [200000 x i32]* %4)
   ret void
 }
 
 ; Function Attrs: argmemonly noinline norecurse
-define internal fastcc void @onebyonecpy_hls.p0a1024i32([1024 x i32]* noalias, [1024 x i32]* noalias readonly) unnamed_addr #2 {
+define internal fastcc void @onebyonecpy_hls.p0a200000i32([200000 x i32]* noalias, [200000 x i32]* noalias readonly) unnamed_addr #2 {
 entry:
-  %2 = icmp eq [1024 x i32]* %0, null
-  %3 = icmp eq [1024 x i32]* %1, null
+  %2 = icmp eq [200000 x i32]* %0, null
+  %3 = icmp eq [200000 x i32]* %1, null
   %4 = or i1 %2, %3
   br i1 %4, label %ret, label %copy
 
@@ -55,12 +55,12 @@ copy:                                             ; preds = %entry
 
 for.loop:                                         ; preds = %for.loop, %copy
   %for.loop.idx1 = phi i64 [ 0, %copy ], [ %for.loop.idx.next, %for.loop ]
-  %dst.addr = getelementptr [1024 x i32], [1024 x i32]* %0, i64 0, i64 %for.loop.idx1
-  %src.addr = getelementptr [1024 x i32], [1024 x i32]* %1, i64 0, i64 %for.loop.idx1
+  %dst.addr = getelementptr [200000 x i32], [200000 x i32]* %0, i64 0, i64 %for.loop.idx1
+  %src.addr = getelementptr [200000 x i32], [200000 x i32]* %1, i64 0, i64 %for.loop.idx1
   %5 = load i32, i32* %src.addr, align 4
   store i32 %5, i32* %dst.addr, align 4
   %for.loop.idx.next = add nuw nsw i64 %for.loop.idx1, 1
-  %exitcond = icmp ne i64 %for.loop.idx.next, 1024
+  %exitcond = icmp ne i64 %for.loop.idx.next, 200000
   br i1 %exitcond, label %for.loop, label %ret
 
 ret:                                              ; preds = %for.loop, %entry
@@ -68,11 +68,11 @@ ret:                                              ; preds = %for.loop, %entry
 }
 
 ; Function Attrs: argmemonly noinline norecurse
-define internal fastcc void @copy_out([1024 x i32]* noalias, [1024 x i32]* noalias readonly, [1024 x i32]* noalias, [1024 x i32]* noalias readonly, [1024 x i32]* noalias, [1024 x i32]* noalias readonly) unnamed_addr #3 {
+define internal fastcc void @copy_out([200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly) unnamed_addr #3 {
 entry:
-  call fastcc void @onebyonecpy_hls.p0a1024i32([1024 x i32]* %0, [1024 x i32]* %1)
-  call fastcc void @onebyonecpy_hls.p0a1024i32([1024 x i32]* %2, [1024 x i32]* %3)
-  call fastcc void @onebyonecpy_hls.p0a1024i32([1024 x i32]* %4, [1024 x i32]* %5)
+  call fastcc void @onebyonecpy_hls.p0a200000i32([200000 x i32]* %0, [200000 x i32]* %1)
+  call fastcc void @onebyonecpy_hls.p0a200000i32([200000 x i32]* %2, [200000 x i32]* %3)
+  call fastcc void @onebyonecpy_hls.p0a200000i32([200000 x i32]* %4, [200000 x i32]* %5)
   ret void
 }
 
@@ -81,23 +81,23 @@ declare void @free(i8*) local_unnamed_addr
 declare void @apatb_Conv2D_HW_hw(i32*, i32*, i32*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*)
 
 ; Function Attrs: argmemonly noinline norecurse
-define internal fastcc void @copy_back([1024 x i32]* noalias, [1024 x i32]* noalias readonly, [1024 x i32]* noalias, [1024 x i32]* noalias readonly, [1024 x i32]* noalias, [1024 x i32]* noalias readonly) unnamed_addr #3 {
+define internal fastcc void @copy_back([200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly) unnamed_addr #3 {
 entry:
-  call fastcc void @onebyonecpy_hls.p0a1024i32([1024 x i32]* %2, [1024 x i32]* %3)
+  call fastcc void @onebyonecpy_hls.p0a200000i32([200000 x i32]* %2, [200000 x i32]* %3)
   ret void
 }
 
 define void @Conv2D_HW_hw_stub_wrapper(i32*, i32*, i32*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*, %"struct.ap_uint<32>"*) #4 {
 entry:
-  %9 = bitcast i32* %0 to [1024 x i32]*
-  %10 = bitcast i32* %1 to [1024 x i32]*
-  %11 = bitcast i32* %2 to [1024 x i32]*
-  call void @copy_out([1024 x i32]* null, [1024 x i32]* %9, [1024 x i32]* null, [1024 x i32]* %10, [1024 x i32]* null, [1024 x i32]* %11)
-  %12 = bitcast [1024 x i32]* %9 to i32*
-  %13 = bitcast [1024 x i32]* %10 to i32*
-  %14 = bitcast [1024 x i32]* %11 to i32*
+  %9 = bitcast i32* %0 to [200000 x i32]*
+  %10 = bitcast i32* %1 to [200000 x i32]*
+  %11 = bitcast i32* %2 to [200000 x i32]*
+  call void @copy_out([200000 x i32]* null, [200000 x i32]* %9, [200000 x i32]* null, [200000 x i32]* %10, [200000 x i32]* null, [200000 x i32]* %11)
+  %12 = bitcast [200000 x i32]* %9 to i32*
+  %13 = bitcast [200000 x i32]* %10 to i32*
+  %14 = bitcast [200000 x i32]* %11 to i32*
   call void @Conv2D_HW_hw_stub(i32* %12, i32* %13, i32* %14, %"struct.ap_uint<32>"* %3, %"struct.ap_uint<32>"* %4, %"struct.ap_uint<32>"* %5, %"struct.ap_uint<32>"* %6, %"struct.ap_uint<32>"* %7, %"struct.ap_uint<32>"* %8)
-  call void @copy_in([1024 x i32]* null, [1024 x i32]* %9, [1024 x i32]* null, [1024 x i32]* %10, [1024 x i32]* null, [1024 x i32]* %11)
+  call void @copy_in([200000 x i32]* null, [200000 x i32]* %9, [200000 x i32]* null, [200000 x i32]* %10, [200000 x i32]* null, [200000 x i32]* %11)
   ret void
 }
 

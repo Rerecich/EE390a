@@ -22,8 +22,8 @@ using namespace std;
 #define AUTOTB_TVOUT_input_r "../tv/cdatafile/c.Conv2D_HW.autotvout_input_r.dat"
 #define AUTOTB_TVIN_output_r "../tv/cdatafile/c.Conv2D_HW.autotvin_output_r.dat"
 #define AUTOTB_TVOUT_output_r "../tv/cdatafile/c.Conv2D_HW.autotvout_output_r.dat"
-#define AUTOTB_TVIN_filters "../tv/cdatafile/c.Conv2D_HW.autotvin_filters.dat"
-#define AUTOTB_TVOUT_filters "../tv/cdatafile/c.Conv2D_HW.autotvout_filters.dat"
+#define AUTOTB_TVIN_coeffs "../tv/cdatafile/c.Conv2D_HW.autotvin_coeffs.dat"
+#define AUTOTB_TVOUT_coeffs "../tv/cdatafile/c.Conv2D_HW.autotvout_coeffs.dat"
 #define AUTOTB_TVIN_numChannels "../tv/cdatafile/c.Conv2D_HW.autotvin_numChannels.dat"
 #define AUTOTB_TVOUT_numChannels "../tv/cdatafile/c.Conv2D_HW.autotvout_numChannels.dat"
 #define AUTOTB_TVIN_numFilters "../tv/cdatafile/c.Conv2D_HW.autotvin_numFilters.dat"
@@ -969,7 +969,7 @@ extern "C"
 void Conv2D_HW_hw_stub_wrapper(void*, void*, void*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<4>*);
 
 extern "C"
-void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param_output_r, void* __xlx_apatb_param_filters, hls::sim::Byte<4>* __xlx_apatb_param_numChannels, hls::sim::Byte<4>* __xlx_apatb_param_numFilters, hls::sim::Byte<4>* __xlx_apatb_param_inputWidth, hls::sim::Byte<4>* __xlx_apatb_param_inputHeight, hls::sim::Byte<4>* __xlx_apatb_param_convWidth, hls::sim::Byte<4>* __xlx_apatb_param_convHeight)
+void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param_output_r, void* __xlx_apatb_param_coeffs, hls::sim::Byte<4>* __xlx_apatb_param_numChannels, hls::sim::Byte<4>* __xlx_apatb_param_numFilters, hls::sim::Byte<4>* __xlx_apatb_param_inputWidth, hls::sim::Byte<4>* __xlx_apatb_param_inputHeight, hls::sim::Byte<4>* __xlx_apatb_param_convWidth, hls::sim::Byte<4>* __xlx_apatb_param_convHeight)
 {
   hls::sim::Byte<4> __xlx_offset_byte_param_input_r;
   static hls::sim::Register port0 {
@@ -995,17 +995,17 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
   };
   port1.param = &__xlx_offset_byte_param_output_r;
 
-  hls::sim::Byte<4> __xlx_offset_byte_param_filters;
+  hls::sim::Byte<4> __xlx_offset_byte_param_coeffs;
   static hls::sim::Register port2 {
-    .name = "filters",
+    .name = "coeffs",
     .width = 32,
 #ifdef POST_CHECK
 #else
     .owriter = nullptr,
-    .iwriter = new hls::sim::Writer(AUTOTB_TVIN_filters),
+    .iwriter = new hls::sim::Writer(AUTOTB_TVIN_coeffs),
 #endif
   };
-  port2.param = &__xlx_offset_byte_param_filters;
+  port2.param = &__xlx_offset_byte_param_coeffs;
 
   static hls::sim::Register port3 {
     .name = "numChannels",
@@ -1102,11 +1102,11 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
 #endif
   };
   __xlx_offset_byte_param_input_r = 0*4;
-  __xlx_offset_byte_param_output_r = 1024*4;
-  __xlx_offset_byte_param_filters = 2048*4;
-  port9.param = { __xlx_apatb_param_input_r, __xlx_apatb_param_output_r, __xlx_apatb_param_filters };
-  port9.depth = { 1024, 1024, 1024 };
-  port9.offset = { 0, 1024, 2048 };
+  __xlx_offset_byte_param_output_r = 200000*4;
+  __xlx_offset_byte_param_coeffs = 400000*4;
+  port9.param = { __xlx_apatb_param_input_r, __xlx_apatb_param_output_r, __xlx_apatb_param_coeffs };
+  port9.depth = { 200000, 200000, 200000 };
+  port9.offset = { 0, 200000, 400000 };
   port9.hasWrite = { true, true, true };
 
   refine_signal_handler();
@@ -1138,7 +1138,7 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
     port8.doTCL(tcl);
     port9.doTCL(tcl);
     CodeState = CALL_C_DUT;
-    Conv2D_HW_hw_stub_wrapper(__xlx_apatb_param_input_r, __xlx_apatb_param_output_r, __xlx_apatb_param_filters, __xlx_apatb_param_numChannels, __xlx_apatb_param_numFilters, __xlx_apatb_param_inputWidth, __xlx_apatb_param_inputHeight, __xlx_apatb_param_convWidth, __xlx_apatb_param_convHeight);
+    Conv2D_HW_hw_stub_wrapper(__xlx_apatb_param_input_r, __xlx_apatb_param_output_r, __xlx_apatb_param_coeffs, __xlx_apatb_param_numChannels, __xlx_apatb_param_numFilters, __xlx_apatb_param_inputWidth, __xlx_apatb_param_inputHeight, __xlx_apatb_param_convWidth, __xlx_apatb_param_convHeight);
     CodeState = DUMP_OUTPUTS;
     dump(port9, port9.owriter, tcl.AESL_transaction);
     tcl.AESL_transaction++;

@@ -1,10 +1,10 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
--- Date        : Sat Mar 22 20:51:22 2025
+-- Date        : Sat Mar 22 20:51:21 2025
 -- Host        : diskless running 64-bit Ubuntu 22.04 LTS
--- Command     : write_vhdl -force -mode synth_stub
---               /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/project_1/project_1.gen/sources_1/bd/design_1/ip/design_1_auto_us_0/design_1_auto_us_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top design_1_auto_us_0 -prefix
+--               design_1_auto_us_0_ design_1_auto_us_0_stub.vhdl
 -- Design      : design_1_auto_us_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-1

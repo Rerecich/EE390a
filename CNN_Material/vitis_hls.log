@@ -1,70 +1,47 @@
 INFO: [HLS 200-10] Running '/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'rerecich' on host 'diskless' (Linux_x86_64 version 5.15.0-60-generic) on Sat Mar 22 21:46:10 CET 2025
+INFO: [HLS 200-10] For user 'rerecich' on host 'diskless' (Linux_x86_64 version 5.15.0-60-generic) on Sun Mar 23 15:52:27 CET 2025
 INFO: [HLS 200-10] On os Ubuntu 22.04 LTS
 INFO: [HLS 200-10] In directory '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material'
-Sourcing Tcl script '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HW/solution1/csim.tcl'
-INFO: [HLS 200-1510] Running: source /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HW/solution1/csim.tcl
-INFO: [HLS 200-1510] Running: open_project Vitis_CNN_HW 
-INFO: [HLS 200-10] Opening project '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HW'.
-INFO: [HLS 200-1510] Running: add_files SW_TEST_CONV2D_SW_AND_HW/CAccelDriver.cpp 
-INFO: [HLS 200-10] Adding design file 'SW_TEST_CONV2D_SW_AND_HW/CAccelDriver.cpp' to the project
-INFO: [HLS 200-1510] Running: add_files SW_TEST_CONV2D_SW_AND_HW/CAccelDriver.hpp 
-INFO: [HLS 200-10] Adding design file 'SW_TEST_CONV2D_SW_AND_HW/CAccelDriver.hpp' to the project
-INFO: [HLS 200-1510] Running: add_files SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.cpp 
-INFO: [HLS 200-10] Adding design file 'SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.cpp' to the project
-INFO: [HLS 200-1510] Running: add_files SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp 
-INFO: [HLS 200-10] Adding design file 'SW_TEST_CONV2D_SW_AND_HW/CConv2DDriver.hpp' to the project
-INFO: [HLS 200-1510] Running: add_files SW_TEST_CONV2D_SW_AND_HW/util.cpp 
-INFO: [HLS 200-10] Adding design file 'SW_TEST_CONV2D_SW_AND_HW/util.cpp' to the project
-INFO: [HLS 200-1510] Running: add_files SW_TEST_CONV2D_SW_AND_HW/util.hpp 
-INFO: [HLS 200-10] Adding design file 'SW_TEST_CONV2D_SW_AND_HW/util.hpp' to the project
-INFO: [HLS 200-1510] Running: add_files -tb SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp 
-INFO: [HLS 200-10] Adding test bench file 'SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp' to the project
+Sourcing Tcl script '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/export.tcl'
+INFO: [HLS 200-1510] Running: source /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/export.tcl
+INFO: [HLS 200-1510] Running: open_project Vitis_CNN_HLS 
+INFO: [HLS 200-10] Opening project '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS'.
+INFO: [HLS 200-1510] Running: set_top Conv2D_HW 
+INFO: [HLS 200-1510] Running: add_files HLS/conv2d.cpp 
+INFO: [HLS 200-10] Adding design file 'HLS/conv2d.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files HLS/conv2d.h 
+INFO: [HLS 200-10] Adding design file 'HLS/conv2d.h' to the project
+INFO: [HLS 200-1510] Running: add_files -tb HLS/conv2DTestbench.cpp 
+INFO: [HLS 200-10] Adding test bench file 'HLS/conv2DTestbench.cpp' to the project
 INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
-INFO: [HLS 200-10] Opening solution '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HW/solution1'.
+INFO: [HLS 200-10] Opening solution '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1'.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
 INFO: [HLS 200-1505] Using flow_target 'vivado'
 Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=200-1505.html
-INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/IP-catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg400-1 
 INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
-INFO: [HLS 200-1510] Running: csim_design -quiet 
-Running Dispatch Server on port: 44903
-INFO: [SIM 211-2] *************** CSIM start ***************
-INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
-   Compiling ../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp in debug mode
-../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp: In function ‘bool InitDevice(CConv2DDriver&, TFXP*&, TFXP*&, TFXP*&, bool)’:
-../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:135:63: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
-     printf("Input: Virtual address: 0x%08X (%u)\n", (uint32_t)inputHW, (uint32_t)inputHW);
-                                                               ^~~~~~~
-../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:135:82: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
-     printf("Input: Virtual address: 0x%08X (%u)\n", (uint32_t)inputHW, (uint32_t)inputHW);
-                                                                                  ^~~~~~~
-../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:136:64: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
-     printf("Output: Virtual address: 0x%08X (%u)\n", (uint32_t)outputHW, (uint32_t)outputHW);
-                                                                ^~~~~~~~
-../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:136:84: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
-     printf("Output: Virtual address: 0x%08X (%u)\n", (uint32_t)outputHW, (uint32_t)outputHW);
-                                                                                    ^~~~~~~~
-../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:137:64: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
-     printf("Coeffs: Virtual address: 0x%08X (%u)\n", (uint32_t)coeffsHW, (uint32_t)coeffsHW);
-                                                                ^~~~~~~~
-../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:137:84: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
-     printf("Coeffs: Virtual address: 0x%08X (%u)\n", (uint32_t)coeffsHW, (uint32_t)coeffsHW);
-                                                                                    ^~~~~~~~
-make: *** [csim.mk:78: obj/conv2DTestbench.o] Error 1
-ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
-INFO: [SIM 211-3] *************** CSIM finish ***************
-INFO: [HLS 200-111] Finished Command csim_design CPU user time: 0.31 seconds. CPU system time: 0.11 seconds. Elapsed time: 0.47 seconds; current allocated memory: 0.000 MB.
-4
-    while executing
-"source /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HW/solution1/csim.tcl"
-    invoked from within
-"hls::main /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HW/solution1/csim.tcl"
-    ("uplevel" body line 1)
-    invoked from within
-"uplevel 1 hls::main {*}$newargs"
-    (procedure "hls_proc" line 16)
-    invoked from within
-"hls_proc [info nameofexecutable] $argv"
-INFO: [HLS 200-112] Total CPU user time: 1.82 seconds. Total CPU system time: 0.34 seconds. Total elapsed time: 12.31 seconds; peak allocated memory: 202.848 MB.
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/IP-catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: source ./Vitis_CNN_HLS/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name Conv2D_HW Conv2D_HW 
+INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/IP-catalog 
+Running Dispatch Server on port: 44591
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2022.2 (64-bit)
+  **** SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+ipx::create_core: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1361.102 ; gain = 0.023 ; free physical = 4310 ; free virtual = 24554
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/scrap/users/Xilinx2022.2/Vivado/2022.2/data/ip'.
+INFO: [Common 17-206] Exiting Vivado at Sun Mar 23 15:52:55 2025...
+INFO: [HLS 200-802] Generated output file IP-catalog/export.zip
+INFO: [HLS 200-111] Finished Command export_design CPU user time: 15.09 seconds. CPU system time: 1.14 seconds. Elapsed time: 26.92 seconds; current allocated memory: 7.805 MB.
+INFO: [HLS 200-112] Total CPU user time: 16.69 seconds. Total CPU system time: 1.43 seconds. Total elapsed time: 39.18 seconds; peak allocated memory: 210.676 MB.

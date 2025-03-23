@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6'
 ================================================================
-* Date:           Sat Mar 22 17:30:50 2025
+* Date:           Sun Mar 23 15:50:53 2025
 
 * Version:        2022.2 (Build 3670227 on Oct 13 2022)
 * Project:        Vitis_CNN_HLS
@@ -119,7 +119,7 @@ ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%inputWidth_cast10_read = read i32 
 ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%icmp_ln1027_read = read i1 @_ssdm_op_Read.ap_auto.i1, i1 %icmp_ln1027"   --->   Operation 35 'read' 'icmp_ln1027_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%convWidth_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %convWidth"   --->   Operation 36 'read' 'convWidth_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%tmp3_cast_mid144_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %tmp3_cast_mid144"   --->   Operation 37 'read' 'tmp3_cast_mid144_read' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%filters_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %filters"   --->   Operation 38 'read' 'filters_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%coeffs_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %coeffs"   --->   Operation 38 'read' 'coeffs_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%tmp1_read = read i62 @_ssdm_op_Read.ap_auto.i62, i62 %tmp1"   --->   Operation 39 'read' 'tmp1_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%mul_ln1027_1_read = read i62 @_ssdm_op_Read.ap_auto.i62, i62 %mul_ln1027_1"   --->   Operation 40 'read' 'mul_ln1027_1_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%mul_ln15_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %mul_ln15"   --->   Operation 41 'read' 'mul_ln15_read' <Predicate = true> <Delay = 0.00>
@@ -133,7 +133,7 @@ ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%tmp3_cast_mid144_cast = zext i32 %
 ST_1 : Operation 49 [1/1] (0.00ns)   --->   "%convWidth_cast_cast = zext i32 %convWidth_cast_read"   --->   Operation 49 'zext' 'convWidth_cast_cast' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%zext_ln34_cast = zext i32 %zext_ln34_read"   --->   Operation 50 'zext' 'zext_ln34_cast' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 51 [1/1] (0.00ns)   --->   "%inputHeight_cast9_cast = zext i32 %inputHeight_cast9_read"   --->   Operation 51 'zext' 'inputHeight_cast9_cast' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem, void @empty_4, i32 0, i32 0, void @empty_5, i32 0, i32 1024, void @empty_6, void @empty_17, void @empty_5, i32 16, i32 16, i32 16, i32 16, void @empty_5, void @empty_5, i32 4294967295, i32 0"   --->   Operation 52 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem, void @empty_4, i32 0, i32 0, void @empty_5, i32 0, i32 200000, void @empty_6, void @empty_17, void @empty_5, i32 16, i32 16, i32 16, i32 16, void @empty_5, void @empty_5, i32 4294967295, i32 0"   --->   Operation 52 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 53 [1/1] (1.58ns)   --->   "%store_ln0 = store i96 0, i96 %indvar_flatten68"   --->   Operation 53 'store' 'store_ln0' <Predicate = true> <Delay = 1.58>
 ST_1 : Operation 54 [1/1] (1.58ns)   --->   "%store_ln0 = store i32 0, i32 %iChannel_V"   --->   Operation 54 'store' 'store_ln0' <Predicate = true> <Delay = 1.58>
 ST_1 : Operation 55 [1/1] (1.58ns)   --->   "%store_ln0 = store i64 0, i64 %indvar_flatten"   --->   Operation 55 'store' 'store_ln0' <Predicate = true> <Delay = 1.58>
@@ -221,7 +221,7 @@ ST_7 : Operation 124 [4/5] (6.85ns)   --->   "%mul_ln1027_2 = mul i62 %select_ln
 
 State 8 <SV = 7> <Delay = 6.98>
 ST_8 : Operation 125 [1/1] (0.00ns)   --->   "%sext_ln38_mid2_v_v_v_v = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i62.i2, i62 %mul_ln1027, i2 0"   --->   Operation 125 'bitconcatenate' 'sext_ln38_mid2_v_v_v_v' <Predicate = true> <Delay = 0.00>
-ST_8 : Operation 126 [1/1] (3.52ns)   --->   "%add_ln1027_2 = add i64 %sext_ln38_mid2_v_v_v_v, i64 %filters_read"   --->   Operation 126 'add' 'add_ln1027_2' <Predicate = true> <Delay = 3.52> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 126 [1/1] (3.52ns)   --->   "%add_ln1027_2 = add i64 %sext_ln38_mid2_v_v_v_v, i64 %coeffs_read"   --->   Operation 126 'add' 'add_ln1027_2' <Predicate = true> <Delay = 3.52> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 ST_8 : Operation 127 [1/1] (0.00ns)   --->   "%sext_ln38_mid2_v = partselect i62 @_ssdm_op_PartSelect.i62.i64.i32.i32, i64 %add_ln1027_2, i32 2, i32 63"   --->   Operation 127 'partselect' 'sext_ln38_mid2_v' <Predicate = true> <Delay = 0.00>
 ST_8 : Operation 128 [1/1] (0.00ns)   --->   "%sext_ln1027 = sext i62 %sext_ln38_mid2_v"   --->   Operation 128 'sext' 'sext_ln1027' <Predicate = true> <Delay = 0.00>
 ST_8 : Operation 129 [3/5] (6.85ns)   --->   "%mul_ln1027_2 = mul i62 %select_ln1027_8, i62 %inputWidth_cast10_cast"   --->   Operation 129 'mul' 'mul_ln1027_2' <Predicate = true> <Delay = 6.85> <CoreInst = "Multiplier">   --->   Core 3 'Multiplier' <Latency = 4> <II = 1> <Delay = 6.85> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>
@@ -325,7 +325,7 @@ Port [ mul_ln15_1]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0;
 Port [ mul_ln15]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
 Port [ mul_ln1027_1]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
 Port [ tmp1]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
-Port [ filters]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ coeffs]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
 Port [ tmp3_cast_mid144]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
 Port [ convWidth]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
 Port [ icmp_ln1027]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
@@ -351,7 +351,7 @@ inputWidth_cast10_read (read          ) [ 0000000000000000000000000]
 icmp_ln1027_read       (read          ) [ 0010000000000000000000000]
 convWidth_read         (read          ) [ 0010000000000000000000000]
 tmp3_cast_mid144_read  (read          ) [ 0000000000000000000000000]
-filters_read           (read          ) [ 0111111110000000000000000]
+coeffs_read            (read          ) [ 0111111110000000000000000]
 tmp1_read              (read          ) [ 0111111100000000000000000]
 mul_ln1027_1_read      (read          ) [ 0010000000000000000000000]
 mul_ln15_read          (read          ) [ 0010000000000000000000000]
@@ -542,12 +542,12 @@ ret_ln0                (ret           ) [ 0000000000000000000000000]
 </bind>
 </comp>
 
-<comp id="16" class="1000" name="filters">
+<comp id="16" class="1000" name="coeffs">
 <pin_list>
 <pin id="17" dir="1" index="0" bw="1" slack="0"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="filters"/></StgValue>
+<StgValue><ssdm name="coeffs"/></StgValue>
 </bind>
 </comp>
 
@@ -1094,7 +1094,7 @@ ret_ln0                (ret           ) [ 0000000000000000000000000]
 </bind>
 </comp>
 
-<comp id="168" class="1004" name="filters_read_read_fu_168">
+<comp id="168" class="1004" name="coeffs_read_read_fu_168">
 <pin_list>
 <pin id="169" dir="0" index="0" bw="64" slack="0"/>
 <pin id="170" dir="0" index="1" bw="64" slack="0"/>
@@ -1102,7 +1102,7 @@ ret_ln0                (ret           ) [ 0000000000000000000000000]
 </pin_list>
 <bind>
 <opcode="read(1150) " fcode="read"/>
-<opset="filters_read/1 "/>
+<opset="coeffs_read/1 "/>
 </bind>
 </comp>
 
@@ -2400,13 +2400,13 @@ ret_ln0                (ret           ) [ 0000000000000000000000000]
 </bind>
 </comp>
 
-<comp id="745" class="1005" name="filters_read_reg_745">
+<comp id="745" class="1005" name="coeffs_read_reg_745">
 <pin_list>
 <pin id="746" dir="0" index="0" bw="64" slack="7"/>
 <pin id="747" dir="1" index="1" bw="64" slack="7"/>
 </pin_list>
 <bind>
-<opset="filters_read "/>
+<opset="coeffs_read "/>
 </bind>
 </comp>
 
@@ -3418,7 +3418,7 @@ ret_ln0                (ret           ) [ 0000000000000000000000000]
 	Port: Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 : mul_ln15 | {1 }
 	Port: Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 : mul_ln1027_1 | {1 }
 	Port: Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 : tmp1 | {1 }
-	Port: Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 : filters | {1 }
+	Port: Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 : coeffs | {1 }
 	Port: Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 : tmp3_cast_mid144 | {1 }
 	Port: Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 : convWidth | {1 }
 	Port: Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 : icmp_ln1027 | {1 }
@@ -3565,7 +3565,7 @@ ret_ln0                (ret           ) [ 0000000000000000000000000]
 |          |    icmp_ln1027_read_read_fu_150    |    0    |    0    |    0    |
 |          |     convWidth_read_read_fu_156     |    0    |    0    |    0    |
 |          |  tmp3_cast_mid144_read_read_fu_162 |    0    |    0    |    0    |
-|          |      filters_read_read_fu_168      |    0    |    0    |    0    |
+|          |       coeffs_read_read_fu_168      |    0    |    0    |    0    |
 |   read   |        tmp1_read_read_fu_174       |    0    |    0    |    0    |
 |          |    mul_ln1027_1_read_read_fu_180   |    0    |    0    |    0    |
 |          |      mul_ln15_read_read_fu_186     |    0    |    0    |    0    |
@@ -3627,6 +3627,7 @@ N/A
 |     add_ln1027_1_reg_856     |   62   |
 |      add_ln840_1_reg_869     |   32   |
 |       add_ln840_reg_851      |   32   |
+|      coeffs_read_reg_745     |   64   |
 |  convWidth_cast_cast_reg_785 |   62   |
 |    convWidth_read_reg_740    |   32   |
 |        cy_V_1_reg_803        |   32   |
@@ -3634,7 +3635,6 @@ N/A
 |       empty_36_reg_882       |   62   |
 |         empty_reg_876        |   62   |
 |      filterValue_reg_961     |   32   |
-|     filters_read_reg_745     |   64   |
 |      gmem_addr_1_reg_955     |   32   |
 |       gmem_addr_reg_939      |   32   |
 |      iChannel_V_reg_716      |   32   |

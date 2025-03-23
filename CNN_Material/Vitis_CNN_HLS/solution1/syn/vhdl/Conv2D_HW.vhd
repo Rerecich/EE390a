@@ -172,7 +172,7 @@ architecture behav of Conv2D_HW is
     signal ap_ready : STD_LOGIC;
     signal input_r : STD_LOGIC_VECTOR (63 downto 0);
     signal output_r : STD_LOGIC_VECTOR (63 downto 0);
-    signal filters : STD_LOGIC_VECTOR (63 downto 0);
+    signal coeffs : STD_LOGIC_VECTOR (63 downto 0);
     signal numChannels : STD_LOGIC_VECTOR (31 downto 0);
     signal numFilters : STD_LOGIC_VECTOR (31 downto 0);
     signal inputWidth : STD_LOGIC_VECTOR (31 downto 0);
@@ -194,7 +194,7 @@ architecture behav of Conv2D_HW is
     signal inputWidth_read_reg_551 : STD_LOGIC_VECTOR (31 downto 0);
     signal numFilters_read_reg_559 : STD_LOGIC_VECTOR (31 downto 0);
     signal numChannels_read_reg_564 : STD_LOGIC_VECTOR (31 downto 0);
-    signal filters_read_reg_570 : STD_LOGIC_VECTOR (63 downto 0);
+    signal coeffs_read_reg_570 : STD_LOGIC_VECTOR (63 downto 0);
     signal output_r_read_reg_575 : STD_LOGIC_VECTOR (63 downto 0);
     signal input_r_read_reg_580 : STD_LOGIC_VECTOR (63 downto 0);
     signal ap_CS_fsm_state2 : STD_LOGIC;
@@ -461,7 +461,7 @@ architecture behav of Conv2D_HW is
         mul_ln15 : IN STD_LOGIC_VECTOR (63 downto 0);
         mul_ln1027_1 : IN STD_LOGIC_VECTOR (61 downto 0);
         tmp1 : IN STD_LOGIC_VECTOR (61 downto 0);
-        filters : IN STD_LOGIC_VECTOR (63 downto 0);
+        coeffs : IN STD_LOGIC_VECTOR (63 downto 0);
         tmp3_cast_mid144 : IN STD_LOGIC_VECTOR (31 downto 0);
         convWidth : IN STD_LOGIC_VECTOR (31 downto 0);
         icmp_ln1027 : IN STD_LOGIC_VECTOR (0 downto 0);
@@ -610,7 +610,7 @@ architecture behav of Conv2D_HW is
         ACLK_EN : IN STD_LOGIC;
         input_r : OUT STD_LOGIC_VECTOR (63 downto 0);
         output_r : OUT STD_LOGIC_VECTOR (63 downto 0);
-        filters : OUT STD_LOGIC_VECTOR (63 downto 0);
+        coeffs : OUT STD_LOGIC_VECTOR (63 downto 0);
         numChannels : OUT STD_LOGIC_VECTOR (31 downto 0);
         numFilters : OUT STD_LOGIC_VECTOR (31 downto 0);
         inputWidth : OUT STD_LOGIC_VECTOR (31 downto 0);
@@ -780,7 +780,7 @@ begin
         mul_ln15 => mul_ln15_reg_601,
         mul_ln1027_1 => mul_ln1027_1_reg_743,
         tmp1 => tmp1_reg_669,
-        filters => filters_read_reg_570,
+        coeffs => coeffs_read_reg_570,
         tmp3_cast_mid144 => select_ln1027_reg_697,
         convWidth => convWidth_read_reg_536,
         icmp_ln1027 => icmp_ln1027_reg_684,
@@ -825,7 +825,7 @@ begin
         ACLK_EN => ap_const_logic_1,
         input_r => input_r,
         output_r => output_r,
-        filters => filters,
+        coeffs => coeffs,
         numChannels => numChannels,
         numFilters => numFilters,
         inputWidth => inputWidth,
@@ -1136,9 +1136,9 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if ((ap_const_logic_1 = ap_CS_fsm_state1)) then
+                coeffs_read_reg_570 <= coeffs;
                 convHeight_read_reg_530 <= convHeight;
                 convWidth_read_reg_536 <= convWidth;
-                filters_read_reg_570 <= filters;
                 inputHeight_read_reg_545 <= inputHeight;
                 inputWidth_read_reg_551 <= inputWidth;
                 input_r_read_reg_580 <= input_r;

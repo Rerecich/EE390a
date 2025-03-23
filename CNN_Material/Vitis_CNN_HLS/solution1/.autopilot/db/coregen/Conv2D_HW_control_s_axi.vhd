@@ -35,7 +35,7 @@ port (
     interrupt             :out  STD_LOGIC;
     input_r               :out  STD_LOGIC_VECTOR(63 downto 0);
     output_r              :out  STD_LOGIC_VECTOR(63 downto 0);
-    filters               :out  STD_LOGIC_VECTOR(63 downto 0);
+    coeffs                :out  STD_LOGIC_VECTOR(63 downto 0);
     numChannels           :out  STD_LOGIC_VECTOR(31 downto 0);
     numFilters            :out  STD_LOGIC_VECTOR(31 downto 0);
     inputWidth            :out  STD_LOGIC_VECTOR(31 downto 0);
@@ -79,10 +79,10 @@ end entity Conv2D_HW_control_s_axi;
 -- 0x20 : Data signal of output_r
 --        bit 31~0 - output_r[63:32] (Read/Write)
 -- 0x24 : reserved
--- 0x28 : Data signal of filters
---        bit 31~0 - filters[31:0] (Read/Write)
--- 0x2c : Data signal of filters
---        bit 31~0 - filters[63:32] (Read/Write)
+-- 0x28 : Data signal of coeffs
+--        bit 31~0 - coeffs[31:0] (Read/Write)
+-- 0x2c : Data signal of coeffs
+--        bit 31~0 - coeffs[63:32] (Read/Write)
 -- 0x30 : reserved
 -- 0x34 : Data signal of numChannels
 --        bit 31~0 - numChannels[31:0] (Read/Write)
@@ -119,9 +119,9 @@ architecture behave of Conv2D_HW_control_s_axi is
     constant ADDR_OUTPUT_R_DATA_0    : INTEGER := 16#1c#;
     constant ADDR_OUTPUT_R_DATA_1    : INTEGER := 16#20#;
     constant ADDR_OUTPUT_R_CTRL      : INTEGER := 16#24#;
-    constant ADDR_FILTERS_DATA_0     : INTEGER := 16#28#;
-    constant ADDR_FILTERS_DATA_1     : INTEGER := 16#2c#;
-    constant ADDR_FILTERS_CTRL       : INTEGER := 16#30#;
+    constant ADDR_COEFFS_DATA_0      : INTEGER := 16#28#;
+    constant ADDR_COEFFS_DATA_1      : INTEGER := 16#2c#;
+    constant ADDR_COEFFS_CTRL        : INTEGER := 16#30#;
     constant ADDR_NUMCHANNELS_DATA_0 : INTEGER := 16#34#;
     constant ADDR_NUMCHANNELS_CTRL   : INTEGER := 16#38#;
     constant ADDR_NUMFILTERS_DATA_0  : INTEGER := 16#3c#;
@@ -164,7 +164,7 @@ architecture behave of Conv2D_HW_control_s_axi is
     signal int_isr             : UNSIGNED(1 downto 0) := (others => '0');
     signal int_input_r         : UNSIGNED(63 downto 0) := (others => '0');
     signal int_output_r        : UNSIGNED(63 downto 0) := (others => '0');
-    signal int_filters         : UNSIGNED(63 downto 0) := (others => '0');
+    signal int_coeffs          : UNSIGNED(63 downto 0) := (others => '0');
     signal int_numChannels     : UNSIGNED(31 downto 0) := (others => '0');
     signal int_numFilters      : UNSIGNED(31 downto 0) := (others => '0');
     signal int_inputWidth      : UNSIGNED(31 downto 0) := (others => '0');
@@ -307,10 +307,10 @@ begin
                         rdata_data <= RESIZE(int_output_r(31 downto 0), 32);
                     when ADDR_OUTPUT_R_DATA_1 =>
                         rdata_data <= RESIZE(int_output_r(63 downto 32), 32);
-                    when ADDR_FILTERS_DATA_0 =>
-                        rdata_data <= RESIZE(int_filters(31 downto 0), 32);
-                    when ADDR_FILTERS_DATA_1 =>
-                        rdata_data <= RESIZE(int_filters(63 downto 32), 32);
+                    when ADDR_COEFFS_DATA_0 =>
+                        rdata_data <= RESIZE(int_coeffs(31 downto 0), 32);
+                    when ADDR_COEFFS_DATA_1 =>
+                        rdata_data <= RESIZE(int_coeffs(63 downto 32), 32);
                     when ADDR_NUMCHANNELS_DATA_0 =>
                         rdata_data <= RESIZE(int_numChannels(31 downto 0), 32);
                     when ADDR_NUMFILTERS_DATA_0 =>
@@ -339,7 +339,7 @@ begin
     auto_restart_done    <= auto_restart_status and (ap_idle and not int_ap_idle);
     input_r              <= STD_LOGIC_VECTOR(int_input_r);
     output_r             <= STD_LOGIC_VECTOR(int_output_r);
-    filters              <= STD_LOGIC_VECTOR(int_filters);
+    coeffs               <= STD_LOGIC_VECTOR(int_coeffs);
     numChannels          <= STD_LOGIC_VECTOR(int_numChannels);
     numFilters           <= STD_LOGIC_VECTOR(int_numFilters);
     inputWidth           <= STD_LOGIC_VECTOR(int_inputWidth);
@@ -565,8 +565,8 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_FILTERS_DATA_0) then
-                    int_filters(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_filters(31 downto 0));
+                if (w_hs = '1' and waddr = ADDR_COEFFS_DATA_0) then
+                    int_coeffs(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_coeffs(31 downto 0));
                 end if;
             end if;
         end if;
@@ -576,8 +576,8 @@ begin
     begin
         if (ACLK'event and ACLK = '1') then
             if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_FILTERS_DATA_1) then
-                    int_filters(63 downto 32) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_filters(63 downto 32));
+                if (w_hs = '1' and waddr = ADDR_COEFFS_DATA_1) then
+                    int_coeffs(63 downto 32) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_coeffs(63 downto 32));
                 end if;
             end if;
         end if;

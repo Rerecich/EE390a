@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6'
 ================================================================
-* Date:           Sat Mar 22 17:30:50 2025
+* Date:           Sun Mar 23 15:50:53 2025
 
 * Version:        2022.2 (Build 3670227 on Oct 13 2022)
 * Project:        Vitis_CNN_HLS
@@ -119,7 +119,7 @@ ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%inputWidth_cast10_read = read i32 
 ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%icmp_ln1027_read = read i1 @_ssdm_op_Read.ap_auto.i1, i1 %icmp_ln1027"   --->   Operation 35 'read' 'icmp_ln1027_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%convWidth_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %convWidth"   --->   Operation 36 'read' 'convWidth_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%tmp3_cast_mid144_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %tmp3_cast_mid144"   --->   Operation 37 'read' 'tmp3_cast_mid144_read' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%filters_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %filters"   --->   Operation 38 'read' 'filters_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%coeffs_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %coeffs"   --->   Operation 38 'read' 'coeffs_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%tmp1_read = read i62 @_ssdm_op_Read.ap_auto.i62, i62 %tmp1"   --->   Operation 39 'read' 'tmp1_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%mul_ln1027_1_read = read i62 @_ssdm_op_Read.ap_auto.i62, i62 %mul_ln1027_1"   --->   Operation 40 'read' 'mul_ln1027_1_read' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%mul_ln15_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %mul_ln15"   --->   Operation 41 'read' 'mul_ln15_read' <Predicate = true> <Delay = 0.00>
@@ -133,7 +133,7 @@ ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%tmp3_cast_mid144_cast = zext i32 %
 ST_1 : Operation 49 [1/1] (0.00ns)   --->   "%convWidth_cast_cast = zext i32 %convWidth_cast_read"   --->   Operation 49 'zext' 'convWidth_cast_cast' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%zext_ln34_cast = zext i32 %zext_ln34_read"   --->   Operation 50 'zext' 'zext_ln34_cast' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 51 [1/1] (0.00ns)   --->   "%inputHeight_cast9_cast = zext i32 %inputHeight_cast9_read"   --->   Operation 51 'zext' 'inputHeight_cast9_cast' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem, void @empty_4, i32 0, i32 0, void @empty_5, i32 0, i32 1024, void @empty_6, void @empty_17, void @empty_5, i32 16, i32 16, i32 16, i32 16, void @empty_5, void @empty_5, i32 4294967295, i32 0"   --->   Operation 52 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem, void @empty_4, i32 0, i32 0, void @empty_5, i32 0, i32 200000, void @empty_6, void @empty_17, void @empty_5, i32 16, i32 16, i32 16, i32 16, void @empty_5, void @empty_5, i32 4294967295, i32 0"   --->   Operation 52 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
 ST_1 : Operation 53 [1/1] (1.58ns)   --->   "%store_ln0 = store i96 0, i96 %indvar_flatten68"   --->   Operation 53 'store' 'store_ln0' <Predicate = true> <Delay = 1.58>
 ST_1 : Operation 54 [1/1] (1.58ns)   --->   "%store_ln0 = store i32 0, i32 %iChannel_V"   --->   Operation 54 'store' 'store_ln0' <Predicate = true> <Delay = 1.58>
 ST_1 : Operation 55 [1/1] (1.58ns)   --->   "%store_ln0 = store i64 0, i64 %indvar_flatten"   --->   Operation 55 'store' 'store_ln0' <Predicate = true> <Delay = 1.58>
@@ -221,7 +221,7 @@ ST_7 : Operation 124 [4/5] (6.85ns)   --->   "%mul_ln1027_2 = mul i62 %select_ln
 
 State 8 <SV = 7> <Delay = 6.98>
 ST_8 : Operation 125 [1/1] (0.00ns)   --->   "%sext_ln38_mid2_v_v_v_v = bitconcatenate i64 @_ssdm_op_BitConcatenate.i64.i62.i2, i62 %mul_ln1027, i2 0"   --->   Operation 125 'bitconcatenate' 'sext_ln38_mid2_v_v_v_v' <Predicate = true> <Delay = 0.00>
-ST_8 : Operation 126 [1/1] (3.52ns)   --->   "%add_ln1027_2 = add i64 %sext_ln38_mid2_v_v_v_v, i64 %filters_read"   --->   Operation 126 'add' 'add_ln1027_2' <Predicate = true> <Delay = 3.52> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 126 [1/1] (3.52ns)   --->   "%add_ln1027_2 = add i64 %sext_ln38_mid2_v_v_v_v, i64 %coeffs_read"   --->   Operation 126 'add' 'add_ln1027_2' <Predicate = true> <Delay = 3.52> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 3.52> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 ST_8 : Operation 127 [1/1] (0.00ns)   --->   "%sext_ln38_mid2_v = partselect i62 @_ssdm_op_PartSelect.i62.i64.i32.i32, i64 %add_ln1027_2, i32 2, i32 63"   --->   Operation 127 'partselect' 'sext_ln38_mid2_v' <Predicate = true> <Delay = 0.00>
 ST_8 : Operation 128 [1/1] (0.00ns)   --->   "%sext_ln1027 = sext i62 %sext_ln38_mid2_v"   --->   Operation 128 'sext' 'sext_ln1027' <Predicate = true> <Delay = 0.00>
 ST_8 : Operation 129 [3/5] (6.85ns)   --->   "%mul_ln1027_2 = mul i62 %select_ln1027_8, i62 %inputWidth_cast10_cast"   --->   Operation 129 'mul' 'mul_ln1027_2' <Predicate = true> <Delay = 6.85> <CoreInst = "Multiplier">   --->   Core 3 'Multiplier' <Latency = 4> <II = 1> <Delay = 6.85> <FuncUnit> <Opcode : 'mul'> <InPorts = 2> <OutPorts = 1>

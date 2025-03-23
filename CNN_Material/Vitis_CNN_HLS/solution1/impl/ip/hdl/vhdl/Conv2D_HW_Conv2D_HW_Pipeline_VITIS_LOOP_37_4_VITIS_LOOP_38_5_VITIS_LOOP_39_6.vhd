@@ -70,7 +70,7 @@ port (
     mul_ln15 : IN STD_LOGIC_VECTOR (63 downto 0);
     mul_ln1027_1 : IN STD_LOGIC_VECTOR (61 downto 0);
     tmp1 : IN STD_LOGIC_VECTOR (61 downto 0);
-    filters : IN STD_LOGIC_VECTOR (63 downto 0);
+    coeffs : IN STD_LOGIC_VECTOR (63 downto 0);
     tmp3_cast_mid144 : IN STD_LOGIC_VECTOR (31 downto 0);
     convWidth : IN STD_LOGIC_VECTOR (31 downto 0);
     icmp_ln1027 : IN STD_LOGIC_VECTOR (0 downto 0);
@@ -935,7 +935,7 @@ begin
     end process;
 
     add_ln1027_1_fu_370_p2 <= std_logic_vector(unsigned(zext_ln1027_3_fu_366_p1) + unsigned(mul_ln1027_1));
-    add_ln1027_2_fu_565_p2 <= std_logic_vector(unsigned(sext_ln38_mid2_v_v_v_v_fu_558_p3) + unsigned(filters));
+    add_ln1027_2_fu_565_p2 <= std_logic_vector(unsigned(sext_ln38_mid2_v_v_v_v_fu_558_p3) + unsigned(coeffs));
     add_ln1027_3_fu_599_p2 <= std_logic_vector(unsigned(mul_ln1027_2_reg_945) + unsigned(x_V_cast13_cast_reg_770));
     add_ln1027_4_fu_611_p2 <= std_logic_vector(unsigned(sext_ln39_mid2_v_v_v_v_fu_603_p3) + unsigned(input_r));
     add_ln1027_5_fu_445_p2 <= std_logic_vector(unsigned(indvar_flatten_load_reg_832) + unsigned(ap_const_lv64_1));

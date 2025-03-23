@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:hls:Conv2D_HW:1.0
--- IP Revision: 2114006855
+-- IP Revision: 2114008192
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

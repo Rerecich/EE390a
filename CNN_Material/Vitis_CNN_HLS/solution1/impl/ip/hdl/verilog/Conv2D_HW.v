@@ -200,7 +200,7 @@ wire    ap_CS_fsm_state1;
 reg    ap_ready;
 wire   [63:0] input_r;
 wire   [63:0] output_r;
-wire   [63:0] filters;
+wire   [63:0] coeffs;
 wire   [31:0] numChannels;
 wire   [31:0] numFilters;
 wire   [31:0] inputWidth;
@@ -219,7 +219,7 @@ reg   [31:0] inputHeight_read_reg_545;
 reg   [31:0] inputWidth_read_reg_551;
 reg   [31:0] numFilters_read_reg_559;
 reg   [31:0] numChannels_read_reg_564;
-reg   [63:0] filters_read_reg_570;
+reg   [63:0] coeffs_read_reg_570;
 reg   [63:0] output_r_read_reg_575;
 reg   [63:0] input_r_read_reg_580;
 wire    ap_CS_fsm_state2;
@@ -476,7 +476,7 @@ Conv2D_HW_Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6 grp
     .mul_ln15(mul_ln15_reg_601),
     .mul_ln1027_1(mul_ln1027_1_reg_743),
     .tmp1(tmp1_reg_669),
-    .filters(filters_read_reg_570),
+    .coeffs(coeffs_read_reg_570),
     .tmp3_cast_mid144(select_ln1027_reg_697),
     .convWidth(convWidth_read_reg_536),
     .icmp_ln1027(icmp_ln1027_reg_684),
@@ -521,7 +521,7 @@ control_s_axi_U(
     .ACLK_EN(1'b1),
     .input_r(input_r),
     .output_r(output_r),
-    .filters(filters),
+    .coeffs(coeffs),
     .numChannels(numChannels),
     .numFilters(numFilters),
     .inputWidth(inputWidth),
@@ -804,9 +804,9 @@ end
 
 always @ (posedge ap_clk) begin
     if ((1'b1 == ap_CS_fsm_state1)) begin
+        coeffs_read_reg_570 <= coeffs;
         convHeight_read_reg_530 <= convHeight;
         convWidth_read_reg_536 <= convWidth;
-        filters_read_reg_570 <= filters;
         inputHeight_read_reg_545 <= inputHeight;
         inputWidth_read_reg_551 <= inputWidth;
         input_r_read_reg_580 <= input_r;

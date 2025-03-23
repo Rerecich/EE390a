@@ -67,7 +67,7 @@ module Conv2D_HW_Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_3
         mul_ln15,
         mul_ln1027_1,
         tmp1,
-        filters,
+        coeffs,
         tmp3_cast_mid144,
         convWidth,
         icmp_ln1027,
@@ -148,7 +148,7 @@ input  [95:0] mul_ln15_1;
 input  [63:0] mul_ln15;
 input  [61:0] mul_ln1027_1;
 input  [61:0] tmp1;
-input  [63:0] filters;
+input  [63:0] coeffs;
 input  [31:0] tmp3_cast_mid144;
 input  [31:0] convWidth;
 input  [0:0] icmp_ln1027;
@@ -993,7 +993,7 @@ assign acc_out = acc_fu_108;
 
 assign add_ln1027_1_fu_370_p2 = (zext_ln1027_3_fu_366_p1 + mul_ln1027_1);
 
-assign add_ln1027_2_fu_565_p2 = (sext_ln38_mid2_v_v_v_v_fu_558_p3 + filters);
+assign add_ln1027_2_fu_565_p2 = (sext_ln38_mid2_v_v_v_v_fu_558_p3 + coeffs);
 
 assign add_ln1027_3_fu_599_p2 = (mul_ln1027_2_reg_945 + x_V_cast13_cast_reg_770);
 

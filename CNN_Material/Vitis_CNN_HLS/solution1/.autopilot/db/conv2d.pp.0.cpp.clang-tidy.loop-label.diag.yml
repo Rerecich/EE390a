@@ -52,7 +52,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/HLS/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          890816
+        Offset:          890820
         Length:          0
         ReplacementText: 'VITIS_LOOP_32_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -61,7 +61,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/HLS/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          890887
+        Offset:          890891
         Length:          0
         ReplacementText: 'VITIS_LOOP_33_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -70,7 +70,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/HLS/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          890946
+        Offset:          890950
         Length:          0
         ReplacementText: 'VITIS_LOOP_34_3: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -79,7 +79,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/HLS/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891044
+        Offset:          891048
         Length:          0
         ReplacementText: 'VITIS_LOOP_37_4: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -88,7 +88,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/HLS/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891125
+        Offset:          891129
         Length:          0
         ReplacementText: 'VITIS_LOOP_38_5: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -97,7 +97,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/HLS/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891189
+        Offset:          891193
         Length:          0
         ReplacementText: 'VITIS_LOOP_39_6: '
 ...

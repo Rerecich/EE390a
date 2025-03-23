@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cdfg:DBCdfg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdfg="http://www.autoesl.com/DBCdfg" timeStamp="1742661052876">
+<cdfg:DBCdfg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdfg="http://www.autoesl.com/DBCdfg" timeStamp="1742741456249">
   <ports id="1" name="gmem" type="PortType" coreId="62" bitwidth="32" direction="DirInOut" iftype="IfTypeFifo">
     <dataInputObjs>call</dataInputObjs>
     <dataInputObjs>getelementptr</dataInputObjs>
@@ -12,7 +12,7 @@
   <ports id="3" name="output_r" type="PortType" originalName="output" coreId="31" bitwidth="64">
     <dataOutputObjs>read</dataOutputObjs>
   </ports>
-  <ports id="4" name="filters" type="PortType" originalName="filters" coreId="0" bitwidth="64">
+  <ports id="4" name="coeffs" type="PortType" originalName="coeffs" coreId="0" bitwidth="64">
     <dataOutputObjs>read</dataOutputObjs>
   </ports>
   <ports id="5" name="numChannels" type="PortType" originalName="numChannels.V" coreId="115" bitwidth="32">
@@ -21,16 +21,16 @@
   <ports id="6" name="numFilters" type="PortType" originalName="numFilters.V" coreId="105" bitwidth="32">
     <dataOutputObjs>read</dataOutputObjs>
   </ports>
-  <ports id="7" name="inputWidth" type="PortType" originalName="inputWidth.V" coreId="542329928" bitwidth="32">
+  <ports id="7" name="inputWidth" type="PortType" originalName="inputWidth.V" coreId="585583424" bitwidth="32">
     <dataOutputObjs>read</dataOutputObjs>
   </ports>
-  <ports id="8" name="inputHeight" type="PortType" originalName="inputHeight.V" coreId="320" bitwidth="32">
+  <ports id="8" name="inputHeight" type="PortType" originalName="inputHeight.V" coreId="0" bitwidth="32">
     <dataOutputObjs>read</dataOutputObjs>
   </ports>
-  <ports id="9" name="convWidth" type="PortType" originalName="convWidth.V" coreId="115632272" bitwidth="32">
+  <ports id="9" name="convWidth" type="PortType" originalName="convWidth.V" coreId="585830560" bitwidth="32">
     <dataOutputObjs>read</dataOutputObjs>
   </ports>
-  <ports id="10" name="convHeight" type="PortType" originalName="convHeight.V" coreId="4143192327" bitwidth="32">
+  <ports id="10" name="convHeight" type="PortType" originalName="convHeight.V" coreId="585830560" bitwidth="32">
     <dataOutputObjs>read</dataOutputObjs>
   </ports>
   <edges id="138" source_obj="//@ports.9" sink_obj="//@blocks.0/@node_objs.3"/>
@@ -184,13 +184,13 @@
       <dataOutputObjs>store</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="12" name="iFilter_V" originalName="iFilter.V" coreId="4143283302" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="2" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="12" name="iFilter_V" originalName="iFilter.V" coreId="585830560" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="2" m_clusterGroupNumber="-1">
       <dataOutputObjs>store</dataOutputObjs>
       <dataOutputObjs>store</dataOutputObjs>
       <dataOutputObjs>load</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="13" name="indvar_flatten81" coreId="176" bitwidth="65" opcode="alloca" m_display="0" m_topoIndex="3" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="13" name="indvar_flatten81" coreId="256" bitwidth="65" opcode="alloca" m_display="0" m_topoIndex="3" m_clusterGroupNumber="-1">
       <dataOutputObjs>store</dataOutputObjs>
       <dataOutputObjs>load</dataOutputObjs>
       <dataOutputObjs>store</dataOutputObjs>
@@ -230,8 +230,8 @@
       <dataOutputObjs>zext</dataOutputObjs>
       <dataOutputObjs>zext</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="20" name="filters_read" originalName="filters" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="64" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="10" m_clusterGroupNumber="-1">
-      <dataInputObjs>filters</dataInputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="20" name="coeffs_read" originalName="coeffs" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="64" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="10" m_clusterGroupNumber="-1">
+      <dataInputObjs>coeffs</dataInputObjs>
       <dataOutputObjs>call</dataOutputObjs>
     </node_objs>
     <node_objs xsi:type="cdfg:CdfgNode" id="21" name="output_r_read" originalName="output" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="64" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="11" m_clusterGroupNumber="-1">
@@ -242,12 +242,12 @@
       <dataInputObjs>input_r</dataInputObjs>
       <dataOutputObjs>call</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="23" name="acc_loc" coreId="0" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="13" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="23" name="acc_loc" coreId="304" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="13" m_clusterGroupNumber="-1">
       <dataOutputObjs>call</dataOutputObjs>
       <dataOutputObjs>load</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="52" name="inputHeight_cast" rtlName="inputHeight_cast_fu_276_p1" coreId="176" bitwidth="33" opcode="zext" nodeLabel="5.0" m_display="0" m_topoIndex="23" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="52" name="inputHeight_cast" rtlName="inputHeight_cast_fu_276_p1" coreId="585830560" bitwidth="33" opcode="zext" nodeLabel="5.0" m_display="0" m_topoIndex="23" m_clusterGroupNumber="-1">
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>add</dataOutputObjs>
     </node_objs>
@@ -272,11 +272,11 @@
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="57" name="convHeight_cast" rtlName="mul_32ns_32ns_62_2_1_U30" coreId="0" bitwidth="62" opcode="zext" nodeLabel="6.0" m_display="0" m_topoIndex="25" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="57" name="convHeight_cast" rtlName="mul_32ns_32ns_62_2_1_U30" coreId="585776480" bitwidth="62" opcode="zext" nodeLabel="6.0" m_display="0" m_topoIndex="25" m_clusterGroupNumber="-1">
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="58" name="convWidth_cast" rtlName="convWidth_cast_fu_288_p1" coreId="0" bitwidth="62" opcode="zext" nodeLabel="6.0" m_display="0" m_topoIndex="26" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="58" name="convWidth_cast" rtlName="convWidth_cast_fu_288_p1" coreId="585888112" bitwidth="62" opcode="zext" nodeLabel="6.0" m_display="0" m_topoIndex="26" m_clusterGroupNumber="-1">
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
     </node_objs>
@@ -285,16 +285,16 @@
       <dataOutputObjs>select</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="60" name="add_ln32_cast" rtlName="add_ln32_cast_fu_327_p1" coreId="4143271570" bitwidth="64" opcode="sext" nodeLabel="7.0" m_display="0" m_topoIndex="35" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="60" name="add_ln32_cast" rtlName="add_ln32_cast_fu_327_p1" coreId="176" bitwidth="64" opcode="sext" nodeLabel="7.0" m_display="0" m_topoIndex="35" m_clusterGroupNumber="-1">
       <dataInputObjs>add</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="61" name="tmp_1" rtlName="tmp_1_fu_330_p3" coreId="0" bitwidth="34" opcode="bitconcatenate" nodeLabel="7.0" m_display="0" m_topoIndex="36" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="61" name="tmp_1" rtlName="tmp_1_fu_330_p3" coreId="3714974866" bitwidth="34" opcode="bitconcatenate" nodeLabel="7.0" m_display="0" m_topoIndex="36" m_clusterGroupNumber="-1">
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>zext</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="62" name="p_cast" rtlName="p_cast_fu_337_p1" coreId="115744624" bitwidth="35" opcode="zext" nodeLabel="7.0" m_display="0" m_topoIndex="37" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="62" name="p_cast" rtlName="p_cast_fu_337_p1" coreId="0" bitwidth="35" opcode="zext" nodeLabel="7.0" m_display="0" m_topoIndex="37" m_clusterGroupNumber="-1">
       <dataInputObjs>bitconcatenate</dataInputObjs>
       <dataOutputObjs>add</dataOutputObjs>
     </node_objs>
@@ -303,7 +303,7 @@
       <dataOutputObjs>sext</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="64" name="sext_ln34_1" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="sext_ln34_1_fu_347_p1" coreId="1702258035" contextFuncName="Conv2D_HW" bitwidth="64" opcode="sext" nodeLabel="7.0" m_display="0" m_topoIndex="39" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="64" name="sext_ln34_1" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="sext_ln34_1_fu_347_p1" coreId="0" contextFuncName="Conv2D_HW" bitwidth="64" opcode="sext" nodeLabel="7.0" m_display="0" m_topoIndex="39" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="34" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>add</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
@@ -326,12 +326,12 @@
       <dataInputObjs>zext</dataInputObjs>
       <dataOutputObjs>call</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="68" name="zext_ln15" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_258_p00" coreId="115657768" contextFuncName="Conv2D_HW" bitwidth="64" opcode="zext" nodeLabel="1.0" m_display="0" m_topoIndex="17" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="68" name="zext_ln15" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_258_p00" coreId="584165024" contextFuncName="Conv2D_HW" bitwidth="64" opcode="zext" nodeLabel="1.0" m_display="0" m_topoIndex="17" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="15" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="69" name="zext_ln15_1" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_258_p10" coreId="115810384" contextFuncName="Conv2D_HW" bitwidth="64" opcode="zext" nodeLabel="1.0" m_display="0" m_topoIndex="18" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="69" name="zext_ln15_1" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_258_p10" coreId="176" contextFuncName="Conv2D_HW" bitwidth="64" opcode="zext" nodeLabel="1.0" m_display="0" m_topoIndex="18" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="15" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
@@ -343,12 +343,12 @@
       <dataOutputObjs>zext</dataOutputObjs>
       <dataOutputObjs>call</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="71" name="zext_ln15_2" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_270_p00" coreId="0" contextFuncName="Conv2D_HW" bitwidth="96" opcode="zext" nodeLabel="3.0" m_display="0" m_topoIndex="20" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="71" name="zext_ln15_2" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_270_p00" coreId="571608896" contextFuncName="Conv2D_HW" bitwidth="96" opcode="zext" nodeLabel="3.0" m_display="0" m_topoIndex="20" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="15" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="72" name="zext_ln15_3" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_270_p10" coreId="0" contextFuncName="Conv2D_HW" bitwidth="96" opcode="zext" nodeLabel="3.0" m_display="0" m_topoIndex="21" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="72" name="zext_ln15_3" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_270_p10" coreId="585898320" contextFuncName="Conv2D_HW" bitwidth="96" opcode="zext" nodeLabel="3.0" m_display="0" m_topoIndex="21" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="15" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>mul</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
@@ -359,12 +359,12 @@
       <dataInputObjs>zext</dataInputObjs>
       <dataOutputObjs>call</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="74" name="zext_ln15_4" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_303_p00" coreId="0" contextFuncName="Conv2D_HW" bitwidth="65" opcode="zext" nodeLabel="6.0" m_display="0" m_topoIndex="28" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="74" name="zext_ln15_4" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_303_p00" coreId="585906064" contextFuncName="Conv2D_HW" bitwidth="65" opcode="zext" nodeLabel="6.0" m_display="0" m_topoIndex="28" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="15" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="75" name="zext_ln15_5" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_303_p10" coreId="115742528" contextFuncName="Conv2D_HW" bitwidth="65" opcode="zext" nodeLabel="6.0" m_display="0" m_topoIndex="29" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="75" name="zext_ln15_5" lineNumber="15" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_303_p10" coreId="3714980180" contextFuncName="Conv2D_HW" bitwidth="65" opcode="zext" nodeLabel="6.0" m_display="0" m_topoIndex="29" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="15" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>add</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
@@ -381,22 +381,22 @@
       <dataOutputObjs>call</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="78" name="indvar_flatten81_write_ln32" lineNumber="32" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1768318322" contextFuncName="Conv2D_HW" opcode="store" m_display="0" m_delay="1.58" m_topoIndex="14" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="78" name="indvar_flatten81_write_ln32" lineNumber="32" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="585732384" contextFuncName="Conv2D_HW" opcode="store" m_display="0" m_delay="1.58" m_topoIndex="14" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="32" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>alloca</dataInputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="79" name="iFilter_V_write_ln32" lineNumber="32" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="113840304" contextFuncName="Conv2D_HW" opcode="store" m_display="0" m_delay="1.58" m_topoIndex="15" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="79" name="iFilter_V_write_ln32" lineNumber="32" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1953244788" contextFuncName="Conv2D_HW" opcode="store" m_display="0" m_delay="1.58" m_topoIndex="15" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="32" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>alloca</dataInputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="80" name="y_V_write_ln32" lineNumber="32" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="115665920" contextFuncName="Conv2D_HW" opcode="store" m_display="0" m_delay="1.58" m_topoIndex="16" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="80" name="y_V_write_ln32" lineNumber="32" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="585745784" contextFuncName="Conv2D_HW" opcode="store" m_display="0" m_delay="1.58" m_topoIndex="16" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="32" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>alloca</dataInputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="81" name="br_ln32" lineNumber="32" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="115797344" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="7.0" m_display="0" m_topoIndex="43" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="81" name="br_ln32" lineNumber="32" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1701669236" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="7.0" m_display="0" m_topoIndex="43" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="32" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <controlInputObjs>VITIS_LOOP_34_3</controlInputObjs>
     </node_objs>
@@ -422,13 +422,13 @@
       <dataOutputObjs>zext</dataOutputObjs>
       <dataOutputObjs>select</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="84" name="indvar_flatten81_load" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." coreId="0" contextFuncName="operator_lt_32_false" bitwidth="65" opcode="load" nodeLabel="8.0" m_display="0" m_topoIndex="45" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="84" name="indvar_flatten81_load" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." coreId="544437602" contextFuncName="operator_lt_32_false" bitwidth="65" opcode="load" nodeLabel="8.0" m_display="0" m_topoIndex="45" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" linenumber="1027" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="operator&amp;lt;&amp;lt;32, false&amp;gt;"/>
       <dataInputObjs>alloca</dataInputObjs>
       <dataOutputObjs>icmp</dataOutputObjs>
       <dataOutputObjs>add</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="85" name="zext_ln1027" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="zext_ln1027_fu_375_p1" coreId="115806192" contextFuncName="operator_lt_34_true" bitwidth="33" opcode="zext" nodeLabel="8.0" m_display="0" m_topoIndex="46" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="85" name="zext_ln1027" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="zext_ln1027_fu_375_p1" coreId="585751456" contextFuncName="operator_lt_34_true" bitwidth="33" opcode="zext" nodeLabel="8.0" m_display="0" m_topoIndex="46" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" linenumber="1027" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="operator&amp;lt;&amp;lt;34, true&amp;gt;"/>
       <dataInputObjs>load</dataInputObjs>
       <dataOutputObjs>icmp</dataOutputObjs>
@@ -452,7 +452,7 @@
       <dataOutputObjs>store</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="89" name="br_ln1027" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." coreId="0" contextFuncName="operator_lt_32_false" opcode="br" nodeLabel="8.0" m_display="0" m_topoIndex="50" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="89" name="br_ln1027" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." coreId="585891392" contextFuncName="operator_lt_32_false" opcode="br" nodeLabel="8.0" m_display="0" m_topoIndex="50" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" linenumber="1027" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="operator&amp;lt;&amp;lt;32, false&amp;gt;"/>
       <dataInputObjs>icmp</dataInputObjs>
       <controlInputObjs>for.inc70.loopexit</controlInputObjs>
@@ -467,7 +467,7 @@
     <controlOutputObjs>br</controlOutputObjs>
     <controlOutputObjs>phi</controlOutputObjs>
     <controlOutputObjs>VITIS_LOOP_37_4</controlOutputObjs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="91" name="iFilter_V_load" lineNumber="840" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." coreId="115765312" contextFuncName="operator_add_assign_1_false" bitwidth="32" opcode="load" nodeLabel="8.0" m_display="0" m_topoIndex="51" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="91" name="iFilter_V_load" lineNumber="840" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." coreId="0" contextFuncName="operator_add_assign_1_false" bitwidth="32" opcode="load" nodeLabel="8.0" m_display="0" m_topoIndex="51" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" linenumber="840" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="operator+=&amp;lt;1, false&amp;gt;"/>
       <dataInputObjs>alloca</dataInputObjs>
       <dataOutputObjs>add</dataOutputObjs>
@@ -509,7 +509,7 @@
       <dataInputObjs>sext</dataInputObjs>
       <dataOutputObjs>add</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="98" name="zext_ln1027_2" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="zext_ln1027_2_fu_440_p1" coreId="304" contextFuncName="operator_lt_32_false" bitwidth="62" opcode="zext" nodeLabel="17.0" m_display="0" m_topoIndex="61" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="98" name="zext_ln1027_2" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="zext_ln1027_2_fu_440_p1" coreId="585853248" contextFuncName="operator_lt_32_false" bitwidth="62" opcode="zext" nodeLabel="17.0" m_display="0" m_topoIndex="61" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" linenumber="1027" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="operator&amp;lt;&amp;lt;32, false&amp;gt;"/>
       <dataInputObjs>select</dataInputObjs>
       <dataOutputObjs>mul</dataOutputObjs>
@@ -520,7 +520,7 @@
       <dataInputObjs>zext</dataInputObjs>
       <dataOutputObjs>call</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="101" name="y_V_cast12" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="y_V_cast12_fu_428_p1" coreId="0" contextFuncName="operator_lt_32_false" bitwidth="64" opcode="zext" nodeLabel="11.0" m_display="0" m_topoIndex="58" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="101" name="y_V_cast12" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="y_V_cast12_fu_428_p1" coreId="3714691193" contextFuncName="operator_lt_32_false" bitwidth="64" opcode="zext" nodeLabel="11.0" m_display="0" m_topoIndex="58" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" linenumber="1027" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="operator&amp;lt;&amp;lt;32, false&amp;gt;"/>
       <dataInputObjs>select</dataInputObjs>
       <dataOutputObjs>add</dataOutputObjs>
@@ -543,18 +543,18 @@
       <dataInputObjs>read</dataInputObjs>
       <dataOutputObjs>partselect</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="105" name="trunc_ln" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="trunc_ln_fu_452_p4" coreId="0" contextFuncName="Conv2D_HW" bitwidth="62" opcode="partselect" nodeLabel="17.0" m_display="0" m_topoIndex="64" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="105" name="trunc_ln" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="trunc_ln_fu_452_p4" coreId="1819113532" contextFuncName="Conv2D_HW" bitwidth="62" opcode="partselect" nodeLabel="17.0" m_display="0" m_topoIndex="64" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="34" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>add</dataInputObjs>
       <dataOutputObjs>sext</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="106" name="sext_ln34" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="sext_ln34_fu_462_p1" coreId="0" contextFuncName="Conv2D_HW" bitwidth="64" opcode="sext" nodeLabel="17.0" m_display="0" m_topoIndex="65" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="106" name="sext_ln34" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." rtlName="sext_ln34_fu_462_p1" coreId="585860592" contextFuncName="Conv2D_HW" bitwidth="64" opcode="sext" nodeLabel="17.0" m_display="0" m_topoIndex="65" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="34" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>partselect</dataInputObjs>
       <dataOutputObjs>getelementptr</dataOutputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="107" name="gmem_addr" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="115778352" contextFuncName="Conv2D_HW" bitwidth="32" opcode="getelementptr" nodeLabel="17.0" m_display="0" m_topoIndex="66" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="107" name="gmem_addr" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" bitwidth="32" opcode="getelementptr" nodeLabel="17.0" m_display="0" m_topoIndex="66" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="34" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>gmem</dataInputObjs>
       <dataInputObjs>sext</dataInputObjs>
@@ -568,7 +568,7 @@
       <dataInputObjs>getelementptr</dataInputObjs>
       <dataInputObjs>select</dataInputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="109" name="br_ln34" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="115778352" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="18.0" m_display="0" m_delay="1.58" m_topoIndex="68" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="109" name="br_ln34" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="585875896" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="18.0" m_display="0" m_delay="1.58" m_topoIndex="68" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="34" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <controlInputObjs>VITIS_LOOP_37_4</controlInputObjs>
     </node_objs>
@@ -587,7 +587,7 @@
     <controlOutputObjs>br</controlOutputObjs>
     <controlOutputObjs>VITIS_LOOP_37_4.split</controlOutputObjs>
     <controlOutputObjs>for.inc67.loopexit</controlOutputObjs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="111" name="x_V" originalName="x.V" coreId="608" bitwidth="32" opcode="phi" nodeLabel="19.0" m_display="0" m_topoIndex="69" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="111" name="x_V" originalName="x.V" coreId="585876176" bitwidth="32" opcode="phi" nodeLabel="19.0" m_display="0" m_topoIndex="69" m_clusterGroupNumber="-1">
       <dataInputObjs>add</dataInputObjs>
       <dataOutputObjs>zext</dataOutputObjs>
       <dataOutputObjs>add</dataOutputObjs>
@@ -596,7 +596,7 @@
       <controlInputObjs>VITIS_LOOP_37_4.split</controlInputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="112" name="zext_ln1027_3" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="zext_ln1027_3_fu_472_p1" coreId="115797184" contextFuncName="operator_lt_34_true" bitwidth="33" opcode="zext" nodeLabel="19.0" m_display="0" m_topoIndex="70" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="112" name="zext_ln1027_3" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="zext_ln1027_3_fu_472_p1" coreId="0" contextFuncName="operator_lt_34_true" bitwidth="33" opcode="zext" nodeLabel="19.0" m_display="0" m_topoIndex="70" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" linenumber="1027" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="operator&amp;lt;&amp;lt;34, true&amp;gt;"/>
       <dataInputObjs>phi</dataInputObjs>
       <dataOutputObjs>icmp</dataOutputObjs>
@@ -613,7 +613,7 @@
       <dataOutputObjs>phi</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="115" name="br_ln34" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1431446077" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="19.0" m_display="0" m_topoIndex="73" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="115" name="br_ln34" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="19.0" m_display="0" m_topoIndex="73" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="34" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>icmp</dataInputObjs>
       <controlInputObjs>for.inc67.loopexit</controlInputObjs>
@@ -632,7 +632,7 @@
     <controlOutputObjs>phi</controlOutputObjs>
     <controlOutputObjs>br</controlOutputObjs>
     <controlOutputObjs>VITIS_LOOP_37_4</controlOutputObjs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="118" name="_ln1027" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6_fu_215" coreId="1768843590" contextFuncName="operator_lt_32_false" opcode="call" nodeLabel="19.0" nodeLatency="1" m_display="0" m_topoIndex="74" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="118" name="_ln1027" lineNumber="1027" fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" fileDirectory=".." rtlName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6_fu_215" coreId="585645040" contextFuncName="operator_lt_32_false" opcode="call" nodeLabel="19.0" nodeLatency="1" m_display="0" m_topoIndex="74" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h" linenumber="1027" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="operator&amp;lt;&amp;lt;32, false&amp;gt;"/>
       <dataInputObjs>gmem</dataInputObjs>
       <dataInputObjs>read</dataInputObjs>
@@ -653,7 +653,7 @@
       <dataOutputObjs>gmem</dataOutputObjs>
       <constName>Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="119" name="acc_loc_load" coreId="1668246636" bitwidth="32" opcode="load" nodeLabel="21.0" m_display="0" m_topoIndex="79" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="119" name="acc_loc_load" coreId="0" bitwidth="32" opcode="load" nodeLabel="21.0" m_display="0" m_topoIndex="79" m_clusterGroupNumber="-1">
       <dataInputObjs>alloca</dataInputObjs>
       <dataOutputObjs>write</dataOutputObjs>
     </node_objs>
@@ -663,7 +663,7 @@
       <dataInputObjs>load</dataInputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="121" name="br_ln34" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1936683105" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="21.0" m_display="0" m_topoIndex="81" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="121" name="br_ln34" lineNumber="34" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="21.0" m_display="0" m_topoIndex="81" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="34" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <controlInputObjs>VITIS_LOOP_37_4</controlInputObjs>
     </node_objs>
@@ -689,22 +689,22 @@
       <dataOutputObjs>store</dataOutputObjs>
       <constName>empty</constName>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="125" name="indvar_flatten81_write_ln33" lineNumber="33" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="store" nodeLabel="19.0" m_display="0" m_delay="1.58" m_topoIndex="76" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="125" name="indvar_flatten81_write_ln33" lineNumber="33" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1937339168" contextFuncName="Conv2D_HW" opcode="store" nodeLabel="19.0" m_display="0" m_delay="1.58" m_topoIndex="76" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="33" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>add</dataInputObjs>
       <dataInputObjs>alloca</dataInputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="126" name="iFilter_V_write_ln33" lineNumber="33" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="store" nodeLabel="19.0" m_display="0" m_delay="1.58" m_topoIndex="77" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="126" name="iFilter_V_write_ln33" lineNumber="33" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1886351212" contextFuncName="Conv2D_HW" opcode="store" nodeLabel="19.0" m_display="0" m_delay="1.58" m_topoIndex="77" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="33" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>select</dataInputObjs>
       <dataInputObjs>alloca</dataInputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="127" name="y_V_write_ln33" lineNumber="33" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="store" nodeLabel="19.0" m_display="0" m_delay="1.58" m_topoIndex="78" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="127" name="y_V_write_ln33" lineNumber="33" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1935961711" contextFuncName="Conv2D_HW" opcode="store" nodeLabel="19.0" m_display="0" m_delay="1.58" m_topoIndex="78" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="33" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <dataInputObjs>add</dataInputObjs>
       <dataInputObjs>alloca</dataInputObjs>
     </node_objs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="128" name="br_ln33" lineNumber="33" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="26.0" m_display="0" m_topoIndex="83" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="128" name="br_ln33" lineNumber="33" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="1701273971" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="26.0" m_display="0" m_topoIndex="83" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="33" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
       <controlInputObjs>VITIS_LOOP_34_3</controlInputObjs>
     </node_objs>
@@ -718,7 +718,7 @@
   <blocks id="131" name="for.end72.loopexit" type="BlockType">
     <controlInputObjs>VITIS_LOOP_34_3</controlInputObjs>
     <controlOutputObjs>br</controlOutputObjs>
-    <node_objs xsi:type="cdfg:CdfgNode" id="130" name="_ln53" lineNumber="53" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="ret" nodeLabel="8.0" m_display="0" m_topoIndex="55" m_clusterGroupNumber="-1">
+    <node_objs xsi:type="cdfg:CdfgNode" id="130" name="_ln53" lineNumber="53" fileName="HLS/conv2d.cpp" fileDirectory=".." coreId="539111015" contextFuncName="Conv2D_HW" opcode="ret" nodeLabel="8.0" m_display="0" m_topoIndex="55" m_clusterGroupNumber="-1">
       <inlineStackInfo fileName="HLS/conv2d.cpp" linenumber="53" fileDirectory="/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material" functionName="Conv2D_HW"/>
     </node_objs>
     <fileValidLineNumbers fileName="HLS/conv2d.cpp">
@@ -806,6 +806,9 @@
   <regnodes realName="numChannels_read_reg_564">
     <nodeIds>19</nodeIds>
   </regnodes>
+  <regnodes realName="coeffs_read_reg_570">
+    <nodeIds>20</nodeIds>
+  </regnodes>
   <regnodes realName="empty_reg_664">
     <nodeIds>66</nodeIds>
   </regnodes>
@@ -838,9 +841,6 @@
   </regnodes>
   <regnodes realName="output_r_read_reg_575">
     <nodeIds>21</nodeIds>
-  </regnodes>
-  <regnodes realName="filters_read_reg_570">
-    <nodeIds>20</nodeIds>
   </regnodes>
   <regnodes realName="mul_ln15_2_reg_679">
     <nodeIds>76</nodeIds>
@@ -1058,9 +1058,6 @@
   <ioNodes realName="y_V_2_load_fu_369">
     <nodeIds>83</nodeIds>
   </ioNodes>
-  <ioNodes realName="filters_read_read_fu_170">
-    <nodeIds>20</nodeIds>
-  </ioNodes>
   <ioNodes realName="store_ln32_store_fu_237">
     <nodeIds>78</nodeIds>
   </ioNodes>
@@ -1075,6 +1072,9 @@
   </ioNodes>
   <ioNodes realName="store_ln32_store_fu_242">
     <nodeIds>79</nodeIds>
+  </ioNodes>
+  <ioNodes realName="coeffs_read_read_fu_170">
+    <nodeIds>20</nodeIds>
   </ioNodes>
   <ioNodes realName="numFilters_read_read_fu_158">
     <nodeIds>18</nodeIds>
@@ -1110,6 +1110,11 @@
   <ioNodes realName="output_r_read_read_fu_176">
     <nodeIds>21</nodeIds>
   </ioNodes>
+  <ioPorts name="coeffs">
+    <contents name="read">
+      <nodeIds>20</nodeIds>
+    </contents>
+  </ioPorts>
   <ioPorts name="convHeight">
     <contents name="read">
       <nodeIds>14</nodeIds>
@@ -1118,11 +1123,6 @@
   <ioPorts name="convWidth">
     <contents name="read">
       <nodeIds>15</nodeIds>
-    </contents>
-  </ioPorts>
-  <ioPorts name="filters">
-    <contents name="read">
-      <nodeIds>20</nodeIds>
     </contents>
   </ioPorts>
   <ioPorts name="gmem">

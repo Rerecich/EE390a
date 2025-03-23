@@ -239,40 +239,40 @@ class AESL_RUNTIME_BC {
 using hls::sim::Byte;
 struct __cosim_s4__ { char data[4]; };
 extern "C" void Conv2D_HW(Byte<4>*, int, int, int, __cosim_s4__, __cosim_s4__, __cosim_s4__, __cosim_s4__, __cosim_s4__, __cosim_s4__);
-extern "C" void apatb_Conv2D_HW_hw(volatile void * __xlx_apatb_param_input_r, volatile void * __xlx_apatb_param_output_r, volatile void * __xlx_apatb_param_filters, __cosim_s4__* __xlx_apatb_param_numChannels, __cosim_s4__* __xlx_apatb_param_numFilters, __cosim_s4__* __xlx_apatb_param_inputWidth, __cosim_s4__* __xlx_apatb_param_inputHeight, __cosim_s4__* __xlx_apatb_param_convWidth, __cosim_s4__* __xlx_apatb_param_convHeight) {
+extern "C" void apatb_Conv2D_HW_hw(volatile void * __xlx_apatb_param_input_r, volatile void * __xlx_apatb_param_output_r, volatile void * __xlx_apatb_param_coeffs, __cosim_s4__* __xlx_apatb_param_numChannels, __cosim_s4__* __xlx_apatb_param_numFilters, __cosim_s4__* __xlx_apatb_param_inputWidth, __cosim_s4__* __xlx_apatb_param_inputHeight, __cosim_s4__* __xlx_apatb_param_convWidth, __cosim_s4__* __xlx_apatb_param_convHeight) {
 using hls::sim::createStream;
-  // Collect __xlx_input_r_output_r_filters__tmp_vec
-std::vector<Byte<4>> __xlx_input_r_output_r_filters__tmp_vec;
-for (size_t i = 0; i < 1024; ++i){
-__xlx_input_r_output_r_filters__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_input_r)[i]);
+  // Collect __xlx_input_r_output_r_coeffs__tmp_vec
+std::vector<Byte<4>> __xlx_input_r_output_r_coeffs__tmp_vec;
+for (size_t i = 0; i < 200000; ++i){
+__xlx_input_r_output_r_coeffs__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_input_r)[i]);
 }
-  int __xlx_size_param_input_r = 1024;
+  int __xlx_size_param_input_r = 200000;
   int __xlx_offset_param_input_r = 0;
   int __xlx_offset_byte_param_input_r = 0*4;
-for (size_t i = 0; i < 1024; ++i){
-__xlx_input_r_output_r_filters__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_output_r)[i]);
+for (size_t i = 0; i < 200000; ++i){
+__xlx_input_r_output_r_coeffs__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_output_r)[i]);
 }
-  int __xlx_size_param_output_r = 1024;
-  int __xlx_offset_param_output_r = 1024;
-  int __xlx_offset_byte_param_output_r = 1024*4;
-for (size_t i = 0; i < 1024; ++i){
-__xlx_input_r_output_r_filters__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_filters)[i]);
+  int __xlx_size_param_output_r = 200000;
+  int __xlx_offset_param_output_r = 200000;
+  int __xlx_offset_byte_param_output_r = 200000*4;
+for (size_t i = 0; i < 200000; ++i){
+__xlx_input_r_output_r_coeffs__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_coeffs)[i]);
 }
-  int __xlx_size_param_filters = 1024;
-  int __xlx_offset_param_filters = 2048;
-  int __xlx_offset_byte_param_filters = 2048*4;
+  int __xlx_size_param_coeffs = 200000;
+  int __xlx_offset_param_coeffs = 400000;
+  int __xlx_offset_byte_param_coeffs = 400000*4;
   // DUT call
-  Conv2D_HW(__xlx_input_r_output_r_filters__tmp_vec.data(), __xlx_offset_byte_param_input_r, __xlx_offset_byte_param_output_r, __xlx_offset_byte_param_filters, *__xlx_apatb_param_numChannels, *__xlx_apatb_param_numFilters, *__xlx_apatb_param_inputWidth, *__xlx_apatb_param_inputHeight, *__xlx_apatb_param_convWidth, *__xlx_apatb_param_convHeight);
+  Conv2D_HW(__xlx_input_r_output_r_coeffs__tmp_vec.data(), __xlx_offset_byte_param_input_r, __xlx_offset_byte_param_output_r, __xlx_offset_byte_param_coeffs, *__xlx_apatb_param_numChannels, *__xlx_apatb_param_numFilters, *__xlx_apatb_param_inputWidth, *__xlx_apatb_param_inputHeight, *__xlx_apatb_param_convWidth, *__xlx_apatb_param_convHeight);
 // print __xlx_apatb_param_input_r
 for (size_t i = 0; i < __xlx_size_param_input_r; ++i) {
-((Byte<4>*)__xlx_apatb_param_input_r)[i] = __xlx_input_r_output_r_filters__tmp_vec[__xlx_offset_param_input_r+i];
+((Byte<4>*)__xlx_apatb_param_input_r)[i] = __xlx_input_r_output_r_coeffs__tmp_vec[__xlx_offset_param_input_r+i];
 }
 // print __xlx_apatb_param_output_r
 for (size_t i = 0; i < __xlx_size_param_output_r; ++i) {
-((Byte<4>*)__xlx_apatb_param_output_r)[i] = __xlx_input_r_output_r_filters__tmp_vec[__xlx_offset_param_output_r+i];
+((Byte<4>*)__xlx_apatb_param_output_r)[i] = __xlx_input_r_output_r_coeffs__tmp_vec[__xlx_offset_param_output_r+i];
 }
-// print __xlx_apatb_param_filters
-for (size_t i = 0; i < __xlx_size_param_filters; ++i) {
-((Byte<4>*)__xlx_apatb_param_filters)[i] = __xlx_input_r_output_r_filters__tmp_vec[__xlx_offset_param_filters+i];
+// print __xlx_apatb_param_coeffs
+for (size_t i = 0; i < __xlx_size_param_coeffs; ++i) {
+((Byte<4>*)__xlx_apatb_param_coeffs)[i] = __xlx_input_r_output_r_coeffs__tmp_vec[__xlx_offset_param_coeffs+i];
 }
 }

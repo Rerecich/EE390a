@@ -34,19 +34,19 @@ uint32_t CConv2DDriver::Conv2D_HW(void *input, void * output, void * coeffs,
   phyInput = GetDMAPhysicalAddr(input);
   if (phyInput == 0) {
     if (logging)
-      printf("Error: No physical address found for virtual address 0x%08X\n", (uint32_t)input);
+      printf("\n\nError: No physical address found for virtual address 0x%08X\n", (uint32_t)input);
     return VIRT_ADDR_NOT_FOUND;
   }
   phyOutput = GetDMAPhysicalAddr(output);
   if (phyOutput == 0) {
     if (logging)
-      printf("Error: No physical address found for virtual address 0x%08X\n", (uint32_t)output);
+      printf("\n\nError: No physical address found for virtual address 0x%08X\n", (uint32_t)output);
     return VIRT_ADDR_NOT_FOUND;
   }
   phyCoeffs = GetDMAPhysicalAddr(coeffs);
   if (phyCoeffs == 0) {
     if (logging)
-      printf("Error: No physical address found for virtual address 0x%08X\n", (uint32_t)coeffs);
+      printf("\n\nError: No physical address found for virtual address 0x%08X\n", (uint32_t)coeffs);
     return VIRT_ADDR_NOT_FOUND;
   }
 

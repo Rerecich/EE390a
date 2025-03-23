@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'Conv2D_HW'
 ================================================================
-* Date:           Sat Mar 22 17:30:52 2025
+* Date:           Sun Mar 23 15:50:55 2025
 
 * Version:        2022.2 (Build 3670227 on Oct 13 2022)
 * Project:        Vitis_CNN_HLS
@@ -159,11 +159,11 @@
     |add_ln1027_reg_692                                                                          |  65|   0|   65|          0|
     |add_ln32_cast_reg_654                                                                       |  64|   0|   64|          0|
     |ap_CS_fsm                                                                                   |  27|   0|   27|          0|
+    |coeffs_read_reg_570                                                                         |  64|   0|   64|          0|
     |convHeight_read_reg_530                                                                     |  32|   0|   32|          0|
     |convWidth_read_reg_536                                                                      |  32|   0|   32|          0|
     |empty_38_reg_727                                                                            |  64|   0|   64|          0|
     |empty_reg_664                                                                               |  32|   0|   32|          0|
-    |filters_read_reg_570                                                                        |  64|   0|   64|          0|
     |gmem_addr_reg_737                                                                           |  64|   0|   64|          0|
     |grp_Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6_fu_215_ap_start_reg  |   1|   0|    1|          0|
     |iFilter_V_fu_122                                                                            |  32|   0|   32|          0|

@@ -30,7 +30,7 @@ Args:
   - String:          ' _XLX_SEP_ '
   - AccessID:        scevgepseq
   - String:          ' '
-  - ArrayName:       filters
+  - ArrayName:       coeffs
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
@@ -134,7 +134,7 @@ Args:
   - String:          ' _XLX_SEP_ '
   - AccessID:        scevgepseq
   - String:          ' '
-  - ArrayName:       filters
+  - ArrayName:       coeffs
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
@@ -206,7 +206,7 @@ Args:
   - String:          ' _XLX_SEP_ '
   - AccessID:        scevgepseq
   - String:          ' '
-  - ArrayName:       filters
+  - ArrayName:       coeffs
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '

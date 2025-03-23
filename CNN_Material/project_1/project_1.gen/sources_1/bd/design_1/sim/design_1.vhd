@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
---Date        : Sat Mar 22 20:49:38 2025
+--Date        : Sun Mar 23 15:59:08 2025
 --Host        : diskless running 64-bit Ubuntu 22.04 LTS
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -1632,6 +1632,20 @@ architecture STRUCTURE of design_1 is
     PS_PORB : inout STD_LOGIC
   );
   end component design_1_processing_system7_0_0;
+  component design_1_rst_ps7_0_100M_0 is
+  port (
+    slowest_sync_clk : in STD_LOGIC;
+    ext_reset_in : in STD_LOGIC;
+    aux_reset_in : in STD_LOGIC;
+    mb_debug_sys_rst : in STD_LOGIC;
+    dcm_locked : in STD_LOGIC;
+    mb_reset : out STD_LOGIC;
+    bus_struct_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
+    interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
+    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component design_1_rst_ps7_0_100M_0;
   component design_1_Conv2D_HW_0_0 is
   port (
     s_axi_control_AWADDR : in STD_LOGIC_VECTOR ( 6 downto 0 );
@@ -1696,20 +1710,6 @@ architecture STRUCTURE of design_1 is
     m_axi_gmem_RREADY : out STD_LOGIC
   );
   end component design_1_Conv2D_HW_0_0;
-  component design_1_rst_ps7_0_100M_0 is
-  port (
-    slowest_sync_clk : in STD_LOGIC;
-    ext_reset_in : in STD_LOGIC;
-    aux_reset_in : in STD_LOGIC;
-    mb_debug_sys_rst : in STD_LOGIC;
-    dcm_locked : in STD_LOGIC;
-    mb_reset : out STD_LOGIC;
-    bus_struct_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
-    peripheral_reset : out STD_LOGIC_VECTOR ( 0 to 0 );
-    interconnect_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 );
-    peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component design_1_rst_ps7_0_100M_0;
   signal Conv2D_HW_0_m_axi_gmem_ARADDR : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal Conv2D_HW_0_m_axi_gmem_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal Conv2D_HW_0_m_axi_gmem_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );

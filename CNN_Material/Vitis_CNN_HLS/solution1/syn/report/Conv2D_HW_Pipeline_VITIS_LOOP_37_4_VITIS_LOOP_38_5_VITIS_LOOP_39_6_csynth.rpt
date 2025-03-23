@@ -3,7 +3,7 @@
 ================================================================
 == Vitis HLS Report for 'Conv2D_HW_Pipeline_VITIS_LOOP_37_4_VITIS_LOOP_38_5_VITIS_LOOP_39_6'
 ================================================================
-* Date:           Sat Mar 22 17:30:51 2025
+* Date:           Sun Mar 23 15:50:54 2025
 
 * Version:        2022.2 (Build 3670227 on Oct 13 2022)
 * Project:        Vitis_CNN_HLS
@@ -311,7 +311,7 @@
 |mul_ln15             |   in|   64|     ap_none|                                                            mul_ln15|        scalar|
 |mul_ln1027_1         |   in|   62|     ap_none|                                                        mul_ln1027_1|        scalar|
 |tmp1                 |   in|   62|     ap_none|                                                                tmp1|        scalar|
-|filters              |   in|   64|     ap_none|                                                             filters|        scalar|
+|coeffs               |   in|   64|     ap_none|                                                              coeffs|        scalar|
 |tmp3_cast_mid144     |   in|   32|     ap_none|                                                    tmp3_cast_mid144|        scalar|
 |convWidth            |   in|   32|     ap_none|                                                           convWidth|        scalar|
 |icmp_ln1027          |   in|    1|     ap_none|                                                         icmp_ln1027|        scalar|

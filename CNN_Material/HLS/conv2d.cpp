@@ -12,7 +12,7 @@ inline TFXP FXP_Mult(TFXP a, TFXP b, uint32_t decimalBits = DECIMALS)
   return res;
 }
 
-void Conv2D_HW(TFXP *input, TFXP * output, TFXP * filters,
+void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs,
       ap_uint<32> numChannels, ap_uint<32> numFilters,
       ap_uint<32> inputWidth, ap_uint<32> inputHeight,
       ap_uint<32> convWidth, ap_uint<32> convHeight)
@@ -25,9 +25,9 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * filters,
 	#pragma HLS INTERFACE s_axilite port=inputHeight
 	#pragma HLS INTERFACE s_axilite port=convWidth
 	#pragma HLS INTERFACE s_axilite port=convHeight
-	#pragma HLS INTERFACE m_axi depth=1024 port=input offset=slave
-	#pragma HLS INTERFACE m_axi depth=1024 port=output offset=slave
-	#pragma HLS INTERFACE m_axi depth=1024 port=filters offset=slave
+	#pragma HLS INTERFACE m_axi depth=200000 port=input offset=slave
+	#pragma HLS INTERFACE m_axi depth=200000 port=output offset=slave
+	#pragma HLS INTERFACE m_axi depth=200000 port=coeffs offset=slave
 
 	for (ap_uint<32> iFilter = 0; iFilter < numFilters; ++ iFilter) {
 	    for (ap_uint<32> y = 0; y < (inputHeight-2); ++y) {
@@ -39,7 +39,7 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * filters,
 	            for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
 	              //acc += filters[iFilter][iChannel][cy][cx] * input[iChannel][y+cy][x+cx];
 	              TFXP pixelValue, filterValue;
-	              filterValue = *(filters + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
+	              filterValue = *(coeffs + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
 	              pixelValue = *(input + iChannel*inputWidth*inputHeight + (y+cy)*inputWidth + (x+cx));
 	              acc += FXP_Mult(filterValue, pixelValue, DECIMALS);
 	            }

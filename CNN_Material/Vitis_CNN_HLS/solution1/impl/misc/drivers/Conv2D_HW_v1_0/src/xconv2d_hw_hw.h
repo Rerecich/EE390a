@@ -33,10 +33,10 @@
 // 0x20 : Data signal of output_r
 //        bit 31~0 - output_r[63:32] (Read/Write)
 // 0x24 : reserved
-// 0x28 : Data signal of filters
-//        bit 31~0 - filters[31:0] (Read/Write)
-// 0x2c : Data signal of filters
-//        bit 31~0 - filters[63:32] (Read/Write)
+// 0x28 : Data signal of coeffs
+//        bit 31~0 - coeffs[31:0] (Read/Write)
+// 0x2c : Data signal of coeffs
+//        bit 31~0 - coeffs[63:32] (Read/Write)
 // 0x30 : reserved
 // 0x34 : Data signal of numChannels
 //        bit 31~0 - numChannels[31:0] (Read/Write)
@@ -66,8 +66,8 @@
 #define XCONV2D_HW_CONTROL_BITS_INPUT_R_DATA     64
 #define XCONV2D_HW_CONTROL_ADDR_OUTPUT_R_DATA    0x1c
 #define XCONV2D_HW_CONTROL_BITS_OUTPUT_R_DATA    64
-#define XCONV2D_HW_CONTROL_ADDR_FILTERS_DATA     0x28
-#define XCONV2D_HW_CONTROL_BITS_FILTERS_DATA     64
+#define XCONV2D_HW_CONTROL_ADDR_COEFFS_DATA      0x28
+#define XCONV2D_HW_CONTROL_BITS_COEFFS_DATA      64
 #define XCONV2D_HW_CONTROL_ADDR_NUMCHANNELS_DATA 0x34
 #define XCONV2D_HW_CONTROL_BITS_NUMCHANNELS_DATA 32
 #define XCONV2D_HW_CONTROL_ADDR_NUMFILTERS_DATA  0x3c
