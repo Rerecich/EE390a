@@ -59,7 +59,7 @@ IFLAG += -D__SIM_DDS__
 
 IFLAG += -D__DSP48E1__
 IFLAG += -Wno-unknown-pragmas 
-IFLAG += -g
+AP_ENABLE_OPTIMIZED := 1
 DFLAG += -D__xilinx_ip_top= -DAESL_TB
 CCFLAG += -Werror=return-type
 CCFLAG += -Wno-abi
@@ -75,12 +75,12 @@ all: $(TARGET)
 
 $(ObjDir)/conv2DTestbench.o: ../../../../HLS/conv2DTestbench.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../HLS/conv2DTestbench.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD -Wno-unknown-pragmas -Wno-unknown-pragmas  $(IFLAG) $(DFLAG) $< -o $@ ; \
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas  $(IFLAG) $(DFLAG) -DNDEBUG $< -o $@ ; \
 
 -include $(ObjDir)/conv2DTestbench.d
 
 $(ObjDir)/conv2d.o: ../../../../HLS/conv2d.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../HLS/conv2d.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) $< -o $@ ; \
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD  $(IFLAG) $(DFLAG) -DNDEBUG $< -o $@ ; \
 
 -include $(ObjDir)/conv2d.d

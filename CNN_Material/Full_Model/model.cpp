@@ -420,7 +420,7 @@ TFXP Inference(TFXP * inputImageFxp,
                TFXP * buffer1,
                TFXP ** fxpWeights,
                TFXP ** fxpBiases,
-               TTimes & times)
+               TTimes & times, CConv2DDriver &convolver)
 {
   printf("\n");
   printf("============================================\n");
@@ -429,13 +429,13 @@ TFXP Inference(TFXP * inputImageFxp,
   
   uint32_t iLayer, size;
   struct timespec start, end;
-  CConv2DDriver convolver(true);
+  //CConv2DDriver convolver(true);
   bool debug = 1;
   
-  if (convolver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK) {
-    printf("Error opening hardware accelerator driver.\n");
-    return -1;
-  }
+  //if (convolver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK) {
+  //  printf("Error opening hardware accelerator driver.\n");
+  //  return -1;
+  //}
 
   buffer0 = (TFXP *)convolver.AllocDMACompatible(4129024 * sizeof(TFXP));
   buffer1 = (TFXP *)convolver.AllocDMACompatible(1032256 * sizeof(TFXP));

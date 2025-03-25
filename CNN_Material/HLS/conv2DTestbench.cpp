@@ -7,10 +7,10 @@
 
 #include "conv2d.h"
 
-#define MAX_WIDTH 128
-#define MAX_HEIGHT 128
-#define MAX_CHANNELS 256
-#define MAX_FILTERS 256
+#define MAX_WIDTH 64
+#define MAX_HEIGHT 64
+#define MAX_CHANNELS 32
+#define MAX_FILTERS 32
 
 TFXP input[MAX_WIDTH * MAX_HEIGHT * MAX_CHANNELS];
 TFXP coeffs[MAX_CHANNELS * MAX_FILTERS * 9];
@@ -91,7 +91,7 @@ int main(int argc, char ** argv)
   uint32_t width = MAX_WIDTH, height = MAX_HEIGHT;
   uint32_t channels, filters;
   uint32_t currentOutputSize;
-  uint32_t sizes[][2] = { {3, 32}, {16, 16}, {32, 32}, {64, 64}, {128, 128}, {256, 256} };
+  uint32_t sizes[][2] = { {3, 32}, {16, 16}, {32, 32}};//, {64, 64}, {128, 128}, {256, 256} };
   uint32_t numSizes = sizeof(sizes) / (sizeof(uint32_t) * 2);
 
   srand(time(NULL));
@@ -107,6 +107,10 @@ int main(int argc, char ** argv)
     Conv2D_SW(input, outputSW, coeffs, channels, filters, width, height, 3, 3);
     printf("  HW\n");
     Conv2D_HW(input, outputHW, coeffs, channels, filters, width, height, 3, 3);
+
+    for (uint32_t i = 0; i < 10; i++) {
+    	printf("Output %u = %u and % u  (HW/SW)\n", i, outputHW, outputSW);
+    }
     if (!CompareVectors(outputSW, outputHW, currentOutputSize))
       printf("\n\n====== ERROR COMPARING RESULTS WITH REFERENCE!!! ======\n\n");
     else

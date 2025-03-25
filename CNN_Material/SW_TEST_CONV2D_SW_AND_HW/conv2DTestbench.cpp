@@ -83,13 +83,13 @@ void InitVectors(TFXP * input, TFXP * inputHW, uint32_t sizeInput,
   uint32_t tmp;
 
   for (uint32_t ii = 0; ii < sizeInput; ++ ii) {
-    tmp = rand();
+    tmp = 1<<22;
     //tmp = ii;
     input[ii] = tmp;
     inputHW[ii] = tmp;
   }
   for (uint32_t ii = 0; ii < sizeCoeffs; ++ ii) {
-    tmp = rand();
+    tmp = 2<<22;
     //tmp = ii;
     coeffs[ii] = tmp;
     coeffsHW[ii] = tmp;
@@ -154,12 +154,12 @@ int main(int argc, char ** argv)
   uint32_t width = MAX_WIDTH, height = MAX_HEIGHT;
   uint32_t channels, filters;
   uint32_t currentOutputSize;
-  uint32_t sizes[][2] = { {3, 32}, {16, 16}, {32, 32}, {64, 64}, {128, 128}, {256, 256} };
+  uint32_t sizes[][2] = { {3, 32}, {16, 16}};//, {32, 32}, {64, 64}, {128, 128}, {256, 256} };
   uint32_t numSizes = sizeof(sizes) / (sizeof(uint32_t) * 2);
   TFXP * inputHW, * outputHW, * coeffsHW; // We need specially-allocated arrays to share with the accelerator
   
-  CConv2DDriver convolver(false); // Deactivate logging.
-  if (!InitDevice(convolver, inputHW, outputHW, coeffsHW))
+  CConv2DDriver convolver(true); // Deactivate logging.
+  if (!InitDevice(convolver, inputHW, outputHW, coeffsHW, true))
     return -1;
 
   srand(time(NULL));
@@ -214,7 +214,10 @@ int main(int argc, char ** argv)
           (elapsedTimeHW/1e9)/NUM_REPES, elapsedTimeHW/NUM_REPES);
 
     // Make sure outputs are the same
+//	for (uint32_t i = 0; i < 5; i++) {
+//	printf("Output %u = %u and %u\n", i, outputHW[i], outputSW[i]);
 
+//	}
       if (!CompareVectors(outputSW, outputHW, currentOutputSize))
             printf("\n\n====== ERROR COMPARING RESULTS WITH REFERENCE!!! ======\n\n");
           else

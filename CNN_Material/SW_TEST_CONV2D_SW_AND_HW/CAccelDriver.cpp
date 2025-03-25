@@ -32,7 +32,7 @@ CAccelDriver::~CAccelDriver()
     // Unmap the physical address of the peripheral registers
     cma_munmap((void*)accelRegs, mappingSize);
     if (logging)
-      printf("Mapping undone for peripheral physical address 0x%08X mapped at 0x%08X\n",
+      printf("~CAccelDriver: Mapping undone for peripheral physical address 0x%08X mapped at 0x%08X\n",
           baseAddr, (uint32_t)accelRegs);
   }
   accelRegs = NULL;
@@ -63,13 +63,13 @@ uint32_t CAccelDriver::Open(uint32_t BaseAddr, uint32_t MappingSize, volatile vo
   accelRegs = (void *)cma_mmap(baseAddr, mappingSize);
   if ((int32_t)accelRegs == -1) {
     if (logging)
-      printf("Error mapping the peripheral address (0x%08X)!\n", baseAddr);
+      printf("CAccelDriver.Open: Error mapping the peripheral address (0x%08X)!\n", baseAddr);
     accelRegs = NULL;
     return ERROR_MAPPING_BASE_ADDR;
   }
 
   if (logging)
-    printf("Address mapping done. Peripheral physical address 0x%08X mapped at 0x%08X\n",
+    printf("CAccelDriver.Open: Address mapping done. Peripheral physical address 0x%08X mapped at 0x%08X\n",
           baseAddr, (uint32_t)accelRegs);
 
   if (AccelRegsPointer != NULL)
@@ -93,14 +93,14 @@ void * CAccelDriver::AllocDMACompatible(uint32_t Size, uint32_t Cacheable)
   virtualAddr = cma_alloc(Size, Cacheable);
   if ( (int32_t)virtualAddr == -1) {
     if (logging)
-      printf("\n\nError allocating DMA memory for %u bytes.\n", Size);
+      printf("\n\nCAccelDriver.AllocDMACompatible: Error allocating DMA memory for %u bytes.\n", Size);
     return NULL;
   }
 
   physicalAddr = cma_get_phy_addr(virtualAddr);
   if (physicalAddr == 0) {
     if (logging)
-      printf("\n\nError obtaining physical addr for virtual address 0x%08X (%u).\n", (uint32_t)virtualAddr, (uint32_t)virtualAddr);
+      printf("\n\nCAccelDriver.AllocDMACompatible: Error obtaining physical addr for virtual address 0x%08X (%u).\n", (uint32_t)virtualAddr, (uint32_t)virtualAddr);
     cma_free(virtualAddr);
     return NULL;
   }
@@ -108,7 +108,7 @@ void * CAccelDriver::AllocDMACompatible(uint32_t Size, uint32_t Cacheable)
   dmaMappings[(uint32_t)virtualAddr] = physicalAddr;
 
   if (logging)
-    printf("\n\nDMA memory allocated - Virtual addr: 0x%08X (%u) // Physical addr: 0x%08X (%u)\n",
+    printf("\n\nCAccelDriver.AllocDMACompatible: DMA memory allocated - Virtual addr: 0x%08X (%u) // Physical addr: 0x%08X (%u)\n",
             (uint32_t)virtualAddr, (uint32_t)virtualAddr, physicalAddr, physicalAddr);
 
   return virtualAddr;
@@ -126,7 +126,7 @@ bool CAccelDriver::FreeDMACompatible(void * VirtAddr)
 
   if (logging) {
     if (dmaMappings.count((uint32_t)VirtAddr) == 0)
-      printf("\n\nNo virtual address 0x%08X present in the dictionary of mappings.\n", (uint32_t)VirtAddr);
+      printf("\n\nCAccelDriver.FreeMACompatible: No virtual address 0x%08X present in the dictionary of mappings.\n", (uint32_t)VirtAddr);
   }
 
   dmaMappings.erase((uint32_t)VirtAddr);
@@ -147,7 +147,7 @@ uint32_t CAccelDriver::GetDMAPhysicalAddr(void * VirtAddr)
 
   if (dmaMappings.count((uint32_t)VirtAddr) == 0) {
     if (logging)
-      printf("No virtual address 0x%08X present in the dictionary of mappings.\n", (uint32_t)VirtAddr);
+      printf("CAccelDriver.GetDMAPhysicalAddr: No virtual address 0x%08X present in the dictionary of mappings.\n", (uint32_t)VirtAddr);
     return 0;
   }
   

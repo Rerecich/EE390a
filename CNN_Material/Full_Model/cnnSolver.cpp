@@ -33,7 +33,7 @@ void PrintTimes(TTimes & times, uint32_t numLayers);
 int main(int argc, char ** argv)
 {
   //CConv2DDriver convolver(true);
-  CAccelDriver convolver(true);
+  CConv2DDriver convolver(true);
   uint32_t debug = 1;
   
 if (argc != 2) {
@@ -121,7 +121,7 @@ if (argc != 2) {
 
   //buffer0 = (TFXP *)accelDriver.AllocDMACompatible(4129024 * sizeof(TFXP));
   //buffer1 = (TFXP *)accelDriver.AllocDMACompatible(1032256 * sizeof(TFXP));
-  TFXP finalPrediction = Inference(inputImageFxp, buffer0, buffer1, weights, biases, times);
+  TFXP finalPrediction = Inference(inputImageFxp, buffer0, buffer1, weights, biases, times, convolver);
   printf("OUTPUT: %0.8lf --> %s\n", Fxp2Float(finalPrediction, DECIMALS),
     Fxp2Float(finalPrediction) < 0.5 ? "CAT" : "DOG");
   PrintTimes(times, NUM_LAYERS);

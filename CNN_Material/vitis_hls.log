@@ -1,9 +1,9 @@
 INFO: [HLS 200-10] Running '/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/bin/unwrapped/lnx64.o/vitis_hls'
-INFO: [HLS 200-10] For user 'rerecich' on host 'diskless' (Linux_x86_64 version 5.15.0-60-generic) on Sun Mar 23 15:52:27 CET 2025
+INFO: [HLS 200-10] For user 'rerecich' on host 'diskless' (Linux_x86_64 version 5.15.0-60-generic) on Tue Mar 25 18:56:37 CET 2025
 INFO: [HLS 200-10] On os Ubuntu 22.04 LTS
 INFO: [HLS 200-10] In directory '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material'
-Sourcing Tcl script '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/export.tcl'
-INFO: [HLS 200-1510] Running: source /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/export.tcl
+Sourcing Tcl script '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/csim.tcl'
+INFO: [HLS 200-1510] Running: source /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/csim.tcl
 INFO: [HLS 200-1510] Running: open_project Vitis_CNN_HLS 
 INFO: [HLS 200-10] Opening project '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS'.
 INFO: [HLS 200-1510] Running: set_top Conv2D_HW 
@@ -11,7 +11,7 @@ INFO: [HLS 200-1510] Running: add_files HLS/conv2d.cpp
 INFO: [HLS 200-10] Adding design file 'HLS/conv2d.cpp' to the project
 INFO: [HLS 200-1510] Running: add_files HLS/conv2d.h 
 INFO: [HLS 200-10] Adding design file 'HLS/conv2d.h' to the project
-INFO: [HLS 200-1510] Running: add_files -tb HLS/conv2DTestbench.cpp 
+INFO: [HLS 200-1510] Running: add_files -tb HLS/conv2DTestbench.cpp -cflags -Wno-unknown-pragmas -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
 INFO: [HLS 200-10] Adding test bench file 'HLS/conv2DTestbench.cpp' to the project
 INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
 INFO: [HLS 200-10] Opening solution '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1'.
@@ -27,21 +27,56 @@ INFO: [HLS 200-1510] Running: create_clock -period 10 -name default
 INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/IP-catalog -rtl verilog 
 INFO: [HLS 200-1510] Running: source ./Vitis_CNN_HLS/solution1/directives.tcl
 INFO: [HLS 200-1510] Running: set_directive_top -name Conv2D_HW Conv2D_HW 
-INFO: [HLS 200-1510] Running: export_design -rtl verilog -format ip_catalog -output /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/IP-catalog 
-Running Dispatch Server on port: 44591
-INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+INFO: [HLS 200-1510] Running: csim_design -O -quiet 
+Running Dispatch Server on port: 45141
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../HLS/conv2DTestbench.cpp in release mode
+   Generating csim.exe
+Evaluating execution for 3 --> 32
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
+Evaluating execution for 16 --> 16
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
+Evaluating execution for 32 --> 32
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
 
-****** Vivado v2022.2 (64-bit)
-  **** SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
-  **** IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
-
-source run_ippack.tcl -notrace
-ipx::create_core: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1361.102 ; gain = 0.023 ; free physical = 4310 ; free virtual = 24554
-INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/scrap/users/Xilinx2022.2/Vivado/2022.2/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Sun Mar 23 15:52:55 2025...
-INFO: [HLS 200-802] Generated output file IP-catalog/export.zip
-INFO: [HLS 200-111] Finished Command export_design CPU user time: 15.09 seconds. CPU system time: 1.14 seconds. Elapsed time: 26.92 seconds; current allocated memory: 7.805 MB.
-INFO: [HLS 200-112] Total CPU user time: 16.69 seconds. Total CPU system time: 1.43 seconds. Total elapsed time: 39.18 seconds; peak allocated memory: 210.676 MB.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 385.76 seconds. CPU system time: 0.29 seconds. Elapsed time: 386.48 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-112] Total CPU user time: 387.29 seconds. Total CPU system time: 0.54 seconds. Total elapsed time: 398.58 seconds; peak allocated memory: 202.871 MB.

@@ -37,7 +37,7 @@ void FreeParamsHW(uint32_t numLayers, void **params, CAccelDriver &accelDriver);
 
 bool LoadModelInFxP(TFXP ** fxpWeights, TFXP ** fxpBiases, CAccelDriver &accelDriver);
 bool LoadImageInFxp(const char * fileName, TFXP * inputImageFxp, uint8_t * inputImageRGB, uint32_t inputSize, CAccelDriver &accelDriver);
-TFXP Inference(TFXP * inputImageFxp, TFXP * buffer0, TFXP * buffer1, TFXP ** fxpWeights, TFXP ** fxpBiases, TTimes & times);
+TFXP Inference(TFXP * inputImageFxp, TFXP * buffer0, TFXP * buffer1, TFXP ** fxpWeights, TFXP ** fxpBiases, TTimes & times, CConv2DDriver &convolver);
 
 inline TFXP Float2Fxp(float value, uint32_t decimalBits = DECIMALS)
 {

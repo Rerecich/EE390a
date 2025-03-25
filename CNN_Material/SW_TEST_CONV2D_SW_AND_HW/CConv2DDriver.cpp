@@ -7,7 +7,7 @@
 #include "CConv2DDriver.hpp"
 
 uint32_t CConv2DDriver::Conv2D_HW(void *input, void * output, void * coeffs,
-      uint32_t numChannels, uint32_t numFilters,
+      uint32_t numFilters, uint32_t numChannels,
       uint32_t inputWidth, uint32_t inputHeight,
       uint32_t convWidth, uint32_t convHeight)
 {
@@ -34,19 +34,19 @@ uint32_t CConv2DDriver::Conv2D_HW(void *input, void * output, void * coeffs,
   phyInput = GetDMAPhysicalAddr(input);
   if (phyInput == 0) {
     if (logging)
-      printf("\n\nError: No physical address found for virtual address 0x%08X\n", (uint32_t)input);
+      printf("\n\nCConv2DDriver.Conv2D_HW: Error: No physical address found for virtual address 0x%08X\n", (uint32_t)input);
     return VIRT_ADDR_NOT_FOUND;
   }
   phyOutput = GetDMAPhysicalAddr(output);
   if (phyOutput == 0) {
     if (logging)
-      printf("\n\nError: No physical address found for virtual address 0x%08X\n", (uint32_t)output);
+      printf("\n\nCConv2DDriver.Conv2D_HW: Error: No physical address found for virtual address 0x%08X\n", (uint32_t)output);
     return VIRT_ADDR_NOT_FOUND;
   }
   phyCoeffs = GetDMAPhysicalAddr(coeffs);
   if (phyCoeffs == 0) {
     if (logging)
-      printf("\n\nError: No physical address found for virtual address 0x%08X\n", (uint32_t)coeffs);
+      printf("\n\nCConv2DDriver.Conv2D_HW: Error: No physical address found for virtual address 0x%08X\n", (uint32_t)coeffs);
     return VIRT_ADDR_NOT_FOUND;
   }
 
@@ -65,23 +65,32 @@ uint32_t CConv2DDriver::Conv2D_HW(void *input, void * output, void * coeffs,
   regs -> convHeight = convHeight;
 
   if (logging)
-    printf("\nStarting accel...\n");
+    printf("\nCConv2DDriver.Conv2D_HW: Starting accel...\n");
   // Send start command to the accel
   //printf("You were supposed to add your code here...\n"); /** Send start command @todo */
   	clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+    //printf("Clock started \n");
 
     status = regs->control;
+    //printf("clock_gettime(CLOCK_MONOTONIC_RAW, &start);\n");
+
     status |= 1;  // Set to 1 ap_start ; or operation, lowest bit gets one
+    //printf("cstatus |= 1; \n");
+
     regs->control = status;
+    //printf(" regs->control = status;\n");
 
 
   // Wait for done signal from the accel
   //printf("You were supposed to add your code here...\n"); /** Wait for done signal @todo */
     do {
         status = regs->control;
+        //printf(" do: status = regs->control;\n");
+       
       } while ( ( (status & 2) != 2) ); // wait until ap_done==1
 
       clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+      //printf(" clock_gettime(CLOCK_MONOTONIC_RAW, &end);\n");
       elapsed = CalcTimeDiff(end, start);
 
 

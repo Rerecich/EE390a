@@ -40,7 +40,7 @@ class CConv2DDriver : public CAccelDriver {
     ~CConv2DDriver() {}
 
     uint32_t Conv2D_HW(void *input, void * output, void * coeffs,
-      uint32_t numChannels, uint32_t numFilters,
+      uint32_t numFilters, uint32_t numChannels,
       uint32_t inputWidth, uint32_t inputHeight,
       uint32_t convWidth = 3, uint32_t convHeight = 3);
 };
