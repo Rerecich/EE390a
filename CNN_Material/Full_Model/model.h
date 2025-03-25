@@ -1,6 +1,7 @@
 #ifndef MODEL_H
 #define MODEL_H
 #include "CAccelDriver.hpp" 
+#include "CConv2DDriver.hpp"
 
 const uint32_t DECIMALS = 20;
 typedef int32_t TFXP;     // Parameters and activations
@@ -29,13 +30,13 @@ uint64_t CalcTimeDiff(const struct timespec & time2, const struct timespec & tim
 
 bool LoadFloatWeights(const uint32_t numLayers, float ** weights, CAccelDriver &accelDriver);
 bool ConvertWeightsToFxP(const uint32_t numLayers, float ** floatWeights, TFXP ** fxpWeights, CAccelDriver &accelDriver);
-bool LoadFloatBiases(const uint32_t numLayers, float ** biases);
+bool LoadFloatBiases(const uint32_t numLayers, float ** biases, CAccelDriver &accelDriver);
 bool ConvertBiasesToFxP(const uint32_t numLayers, float ** floatBiases, TFXP ** fxpBiases, CAccelDriver &accelDriver);
 void FreeParams(const uint32_t numLayers, void ** params);
 void FreeParamsHW(uint32_t numLayers, void **params, CAccelDriver &accelDriver);
 
 bool LoadModelInFxP(TFXP ** fxpWeights, TFXP ** fxpBiases, CAccelDriver &accelDriver);
-bool LoadImageInFxp(const char * fileName, TFXP * inputImageFxp, uint8_t * inputImageRGB, uint32_t inputSize);
+bool LoadImageInFxp(const char * fileName, TFXP * inputImageFxp, uint8_t * inputImageRGB, uint32_t inputSize, CAccelDriver &accelDriver);
 TFXP Inference(TFXP * inputImageFxp, TFXP * buffer0, TFXP * buffer1, TFXP ** fxpWeights, TFXP ** fxpBiases, TTimes & times);
 
 inline TFXP Float2Fxp(float value, uint32_t decimalBits = DECIMALS)

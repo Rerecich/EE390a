@@ -21,7 +21,7 @@ TFXP * biases[NUM_LAYERS];
 //TFXP *biases = nullptr;
 TTimes times;
 uint8_t inputImage[INPUT_SIZE];   // RGB pixel data separated in planes.
-//TFXP *inputImageFxp = nullptr;
+TFXP *inputImageFxp = nullptr;
 TFXP *buffer0 = nullptr;
 TFXP *buffer1 = nullptr;
 
@@ -32,7 +32,9 @@ void PrintTimes(TTimes & times, uint32_t numLayers);
 
 int main(int argc, char ** argv)
 {
-  CAccelDriver accelDriver(true);
+  //CConv2DDriver convolver(true);
+  CAccelDriver convolver(true);
+  uint32_t debug = 1;
   
 if (argc != 2) {
     printf("Usage: cnnSolver image.rgba.planar\n");
@@ -43,15 +45,15 @@ if (argc != 2) {
   }
 
   ///////////////////////////////////////////////////
-
-  printf("Opening hardware accelerator...");
-  if (accelDriver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK) {
+  
+  //printf("Opening hardware accelerator...");
+  if (convolver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK) {
     printf("Error opening hardware accelerator driver.\n");
     return -1;
   }
-  else {
-    printf("....SUCCESS\n");
-  }
+  //else {
+    //printf("....SUCCESS\n");
+  //}
 
   ///////////////////////////////////////////////////
   //uint32_t testSize = 4*1024*1024 * 4;
@@ -67,53 +69,73 @@ if (argc != 2) {
   //CheckDMAAllocations(inputImageFxp, buffer0, buffer1);
 
   ///////////////////////////////////////////////////
-  printf("Loading CNN model and converting to FxP...");
-  if (!LoadModelInFxP(weights, biases, accelDriver)) {
+  if (debug) {
+    printf("Loading CNN model and converting to FxP...\n");
+  }
+
+  if (!LoadModelInFxP(weights, biases, convolver)) {
     printf("--> Error loading the CNN model and converting to FxP!\n");
     return -1;
   }
-  else {
-    printf("....SUCCESS\n");
+  //else {
+  //  printf("....SUCCESS\n");
+  //}
+  if (debug) {
+    printf("After LoadModelInFxp: \n");
+    printf("Weights = %u\n", **weights);
+    printf("Biases = %u\n", **biases);
   }
-  printf("biases input to Inference = %u\n", **biases);
   ///////////////////////////////////////////////////
 
   printf("Loading image file in FxP...");
-  TFXP * inputImageFxp = (TFXP *)accelDriver.AllocDMACompatible(INPUT_SIZE * sizeof(TFXP));
-  if (!LoadImageInFxp(argv[1], inputImageFxp, inputImage, INPUT_SIZE)) {
+  
+  inputImageFxp = (TFXP *)convolver.AllocDMACompatible(INPUT_SIZE * sizeof(TFXP));
+  if (!inputImageFxp) {
+    printf("Error: could not allocate inputImageFxp DMA buffer.\n");
+    return -1;
+  }
+
+  if (!LoadImageInFxp(argv[1], inputImageFxp, inputImage, INPUT_SIZE, convolver)) {
     printf("Error loading the image file.\n");
     FreeParams(NUM_LAYERS, (void**)weights);
     FreeParams(NUM_LAYERS, (void**)biases);
     return -1;
   }
-  else {
-    printf("....SUCCESS\n");
+  //else {
+   // printf("....SUCCESS\n");
+  //}
+  if (debug) {
+    printf("\nAfter LoadImageInFxp: \n");
+    for (uint32_t i = 0; i < 50; i++) 
+    printf("inputImageFxp = %u\n", inputImageFxp[i]);
+    //printf("inputImageFxP = %u/n", *inputImageFxp);
   }
-  printf("biases output from LoadModelInFcp = %u\n", **biases);
 
-  if (inputImageFxp != NULL)
-	  accelDriver.FreeDMACompatible(inputImageFxp);
+ // if (inputImageFxp != NULL)
+	//  accelDriver.FreeDMACompatible(inputImageFxp);
   ///////////////////////////////////////////////////
   printf("Calling InitTimes.......\n");
   InitTimes(times);
   printf("Times initialized, calling Inference...\n");
   //printf("biases input to Inference = %u\n", **biases);
 
-  buffer0 = (TFXP *)accelDriver.AllocDMACompatible(4129024 * sizeof(TFXP));
-  buffer1 = (TFXP *)accelDriver.AllocDMACompatible(1032256 * sizeof(TFXP));
+  //buffer0 = (TFXP *)accelDriver.AllocDMACompatible(4129024 * sizeof(TFXP));
+  //buffer1 = (TFXP *)accelDriver.AllocDMACompatible(1032256 * sizeof(TFXP));
   TFXP finalPrediction = Inference(inputImageFxp, buffer0, buffer1, weights, biases, times);
   printf("OUTPUT: %0.8lf --> %s\n", Fxp2Float(finalPrediction, DECIMALS),
     Fxp2Float(finalPrediction) < 0.5 ? "CAT" : "DOG");
   PrintTimes(times, NUM_LAYERS);
 
-  FreeParams(NUM_LAYERS, (void**)weights);
-  FreeParams(NUM_LAYERS, (void**)biases);
+  FreeParamsHW(NUM_LAYERS, (void**)weights, convolver);
+  FreeParamsHW(NUM_LAYERS, (void**)biases, convolver);
 
 
   if (buffer0 != NULL)
-	  accelDriver.FreeDMACompatible(buffer0);
+	  convolver.FreeDMACompatible(buffer0);
   if (buffer1 != NULL)
-	  accelDriver.FreeDMACompatible(buffer1);
+	  convolver.FreeDMACompatible(buffer1);
+  if (inputImageFxp != nullptr)
+	  convolver.FreeDMACompatible(inputImageFxp);
   
   
   return Fxp2Float(finalPrediction) < 0.5 ? 0 : 1;;

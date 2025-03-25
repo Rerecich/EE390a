@@ -7,7 +7,7 @@
 void MaxPool(TFXP * input, TFXP * output, uint32_t channels, uint32_t width, uint32_t height)
 {
   // The input width is the argument received. The output width can be one less if the dimensions are not even numbers.
-  printf("Beginning MaxPool calculations...\n");
+  //printf("Beginning MaxPool calculations...\n");
   uint32_t outWidth, outHeight;
   outWidth = ( (width % 2) == 0) ? width : width - 1;
   outHeight = ( (height % 2) == 0) ? height : height - 1;

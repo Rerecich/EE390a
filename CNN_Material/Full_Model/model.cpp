@@ -228,7 +228,7 @@ bool ConvertBiasesToFxP(const uint32_t numLayers, float ** floatBiases, TFXP ** 
   return true;
 }
 
-bool LoadFloatBiases(const uint32_t numLayers, float ** biases)
+bool LoadFloatBiases(const uint32_t numLayers, float ** biases, CAccelDriver &accelDriver)
 {
   printf("\n");
   printf("============================================\n");
@@ -237,11 +237,6 @@ bool LoadFloatBiases(const uint32_t numLayers, float ** biases)
   
   FILE * input = NULL;
   
-  CAccelDriver accelDriver;
-  if (accelDriver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK) {
-    printf("Error opening hardware accelerator driver.\n");
-    return false;
-  }
   
   for (uint32_t iLayer = 0; iLayer < numLayers; ++iLayer) {
     char title[256];
@@ -332,17 +327,19 @@ bool LoadModelInFxP(TFXP **fxpWeights, TFXP **fxpBiases, CAccelDriver &accelDriv
 
   if (!LoadFloatWeights(NUM_LAYERS, floatWeights, accelDriver)) {
     printf("Error reading the float weights.\n");
-    FreeParamsHW(NUM_LAYERS, (void**)floatWeights, accelDriver);
+    FreeParams(NUM_LAYERS, (void**)floatWeights);
     return false;
   }
   ConvertWeightsToFxP(NUM_LAYERS, floatWeights, fxpWeights, accelDriver);
-  FreeParamsHW(NUM_LAYERS, (void**)floatWeights, accelDriver);
+  if (floatWeights != NULL) {
+    FreeParams(NUM_LAYERS, (void**)floatWeights);
+  }
 
   printf("Loading float biases...");
-  if (!LoadFloatBiases(NUM_LAYERS, floatBiases)) {
+  if (!LoadFloatBiases(NUM_LAYERS, floatBiases, accelDriver)) {
     printf("Error reading the float biases.\n");
-    FreeParamsHW(NUM_LAYERS, (void**)floatBiases, accelDriver);
-    FreeParamsHW(NUM_LAYERS, (void**)fxpWeights, accelDriver);
+    FreeParams(NUM_LAYERS, (void**)floatBiases);
+    FreeParams(NUM_LAYERS, (void**)fxpWeights);
     return false;
   }
   printf("load float biases output = %f\n", **floatBiases);
@@ -351,58 +348,79 @@ bool LoadModelInFxP(TFXP **fxpWeights, TFXP **fxpBiases, CAccelDriver &accelDriv
   ConvertBiasesToFxP(NUM_LAYERS, floatBiases, fxpBiases, accelDriver);
   printf("fxpBiases output = %u\n", **fxpBiases);
   printf("Done\n\n");
-  FreeParamsHW(NUM_LAYERS, (void**)floatBiases, accelDriver);
+  if (floatBiases != NULL) {
+    FreeParams(NUM_LAYERS, (void**)floatBiases);
+  }
 
   printf("Exiting LoadModelInFxP\n\n");
   return true;
 }
 
 
-bool LoadImageInFxp(const char * fileName, TFXP * inputImageFxp, uint8_t * inputImageRGB, uint32_t inputSize)
+bool LoadImageInFxp(const char * fileName,
+                    TFXP * inputImageFxp,
+                    uint8_t * inputImageRGB,
+                    uint32_t inputSize,
+                    CAccelDriver &accelDriver)
 {
-  printf("\n");
-  printf("============================================\n");
-  printf("================LoadImageInFxp==============\n");
-  printf("============================================\n\n");
-  
-  FILE * inputImageFile;
-  //printf("Size of inputImageFxp: %lu\n", sizeof(inputImageFxp));
+    printf("\n");
+    printf("============================================\n");
+    printf("================LoadImageInFxp==============\n");
+    printf("============================================\n\n");
 
-  // Load input image and convert to FxP
-  inputImageFile = fopen(fileName, "rb");
-  if (inputImageFile == NULL) {
-    printf("Error opening image [%s]\n\n", fileName);
-    return false;
-  }  
-  else {
-    printf("Successfully opened input image \n\n");
-  }
+    bool debug = 0;
 
-  if ( fread(inputImageRGB, 1, inputSize, inputImageFile) != inputSize ) {
-    printf("Error reading %u bytes from [%s]\n", inputSize, fileName);
+    if (!inputImageFxp) {
+        printf("Invalid inputImageFxp pointer.\n");
+        return false;
+    }
+
+    // 2) Open and read the image
+    FILE *inputImageFile = fopen(fileName, "rb");
+    if (inputImageFile == NULL) {
+        printf("Error opening image file [%s]\n\n", fileName);
+        return false;
+    }
+
+    printf("Successfully opened input image.\n\n");
+
+
+    if (fread(inputImageRGB, 1, inputSize, inputImageFile) != inputSize) {
+        printf("Error reading %u bytes from [%s]\n", inputSize, fileName);
+        fclose(inputImageFile);
+        return false;
+    }
+    else {
+        printf("Successfully read %u bytes from [%s]\n\n", inputSize, fileName);
+    }
     fclose(inputImageFile);
-    return false;
-  }
-  else {
-    printf("Successfully read %u bytes from [%s]\n\n", inputSize, fileName);
-  }
-  fclose(inputImageFile);
-  printf("inputImage closed.\n\n");
+    printf("Image file closed.\n\n");
 
-  if (inputImageRGB == NULL) {
-    printf("inputImageFxp null\n");
-    throw std::runtime_error("DMA allocation failure, terminating");
-  }
-  // Convert image from RGB 8-8-8 pixels to fxp, normalized to [0.0-1.0)
-  for (uint32_t ii = 0; ii < inputSize; ++ ii) {
-    //printf("Iteration: %u\n", ii); //failing at 49152
-    inputImageFxp[ii] = Float2Fxp((inputImageRGB[ii]/255.0), DECIMALS);
-  }
-  printf("inputImage converted.\n\n");
-  return true;
+    if (debug) {
+      printf("First 50 positions of image in RGB: ");
+      for (uint32_t ii = 0; ii < 50; ii++) {
+        printf("%u", inputImageRGB[ii]);
+      }
+    }
+
+    // Convert each pixel from [0..255] to float [0..1], then to fixed-point.
+    for (uint32_t i = 0; i < inputSize; i++) {
+        float normalized = (float)inputImageRGB[i] / 255.0f;
+        inputImageFxp[i] = Float2Fxp(normalized, DECIMALS);
+    }
+    
+    printf("Image converted to FxP.\n\n");
+
+    return true;
 }
 
-TFXP Inference(TFXP * inputImageFxp, TFXP * buffer0, TFXP * buffer1, TFXP ** fxpWeights, TFXP ** fxpBiases, TTimes & times)
+
+TFXP Inference(TFXP * inputImageFxp,
+               TFXP * buffer0,
+               TFXP * buffer1,
+               TFXP ** fxpWeights,
+               TFXP ** fxpBiases,
+               TTimes & times)
 {
   printf("\n");
   printf("============================================\n");
@@ -411,150 +429,321 @@ TFXP Inference(TFXP * inputImageFxp, TFXP * buffer0, TFXP * buffer1, TFXP ** fxp
   
   uint32_t iLayer, size;
   struct timespec start, end;
-  CConv2DDriver convolver;
-  //printf("Inference bias input 1 = %u\n", *fxpBiases[0]);
-
+  CConv2DDriver convolver(true);
+  bool debug = 1;
+  
   if (convolver.Open(CONV2D_HW_ADDR, MAP_SIZE) != CAccelDriver::OK) {
     printf("Error opening hardware accelerator driver.\n");
     return -1;
   }
-  else {
-    printf("Accelerator opened successfully\n");
-  }
-  iLayer = 0, size = 256;
-  //printf("LayerShapes[iLayer][1] = %u\n", LayerShapes[iLayer][1]);
-  //printf("inputImageFxp (first element) = %u\n", *inputImageFxp);
-  //printf("buffer0 (first element) = %u\n", *buffer0);
-  //printf("buffer1 (first element) = %u\n", *buffer1);
-  //printf("fxpWeights[0] (first element) = %u\n", *fxpWeights[0]);
-  //printf("fxpBiases[0] (first element) = %u\n", *fxpBiases[0]);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  //printf("Calling convolver...\n");
-  convolver.Conv2D_HW(inputImageFxp, buffer0, fxpWeights[iLayer], LayerShapes[iLayer][1], LayerShapes[iLayer][0], size, size);
-  //printf("Conv_HW run successfully...\n");
-  size -= 2;
-  //printf("Starting AddBiases...\n");
-  printf("Conv2D: buffer0[0] = %u\n", buffer0[0]);
-  printf("Conv2D: buffer1[0] = %u\n\n", buffer1[0]);
-  
-  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
-  //printf("AddBiases run successfully...\n");
-  //ReLU(buffer0, LayerShapes[iLayer][1], size, size);
-  //printf("ReLU run successfully...\n");
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  times.timeConv[iLayer] = CalcTimeDiff(end, start);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  //printf("Time computations finished...\n");
-  MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
-  //printf("MaxPool completed...\n");
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  //printf("Time computations finished...\n");
-  times.timeMaxPool[iLayer] = CalcTimeDiff(end, start);
-  ++ iLayer;
-  //printf("Size = 256 Complete\n");
 
-  size = 127;
+  buffer0 = (TFXP *)convolver.AllocDMACompatible(4129024 * sizeof(TFXP));
+  buffer1 = (TFXP *)convolver.AllocDMACompatible(1032256 * sizeof(TFXP));
+  
+  if(debug) {
+    printf("\n\nInitial Values\n");
+    printf("inputImageFxp (first element) = %u\n", *inputImageFxp);
+    printf("buffer0 (first element) = %u\n", *buffer0);
+    printf("buffer1 (first element) = %u\n", *buffer1);
+    printf("fxpWeights[0] (first element) = %u\n", *fxpWeights[0]);
+    printf("fxpBiases[0] (first element) = %u\n", *fxpBiases[0]);
+    printf("=============================\n");
+  }
+
+  uint32_t inc = 0;
+
+  //=============================Size256=============================//
+
+  iLayer = 0, size = 256;
+  if (debug) {
+    printf("Size = %u, Layer = %u\n", size, iLayer);
+  }
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  convolver.Conv2D_HW(buffer1, buffer0, fxpWeights[iLayer], LayerShapes[iLayer][1], LayerShapes[iLayer][0], size, size);
+  convolver.Conv2D_HW(inputImageFxp, buffer0, fxpWeights[iLayer],
+                      LayerShapes[iLayer][1],
+                      LayerShapes[iLayer][0],
+                      size, size);
   size -= 2;
+  if (debug) {
+    printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
+  }
+
   AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
+  if (debug) { 
+    printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
   ReLU(buffer0, LayerShapes[iLayer][1], size, size);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeConv[iLayer] = CalcTimeDiff(end, start);
+  if (debug) {
+    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeMaxPool[iLayer] = CalcTimeDiff(end, start);
-  ++ iLayer;
-  //printf("Size = 127 Complete\n");
+  if (debug) {
+    printf("MaxPool %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("MaxPool %u: buffer1[0] = %u\n", inc, buffer1[0]);
+    ++inc;
+    printf("\n\n");
+  }
 
+  ++iLayer;
+
+  //=============================Size127=============================//
+  size = 127;
+  if (debug) {
+    printf("Size = %u, Layer = %u\n", size, iLayer);
+  }
+
+  clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+  convolver.Conv2D_HW(buffer1, buffer0,
+                      fxpWeights[iLayer],
+                      LayerShapes[iLayer][1],
+                      LayerShapes[iLayer][0],
+                      size, size);
+  size -= 2;
+  if (debug) {
+    printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
+  }
+
+  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
+  if (debug) {
+    printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
+  ReLU(buffer0, LayerShapes[iLayer][1], size, size);
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeConv[iLayer] = CalcTimeDiff(end, start);
+  if (debug) {
+    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
+  clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+  MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeMaxPool[iLayer] = CalcTimeDiff(end, start);
+  if (debug) {
+    printf("MaxPool %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("MaxPool %u: buffer1[0] = %u\n", inc, buffer1[0]);
+    ++inc;
+    printf("\n\n");
+  }
+
+  ++iLayer;
+
+  //=============================Size62==============================//
 
   size = 62;
+  if (debug) {
+    printf("Size = %u, Layer = %u\n", size, iLayer);
+  }
+
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
- convolver.Conv2D_HW(buffer1, buffer0, fxpWeights[iLayer], LayerShapes[iLayer][1], LayerShapes[iLayer][0], size, size);
+  convolver.Conv2D_HW(buffer1, buffer0,
+                      fxpWeights[iLayer],
+                      LayerShapes[iLayer][1],
+                      LayerShapes[iLayer][0],
+                      size, size);
   size -= 2;
+  if (debug) {
+    printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
+  }
+
   AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
+  if (debug) {
+    printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
   ReLU(buffer0, LayerShapes[iLayer][1], size, size);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeConv[iLayer] = CalcTimeDiff(end, start);
+  if (debug) {
+    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeMaxPool[iLayer] = CalcTimeDiff(end, start);
-  ++ iLayer;
-  //printf("Size = 62 Complete\n");
+  if (debug) {
+    printf("MaxPool %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("MaxPool %u: buffer1[0] = %u\n", inc, buffer1[0]);
+    ++inc;
+    printf("\n\n");
+  }
+
+  ++iLayer;
+
+  //=============================Size30==============================//
 
   size = 30;
-  clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  convolver.Conv2D_HW(buffer1, buffer0, fxpWeights[iLayer], LayerShapes[iLayer][1], LayerShapes[iLayer][0], size, size);
-  size -= 2;
-  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
-  ReLU(buffer0, LayerShapes[iLayer][1], size, size);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  times.timeConv[iLayer] = CalcTimeDiff(end, start);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  times.timeMaxPool[iLayer] = CalcTimeDiff(end, start);
-  ++ iLayer;
-  //printf("Size = 30 Complete\n");
+  if (debug) {
+    printf("Size = %u, Layer = %u\n", size, iLayer);
+  }
 
-  size = 14;
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  convolver.Conv2D_HW(buffer1, buffer0, fxpWeights[iLayer], LayerShapes[iLayer][1], LayerShapes[iLayer][0], size, size);
+  convolver.Conv2D_HW(buffer1, buffer0,
+                      fxpWeights[iLayer],
+                      LayerShapes[iLayer][1],
+                      LayerShapes[iLayer][0],
+                      size, size);
   size -= 2;
+  if(debug) {
+    printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
+  }
+
   AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
+  if(debug) {
+      printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+  
   ReLU(buffer0, LayerShapes[iLayer][1], size, size);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeConv[iLayer] = CalcTimeDiff(end, start);
+  if (debug) {
+    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeMaxPool[iLayer] = CalcTimeDiff(end, start);
-  //printf("Size = 14 Complete\n");
+  if(debug) {
+    printf("MaxPool %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("MaxPool %u: buffer1[0] = %u\n", inc, buffer1[0]);
+    ++inc;
+    printf("\n\n");
+  }
+
+  ++iLayer;
+
+  //=============================Size14==============================//
+  size = 14;
+
+  if(debug) {
+    printf("Size = %u, Layer = %u\n", size, iLayer);
+  }  
+  
+  clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+  convolver.Conv2D_HW(buffer1, buffer0,
+                      fxpWeights[iLayer],
+                      LayerShapes[iLayer][1],
+                      LayerShapes[iLayer][0],
+                      size, size);
+  size -= 2;
+  if(debug) {
+    printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
+  }
+
+  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
+  if(debug) {
+      printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
+  ReLU(buffer0, LayerShapes[iLayer][1], size, size);
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeConv[iLayer] = CalcTimeDiff(end, start);
+  if (debug) {
+    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
+  }
+
+  clock_gettime(CLOCK_MONOTONIC_RAW, &start);
+  MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeMaxPool[iLayer] = CalcTimeDiff(end, start);
+  if(debug) {
+    printf("MaxPool %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("MaxPool %u: buffer1[0] = %u\n", inc, buffer1[0]);
+    ++inc;
+    printf("\n\n");
+  }
+
+  //=============================Size6==============================//
+  uint32_t incf = 0;
+  uint32_t incd = 0;
 
   size = 6;
+  if(debug) {
+    printf("Size = %u, Layer = %u\n", size, iLayer);
+    printf("Beginning operations Flatten, Dense, and Sigmoid\n\n");
+  }  
+
   // Flatten the output for the next dense layer: [row, col, filter]
   // From [64, 6, 6] to [2304]
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   Flatten(buffer1, buffer0, LayerShapes[iLayer][1], size, size);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeFlatten = CalcTimeDiff(end, start);
-  ++ iLayer;
-  //printf("Output flattened to 6x6x64\n");
+  if (debug) {
+    printf("Flatten %u: buffer0[0] = %u\n", incf, buffer0[0]);
+    ++ incf;
+    printf("\n\n");
+  }
 
-  //printf("Flatten: buffer0[0] = %u\n\n", buffer0[0]);
+  ++iLayer;
+  //------------Layer Increase ---------//
+  if(debug) {
+    printf("Size = %u, Layer = %u\n", size, iLayer);
+  }
 
-  // Output is now 6x6x64 --> 2304. Goes to a fully-connected layer.
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  printf("Starting Dense function...\n");
-  Dense(buffer0, buffer1, LayerShapes[iLayer][0], LayerShapes[iLayer][1], fxpWeights[iLayer], fxpBiases[iLayer]);
-  printf("Starting ReLU function...\n");
+  Dense(buffer0, buffer1, LayerShapes[iLayer][0], LayerShapes[iLayer][1],
+        fxpWeights[iLayer], fxpBiases[iLayer]);
   ReLU(buffer1, 1, LayerShapes[iLayer][1], 1);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeDense[iLayer] = CalcTimeDiff(end, start);
-  ++ iLayer;
+  if (debug) {
+    printf("Dense %u: buffer0[0] = %u\n", incd, buffer0[0]);
+    printf("Dense %u: buffer1[0] = %u\n", incd, buffer1[0]);
+    ++ incd;
+    printf("ReLU %u: buffer1[0] = %u\n\n", inc, buffer0[0]);
+    ++ inc;
+    printf("\n\n");
+  }
 
-  printf("Dense1: buffer0[0] = %u\n\n", buffer0[0]);
+  ++iLayer;
+//------------Layer Increase ---------//
 
-  printf("Output to array of 512 values\n");
+  if(debug) {
+    printf("Size = %u, Layer = %u\n", size, iLayer);
+  }
+
   // Output is now an array of 512 values. Goes to the final fully-connected layer.
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  Dense(buffer1, buffer0, LayerShapes[iLayer][0], LayerShapes[iLayer][1], fxpWeights[iLayer], fxpBiases[iLayer]);
+  Dense(buffer1, buffer0, LayerShapes[iLayer][0], LayerShapes[iLayer][1],
+        fxpWeights[iLayer], fxpBiases[iLayer]);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeDense[iLayer] = CalcTimeDiff(end, start);
-
-  printf("Dense2: buffer0[0] = %u\n\n", buffer0[0]);
+  if (debug) {
+      printf("Dense %u: buffer0[0] = %u\n", incd, buffer0[0]);
+      printf("Dense %u: buffer1[0] = %u\n", incd, buffer1[0]);
+      ++ incd;
+  }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   Sigmoid(buffer0, 1);
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeSigmoid = CalcTimeDiff(end, start);
+  if (debug) {
+    printf("Sigmoid buffer0[0] = %u\n\n", buffer0[0]);
+    printf("\n\n");
+  }
 
-  printf("Sigmoid buffer0[0] = %u\n\n", buffer0[0]);
-
+  if (buffer1 != NULL)
+	  convolver.FreeDMACompatible(buffer1);
+  
   return buffer0[0];
 }
+
 
 //uint64_t CalcTimeDiff(const struct timespec & time2, const struct timespec & time1)
 //{
