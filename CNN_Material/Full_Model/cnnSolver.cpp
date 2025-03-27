@@ -119,8 +119,8 @@ if (argc != 2) {
   printf("Times initialized, calling Inference...\n");
   //printf("biases input to Inference = %u\n", **biases);
 
-  //buffer0 = (TFXP *)accelDriver.AllocDMACompatible(4129024 * sizeof(TFXP));
-  //buffer1 = (TFXP *)accelDriver.AllocDMACompatible(1032256 * sizeof(TFXP));
+  buffer0 = (TFXP *)convolver.AllocDMACompatible(4129024 * sizeof(TFXP));
+  buffer1 = (TFXP *)convolver.AllocDMACompatible(1032256 * sizeof(TFXP));
   TFXP finalPrediction = Inference(inputImageFxp, buffer0, buffer1, weights, biases, times, convolver);
   printf("OUTPUT: %0.8lf --> %s\n", Fxp2Float(finalPrediction, DECIMALS),
     Fxp2Float(finalPrediction) < 0.5 ? "CAT" : "DOG");
@@ -129,20 +129,25 @@ if (argc != 2) {
   printf("Freeing weights and biases\n");
   FreeParamsHW(NUM_LAYERS, (void**)weights, convolver);
   FreeParamsHW(NUM_LAYERS, (void**)biases, convolver);
-  //FreeParamsHW(NUM_LAYERS, (void**)buffer0, convolver);
-  printf("Freeing buffer0\n");
-
-  convolver.FreeDMACompatible(buffer0);
+  
 
 
 
 
-  if (buffer0 != nullptr)
-	  convolver.FreeDMACompatible(buffer0);
-  if (buffer1 != nullptr)
+  if (buffer1 != nullptr) {
+    printf("Freeing buffer 1\n");
 	  convolver.FreeDMACompatible(buffer1);
-  if (inputImageFxp != nullptr)
-	  convolver.FreeDMACompatible(inputImageFxp);
+  }
+
+  if (buffer0 != nullptr) {
+    printf("Freeing buffer 0\n");
+	  convolver.FreeDMACompatible(buffer0);
+  }
+
+  if (inputImageFxp != nullptr) {
+    printf("Freeing inputImageFxp\n");
+    	convolver.FreeDMACompatible(inputImageFxp);
+  }
   
   
   return Fxp2Float(finalPrediction) < 0.5 ? 0 : 1;;

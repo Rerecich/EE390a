@@ -437,8 +437,8 @@ TFXP Inference(TFXP * inputImageFxp,
   //  return -1;
   //}
 
-  buffer0 = (TFXP *)convolver.AllocDMACompatible(4129024 * sizeof(TFXP));
-  buffer1 = (TFXP *)convolver.AllocDMACompatible(1032256 * sizeof(TFXP));
+  //buffer0 = (TFXP *)convolver.AllocDMACompatible(4129024 * sizeof(TFXP));
+  //buffer1 = (TFXP *)convolver.AllocDMACompatible(1032256 * sizeof(TFXP));
   
   if(debug) {
     printf("\n\nInitial Values\n");
@@ -740,7 +740,12 @@ TFXP Inference(TFXP * inputImageFxp,
 
   if (buffer1 != NULL)
 	  convolver.FreeDMACompatible(buffer1);
+  //if(buffer0 != NULL) {
+  //  memcpy(output, buffer0, 4129024 * sizeof(TFXP));
+   // convolver.FreeDMACompatible(buffer0);
+  //}
   
+  //return buffer0[0];
   return buffer0[0];
 }
 
