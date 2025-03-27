@@ -187,6 +187,7 @@ int main(int argc, char ** argv)
       memset(outputSW, 0, currentOutputSize * sizeof(TFXP));
       clock_gettime(CLOCK_MONOTONIC_RAW, &start);
       Conv2D(input, outputSW, coeffs, channels, filters, width, height, 3, 3);
+      printf("OutputSW done\n");
       clock_gettime(CLOCK_MONOTONIC_RAW, &end);
       elapsedTimeSW += CalcTimeDiff(end, start);
     }

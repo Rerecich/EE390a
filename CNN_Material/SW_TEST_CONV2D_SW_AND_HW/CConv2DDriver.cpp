@@ -7,7 +7,7 @@
 #include "CConv2DDriver.hpp"
 
 uint32_t CConv2DDriver::Conv2D_HW(void *input, void * output, void * coeffs,
-      uint32_t numFilters, uint32_t numChannels,
+      uint32_t numChannels, uint32_t numFilters,
       uint32_t inputWidth, uint32_t inputHeight,
       uint32_t convWidth, uint32_t convHeight)
 {
@@ -85,7 +85,7 @@ uint32_t CConv2DDriver::Conv2D_HW(void *input, void * output, void * coeffs,
   //printf("You were supposed to add your code here...\n"); /** Wait for done signal @todo */
     do {
         status = regs->control;
-        //printf(" do: status = regs->control;\n");
+        printf("\rdo: status = regs->control;");
        
       } while ( ( (status & 2) != 2) ); // wait until ap_done==1
 

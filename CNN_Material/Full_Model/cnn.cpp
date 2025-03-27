@@ -67,6 +67,7 @@ void Conv2D(TFXP *input, TFXP * output, TFXP * filters,
       uint32_t inputWidth, uint32_t inputHeight,
       uint32_t convWidth, uint32_t convHeight)
 {
+  printf("!! Calling Conv2D for Software !! \n");
   for (uint32_t iFilter = 0; iFilter < numFilters; ++ iFilter) {
     for (uint32_t y = 0; y < (inputHeight-2); ++y) {
       for (uint32_t x = 0; x < (inputWidth-2); ++ x) {
