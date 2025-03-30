@@ -39,7 +39,7 @@ inline TFXP FXP_Mult(TFXP a, TFXP b, uint32_t decimalBits = DECIMALS)
 void Conv2D_SW(TFXP *input, TFXP * output, TFXP * filters, TFXP * biases,
       ap_uint<32> numChannels, ap_uint<32> numFilters,
 	  ap_uint<32> inputWidth, ap_uint<32> inputHeight,
-	  ap_uint<32> convWidth = 3, ap_uint<32> convHeight = 3, ap_uint<1> apply_relu)
+	  ap_uint<32> convWidth = 3, ap_uint<32> convHeight = 3, ap_uint<1> apply_relu = 1)
 {
 	printf("Conv2D_SW Initialized");
 	for (uint32_t iFilter = 0; iFilter < numFilters; ++ iFilter) {
@@ -112,7 +112,7 @@ int main(int argc, char ** argv)
     memset(outputSW, 0, currentOutputSize * sizeof(TFXP));
     memset(outputHW, 0, currentOutputSize * sizeof(TFXP));
     printf("  SW\n");
-    Conv2D_SW(input, outputSW, coeffs, channels, filters, width, height, 3, 3);
+    Conv2D_SW(input, outputSW, coeffs, biases, channels, filters, width, height, 3, 3, 1);
 
     printf("  HW\n");
     Conv2D_HW(input, outputHW, coeffs, biases, channels, filters, width, height, 3, 3, 1);
