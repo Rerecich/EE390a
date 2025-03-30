@@ -35,12 +35,19 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
 
 
 	for (ap_uint<32> iFilter = 0; iFilter < numFilters; ++ iFilter) {
+		TFXP coeff_cache[NUM_CHANNELS][3][3]; // local ish cache
+		//#pragma HLS ARRAY_PARTITION variable=coeff_cache complete dim=1 (don't acually know what this is so we'll leave it for now)
+
 	    for (ap_uint<32> y = 0; y < (inputHeight-2); ++y) {
+
 	      for (ap_uint<32> x = 0; x < (inputWidth-2); ++ x) {
 	        TFXP acc;
 	        acc = 0;
+
 	        for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++ iChannel) {
+
 	          for (ap_uint<32> cy = 0; cy < convHeight; ++ cy) {
+				
 	            for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
 	              //acc += filters[iFilter][iChannel][cy][cx] * input[iChannel][y+cy][x+cx];
 	              TFXP pixelValue, filterValue;
