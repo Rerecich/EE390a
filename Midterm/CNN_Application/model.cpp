@@ -407,27 +407,21 @@ TFXP Inference(TFXP * inputImageFxp,
     printf("Size = %u, Layer = %u\n", size, iLayer);
   }
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  convolver.Conv2D_HW(inputImageFxp, buffer0, fxpWeights[iLayer],
-                      LayerShapes[iLayer][0],
-                      LayerShapes[iLayer][1],
-                      size, size);
+  convolver.Conv2D_HW(inputImageFxp, buffer0, fxpWeights[iLayer], fxpBiases[iLayer],
+                    LayerShapes[iLayer][0],
+                    LayerShapes[iLayer][1],
+                    size, size, // input width and height
+                    3, 3,   // convWidth, convHeight
+                    1);     // apply_relu
   size -= 2;
+  
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeConv[iLayer] = CalcTimeDiff(end, start);
   if (DEBUG) {
     printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
     printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
   }
 
-  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
-  if (DEBUG) { 
-    printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
-
-  ReLU(buffer0, LayerShapes[iLayer][1], size, size);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  times.timeConv[iLayer] = CalcTimeDiff(end, start);
-  if (DEBUG) {
-    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
@@ -449,28 +443,21 @@ TFXP Inference(TFXP * inputImageFxp,
   }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  convolver.Conv2D_HW(buffer1, buffer0,
-                      fxpWeights[iLayer],
-                      LayerShapes[iLayer][0],
-                      LayerShapes[iLayer][1],
-                      size, size);
+  convolver.Conv2D_HW(buffer1, buffer0, fxpWeights[iLayer], fxpBiases[iLayer],
+                    LayerShapes[iLayer][0],
+                    LayerShapes[iLayer][1],
+                    size, size, // input width and height
+                    3, 3,   // convWidth, convHeight
+                    1);     // apply_relu
   size -= 2;
+  
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeConv[iLayer] = CalcTimeDiff(end, start);
   if (DEBUG) {
     printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
     printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
   }
 
-  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
-  if (DEBUG) {
-    printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
-
-  ReLU(buffer0, LayerShapes[iLayer][1], size, size);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  times.timeConv[iLayer] = CalcTimeDiff(end, start);
-  if (DEBUG) {
-    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
@@ -493,27 +480,19 @@ TFXP Inference(TFXP * inputImageFxp,
   }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  convolver.Conv2D_HW(buffer1, buffer0,
-                      fxpWeights[iLayer],
-                      LayerShapes[iLayer][0],
-                      LayerShapes[iLayer][1],
-                      size, size);
+  convolver.Conv2D_HW(buffer1, buffer0, fxpWeights[iLayer], fxpBiases[iLayer],
+                    LayerShapes[iLayer][0],
+                    LayerShapes[iLayer][1],
+                    size, size, // input width and height
+                    3, 3,   // convWidth, convHeight
+                    1);     // apply_relu
   size -= 2;
-  if (DEBUG) {
-    printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
-    printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
-  }
-
-  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
-  if (DEBUG) {
-    printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
-
-  ReLU(buffer0, LayerShapes[iLayer][1], size, size);
+  
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeConv[iLayer] = CalcTimeDiff(end, start);
   if (DEBUG) {
-    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
   }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
@@ -537,28 +516,21 @@ TFXP Inference(TFXP * inputImageFxp,
   }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  convolver.Conv2D_HW(buffer1, buffer0,
-                      fxpWeights[iLayer],
-                      LayerShapes[iLayer][0],
-                      LayerShapes[iLayer][1],
-                      size, size);
+ convolver.Conv2D_HW(buffer1, buffer0, fxpWeights[iLayer], fxpBiases[iLayer],
+                    LayerShapes[iLayer][0],
+                    LayerShapes[iLayer][1],
+                    size, size, // input width and height
+                    3, 3,   // convWidth, convHeight
+                    1);     // apply_relu
   size -= 2;
+  
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeConv[iLayer] = CalcTimeDiff(end, start);
   if(DEBUG) {
     printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
     printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
   }
 
-  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
-  if(DEBUG) {
-      printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
-  
-  ReLU(buffer0, LayerShapes[iLayer][1], size, size);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  times.timeConv[iLayer] = CalcTimeDiff(end, start);
-  if (DEBUG) {
-    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);
@@ -581,28 +553,21 @@ TFXP Inference(TFXP * inputImageFxp,
   }  
   
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-  convolver.Conv2D_HW(buffer1, buffer0,
-                      fxpWeights[iLayer],
-                      LayerShapes[iLayer][0],
-                      LayerShapes[iLayer][1],
-                      size, size);
+  convolver.Conv2D_HW(buffer1, buffer0, fxpWeights[iLayer], fxpBiases[iLayer],
+                    LayerShapes[iLayer][0],
+                    LayerShapes[iLayer][1],
+                    size, size, // input width and height
+                    3, 3,   // convWidth, convHeight
+                    1);     // apply_relu
   size -= 2;
+  
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeConv[iLayer] = CalcTimeDiff(end, start);
   if(DEBUG) {
     printf("Conv2D %u: buffer0[0] = %u\n", inc, buffer0[0]);
     printf("Conv2D %u: buffer1[0] = %u\n", inc, buffer1[0]);
   }
 
-  AddBiases(buffer0, fxpBiases[iLayer], LayerShapes[iLayer][1], size, size);
-  if(DEBUG) {
-    printf("AddBiases %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
-
-  ReLU(buffer0, LayerShapes[iLayer][1], size, size);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  times.timeConv[iLayer] = CalcTimeDiff(end, start);
-  if (DEBUG) {
-    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
-  }
 
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   MaxPool(buffer0, buffer1, LayerShapes[iLayer][1], size, size);

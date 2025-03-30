@@ -1,4 +1,4 @@
-<project xmlns="com.autoesl.autopilot.project" top="" name="Vitis_Midterm">
+<project xmlns="com.autoesl.autopilot.project" top="Conv2D_HW" name="Vitis_Midterm">
     <includePaths/>
     <libraryPaths/>
     <Simulation>
