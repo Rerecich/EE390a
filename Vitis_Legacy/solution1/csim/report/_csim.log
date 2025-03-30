@@ -1,0 +1,50 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../HLS_Legacy/conv2DTestbench.cpp in release mode
+   Compiling ../../../../HLS_Legacy/conv2d.cpp in release mode
+   Generating csim.exe
+Evaluating execution for 3 --> 32
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
+Evaluating execution for 16 --> 16
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
+Evaluating execution for 32 --> 32
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
+
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************
