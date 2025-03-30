@@ -1,6 +1,0 @@
-<pragmas>
-<pragma file="HLS/adder.cpp" line="6" pragmaType="interface" parentfunction="Adder" mode="ap_ctrl_none" port="return" name=""/>
-<pragma file="HLS/adder.cpp" line="7" pragmaType="interface" parentfunction="Adder" mode="s_axilite" port="a" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
-<pragma file="HLS/adder.cpp" line="8" pragmaType="interface" parentfunction="Adder" mode="s_axilite" port="b" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
-<pragma file="HLS/adder.cpp" line="9" pragmaType="interface" parentfunction="Adder" mode="s_axilite" port="res" bundle="" offset="-1" name="" clock="" impl="" register="0"/>
-</pragmas>
