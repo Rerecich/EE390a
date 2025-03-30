@@ -51,14 +51,11 @@ void AddBiases(TFXP * input, TFXP * biases, uint32_t channels, uint32_t width, u
 {
   
   for (uint32_t iChannel = 0; iChannel < channels; ++ iChannel) {
-    //printf("iChannel = %u\n", iChannel);
     for (uint32_t iPixel = 0; iPixel < width * height; ++ iPixel) {
       *input = *input + *biases;
       ++ input;
-      //printf("iChannel = %u\n", iChannel);
     }
     ++ biases;
-    //printf("iChannel = %u\n", iChannel);
   }
 }
 

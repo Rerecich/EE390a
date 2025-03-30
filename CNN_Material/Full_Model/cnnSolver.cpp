@@ -16,9 +16,7 @@ const uint32_t CONV2D_HW_ADDR = 0x40000000; // From Vivado's address editor
 const uint32_t INPUT_SIZE = (256*256*3);
 
 TFXP * weights[NUM_LAYERS];
-//TFXP *weights = nullptr;
 TFXP * biases[NUM_LAYERS];
-//TFXP *biases = nullptr;
 TTimes times;
 uint8_t inputImage[INPUT_SIZE];   // RGB pixel data separated in planes.
 TFXP *inputImageFxp = nullptr;
@@ -27,16 +25,14 @@ TFXP *buffer1 = nullptr;
 
 void InitTimes(TTimes & times);
 void PrintTimes(TTimes & times, uint32_t numLayers);
-//void CheckDMAAllocations(TFXP* inputImageFxp, TFXP* buffer0, TFXP* buffer1);
 
 
 int main(int argc, char ** argv)
 {
-  //CConv2DDriver convolver(true);
-  CConv2DDriver convolver(true);
-  uint32_t debug = 1;
+  CConv2DDriver convolver(false);
+  uint32_t debug = 0;
   
-if (argc != 2) {
+  if (argc != 2) {
     printf("Usage: cnnSolver image.rgba.planar\n");
     return -1;
   }
@@ -51,23 +47,7 @@ if (argc != 2) {
     printf("Error opening hardware accelerator driver.\n");
     return -1;
   }
-  //else {
-    //printf("....SUCCESS\n");
-  //}
-
-  ///////////////////////////////////////////////////
-  //uint32_t testSize = 4*1024*1024 * 4;
-  //printf("Test size = %u\n", testSize);
-  //uint32_t * input1 = (uint32_t *)accelDriver.AllocDMACompatible(4*1024*1024 * 4); 
-  //printf("Input1: Virtual address: 0x%08X (%u)\n", (uint32_t)input1, (uint32_t)input1);
-  //TFXP * inputImageFxp = (TFXP *)accelDriver.AllocDMACompatible(uint32_t(INPUT_SIZE * sizeof(TFXP)));
-  //TFXP * inputImageFxp = (TFXP *)accelDriver.AllocDMACompatible(INPUT_SIZE);
-  //buffer0 = (TFXP *)accelDriver.AllocDMACompatible(4129024 * sizeof(TFXP));
- 
-  //buffer1 = (TFXP *)accelDriver.AllocDMACompatible(1032256 * sizeof(TFXP));
-  //buffer1 = (TFXP *)accelDriver.AllocDMACompatible(1032256);
-  //CheckDMAAllocations(inputImageFxp, buffer0, buffer1);
-
+  
   ///////////////////////////////////////////////////
   if (debug) {
     printf("Loading CNN model and converting to FxP...\n");
@@ -77,17 +57,16 @@ if (argc != 2) {
     printf("--> Error loading the CNN model and converting to FxP!\n");
     return -1;
   }
-  //else {
-  //  printf("....SUCCESS\n");
-  //}
+  
   if (debug) {
     printf("After LoadModelInFxp: \n");
     printf("Weights = %u\n", **weights);
     printf("Biases = %u\n", **biases);
+    printf("Loading image file in FxP...");
   }
   ///////////////////////////////////////////////////
 
-  printf("Loading image file in FxP...");
+  
   
   inputImageFxp = (TFXP *)convolver.AllocDMACompatible(INPUT_SIZE * sizeof(TFXP));
   if (!inputImageFxp) {
@@ -101,9 +80,7 @@ if (argc != 2) {
     FreeParams(NUM_LAYERS, (void**)biases);
     return -1;
   }
-  //else {
-   // printf("....SUCCESS\n");
-  //}
+  
   if (debug) {
     printf("\nAfter LoadImageInFxp: \n");
     for (uint32_t i = 0; i < 50; i++) 
@@ -111,13 +88,14 @@ if (argc != 2) {
     //printf("inputImageFxP = %u/n", *inputImageFxp);
   }
 
- // if (inputImageFxp != NULL)
-	//  accelDriver.FreeDMACompatible(inputImageFxp);
+
   ///////////////////////////////////////////////////
-  printf("Calling InitTimes.......\n");
+  if (debug)
+    printf("Calling InitTimes.......\n");
+
   InitTimes(times);
-  printf("Times initialized, calling Inference...\n");
-  //printf("biases input to Inference = %u\n", **biases);
+  if (debug)
+    printf("Times initialized, calling Inference...\n");
 
   buffer0 = (TFXP *)convolver.AllocDMACompatible(4129024 * sizeof(TFXP));
   buffer1 = (TFXP *)convolver.AllocDMACompatible(1032256 * sizeof(TFXP));
@@ -126,30 +104,34 @@ if (argc != 2) {
     Fxp2Float(finalPrediction) < 0.5 ? "CAT" : "DOG");
   PrintTimes(times, NUM_LAYERS);
 
-  printf("Freeing weights and biases\n");
+  if (debug)
+    printf("Freeing weights and biases\n");
   FreeParamsHW(NUM_LAYERS, (void**)weights, convolver);
   FreeParamsHW(NUM_LAYERS, (void**)biases, convolver);
   
 
-
-
+  ///////////////////////////////////////////////////
 
   if (buffer1 != nullptr) {
-    printf("Freeing buffer 1\n");
+    if (debug)
+      printf("Freeing buffer 1\n");
 	  convolver.FreeDMACompatible(buffer1);
   }
 
   if (buffer0 != nullptr) {
-    printf("Freeing buffer 0\n");
+    if (debug)
+      printf("Freeing buffer 0\n");
 	  convolver.FreeDMACompatible(buffer0);
   }
 
   if (inputImageFxp != nullptr) {
-    printf("Freeing inputImageFxp\n");
-    	convolver.FreeDMACompatible(inputImageFxp);
+    if (debug) 
+      printf("Freeing inputImageFxp\n");
+    convolver.FreeDMACompatible(inputImageFxp);
   }
   
-  
+  ///////////////////////////////////////////////////
+
   return Fxp2Float(finalPrediction) < 0.5 ? 0 : 1;;
 
 }

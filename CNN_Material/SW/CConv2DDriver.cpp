@@ -51,8 +51,6 @@ uint32_t CConv2DDriver::Conv2D_HW(void *input, void * output, void * coeffs,
   }
 
   // Write to registers (todo)
-  //printf("You were supposed to add your code here...\n"); /** Program accel regs @todo */
-
   regs -> input = (uint32_t)phyInput;
   regs -> output = (uint32_t)phyOutput;
   regs -> coeffs = (uint32_t)phyCoeffs;
@@ -67,30 +65,23 @@ uint32_t CConv2DDriver::Conv2D_HW(void *input, void * output, void * coeffs,
   if (logging)
     printf("\nCConv2DDriver.Conv2D_HW: Starting accel...\n");
   // Send start command to the accel
-  //printf("You were supposed to add your code here...\n"); /** Send start command @todo */
   	clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-    //printf("Clock started \n");
 
     status = regs->control;
-    //printf("clock_gettime(CLOCK_MONOTONIC_RAW, &start);\n");
 
     status |= 1;  // Set to 1 ap_start ; or operation, lowest bit gets one
-    //printf("cstatus |= 1; \n");
 
     regs->control = status;
-    //printf(" regs->control = status;\n");
 
 
   // Wait for done signal from the accel
-  //printf("You were supposed to add your code here...\n"); /** Wait for done signal @todo */
     do {
         status = regs->control;
-        printf("\rdo: status = regs->control;");
+        //printf("\rdo: status = regs->control;");
        
       } while ( ( (status & 2) != 2) ); // wait until ap_done==1
 
       clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-      //printf(" clock_gettime(CLOCK_MONOTONIC_RAW, &end);\n");
       elapsed = CalcTimeDiff(end, start);
 
 
