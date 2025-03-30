@@ -1,0 +1,82 @@
+INFO: [HLS 200-10] Running '/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'rerecich' on host 'diskless' (Linux_x86_64 version 5.15.0-60-generic) on Tue Mar 25 18:56:37 CET 2025
+INFO: [HLS 200-10] On os Ubuntu 22.04 LTS
+INFO: [HLS 200-10] In directory '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material'
+Sourcing Tcl script '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/csim.tcl'
+INFO: [HLS 200-1510] Running: source /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1/csim.tcl
+INFO: [HLS 200-1510] Running: open_project Vitis_CNN_HLS 
+INFO: [HLS 200-10] Opening project '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS'.
+INFO: [HLS 200-1510] Running: set_top Conv2D_HW 
+INFO: [HLS 200-1510] Running: add_files HLS/conv2d.cpp 
+INFO: [HLS 200-10] Adding design file 'HLS/conv2d.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files HLS/conv2d.h 
+INFO: [HLS 200-10] Adding design file 'HLS/conv2d.h' to the project
+INFO: [HLS 200-1510] Running: add_files -tb HLS/conv2DTestbench.cpp -cflags -Wno-unknown-pragmas -Wno-unknown-pragmas -csimflags -Wno-unknown-pragmas 
+INFO: [HLS 200-10] Adding test bench file 'HLS/conv2DTestbench.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/Vitis_CNN_HLS/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2022.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1464] Running solution command: config_export -output=/home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/IP-catalog
+INFO: [HLS 200-1464] Running solution command: config_export -rtl=verilog
+INFO: [HLS 200-1510] Running: set_part xc7z020-clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: config_export -format ip_catalog -output /home/rerecich/EE-390a/CNN/Conv2D_HW_InitVersion_Examples/Conv2D_HW_InitVersion_Students/CNN_Material/IP-catalog -rtl verilog 
+INFO: [HLS 200-1510] Running: source ./Vitis_CNN_HLS/solution1/directives.tcl
+INFO: [HLS 200-1510] Running: set_directive_top -name Conv2D_HW Conv2D_HW 
+INFO: [HLS 200-1510] Running: csim_design -O -quiet 
+Running Dispatch Server on port: 45141
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../HLS/conv2DTestbench.cpp in release mode
+   Generating csim.exe
+Evaluating execution for 3 --> 32
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
+Evaluating execution for 16 --> 16
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
+Evaluating execution for 32 --> 32
+  SW
+Conv2D_SW Initialized  HW
+Output 0 = 5345440 and 4821152  (HW/SW)
+Output 1 = 5345440 and 4821152  (HW/SW)
+Output 2 = 5345440 and 4821152  (HW/SW)
+Output 3 = 5345440 and 4821152  (HW/SW)
+Output 4 = 5345440 and 4821152  (HW/SW)
+Output 5 = 5345440 and 4821152  (HW/SW)
+Output 6 = 5345440 and 4821152  (HW/SW)
+Output 7 = 5345440 and 4821152  (HW/SW)
+Output 8 = 5345440 and 4821152  (HW/SW)
+Output 9 = 5345440 and 4821152  (HW/SW)
+  --> OK!
+
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 385.76 seconds. CPU system time: 0.29 seconds. Elapsed time: 386.48 seconds; current allocated memory: 0.000 MB.
+INFO: [HLS 200-112] Total CPU user time: 387.29 seconds. Total CPU system time: 0.54 seconds. Total elapsed time: 398.58 seconds; peak allocated memory: 202.871 MB.

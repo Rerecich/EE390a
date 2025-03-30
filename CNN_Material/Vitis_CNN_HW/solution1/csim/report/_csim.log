@@ -1,0 +1,25 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp in debug mode
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp: In function ‘bool InitDevice(CConv2DDriver&, TFXP*&, TFXP*&, TFXP*&, bool)’:
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:135:63: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Input: Virtual address: 0x%08X (%u)\n", (uint32_t)inputHW, (uint32_t)inputHW);
+                                                               ^~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:135:82: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Input: Virtual address: 0x%08X (%u)\n", (uint32_t)inputHW, (uint32_t)inputHW);
+                                                                                  ^~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:136:64: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Output: Virtual address: 0x%08X (%u)\n", (uint32_t)outputHW, (uint32_t)outputHW);
+                                                                ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:136:84: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Output: Virtual address: 0x%08X (%u)\n", (uint32_t)outputHW, (uint32_t)outputHW);
+                                                                                    ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:137:64: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Coeffs: Virtual address: 0x%08X (%u)\n", (uint32_t)coeffsHW, (uint32_t)coeffsHW);
+                                                                ^~~~~~~~
+../../../../SW_TEST_CONV2D_SW_AND_HW/conv2DTestbench.cpp:137:84: error: cast from ‘TFXP*’ {aka ‘int*’} to ‘uint32_t’ {aka ‘unsigned int’} loses precision [-fpermissive]
+     printf("Coeffs: Virtual address: 0x%08X (%u)\n", (uint32_t)coeffsHW, (uint32_t)coeffsHW);
+                                                                                    ^~~~~~~~
+make: *** [csim.mk:78: obj/conv2DTestbench.o] Error 1
+ERR: [SIM 100] 'csim_design' failed: compilation error(s).
+INFO: [SIM 3] *************** CSIM finish ***************

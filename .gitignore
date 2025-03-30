@@ -1,0 +1,87 @@
+.vscode/
+*.ko*
+*.o
+modules.order
+*.symvers
+*.cmd
+*.tmp_versions*
+*.mod.c
+#*.dat
+NA/
+.Xil/
+vivado*.jou
+vivado*.log
+Vivado_def_val.txt
+Vivado_dump.txt
+vivado*.str
+
+# Comment the next two lines for the final submission, so that the final bitstreams are included in the repo.
+*.bit
+*.hwh
+
+# Vivado/Vitis temporary and generated files
+*.jou
+*.log
+*.str
+*.xpr
+*.xpr.cache/
+*.Xil/
+*.hw/
+*.runs/
+*.sim/
+*.cache/
+*.webtalk/
+*.ip_user_files/
+*.ipstatic/
+*.vivado/
+*.dcp
+*.mif
+*.bin
+*.bit
+*.hwh
+*.html
+*.xml
+*.csv
+*.pb
+*.tcl
+
+# HLS and Vitis generated files
+*.aps
+*.o
+*.exe
+*.so
+*.a
+*.apfmapping
+*.vitis_hls_log_all.xml
+.vitis_hls_log_all.xml
+.vitis/
+.apc/
+solution*/csim/
+solution*/impl/
+solution*/syn/
+solution*/.autopilot/
+solution*/.debug/
+solution*/csim/report/
+solution*/csim/build/
+solution*/*.log
+solution*/*.aps
+solution*/*.directive
+solution*/*.tcl
+solution*/solution*/ # just in case nested
+.project/
+.cproject/
+.settings/
+
+# Exported IP catalogs or zip files
+*.zip
+IP-catalog/export/
+
+# Other binaries
+*.elf
+*.bin
+*.dat
+
+# OS/system clutter
+.DS_Store
+Thumbs.db
+
