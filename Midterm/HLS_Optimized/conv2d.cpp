@@ -37,7 +37,6 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
 
 	for (ap_uint<32> iFilter = 0; iFilter < numFilters; ++ iFilter) { // loop over each output channel
 		TFXP coeff_cache[MAX_CHANNELS][3][3]; // local cache
-		//#pragma HLS ARRAY_PARTITION variable=coeff_cache complete dim=1 (don't acually know what this is so we'll leave it for now)
 
 		// adding a new loop to load coefficients for the filter
 		for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++iChannel) {
@@ -52,25 +51,45 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
     		}
   		}
 
-		// now the original functionality except load filter value from cached coefficients
+
+		// the x and y loops are essentially the position of the "window" moving across and down (x and y)
+		// so first along the height (rows - y), then across the width (columns - x)
 	    for (ap_uint<32> y = 0; y < (inputHeight-2); ++y) {
+	    	TFXP row_buffer[3][MAX_CHANNELS][MAX_WIDTH]; // initialize buffer for three rows
 
-	      for (ap_uint<32> x = 0; x < (inputWidth-2); ++ x) {
-	        TFXP acc = 0;
+	    	// then, now caching the rows (y), we move along each row and store accordingly
+	    	for (ap_uint<32> cy = 0; cy < convHeight; ++cy) {
+	    		ap_uint<32> iy = y + cy;
+	    		// ...which we do for each channel
+	    		for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++iChannel) {
+	    			//...and each component of the row, which of course moves in the x direction
+	    			for (ap_uint<32> x = 0; x < inputWidth; ++x) {
+	    				row_buffer[cy][iChannel][x] = *(input + iChannel*inputWidth*inputHeight + iy*inputWidth + x);
+	    			}
+	    		}
+	    	}
 
-	        for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++ iChannel) {
+	    	// after that brief interlude, we go back to the moving of the window
+	    	for (ap_uint<32> x = 0; x < (inputWidth-2); ++ x) {
+	    		TFXP acc = 0;
 
-	          for (ap_uint<32> cy = 0; cy < convHeight; ++ cy) { // this and the next line is the loop over convolution filter window
+	    		// and again, we do this for each output channel
+	    		for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++ iChannel) {
+
+	    			// ...moving along the y components of the convolution window
+	    			for (ap_uint<32> cy = 0; cy < convHeight; ++ cy) { // this and the next line is the loop over convolution filter window
 				
-	            for (ap_uint<32> cx = 0; cx < convWidth; ++cx) { // 
-	              TFXP pixelValue, filterValue;
-				  //filterValue = *(coeffs + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
-				  filterValue = coeff_cache[iChannel][cy][cx]; // still assigning filter value based on coefficients
-	              pixelValue = *(input + iChannel*inputWidth*inputHeight + (y+cy)*inputWidth + (x+cx));
-	              acc += FXP_Mult(filterValue, pixelValue, DECIMALS);
-	            }
-	          }
-	        }
+	    				//...and naturally the x components as well
+	    				for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
+	    					//filterValue = *(coeffs + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
+	    					TFXP filterValue = coeff_cache[iChannel][cy][cx]; // still assigning filter value based on coefficients
+
+	    					//pixelValue = *(input + iChannel*inputWidth*inputHeight + (y+cy)*inputWidth + (x+cx));
+	    					TFXP pixelValue = row_buffer[cy][iChannel][x + cx];
+	    					acc += FXP_Mult(filterValue, pixelValue, DECIMALS);
+	    				}
+	    			}
+	    		}
 	        // add bias for this output filter
 	        acc += biases[iFilter];
 
