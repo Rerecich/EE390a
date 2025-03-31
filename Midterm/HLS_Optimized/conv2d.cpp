@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "conv2d.h"
 
+
 inline TFXP FXP_Mult(TFXP a, TFXP b, uint32_t decimalBits = DECIMALS)
 {
   //return a*b;
@@ -34,24 +35,37 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
 	#pragma HLS INTERFACE s_axilite port=apply_relu
 
 
-	for (ap_uint<32> iFilter = 0; iFilter < numFilters; ++ iFilter) {
-		TFXP coeff_cache[NUM_CHANNELS][3][3]; // local ish cache
+	for (ap_uint<32> iFilter = 0; iFilter < numFilters; ++ iFilter) { // loop over each output channel
+		TFXP coeff_cache[MAX_CHANNELS][3][3]; // local cache
 		//#pragma HLS ARRAY_PARTITION variable=coeff_cache complete dim=1 (don't acually know what this is so we'll leave it for now)
 
+		// adding a new loop to load coefficients for the filter
+		for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++iChannel) {
+    		for (ap_uint<32> cy = 0; cy < convHeight; ++cy) {
+      			for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
+					// assign values using the same syntax as the original application originally loaded the filter values
+        			coeff_cache[iChannel][cy][cx] =
+          					*(coeffs + iFilter * numChannels * convHeight * convWidth +
+                    		iChannel * convHeight * convWidth +
+                    		cy * convWidth + cx);
+      			}
+    		}
+  		}
+
+		// now the original functionality except load filter value from cached coefficients
 	    for (ap_uint<32> y = 0; y < (inputHeight-2); ++y) {
 
 	      for (ap_uint<32> x = 0; x < (inputWidth-2); ++ x) {
-	        TFXP acc;
-	        acc = 0;
+	        TFXP acc = 0;
 
 	        for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++ iChannel) {
 
-	          for (ap_uint<32> cy = 0; cy < convHeight; ++ cy) {
+	          for (ap_uint<32> cy = 0; cy < convHeight; ++ cy) { // this and the next line is the loop over convolution filter window
 				
-	            for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
-	              //acc += filters[iFilter][iChannel][cy][cx] * input[iChannel][y+cy][x+cx];
+	            for (ap_uint<32> cx = 0; cx < convWidth; ++cx) { // 
 	              TFXP pixelValue, filterValue;
-	              filterValue = *(coeffs + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
+				  //filterValue = *(coeffs + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
+				  filterValue = coeff_cache[iChannel][cy][cx]; // still assigning filter value based on coefficients
 	              pixelValue = *(input + iChannel*inputWidth*inputHeight + (y+cy)*inputWidth + (x+cx));
 	              acc += FXP_Mult(filterValue, pixelValue, DECIMALS);
 	            }

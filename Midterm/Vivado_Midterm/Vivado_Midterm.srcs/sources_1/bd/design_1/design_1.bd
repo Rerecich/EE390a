@@ -12,7 +12,6 @@
     },
     "design_tree": {
       "processing_system7_0": "",
-      "Conv2D_HW_0": "",
       "ps7_0_axi_periph": {
         "s00_couplers": {
           "auto_pc": ""
@@ -25,7 +24,8 @@
           "auto_us": ""
         }
       },
-      "system_ila_0": ""
+      "system_ila_0": "",
+      "Conv2D_HW_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1928,32 +1928,6 @@
           }
         }
       },
-      "Conv2D_HW_0": {
-        "vlnv": "xilinx.com:hls:Conv2D_HW:1.0",
-        "xci_name": "design_1_Conv2D_HW_0_0",
-        "xci_path": "ip/design_1_Conv2D_HW_0_0/design_1_Conv2D_HW_0_0.xci",
-        "inst_hier_path": "Conv2D_HW_0",
-        "interface_ports": {
-          "m_axi_gmem": {
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "mode": "Master",
-            "address_space_ref": "Data_m_axi_gmem",
-            "base_address": {
-              "minimum": "0x00000000",
-              "maximum": "0xFFFFFFFFFFFFFFFF",
-              "width": "64"
-            }
-          }
-        },
-        "addressing": {
-          "address_spaces": {
-            "Data_m_axi_gmem": {
-              "range": "16E",
-              "width": "64"
-            }
-          }
-        }
-      },
       "ps7_0_axi_periph": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
         "xci_path": "ip/design_1_ps7_0_axi_periph_0/design_1_ps7_0_axi_periph_0.xci",
@@ -2473,6 +2447,32 @@
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           }
         }
+      },
+      "Conv2D_HW_0": {
+        "vlnv": "xilinx.com:hls:Conv2D_HW:1.0",
+        "xci_name": "design_1_Conv2D_HW_0_3",
+        "xci_path": "ip/design_1_Conv2D_HW_0_3/design_1_Conv2D_HW_0_3.xci",
+        "inst_hier_path": "Conv2D_HW_0",
+        "interface_ports": {
+          "m_axi_gmem": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Master",
+            "address_space_ref": "Data_m_axi_gmem",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xFFFFFFFFFFFFFFFF",
+              "width": "64"
+            }
+          }
+        },
+        "addressing": {
+          "address_spaces": {
+            "Data_m_axi_gmem": {
+              "range": "16E",
+              "width": "64"
+            }
+          }
+        }
       }
     },
     "interface_nets": {
@@ -2529,14 +2529,14 @@
           "processing_system7_0/M_AXI_GP0_ACLK",
           "ps7_0_axi_periph/S00_ACLK",
           "rst_ps7_0_100M/slowest_sync_clk",
-          "Conv2D_HW_0/ap_clk",
           "ps7_0_axi_periph/M00_ACLK",
           "ps7_0_axi_periph/ACLK",
           "axi_mem_intercon/S00_ACLK",
           "processing_system7_0/S_AXI_HP0_ACLK",
           "axi_mem_intercon/M00_ACLK",
           "axi_mem_intercon/ACLK",
-          "system_ila_0/clk"
+          "system_ila_0/clk",
+          "Conv2D_HW_0/ap_clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -2549,13 +2549,13 @@
         "ports": [
           "rst_ps7_0_100M/peripheral_aresetn",
           "ps7_0_axi_periph/S00_ARESETN",
-          "Conv2D_HW_0/ap_rst_n",
           "ps7_0_axi_periph/M00_ARESETN",
           "ps7_0_axi_periph/ARESETN",
           "axi_mem_intercon/S00_ARESETN",
           "axi_mem_intercon/M00_ARESETN",
           "axi_mem_intercon/ARESETN",
-          "system_ila_0/resetn"
+          "system_ila_0/resetn",
+          "Conv2D_HW_0/ap_rst_n"
         ]
       }
     },

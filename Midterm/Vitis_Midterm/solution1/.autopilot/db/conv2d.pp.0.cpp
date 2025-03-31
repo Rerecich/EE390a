@@ -6682,6 +6682,11 @@ extern int __overflow (FILE *, int);
 # 1 "/scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int.h" 1
 # 5 "HLS_Optimized/conv2d.h" 2
 
+
+
+
+
+
 const ap_uint<32> DECIMALS = 20;
 typedef int32_t TFXP;
 typedef int64_t TFXP_MULT;
@@ -6691,6 +6696,7 @@ __attribute__((sdx_kernel("Conv2D_HW", 0))) void Conv2D_HW(TFXP *input, TFXP * o
       ap_uint<32> inputWidth, ap_uint<32> inputHeight,
       ap_uint<32> convWidth = 3, ap_uint<32> convHeight = 3, ap_uint<1> apply_relu = 1);
 # 5 "HLS_Optimized/conv2d.cpp" 2
+
 
 inline TFXP FXP_Mult(TFXP a, TFXP b, uint32_t decimalBits = DECIMALS)
 {
@@ -6708,9 +6714,13 @@ __attribute__((sdx_kernel("Conv2D_HW", 0))) void Conv2D_HW(TFXP *input, TFXP * o
       ap_uint<32> convWidth, ap_uint<32> convHeight, ap_uint<1> apply_relu)
 
 {
-#line 15 "/home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/csynth.tcl"
+#line 16 "/home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/csynth.tcl"
 #pragma HLSDIRECTIVE TOP name=Conv2D_HW
-# 21 "HLS_Optimized/conv2d.cpp"
+# 22 "HLS_Optimized/conv2d.cpp"
+
+#line 6 "/home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/directives.tcl"
+#pragma HLSDIRECTIVE TOP name=Conv2D_HW
+# 22 "HLS_Optimized/conv2d.cpp"
 
 #pragma HLS INTERFACE s_axilite port=return
 #pragma HLS INTERFACE s_axilite port=numChannels
@@ -6727,17 +6737,37 @@ __attribute__((sdx_kernel("Conv2D_HW", 0))) void Conv2D_HW(TFXP *input, TFXP * o
 #pragma HLS INTERFACE s_axilite port=apply_relu
 
 
- VITIS_LOOP_37_1: for (ap_uint<32> iFilter = 0; iFilter < numFilters; ++ iFilter) {
-     VITIS_LOOP_38_2: for (ap_uint<32> y = 0; y < (inputHeight-2); ++y) {
-       VITIS_LOOP_39_3: for (ap_uint<32> x = 0; x < (inputWidth-2); ++ x) {
-         TFXP acc;
-         acc = 0;
-         VITIS_LOOP_42_4: for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++ iChannel) {
-           VITIS_LOOP_43_5: for (ap_uint<32> cy = 0; cy < convHeight; ++ cy) {
-             VITIS_LOOP_44_6: for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
+ VITIS_LOOP_38_1: for (ap_uint<32> iFilter = 0; iFilter < numFilters; ++ iFilter) {
+  TFXP coeff_cache[256][3][3];
 
+
+
+  VITIS_LOOP_43_2: for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++iChannel) {
+      VITIS_LOOP_44_3: for (ap_uint<32> cy = 0; cy < convHeight; ++cy) {
+         VITIS_LOOP_45_4: for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
+
+           coeff_cache[iChannel][cy][cx] =
+               *(coeffs + iFilter * numChannels * convHeight * convWidth +
+                      iChannel * convHeight * convWidth +
+                      cy * convWidth + cx);
+         }
+      }
+    }
+
+
+     VITIS_LOOP_56_5: for (ap_uint<32> y = 0; y < (inputHeight-2); ++y) {
+
+       VITIS_LOOP_58_6: for (ap_uint<32> x = 0; x < (inputWidth-2); ++ x) {
+         TFXP acc = 0;
+
+         VITIS_LOOP_61_7: for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++ iChannel) {
+
+           VITIS_LOOP_63_8: for (ap_uint<32> cy = 0; cy < convHeight; ++ cy) {
+
+             VITIS_LOOP_65_9: for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
                TFXP pixelValue, filterValue;
-               filterValue = *(coeffs + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
+
+      filterValue = coeff_cache[iChannel][cy][cx];
                pixelValue = *(input + iChannel*inputWidth*inputHeight + (y+cy)*inputWidth + (x+cx));
                acc += FXP_Mult(filterValue, pixelValue, DECIMALS);
              }

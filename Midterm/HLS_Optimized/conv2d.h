@@ -3,6 +3,11 @@
 
 #include <ap_int.h>
 
+#define MAX_WIDTH 128
+#define MAX_HEIGHT 128
+#define MAX_CHANNELS 256
+#define MAX_FILTERS 256
+
 const ap_uint<32> DECIMALS = 20;
 typedef int32_t TFXP;     // Parameters and activations
 typedef int64_t TFXP_MULT;// Intermmediate results of multiplications

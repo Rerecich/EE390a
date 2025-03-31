@@ -1,12 +1,13 @@
 {"sourceFile": [{
       "name": "",
-      "directive": [{
+      "directive": [
+        {
           "functionName": "Conv2D_HW",
           "label": "",
           "functionLabel": "",
           "id": "1",
-          "sourceFile": "\/home\/rerecich\/EE-390a\/CNN\/Midterm\/Midterm\/Vitis_Midterm\/solution1\/csynth.tcl",
-          "sourceLine": "15",
+          "sourceFile": "\/home\/rerecich\/EE-390a\/CNN\/Midterm\/Midterm\/Vitis_Midterm\/solution1\/directives.tcl",
+          "sourceLine": "6",
           "pragma": {
             "name": "TOP",
             "option": [{
@@ -14,5 +15,21 @@
                 "value": "Conv2D_HW"
               }]
           }
-        }]
+        },
+        {
+          "functionName": "Conv2D_HW",
+          "label": "",
+          "functionLabel": "",
+          "id": "2",
+          "sourceFile": "\/home\/rerecich\/EE-390a\/CNN\/Midterm\/Midterm\/Vitis_Midterm\/solution1\/csynth.tcl",
+          "sourceLine": "16",
+          "pragma": {
+            "name": "TOP",
+            "option": [{
+                "name": "name",
+                "value": "Conv2D_HW"
+              }]
+          }
+        }
+      ]
     }]}

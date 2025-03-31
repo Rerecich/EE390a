@@ -7,10 +7,11 @@
 
 #include "conv2d.h"
 
-#define MAX_WIDTH 64
-#define MAX_HEIGHT 64
-#define MAX_CHANNELS 32
-#define MAX_FILTERS 32
+
+//#define MAX_WIDTH 128
+//#define MAX_HEIGHT 128
+//#define MAX_CHANNELS 256
+//#define MAX_FILTERS 256
 
 TFXP input[MAX_WIDTH * MAX_HEIGHT * MAX_CHANNELS];
 TFXP coeffs[MAX_CHANNELS * MAX_FILTERS * 9];

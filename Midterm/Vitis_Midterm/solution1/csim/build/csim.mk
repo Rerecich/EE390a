@@ -75,7 +75,7 @@ all: $(TARGET)
 
 $(ObjDir)/conv2DTestbench.o: ../../../../HLS_Optimized/conv2DTestbench.cpp $(ObjDir)/.dir
 	$(Echo) "   Compiling ../../../../HLS_Optimized/conv2DTestbench.cpp in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(CC) ${CCFLAG} -c -MMD -Wno-unknown-pragmas -Wno-unknown-pragmas  $(IFLAG) $(DFLAG) -DNDEBUG $< -o $@ ; \
+	$(Verb)  $(CC) ${CCFLAG} -c -MMD -Wno-unknown-pragmas -Wno-unknown-pragmas -Wno-unknown-pragmas  $(IFLAG) $(DFLAG) -DNDEBUG $< -o $@ ; \
 
 -include $(ObjDir)/conv2DTestbench.d
 
