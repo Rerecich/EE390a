@@ -1,4 +1,5 @@
 obj/conv2d.o: ../../../../HLS_Optimized/conv2d.cpp \
+ ../../../../HLS_Optimized/conv2d.h \
  /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/include/ap_int.h \
  /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/include/ap_common.h \
  /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/include/ap_decl.h \
@@ -19,5 +20,4 @@ obj/conv2d.o: ../../../../HLS_Optimized/conv2d.cpp \
  /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/include/ap_fixed.h \
  /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/include/ap_fixed_base.h \
  /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/include/ap_fixed_ref.h \
- /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/include/ap_fixed_special.h \
- ../../../../HLS_Optimized/conv2d.h
+ /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/include/ap_fixed_special.h

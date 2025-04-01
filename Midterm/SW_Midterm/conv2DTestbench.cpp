@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <inttypes.h> // This header file defines standard type codes for use with printf across 32/64 bit platforms
 #include <map>
-
+//check
 #include "CAccelDriver.hpp"
 #include "CConv2DDriver.hpp"
 #include "util.hpp"
@@ -19,8 +19,8 @@ typedef int64_t TFXP_MULT;// Intermmediate results of multiplications
 
 #define MAX_WIDTH 128
 #define MAX_HEIGHT 128
-#define MAX_CHANNELS 128 // was 256
-#define MAX_FILTERS 128 // was 256
+#define MAX_CHANNELS 256 // was 256
+#define MAX_FILTERS 256 // was 256
 
 TFXP input[MAX_WIDTH * MAX_HEIGHT * MAX_CHANNELS];
 TFXP biases[7];
@@ -204,7 +204,7 @@ int main(int argc, char ** argv)
       printf("%s", repe % 2 == 0 ? "." : "*"); fflush(stdout);
       memset(outputSW, 0, currentOutputSize * sizeof(TFXP));
       clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-      Conv2D(input, outputSW, coeffs, biases, channels, filters, width, height, 3, 3);
+      Conv2D(input, outputSW, coeffs, biases, channels, filters, width, height, 3, 3, 1);
       printf("OutputSW done\n");
       clock_gettime(CLOCK_MONOTONIC_RAW, &end);
       elapsedTimeSW += CalcTimeDiff(end, start);
@@ -224,7 +224,7 @@ int main(int argc, char ** argv)
       printf("%s", repe % 2 == 0 ? "." : "*"); fflush(stdout);
       memset(outputHW, 0, currentOutputSize * sizeof(TFXP));
       clock_gettime(CLOCK_MONOTONIC_RAW, &start);
-      convolver.Conv2D_HW(inputHW, outputHW, coeffsHW, biasesHW, channels, filters, width, height, 3, 3, 1);
+      convolver.Conv2D_HW(inputHW, outputHW, coeffsHW, biases, channels, filters, width, height, 3, 3, 1);
       clock_gettime(CLOCK_MONOTONIC_RAW, &end);
       elapsedTimeHW += CalcTimeDiff(end, start);
     }
@@ -232,7 +232,7 @@ int main(int argc, char ** argv)
     printf("\r(HW) Image size: [%" PRIu32 " x %" PRIu32 "], Channels=%" PRIu32 ", Filters=%" PRIu32 " --> %0.3lf s (%" PRIu64 " ns)\n", width, height, channels, filters,
           (elapsedTimeHW/1e9)/NUM_REPES, elapsedTimeHW/NUM_REPES);
 
-    // Make sure outputs are the same
+    // Make sure outputs are the same  
     for (uint32_t i = 0; i < currentOutputSize; i++) {
       if(outputHW[i] != outputSW[i]) {
         errors ++;

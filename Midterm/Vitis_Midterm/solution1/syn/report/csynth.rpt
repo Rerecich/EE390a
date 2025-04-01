@@ -4,7 +4,7 @@
 == Synthesis Summary Report of 'Conv2D_HW'
 ================================================================
 + General Information: 
-    * Date:           Mon Mar 31 13:44:35 2025
+    * Date:           Tue Apr  1 19:50:32 2025
     * Version:        2022.2 (Build 3670227 on Oct 13 2022)
     * Project:        Vitis_Midterm
     * Solution:       solution1 (Vivado IP Flow Target)
@@ -15,19 +15,21 @@
 + Performance & Resource Estimates: 
     
     PS: '+' for module; 'o' for loop; '*' for dataflow
-    +--------------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+--------+----------+-----------+------------+-----+
-    |                         Modules                        | Issue|      | Latency | Latency| Iteration|         | Trip |          |        |          |           |            |     |
-    |                         & Loops                        | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|  BRAM  |    DSP   |     FF    |     LUT    | URAM|
-    +--------------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+--------+----------+-----------+------------+-----+
-    |+ Conv2D_HW                                             |     -|  0.00|        -|       -|         -|        -|     -|        no|  8 (2%)|  39 (17%)|  8340 (7%)|  7764 (14%)|    -|
-    | o VITIS_LOOP_38_1                                      |     -|  7.30|        -|       -|         -|        -|     -|        no|       -|         -|          -|           -|    -|
-    |  + Conv2D_HW_Pipeline_VITIS_LOOP_45_4                  |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|    5 (2%)|  1282 (1%)|   1325 (2%)|    -|
-    |   o VITIS_LOOP_43_2_VITIS_LOOP_44_3_VITIS_LOOP_45_4    |     -|  7.30|        -|       -|        16|        1|     -|       yes|       -|         -|          -|           -|    -|
-    |  o VITIS_LOOP_56_5                                     |     -|  7.30|        -|       -|         -|        -|     -|        no|       -|         -|          -|           -|    -|
-    |   o VITIS_LOOP_58_6                                    |     -|  7.30|        -|       -|         -|        -|     -|        no|       -|         -|          -|           -|    -|
-    |    + Conv2D_HW_Pipeline_VITIS_LOOP_65_9                |     -|  0.00|        -|       -|         -|        -|     -|        no|       -|    8 (3%)|  2099 (1%)|   1919 (3%)|    -|
-    |     o VITIS_LOOP_61_7_VITIS_LOOP_63_8_VITIS_LOOP_65_9  |     -|  7.30|        -|       -|        21|        1|     -|       yes|       -|         -|          -|           -|    -|
-    +--------------------------------------------------------+------+------+---------+--------+----------+---------+------+----------+--------+----------+-----------+------------+-----+
+    +-----------------------------------------------------------------------------+--------+-------+---------+--------+----------+---------+------+----------+----------+----------+-----------+------------+-----+
+    |                                   Modules                                   |  Issue |       | Latency | Latency| Iteration|         | Trip |          |          |          |           |            |     |
+    |                                   & Loops                                   |  Type  | Slack | (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|   BRAM   |    DSP   |     FF    |     LUT    | URAM|
+    +-----------------------------------------------------------------------------+--------+-------+---------+--------+----------+---------+------+----------+----------+----------+-----------+------------+-----+
+    |+ Conv2D_HW                                                                  |  Timing|  -1.28|        -|       -|         -|        -|     -|        no|  30 (10%)|  42 (19%)|  8650 (8%)|  8296 (15%)|    -|
+    | o VITIS_LOOP_38_1                                                           |       -|   7.30|        -|       -|         -|        -|     -|        no|         -|         -|          -|           -|    -|
+    |  + Conv2D_HW_Pipeline_VITIS_LOOP_45_4                                       |       -|   0.00|        -|       -|         -|        -|     -|        no|         -|         -|  1273 (1%)|   1328 (2%)|    -|
+    |   o VITIS_LOOP_43_2_VITIS_LOOP_44_3_VITIS_LOOP_45_4                         |       -|   7.30|        -|       -|        15|        1|     -|       yes|         -|         -|          -|           -|    -|
+    |  o VITIS_LOOP_58_5                                                          |       -|   7.30|        -|       -|         -|        -|     -|        no|         -|         -|          -|           -|    -|
+    |   + Conv2D_HW_Pipeline_VITIS_LOOP_68_8                                      |  Timing|  -1.28|        -|       -|         -|        -|     -|        no|         -|    5 (2%)|  1370 (1%)|   1319 (2%)|    -|
+    |    o VITIS_LOOP_63_6_VITIS_LOOP_66_7_VITIS_LOOP_68_8                        |       -|   7.30|        -|       -|        16|        1|     -|       yes|         -|         -|          -|           -|    -|
+    |   o VITIS_LOOP_76_9                                                         |       -|   7.30|        -|       -|         -|        -|     -|        no|         -|         -|          -|           -|    -|
+    |    + Conv2D_HW_Pipeline_VITIS_LOOP_80_10_VITIS_LOOP_83_11_VITIS_LOOP_86_12  |       -|   0.30|        -|       -|         -|        -|     -|        no|         -|    4 (1%)|  1136 (1%)|   1095 (2%)|    -|
+    |     o VITIS_LOOP_80_10_VITIS_LOOP_83_11_VITIS_LOOP_86_12                    |       -|   7.30|        -|       -|         9|        1|     -|       yes|         -|         -|          -|           -|    -|
+    +-----------------------------------------------------------------------------+--------+-------+---------+--------+----------+---------+------+----------+----------+----------+-----------+------------+-----+
 
 
 ================================================================
@@ -88,21 +90,21 @@
 == SW I/O Information
 ================================================================
 * Top Function Arguments
-+-------------+-----------+-------------+
-| Argument    | Direction | Datatype    |
-+-------------+-----------+-------------+
-| input       | inout     | int*        |
-| output      | inout     | int*        |
-| coeffs      | inout     | int*        |
-| biases      | inout     | int*        |
-| numChannels | in        | ap_uint<32> |
-| numFilters  | in        | ap_uint<32> |
-| inputWidth  | in        | ap_uint<32> |
-| inputHeight | in        | ap_uint<32> |
-| convWidth   | in        | ap_uint<32> |
-| convHeight  | in        | ap_uint<32> |
-| apply_relu  | in        | ap_uint<1>  |
-+-------------+-----------+-------------+
++-------------+-----------+--------------+
+| Argument    | Direction | Datatype     |
++-------------+-----------+--------------+
+| input       | inout     | int*         |
+| output      | inout     | int*         |
+| coeffs      | inout     | int*         |
+| biases      | inout     | int*         |
+| numChannels | in        | unsigned int |
+| numFilters  | in        | unsigned int |
+| inputWidth  | in        | unsigned int |
+| inputHeight | in        | unsigned int |
+| convWidth   | in        | unsigned int |
+| convHeight  | in        | unsigned int |
+| apply_relu  | in        | ap_uint<1>   |
++-------------+-----------+--------------+
 
 * SW-to-HW Mapping
 +-------------+---------------+-----------+----------+---------------------------------------+
@@ -137,21 +139,21 @@
 +--------------+-----------------+-----------+----------+-------+--------------------------------+
 | HW Interface | Loop            | Direction | Length   | Width | Location                       |
 +--------------+-----------------+-----------+----------+-------+--------------------------------+
-| m_axi_gmem   |                 | read      | variable | 32    | HLS_Optimized/conv2d.cpp:44:24 |
-| m_axi_gmem   | VITIS_LOOP_58_6 | write     | variable | 32    | HLS_Optimized/conv2d.cpp:58:25 |
-| m_axi_gmem   | VITIS_LOOP_65_9 | read      | variable | 32    | HLS_Optimized/conv2d.cpp:65:31 |
+| m_axi_gmem   | VITIS_LOOP_45_4 | read      | variable | 32    | HLS_Optimized/conv2d.cpp:45:27 |
+| m_axi_gmem   | VITIS_LOOP_68_8 | read      | variable | 32    | HLS_Optimized/conv2d.cpp:68:26 |
+| m_axi_gmem   | VITIS_LOOP_76_9 | write     | variable | 32    | HLS_Optimized/conv2d.cpp:76:24 |
 +--------------+-----------------+-----------+----------+-------+--------------------------------+
 
 * Inferred Bursts and Widening Missed
 +--------------+----------+-----------------+-------------------------------------------------------------------------------------------------------+------------+--------------------------------+
 | HW Interface | Variable | Loop            | Problem                                                                                               | Resolution | Location                       |
 +--------------+----------+-----------------+-------------------------------------------------------------------------------------------------------+------------+--------------------------------+
-| m_axi_gmem   | coeffs   | VITIS_LOOP_43_2 | Stride is incompatible                                                                                | 214-230    | HLS_Optimized/conv2d.cpp:43:20 |
-| m_axi_gmem   | input    | VITIS_LOOP_63_8 | Stride is incompatible                                                                                | 214-230    | HLS_Optimized/conv2d.cpp:63:29 |
-| m_axi_gmem   | biases   | VITIS_LOOP_56_5 | Stride is incompatible                                                                                | 214-230    | HLS_Optimized/conv2d.cpp:56:23 |
-| m_axi_gmem   | output   | VITIS_LOOP_56_5 | Stride is incompatible                                                                                | 214-230    | HLS_Optimized/conv2d.cpp:56:23 |
-| m_axi_gmem   | output   | VITIS_LOOP_58_6 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS_Optimized/conv2d.cpp:58:25 |
-| m_axi_gmem   | input    | VITIS_LOOP_65_9 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS_Optimized/conv2d.cpp:65:31 |
+| m_axi_gmem   | coeffs   | VITIS_LOOP_44_3 | Stride is incompatible                                                                                | 214-230    | HLS_Optimized/conv2d.cpp:44:24 |
+| m_axi_gmem   | input    | VITIS_LOOP_66_7 | Stride is incompatible                                                                                | 214-230    | HLS_Optimized/conv2d.cpp:66:25 |
+| m_axi_gmem   | biases   | VITIS_LOOP_58_5 | Stride is incompatible                                                                                | 214-230    | HLS_Optimized/conv2d.cpp:58:23 |
+| m_axi_gmem   | output   | VITIS_LOOP_58_5 | Stride is incompatible                                                                                | 214-230    | HLS_Optimized/conv2d.cpp:58:23 |
+| m_axi_gmem   | output   | VITIS_LOOP_76_9 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS_Optimized/conv2d.cpp:76:24 |
+| m_axi_gmem   | input    | VITIS_LOOP_68_8 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS_Optimized/conv2d.cpp:68:26 |
 | m_axi_gmem   | coeffs   | VITIS_LOOP_45_4 | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 | 214-353    | HLS_Optimized/conv2d.cpp:45:27 |
 +--------------+----------+-----------------+-------------------------------------------------------------------------------------------------------+------------+--------------------------------+
 
@@ -160,91 +162,109 @@
 ================================================================
 == Bind Op Report
 ================================================================
-+---------------------------------------+-----+--------+--------------+-----+--------+---------+
-| Name                                  | DSP | Pragma | Variable     | Op  | Impl   | Latency |
-+---------------------------------------+-----+--------+--------------+-----+--------+---------+
-| + Conv2D_HW                           | 39  |        |              |     |        |         |
-|   sub_i_i341_fu_379_p2                | -   |        | sub_i_i341   | add | fabric | 0       |
-|   sub_i_i311_fu_388_p2                | -   |        | sub_i_i311   | add | fabric | 0       |
-|   mul_32ns_32ns_62_2_1_U34            | 3   |        | mul_ln38     | mul | auto   | 1       |
-|   tmp2_fu_438_p2                      | -   |        | tmp2         | add | fabric | 0       |
-|   add_ln58_fu_448_p2                  | -   |        | add_ln58     | add | fabric | 0       |
-|   mul_32ns_32ns_62_2_1_U35            | 3   |        | mul_ln39     | mul | auto   | 1       |
-|   mul_32ns_32ns_64_2_1_U32            | 3   |        | mul_ln17     | mul | auto   | 1       |
-|   mul_32ns_64ns_96_5_1_U33            | 6   |        | mul_ln17_1   | mul | auto   | 4       |
-|   add_ln1027_fu_475_p2                | -   |        | add_ln1027   | add | fabric | 0       |
-|   add_ln1027_4_fu_480_p2              | -   |        | add_ln1027_4 | add | fabric | 0       |
-|   add_ln840_fu_490_p2                 | -   |        | add_ln840    | add | fabric | 0       |
-|   mul_62s_62s_62_5_1_U36              | 6   |        | mul_ln39_1   | mul | auto   | 4       |
-|   empty_48_fu_513_p2                  | -   |        | empty_48     | add | fabric | 0       |
-|   y_V_1_fu_547_p2                     | -   |        | y_V_1        | add | fabric | 0       |
-|   tmp_fu_557_p2                       | -   |        | tmp          | add | fabric | 0       |
-|   mul_64s_35s_64_5_1_U37              | 5   |        | empty_49     | mul | auto   | 4       |
-|   empty_50_fu_578_p2                  | -   |        | empty_50     | add | fabric | 0       |
-|   x_V_1_fu_611_p2                     | -   |        | x_V_1        | add | fabric | 0       |
-|   acc_fu_620_p2                       | -   |        | acc          | add | fabric | 0       |
-|  + Conv2D_HW_Pipeline_VITIS_LOOP_45_4 | 5   |        |              |     |        |         |
-|    add_ln1027_3_fu_261_p2             | -   |        | add_ln1027_3 | add | fabric | 0       |
-|    add_ln840_1_fu_270_p2              | -   |        | add_ln840_1  | add | fabric | 0       |
-|    sub_ln47_fu_352_p2                 | -   |        | sub_ln47     | sub | fabric | 0       |
-|    mul_32ns_62s_62_5_1_U1             | 5   |        | mul_ln1027   | mul | auto   | 4       |
-|    add_ln1027_fu_470_p2               | -   |        | add_ln1027   | add | fabric | 0       |
-|    add_ln1027_1_fu_482_p2             | -   |        | add_ln1027_1 | add | fabric | 0       |
-|    add_ln840_2_fu_375_p2              | -   |        | add_ln840_2  | add | fabric | 0       |
-|    add_ln47_fu_411_p2                 | -   |        | add_ln47     | add | fabric | 0       |
-|    add_ln840_fu_437_p2                | -   |        | add_ln840    | add | fabric | 0       |
-|    add_ln1027_2_fu_289_p2             | -   |        | add_ln1027_2 | add | fabric | 0       |
-|  + Conv2D_HW_Pipeline_VITIS_LOOP_65_9 | 8   |        |              |     |        |         |
-|    tmp4_fu_374_p2                     | -   |        | tmp4         | add | fabric | 0       |
-|    empty_44_fu_507_p2                 | -   |        | empty_44     | add | fabric | 0       |
-|    add_ln1027_fu_297_p2               | -   |        | add_ln1027   | add | fabric | 0       |
-|    add_ln840_fu_303_p2                | -   |        | add_ln840    | add | fabric | 0       |
-|    sub_ln68_fu_408_p2                 | -   |        | sub_ln68     | sub | fabric | 0       |
-|    p_mid177_fu_517_p2                 | -   |        | p_mid177     | add | fabric | 0       |
-|    add_ln840_1_fu_429_p2              | -   |        | add_ln840_1  | add | fabric | 0       |
-|    add_ln68_fu_466_p2                 | -   |        | add_ln68     | add | fabric | 0       |
-|    tmp4_mid1_fu_484_p2                | -   |        | tmp4_mid1    | add | fabric | 0       |
-|    p_mid143_fu_543_p2                 | -   |        | p_mid143     | add | fabric | 0       |
-|    mul_62s_32ns_62_5_1_U15            | 5   |        | mul_ln1027   | mul | auto   | 4       |
-|    add_ln1027_1_fu_569_p2             | -   |        | add_ln1027_1 | add | fabric | 0       |
-|    add_ln1027_2_fu_581_p2             | -   |        | add_ln1027_2 | add | fabric | 0       |
-|    mul_32s_32s_52_2_1_U16             | 3   |        | res          | mul | auto   | 1       |
-|    acc_1_fu_641_p2                    | -   |        | acc_1        | add | fabric | 0       |
-|    add_ln840_2_fu_493_p2              | -   |        | add_ln840_2  | add | fabric | 0       |
-|    add_ln1027_3_fu_322_p2             | -   |        | add_ln1027_3 | add | fabric | 0       |
-+---------------------------------------+-----+--------+--------------+-----+--------+---------+
++--------------------------------------------------------------------------+-----+--------+------------+-----+--------+---------+
+| Name                                                                     | DSP | Pragma | Variable   | Op  | Impl   | Latency |
++--------------------------------------------------------------------------+-----+--------+------------+-----+--------+---------+
+| + Conv2D_HW                                                              | 42  |        |            |     |        |         |
+|   sub_fu_422_p2                                                          | -   |        | sub        | add | fabric | 0       |
+|   sub79_fu_427_p2                                                        | -   |        | sub79      | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U62                                                 | 3   |        | mul_ln38   | mul | auto   | 1       |
+|   mul_32ns_32ns_64_2_1_U58                                               | 3   |        | mul_ln17   | mul | auto   | 1       |
+|   mul_32ns_64ns_96_5_1_U60                                               | 6   |        | mul_ln17_1 | mul | auto   | 4       |
+|   mul_32ns_32ns_64_2_1_U59                                               | 3   |        | mul_ln17_2 | mul | auto   | 1       |
+|   mul_32ns_64ns_96_5_1_U61                                               | 6   |        | mul_ln17_3 | mul | auto   | 4       |
+|   add_ln38_1_fu_451_p2                                                   | -   |        | add_ln38_1 | add | fabric | 0       |
+|   add_ln38_2_fu_456_p2                                                   | -   |        | add_ln38_2 | add | fabric | 0       |
+|   add_ln38_fu_466_p2                                                     | -   |        | add_ln38   | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U64                                                 | 3   |        | mul_ln39   | mul | auto   | 1       |
+|   mul_32s_32s_32_2_1_U63                                                 | 3   |        | mul_ln39_1 | mul | auto   | 1       |
+|   empty_fu_489_p2                                                        | -   |        | empty      | add | fabric | 0       |
+|   add_ln58_1_fu_522_p2                                                   | -   |        | add_ln58_1 | add | fabric | 0       |
+|   add_ln58_fu_532_p2                                                     | -   |        | add_ln58   | add | fabric | 0       |
+|   add_ln59_fu_542_p2                                                     | -   |        | add_ln59   | add | fabric | 0       |
+|   add_ln59_1_fu_559_p2                                                   | -   |        | add_ln59_1 | add | fabric | 0       |
+|   add_ln76_fu_601_p2                                                     | -   |        | add_ln76   | add | fabric | 0       |
+|   acc_fu_615_p2                                                          | -   |        | acc        | add | fabric | 0       |
+|  + Conv2D_HW_Pipeline_VITIS_LOOP_45_4                                    | 0   |        |            |     |        |         |
+|    tmp2_fu_475_p2                                                        | -   |        | tmp2       | add | fabric | 0       |
+|    empty_60_fu_494_p2                                                    | -   |        | empty_60   | add | fabric | 0       |
+|    add_ln43_1_fu_273_p2                                                  | -   |        | add_ln43_1 | add | fabric | 0       |
+|    add_ln43_fu_405_p2                                                    | -   |        | add_ln43   | add | fabric | 0       |
+|    p_mid137_fu_512_p2                                                    | -   |        | p_mid137   | add | fabric | 0       |
+|    add_ln44_fu_348_p2                                                    | -   |        | add_ln44   | add | fabric | 0       |
+|    tmp2_mid1_fu_483_p2                                                   | -   |        | tmp2_mid1  | add | fabric | 0       |
+|    p_mid110_fu_524_p2                                                    | -   |        | p_mid110   | add | fabric | 0       |
+|    add_ln44_1_fu_556_p2                                                  | -   |        | add_ln44_1 | add | fabric | 0       |
+|    add_ln45_fu_449_p2                                                    | -   |        | add_ln45   | add | fabric | 0       |
+|    add_ln44_2_fu_284_p2                                                  | -   |        | add_ln44_2 | add | fabric | 0       |
+|  + Conv2D_HW_Pipeline_VITIS_LOOP_68_8                                    | 5   |        |            |     |        |         |
+|    add_ln63_fu_399_p2                                                    | -   |        | add_ln63   | add | fabric | 0       |
+|    add_ln66_fu_470_p2                                                    | -   |        | add_ln66   | add | fabric | 0       |
+|    mul_mul_12s_12s_12_4_1_U23                                            | 1   |        | mul_ln68   | mul | dsp48  | 3       |
+|    add_ln63_3_fu_263_p2                                                  | -   |        | add_ln63_3 | add | fabric | 0       |
+|    add_ln63_1_fu_404_p2                                                  | -   |        | add_ln63_1 | add | fabric | 0       |
+|    add_ln63_2_fu_410_p2                                                  | -   |        | add_ln63_2 | add | fabric | 0       |
+|    add_ln66_1_fu_331_p2                                                  | -   |        | add_ln66_1 | add | fabric | 0       |
+|    mul_32s_32s_32_2_1_U22                                                | 3   |        | mul_ln66_3 | mul | auto   | 1       |
+|    add_ln66_2_fu_488_p2                                                  | -   |        | add_ln66_2 | add | fabric | 0       |
+|    mul_mul_12s_12s_12_4_1_U24                                            | 1   |        | mul_ln68_1 | mul | dsp48  | 3       |
+|    add_ln66_3_fu_523_p2                                                  | -   |        | add_ln66_3 | add | fabric | 0       |
+|    add_ln70_fu_459_p2                                                    | -   |        | add_ln70   | add | fabric | 0       |
+|    add_ln68_fu_372_p2                                                    | -   |        | add_ln68   | add | fabric | 0       |
+|    add_ln66_4_fu_274_p2                                                  | -   |        | add_ln66_4 | add | fabric | 0       |
+|  + Conv2D_HW_Pipeline_VITIS_LOOP_80_10_VITIS_LOOP_83_11_VITIS_LOOP_86_12 | 4   |        |            |     |        |         |
+|    add_ln80_1_fu_270_p2                                                  | -   |        | add_ln80_1 | add | fabric | 0       |
+|    add_ln80_fu_279_p2                                                    | -   |        | add_ln80   | add | fabric | 0       |
+|    empty_52_fu_306_p2                                                    | -   |        | empty_52   | sub | fabric | 0       |
+|    mac_muladd_12s_12s_12ns_12_4_1_U41                                    | 1   |        | mul_ln80   | mul | dsp48  | 3       |
+|    add_ln83_fu_430_p2                                                    | -   |        | add_ln83   | add | fabric | 0       |
+|    mac_muladd_12s_12s_12ns_12_4_1_U41                                    | 1   |        | add_ln91_1 | add | dsp48  | 3       |
+|    add_ln91_fu_487_p2                                                    | -   |        | add_ln91   | add | fabric | 0       |
+|    mul_32s_32s_52_2_1_U40                                                | 3   |        | res        | mul | auto   | 1       |
+|    acc_1_fu_578_p2                                                       | -   |        | acc_1      | add | fabric | 0       |
+|    add_ln86_fu_492_p2                                                    | -   |        | add_ln86   | add | fabric | 0       |
+|    add_ln83_1_fu_332_p2                                                  | -   |        | add_ln83_1 | add | fabric | 0       |
++--------------------------------------------------------------------------+-----+--------+------------+-----+--------+---------+
 
 
 ================================================================
 == Bind Storage Report
 ================================================================
-+-----------------+------+------+--------+-------------+---------+------+---------+
-| Name            | BRAM | URAM | Pragma | Variable    | Storage | Impl | Latency |
-+-----------------+------+------+--------+-------------+---------+------+---------+
-| + Conv2D_HW     | 8    | 0    |        |             |         |      |         |
-|   coeff_cache_U | 8    | -    |        | coeff_cache | ram_1p  | auto | 1       |
-+-----------------+------+------+--------+-------------+---------+------+---------+
++--------------------------+------+------+--------+---------------+---------+------+---------+
+| Name                     | BRAM | URAM | Pragma | Variable      | Storage | Impl | Latency |
++--------------------------+------+------+--------+---------------+---------+------+---------+
+| + Conv2D_HW              | 30   | 0    |        |               |         |      |         |
+|   coeff_cache_U          | 2    | -    |        | coeff_cache   | ram_1p  | auto | 1       |
+|   coeff_cache_1_U        | 2    | -    |        | coeff_cache_1 | ram_1p  | auto | 1       |
+|   coeff_cache_2_U        | 2    | -    |        | coeff_cache_2 | ram_1p  | auto | 1       |
+|   row_buffer_U           | 8    | -    |        | row_buffer    | ram_1p  | auto | 1       |
+|   mul_32s_32s_32_2_1_U66 | 8    | -    |        | row_buffer_1  | ram_1p  | auto | 1       |
+|   row_buffer_2_U         | 8    | -    |        | row_buffer_2  | ram_1p  | auto | 1       |
++--------------------------+------+------+--------+---------------+---------+------+---------+
 
 
 ================================================================
 == Pragma Report
 ================================================================
 * Valid Pragma Syntax
-+-----------+---------------------------------------------+-------------------------------------------------------+
-| Type      | Options                                     | Location                                              |
-+-----------+---------------------------------------------+-------------------------------------------------------+
-| interface | s_axilite port=return                       | HLS_Optimized/conv2d.cpp:23 in conv2d_hw, return      |
-| interface | s_axilite port=numChannels                  | HLS_Optimized/conv2d.cpp:24 in conv2d_hw, numChannels |
-| interface | s_axilite port=numFilters                   | HLS_Optimized/conv2d.cpp:25 in conv2d_hw, numFilters  |
-| interface | s_axilite port=inputWidth                   | HLS_Optimized/conv2d.cpp:26 in conv2d_hw, inputWidth  |
-| interface | s_axilite port=inputHeight                  | HLS_Optimized/conv2d.cpp:27 in conv2d_hw, inputHeight |
-| interface | s_axilite port=convWidth                    | HLS_Optimized/conv2d.cpp:28 in conv2d_hw, convWidth   |
-| interface | s_axilite port=convHeight                   | HLS_Optimized/conv2d.cpp:29 in conv2d_hw, convHeight  |
-| interface | m_axi depth=200000 port=input offset=slave  | HLS_Optimized/conv2d.cpp:30 in conv2d_hw, input       |
-| interface | m_axi depth=200000 port=output offset=slave | HLS_Optimized/conv2d.cpp:31 in conv2d_hw, output      |
-| interface | m_axi depth=200000 port=coeffs offset=slave | HLS_Optimized/conv2d.cpp:32 in conv2d_hw, coeffs      |
-| interface | m_axi depth=200000 port=biases offset=slave | HLS_Optimized/conv2d.cpp:33 in conv2d_hw, biases      |
-| interface | s_axilite port=apply_relu                   | HLS_Optimized/conv2d.cpp:35 in conv2d_hw, apply_relu  |
-+-----------+---------------------------------------------+-------------------------------------------------------+
++-----------------+---------------------------------------------+-------------------------------------------------------+
+| Type            | Options                                     | Location                                              |
++-----------------+---------------------------------------------+-------------------------------------------------------+
+| interface       | s_axilite port=return                       | HLS_Optimized/conv2d.cpp:23 in conv2d_hw, return      |
+| interface       | s_axilite port=numChannels                  | HLS_Optimized/conv2d.cpp:24 in conv2d_hw, numChannels |
+| interface       | s_axilite port=numFilters                   | HLS_Optimized/conv2d.cpp:25 in conv2d_hw, numFilters  |
+| interface       | s_axilite port=inputWidth                   | HLS_Optimized/conv2d.cpp:26 in conv2d_hw, inputWidth  |
+| interface       | s_axilite port=inputHeight                  | HLS_Optimized/conv2d.cpp:27 in conv2d_hw, inputHeight |
+| interface       | s_axilite port=convWidth                    | HLS_Optimized/conv2d.cpp:28 in conv2d_hw, convWidth   |
+| interface       | s_axilite port=convHeight                   | HLS_Optimized/conv2d.cpp:29 in conv2d_hw, convHeight  |
+| interface       | m_axi depth=200000 port=input offset=slave  | HLS_Optimized/conv2d.cpp:30 in conv2d_hw, input       |
+| interface       | m_axi depth=200000 port=output offset=slave | HLS_Optimized/conv2d.cpp:31 in conv2d_hw, output      |
+| interface       | m_axi depth=200000 port=coeffs offset=slave | HLS_Optimized/conv2d.cpp:32 in conv2d_hw, coeffs      |
+| interface       | m_axi depth=200000 port=biases offset=slave | HLS_Optimized/conv2d.cpp:33 in conv2d_hw, biases      |
+| interface       | s_axilite port=apply_relu                   | HLS_Optimized/conv2d.cpp:35 in conv2d_hw, apply_relu  |
+| array_partition | variable=coeff_cache complete dim=3         | HLS_Optimized/conv2d.cpp:40 in conv2d_hw, coeff_cache |
+| array_partition | variable=row_buffer complete dim=1          | HLS_Optimized/conv2d.cpp:60 in conv2d_hw, row_buffer  |
+| pipeline        | II=1                                        | HLS_Optimized/conv2d.cpp:69 in conv2d_hw              |
++-----------------+---------------------------------------------+-------------------------------------------------------+
 
 

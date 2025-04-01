@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
---Date        : Mon Mar 31 13:49:09 2025
+--Date        : Tue Apr  1 19:57:51 2025
 --Host        : diskless running 64-bit Ubuntu 22.04 LTS
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -1512,7 +1512,7 @@ entity design_1 is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=1,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=8,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=1,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=14,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -1666,10 +1666,47 @@ architecture STRUCTURE of design_1 is
     SLOT_0_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
     SLOT_0_AXI_rvalid : in STD_LOGIC;
     SLOT_0_AXI_rready : in STD_LOGIC;
-    resetn : in STD_LOGIC
+    resetn : in STD_LOGIC;
+    SLOT_1_AXI_awid : in STD_LOGIC_VECTOR ( 0 to 0 );
+    SLOT_1_AXI_awaddr : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    SLOT_1_AXI_awlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    SLOT_1_AXI_awsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    SLOT_1_AXI_awlock : in STD_LOGIC_VECTOR ( 0 to 0 );
+    SLOT_1_AXI_awcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    SLOT_1_AXI_awprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    SLOT_1_AXI_awregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    SLOT_1_AXI_awqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    SLOT_1_AXI_awvalid : in STD_LOGIC;
+    SLOT_1_AXI_awready : in STD_LOGIC;
+    SLOT_1_AXI_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    SLOT_1_AXI_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    SLOT_1_AXI_wlast : in STD_LOGIC;
+    SLOT_1_AXI_wvalid : in STD_LOGIC;
+    SLOT_1_AXI_wready : in STD_LOGIC;
+    SLOT_1_AXI_bid : in STD_LOGIC_VECTOR ( 0 to 0 );
+    SLOT_1_AXI_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    SLOT_1_AXI_bvalid : in STD_LOGIC;
+    SLOT_1_AXI_bready : in STD_LOGIC;
+    SLOT_1_AXI_arid : in STD_LOGIC_VECTOR ( 0 to 0 );
+    SLOT_1_AXI_araddr : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    SLOT_1_AXI_arlen : in STD_LOGIC_VECTOR ( 7 downto 0 );
+    SLOT_1_AXI_arsize : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    SLOT_1_AXI_arlock : in STD_LOGIC_VECTOR ( 0 to 0 );
+    SLOT_1_AXI_arcache : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    SLOT_1_AXI_arprot : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    SLOT_1_AXI_arregion : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    SLOT_1_AXI_arqos : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    SLOT_1_AXI_arvalid : in STD_LOGIC;
+    SLOT_1_AXI_arready : in STD_LOGIC;
+    SLOT_1_AXI_rid : in STD_LOGIC_VECTOR ( 0 to 0 );
+    SLOT_1_AXI_rdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    SLOT_1_AXI_rresp : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    SLOT_1_AXI_rlast : in STD_LOGIC;
+    SLOT_1_AXI_rvalid : in STD_LOGIC;
+    SLOT_1_AXI_rready : in STD_LOGIC
   );
   end component design_1_system_ila_0_0;
-  component design_1_Conv2D_HW_0_3 is
+  component design_1_Conv2D_HW_0_7 is
   port (
     s_axi_control_AWADDR : in STD_LOGIC_VECTOR ( 6 downto 0 );
     s_axi_control_AWVALID : in STD_LOGIC;
@@ -1732,46 +1769,164 @@ architecture STRUCTURE of design_1 is
     m_axi_gmem_RVALID : in STD_LOGIC;
     m_axi_gmem_RREADY : out STD_LOGIC
   );
-  end component design_1_Conv2D_HW_0_3;
+  end component design_1_Conv2D_HW_0_7;
   signal Conv2D_HW_0_m_axi_gmem_ARADDR : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute CONN_BUS_INFO : string;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARADDR : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARADDR";
+  attribute DEBUG : string;
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARADDR : signal is "true";
+  attribute MARK_DEBUG : boolean;
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARADDR : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARBURST : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARBURST : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARCACHE : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARCACHE";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARCACHE : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARCACHE : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARID : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARID : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARLEN : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARLEN";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARLEN : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARLEN : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARLOCK : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARLOCK : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARLOCK";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARLOCK : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARLOCK : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARPROT : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARPROT";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARPROT : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARPROT : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARQOS : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARQOS";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARQOS : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARQOS : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARREADY : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARREADY : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARREADY";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARREADY : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARREADY : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARREGION : STD_LOGIC_VECTOR ( 3 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARREGION : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARREGION";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARREGION : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARREGION : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARSIZE : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARSIZE";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARSIZE : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARSIZE : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_ARVALID : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARVALID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARVALID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_ARVALID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_ARVALID : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWADDR : STD_LOGIC_VECTOR ( 63 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWADDR : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWADDR";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWADDR : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWADDR : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWBURST : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWBURST : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWCACHE : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWCACHE";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWCACHE : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWCACHE : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWID : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWID : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWLEN : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWLEN : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWLEN";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWLEN : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWLEN : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWLOCK : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWLOCK : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWLOCK";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWLOCK : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWLOCK : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWPROT : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWPROT";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWPROT : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWPROT : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWQOS : STD_LOGIC_VECTOR ( 3 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWQOS : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWQOS";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWQOS : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWQOS : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWREADY : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWREADY : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWREADY";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWREADY : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWREADY : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWREGION : STD_LOGIC_VECTOR ( 3 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWREGION : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWREGION";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWREGION : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWREGION : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWSIZE : STD_LOGIC_VECTOR ( 2 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWSIZE : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWSIZE";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWSIZE : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWSIZE : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_AWVALID : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_AWVALID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 AWVALID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_AWVALID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_AWVALID : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_BID : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_BID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 BID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_BID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_BID : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_BREADY : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_BREADY : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 BREADY";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_BREADY : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_BREADY : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_BRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_BRESP : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 BRESP";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_BRESP : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_BRESP : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_BVALID : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_BVALID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 BVALID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_BVALID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_BVALID : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_RDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_RDATA : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 RDATA";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_RDATA : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_RDATA : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_RID : STD_LOGIC_VECTOR ( 0 to 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_RID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 RID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_RID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_RID : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_RLAST : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_RLAST : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 RLAST";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_RLAST : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_RLAST : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_RREADY : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_RREADY : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 RREADY";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_RREADY : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_RREADY : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_RRESP : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_RRESP : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 RRESP";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_RRESP : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_RRESP : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_RVALID : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_RVALID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 RVALID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_RVALID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_RVALID : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_WDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_WDATA : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 WDATA";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_WDATA : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_WDATA : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_WLAST : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_WLAST : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 WLAST";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_WLAST : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_WLAST : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_WREADY : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_WREADY : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 WREADY";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_WREADY : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_WREADY : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_WSTRB : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 WSTRB";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_WSTRB : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_WSTRB : signal is std.standard.true;
   signal Conv2D_HW_0_m_axi_gmem_WVALID : STD_LOGIC;
+  attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_WVALID : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 WVALID";
+  attribute DEBUG of Conv2D_HW_0_m_axi_gmem_WVALID : signal is "true";
+  attribute MARK_DEBUG of Conv2D_HW_0_m_axi_gmem_WVALID : signal is std.standard.true;
   signal axi_mem_intercon_M00_AXI_ARADDR : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal axi_mem_intercon_M00_AXI_ARBURST : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal axi_mem_intercon_M00_AXI_ARCACHE : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1867,11 +2022,8 @@ architecture STRUCTURE of design_1 is
   signal processing_system7_0_M_AXI_GP0_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal processing_system7_0_M_AXI_GP0_WVALID : STD_LOGIC;
   signal ps7_0_axi_periph_M00_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
-  attribute CONN_BUS_INFO : string;
   attribute CONN_BUS_INFO of ps7_0_axi_periph_M00_AXI_ARADDR : signal is "ps7_0_axi_periph_M00_AXI xilinx.com:interface:aximm:1.0 AXI4LITE ARADDR";
-  attribute DEBUG : string;
   attribute DEBUG of ps7_0_axi_periph_M00_AXI_ARADDR : signal is "true";
-  attribute MARK_DEBUG : boolean;
   attribute MARK_DEBUG of ps7_0_axi_periph_M00_AXI_ARADDR : signal is std.standard.true;
   signal ps7_0_axi_periph_M00_AXI_ARREADY : STD_LOGIC;
   attribute CONN_BUS_INFO of ps7_0_axi_periph_M00_AXI_ARREADY : signal is "ps7_0_axi_periph_M00_AXI xilinx.com:interface:aximm:1.0 AXI4LITE ARREADY";
@@ -1978,7 +2130,7 @@ architecture STRUCTURE of design_1 is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
-Conv2D_HW_0: component design_1_Conv2D_HW_0_3
+Conv2D_HW_0: component design_1_Conv2D_HW_0_7
      port map (
       ap_clk => processing_system7_0_FCLK_CLK0,
       ap_rst_n => rst_ps7_0_100M_peripheral_aresetn(0),
@@ -2331,6 +2483,43 @@ system_ila_0: component design_1_system_ila_0_0
       SLOT_0_AXI_wready => ps7_0_axi_periph_M00_AXI_WREADY,
       SLOT_0_AXI_wstrb(3 downto 0) => ps7_0_axi_periph_M00_AXI_WSTRB(3 downto 0),
       SLOT_0_AXI_wvalid => ps7_0_axi_periph_M00_AXI_WVALID,
+      SLOT_1_AXI_araddr(63 downto 0) => Conv2D_HW_0_m_axi_gmem_ARADDR(63 downto 0),
+      SLOT_1_AXI_arcache(3 downto 0) => Conv2D_HW_0_m_axi_gmem_ARCACHE(3 downto 0),
+      SLOT_1_AXI_arid(0) => Conv2D_HW_0_m_axi_gmem_ARID(0),
+      SLOT_1_AXI_arlen(7 downto 0) => Conv2D_HW_0_m_axi_gmem_ARLEN(7 downto 0),
+      SLOT_1_AXI_arlock(0) => Conv2D_HW_0_m_axi_gmem_ARLOCK(0),
+      SLOT_1_AXI_arprot(2 downto 0) => Conv2D_HW_0_m_axi_gmem_ARPROT(2 downto 0),
+      SLOT_1_AXI_arqos(3 downto 0) => Conv2D_HW_0_m_axi_gmem_ARQOS(3 downto 0),
+      SLOT_1_AXI_arready => Conv2D_HW_0_m_axi_gmem_ARREADY,
+      SLOT_1_AXI_arregion(3 downto 0) => Conv2D_HW_0_m_axi_gmem_ARREGION(3 downto 0),
+      SLOT_1_AXI_arsize(2 downto 0) => Conv2D_HW_0_m_axi_gmem_ARSIZE(2 downto 0),
+      SLOT_1_AXI_arvalid => Conv2D_HW_0_m_axi_gmem_ARVALID,
+      SLOT_1_AXI_awaddr(63 downto 0) => Conv2D_HW_0_m_axi_gmem_AWADDR(63 downto 0),
+      SLOT_1_AXI_awcache(3 downto 0) => Conv2D_HW_0_m_axi_gmem_AWCACHE(3 downto 0),
+      SLOT_1_AXI_awid(0) => Conv2D_HW_0_m_axi_gmem_AWID(0),
+      SLOT_1_AXI_awlen(7 downto 0) => Conv2D_HW_0_m_axi_gmem_AWLEN(7 downto 0),
+      SLOT_1_AXI_awlock(0) => Conv2D_HW_0_m_axi_gmem_AWLOCK(0),
+      SLOT_1_AXI_awprot(2 downto 0) => Conv2D_HW_0_m_axi_gmem_AWPROT(2 downto 0),
+      SLOT_1_AXI_awqos(3 downto 0) => Conv2D_HW_0_m_axi_gmem_AWQOS(3 downto 0),
+      SLOT_1_AXI_awready => Conv2D_HW_0_m_axi_gmem_AWREADY,
+      SLOT_1_AXI_awregion(3 downto 0) => Conv2D_HW_0_m_axi_gmem_AWREGION(3 downto 0),
+      SLOT_1_AXI_awsize(2 downto 0) => Conv2D_HW_0_m_axi_gmem_AWSIZE(2 downto 0),
+      SLOT_1_AXI_awvalid => Conv2D_HW_0_m_axi_gmem_AWVALID,
+      SLOT_1_AXI_bid(0) => Conv2D_HW_0_m_axi_gmem_BID(0),
+      SLOT_1_AXI_bready => Conv2D_HW_0_m_axi_gmem_BREADY,
+      SLOT_1_AXI_bresp(1 downto 0) => Conv2D_HW_0_m_axi_gmem_BRESP(1 downto 0),
+      SLOT_1_AXI_bvalid => Conv2D_HW_0_m_axi_gmem_BVALID,
+      SLOT_1_AXI_rdata(31 downto 0) => Conv2D_HW_0_m_axi_gmem_RDATA(31 downto 0),
+      SLOT_1_AXI_rid(0) => Conv2D_HW_0_m_axi_gmem_RID(0),
+      SLOT_1_AXI_rlast => Conv2D_HW_0_m_axi_gmem_RLAST,
+      SLOT_1_AXI_rready => Conv2D_HW_0_m_axi_gmem_RREADY,
+      SLOT_1_AXI_rresp(1 downto 0) => Conv2D_HW_0_m_axi_gmem_RRESP(1 downto 0),
+      SLOT_1_AXI_rvalid => Conv2D_HW_0_m_axi_gmem_RVALID,
+      SLOT_1_AXI_wdata(31 downto 0) => Conv2D_HW_0_m_axi_gmem_WDATA(31 downto 0),
+      SLOT_1_AXI_wlast => Conv2D_HW_0_m_axi_gmem_WLAST,
+      SLOT_1_AXI_wready => Conv2D_HW_0_m_axi_gmem_WREADY,
+      SLOT_1_AXI_wstrb(3 downto 0) => Conv2D_HW_0_m_axi_gmem_WSTRB(3 downto 0),
+      SLOT_1_AXI_wvalid => Conv2D_HW_0_m_axi_gmem_WVALID,
       clk => processing_system7_0_FCLK_CLK0,
       resetn => rst_ps7_0_100M_peripheral_aresetn(0)
     );

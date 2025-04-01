@@ -12,8 +12,8 @@ entity Conv2D_HW_coeff_cache_RAM_AUTO_1R1W is
     generic(
         MEM_TYPE        : string    := "auto"; 
         DataWidth       : integer   := 32; 
-        AddressWidth    : integer   := 12;
-        AddressRange    : integer   := 2304
+        AddressWidth    : integer   := 10;
+        AddressRange    : integer   := 768
     ); 
     port (
         address0    : in std_logic_vector(AddressWidth-1 downto 0); 

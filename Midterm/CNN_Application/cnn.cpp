@@ -88,7 +88,39 @@ void Conv2D(TFXP *input, TFXP * output, TFXP * filters,
   }
 }
 
+void Conv2D_SW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP * biases,
+      uint32_t numChannels, uint32_t numFilters,
+      uint32_t inputWidth, uint32_t inputHeight,
+      uint32_t convWidth, uint32_t convHeight, uint32_t apply_relu)
+{
+  for (uint32_t iFilter = 0; iFilter < numFilters; ++ iFilter) {
+	    for (uint32_t y = 0; y < (inputHeight-2); ++y) {
+	      for (uint32_t x = 0; x < (inputWidth-2); ++ x) {
+	        TFXP acc;
+	        acc = 0;
+	        for (uint32_t iChannel = 0; iChannel < numChannels; ++ iChannel) {
+	          for (uint32_t cy = 0; cy < convHeight; ++ cy) {
+	            for (uint32_t cx = 0; cx < convWidth; ++cx) {
+	              //acc += filters[iFilter][iChannel][cy][cx] * input[iChannel][y+cy][x+cx];
+	              TFXP pixelValue, filterValue;
+	              filterValue = *(coeffs + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
+	              pixelValue = *(input + iChannel*inputWidth*inputHeight + (y+cy)*inputWidth + (x+cx));
+	              acc += FXP_Mult(filterValue, pixelValue, DECIMALS);
+	            }
+	          }
+	        }
+          // add bias for this output filter
+	        acc += biases[iFilter];
 
+          if (apply_relu && acc < 0) // check if we want to use relu here
+	            acc = 0;
+
+          // store result
+	        *(output + iFilter * (inputHeight-2)*(inputWidth-2) + y*(inputWidth-2) + x) = acc;
+	      }
+	    }
+	  }
+}
 void Dense(TFXP * input, TFXP * output, uint32_t inputSize, uint32_t outputSize,
       TFXP * weights, TFXP * biases)
 {

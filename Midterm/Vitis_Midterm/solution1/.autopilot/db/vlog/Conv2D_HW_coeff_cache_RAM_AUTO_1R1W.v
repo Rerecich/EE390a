@@ -13,8 +13,8 @@ module Conv2D_HW_coeff_cache_RAM_AUTO_1R1W (
     reset, clk);
 
 parameter DataWidth = 32;
-parameter AddressWidth = 12;
-parameter AddressRange = 2304;
+parameter AddressWidth = 10;
+parameter AddressRange = 768;
  
 input[AddressWidth-1:0] address0;
 input ce0;

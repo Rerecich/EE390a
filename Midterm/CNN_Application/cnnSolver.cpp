@@ -32,7 +32,7 @@ void PrintTimes(TTimes & times, uint32_t numLayers);
 
 int main(int argc, char ** argv)
 {
-  CConv2DDriver convolver(false);
+  CConv2DDriver convolver(true);
   
   if (argc != 2) {
     printf("Usage: cnnSolver image.rgba.planar\n");
@@ -100,8 +100,10 @@ int main(int argc, char ** argv)
   if (DEBUG)
     printf("Times initialized, calling Inference...\n");
 
+  printf("Allocating buffer memory\n");
   buffer0 = (TFXP *)convolver.AllocDMACompatible(4129024 * sizeof(TFXP));
   buffer1 = (TFXP *)convolver.AllocDMACompatible(1032256 * sizeof(TFXP));
+  
   TFXP finalPrediction = Inference(inputImageFxp, buffer0, buffer1, weights, biases, times, convolver);
   printf("OUTPUT: %0.8lf --> %s\n", Fxp2Float(finalPrediction, DECIMALS),
     Fxp2Float(finalPrediction) < 0.5 ? "CAT" : "DOG");

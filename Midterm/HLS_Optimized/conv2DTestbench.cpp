@@ -38,9 +38,9 @@ inline TFXP FXP_Mult(TFXP a, TFXP b, uint32_t decimalBits = DECIMALS)
 // pixel. For every output pixel, convolves the corresponding window on the input image for 
 // each input channel, using the coefficients for each channel.
 void Conv2D_SW(TFXP *input, TFXP * output, TFXP * filters, TFXP * biases,
-      ap_uint<32> numChannels, ap_uint<32> numFilters,
-	  ap_uint<32> inputWidth, ap_uint<32> inputHeight,
-	  ap_uint<32> convWidth = 3, ap_uint<32> convHeight = 3, ap_uint<1> apply_relu = 1)
+      uint32_t numChannels, uint32_t numFilters,
+	  uint32_t inputWidth, uint32_t inputHeight,
+	  uint32_t convWidth = 3, uint32_t convHeight = 3, ap_uint<1> apply_relu = 1)
 {
 	printf("Conv2D_SW Initialized");
 	for (uint32_t iFilter = 0; iFilter < numFilters; ++ iFilter) {
@@ -97,10 +97,10 @@ bool CompareVectors(TFXP * input1, TFXP * input2, uint32_t size)
 ///////////////////////////////////////////////////////////////////////////////
 int main(int argc, char ** argv)
 {
-  uint32_t width = MAX_WIDTH, height = MAX_HEIGHT;
+  uint32_t width = 127, height = 127;
   uint32_t channels, filters;
   uint32_t currentOutputSize;
-  uint32_t sizes[][2] = { {3, 32}, {16, 16}, {32, 32}};//, {64, 64}, {128, 128}, {256, 256} };
+  uint32_t sizes[][2] = { {3, 32}, {16, 16}, {32, 32}};//{64, 64}, {128, 128}, {256, 256} };
   uint32_t numSizes = sizeof(sizes) / (sizeof(uint32_t) * 2);
 
   srand(time(NULL));

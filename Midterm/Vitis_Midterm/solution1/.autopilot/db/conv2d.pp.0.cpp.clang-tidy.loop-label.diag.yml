@@ -7,7 +7,7 @@ Diagnostics:
     FilePath:        /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_base.h
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          52217
+        Offset:          74773
         Length:          0
         ReplacementText: 'VITIS_LOOP_1211_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -16,7 +16,7 @@ Diagnostics:
     FilePath:        /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_ref.h
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          259653
+        Offset:          282209
         Length:          0
         ReplacementText: 'VITIS_LOOP_676_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -25,7 +25,7 @@ Diagnostics:
     FilePath:        /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_ref.h
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          260092
+        Offset:          282648
         Length:          0
         ReplacementText: 'VITIS_LOOP_690_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -34,7 +34,7 @@ Diagnostics:
     FilePath:        /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_int_ref.h
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          260532
+        Offset:          283088
         Length:          0
         ReplacementText: 'VITIS_LOOP_704_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -43,7 +43,7 @@ Diagnostics:
     FilePath:        /scrap/users/Xilinx2022.2/Vitis_HLS/2022.2/common/technology/autopilot/ap_fixed_base.h
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          522782
+        Offset:          545338
         Length:          0
         ReplacementText: 'VITIS_LOOP_1245_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -52,7 +52,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891003
+        Offset:          890680
         Length:          0
         ReplacementText: 'VITIS_LOOP_38_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -61,7 +61,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891105
+        Offset:          890841
         Length:          0
         ReplacementText: 'VITIS_LOOP_43_2: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -70,7 +70,7 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891180
+        Offset:          890913
         Length:          0
         ReplacementText: 'VITIS_LOOP_44_3: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -79,52 +79,79 @@ Diagnostics:
     FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891239
+        Offset:          890969
         Length:          0
         ReplacementText: 'VITIS_LOOP_45_4: '
   - DiagnosticName:  xilinx-label-all-loops
-    Message:         'Added loop label VITIS_LOOP_56_5:  '
-    FileOffset:      56
-    FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
-    Replacements:    
-      - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891541
-        Length:          0
-        ReplacementText: 'VITIS_LOOP_56_5: '
-  - DiagnosticName:  xilinx-label-all-loops
-    Message:         'Added loop label VITIS_LOOP_58_6:  '
+    Message:         'Added loop label VITIS_LOOP_58_5:  '
     FileOffset:      58
     FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891601
+        Offset:          891270
         Length:          0
-        ReplacementText: 'VITIS_LOOP_58_6: '
+        ReplacementText: 'VITIS_LOOP_58_5: '
   - DiagnosticName:  xilinx-label-all-loops
-    Message:         'Added loop label VITIS_LOOP_61_7:  '
-    FileOffset:      61
-    FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
-    Replacements:    
-      - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891686
-        Length:          0
-        ReplacementText: 'VITIS_LOOP_61_7: '
-  - DiagnosticName:  xilinx-label-all-loops
-    Message:         'Added loop label VITIS_LOOP_63_8:  '
+    Message:         'Added loop label VITIS_LOOP_63_6:  '
     FileOffset:      63
     FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891768
+        Offset:          891417
         Length:          0
-        ReplacementText: 'VITIS_LOOP_63_8: '
+        ReplacementText: 'VITIS_LOOP_63_6: '
   - DiagnosticName:  xilinx-label-all-loops
-    Message:         'Added loop label VITIS_LOOP_65_9:  '
-    FileOffset:      65
+    Message:         'Added loop label VITIS_LOOP_66_7:  '
+    FileOffset:      66
     FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
     Replacements:    
       - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
-        Offset:          891833
+        Offset:          891501
         Length:          0
-        ReplacementText: 'VITIS_LOOP_65_9: '
+        ReplacementText: 'VITIS_LOOP_66_7: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_68_8:  '
+    FileOffset:      68
+    FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
+    Replacements:    
+      - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
+        Offset:          891576
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_68_8: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_76_9:  '
+    FileOffset:      76
+    FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
+    Replacements:    
+      - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
+        Offset:          891788
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_76_9: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_80_10:  '
+    FileOffset:      80
+    FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
+    Replacements:    
+      - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
+        Offset:          891867
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_80_10: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_83_11:  '
+    FileOffset:      83
+    FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
+    Replacements:    
+      - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
+        Offset:          891944
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_83_11: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_86_12:  '
+    FileOffset:      86
+    FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/HLS_Optimized/conv2d.cpp
+    Replacements:    
+      - FilePath:        /home/rerecich/EE-390a/CNN/Midterm/Midterm/Vitis_Midterm/solution1/.autopilot/db/conv2d.pp.0.cpp
+        Offset:          892003
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_86_12: '
 ...

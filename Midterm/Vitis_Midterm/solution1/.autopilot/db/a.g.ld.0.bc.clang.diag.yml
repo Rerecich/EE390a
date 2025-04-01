@@ -2,21 +2,57 @@
 Pass:            reflow-inliner
 Name:            AutoInline
 DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Inlining function '''
   - Callee:          'FXP_Mult(int, int, unsigned int)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 8, Column: 0 }
   - String:          ''' into '''
-  - Caller:          'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Caller:          'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ''''
 ...
 --- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 39, Column: 8 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          coeff_cache
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '3'
+  - String:          .
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 59, Column: 12 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          row_buffer
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...
+--- !Passed
 Pass:            reflow-burst-inference
 Name:            BurstInferred
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 44, Column: 24 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 45, Column: 27 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Sequential '
   - Direction:       read
@@ -25,8 +61,90 @@ Args:
   - String:          ' length'
   - String:          ' has been inferred'
   - String:          ' _XLX_SEP_ OldID='
-  - String:          for.inc.load.9
+  - String:          for.inc.load.5
   - String:          ', '
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        scevgepseq
+  - String:          ' '
+  - ArrayName:       coeffs
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_45_4
+  - String:          ' '
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:45:27'
+  - String:          ' '
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
+    DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 68, Column: 26 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ OldID='
+  - String:          for.inc68.load.11
+  - String:          ', '
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        scevgep114seq
+  - String:          ' '
+  - ArrayName:       input
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_68_8
+  - String:          ' '
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:68:26'
+  - String:          ' '
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
+    DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 76, Column: 24 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
+Args:            
+  - String:          'Sequential '
+  - Direction:       write
+  - String:          ' of '
+  - Length:          variable
+  - String:          ' length'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ OldID='
+  - String:          for.end120.store.11
+  - String:          ', '
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        scevgep115seq
+  - String:          ' '
+  - ArrayName:       output
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_76_9
+  - String:          ' '
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:76:24'
+  - String:          ' '
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
+    DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
+  - String:          ' '
+...
+--- !Missed
+Pass:            reflow-burst-inference
+Name:            IncompatibleStride
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 45, Column: 27 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
+Args:            
+  - String:          Stride is incompatible
   - String:          ' _XLX_SEP_ '
   - AccessID:        scevgepseq
   - String:          ' '
@@ -38,212 +156,130 @@ Args:
   - String:          ' '
   - LoopLoc:         'HLS_Optimized/conv2d.cpp:44:24'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
---- !Passed
+--- !Missed
 Pass:            reflow-burst-inference
-Name:            BurstInferred
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 65, Column: 31 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+Name:            IncompatibleStride
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 68, Column: 26 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
-  - String:          'Sequential '
-  - Direction:       read
-  - String:          ' of '
-  - Length:          variable
-  - String:          ' length'
-  - String:          ' has been inferred'
-  - String:          ' _XLX_SEP_ OldID='
-  - String:          for.inc82.load.22
-  - String:          ', '
+  - String:          Stride is incompatible
   - String:          ' _XLX_SEP_ '
-  - AccessID:        scevgep1221seq
+  - AccessID:        scevgep114seq
   - String:          ' '
   - ArrayName:       input
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - LoopName:        VITIS_LOOP_65_9
+  - LoopName:        VITIS_LOOP_66_7
   - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:65:31'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:66:25'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
-    DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
-  - String:          ' '
-...
---- !Passed
-Pass:            reflow-burst-inference
-Name:            BurstInferred
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 58, Column: 25 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
-Args:            
-  - String:          'Sequential '
-  - Direction:       write
-  - String:          ' of '
-  - Length:          variable
-  - String:          ' length'
-  - String:          ' has been inferred'
-  - String:          ' _XLX_SEP_ OldID='
-  - String:          for.end90.store.13
-  - String:          ', '
-  - String:          ' _XLX_SEP_ '
-  - AccessID:        scevgep1223seq
-  - String:          ' '
-  - ArrayName:       output
-  - String:          ' '
-  - BundleName:      gmem
-  - String:          ' '
-  - LoopName:        VITIS_LOOP_58_6
-  - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:58:25'
-  - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Missed
 Pass:            reflow-burst-inference
 Name:            IncompatibleStride
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 44, Column: 24 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          Stride is incompatible
   - String:          ' _XLX_SEP_ '
-  - AccessID:        scevgepseq
-  - String:          ' '
-  - ArrayName:       coeffs
-  - String:          ' '
-  - BundleName:      gmem
-  - String:          ' '
-  - LoopName:        VITIS_LOOP_43_2
-  - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:43:20'
-  - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
-    DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
-  - String:          ' '
-...
---- !Missed
-Pass:            reflow-burst-inference
-Name:            IncompatibleStride
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 65, Column: 31 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
-Args:            
-  - String:          Stride is incompatible
-  - String:          ' _XLX_SEP_ '
-  - AccessID:        scevgep1221seq
-  - String:          ' '
-  - ArrayName:       input
-  - String:          ' '
-  - BundleName:      gmem
-  - String:          ' '
-  - LoopName:        VITIS_LOOP_63_8
-  - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:63:29'
-  - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
-    DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
-  - String:          ' '
-...
---- !Missed
-Pass:            reflow-burst-inference
-Name:            IncompatibleStride
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
-Args:            
-  - String:          Stride is incompatible
-  - String:          ' _XLX_SEP_ '
-  - AccessID:        for.body50.lr.ph.load.0
+  - AccessID:        for.body82.lr.ph.load.0
   - String:          ' '
   - ArrayName:       biases
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - LoopName:        VITIS_LOOP_56_5
+  - LoopName:        VITIS_LOOP_58_5
   - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:56:23'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:58:23'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Missed
 Pass:            reflow-burst-inference
 Name:            IncompatibleStride
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 58, Column: 25 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 76, Column: 24 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          Stride is incompatible
   - String:          ' _XLX_SEP_ '
-  - AccessID:        scevgep1223seq
+  - AccessID:        scevgep115seq
   - String:          ' '
   - ArrayName:       output
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - LoopName:        VITIS_LOOP_56_5
+  - LoopName:        VITIS_LOOP_58_5
   - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:56:23'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:58:23'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Missed
 Pass:            reflow-burst-widen
 Name:            GreaterOrEqualThreshold
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 58, Column: 25 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 76, Column: 24 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Could not widen since type '
   - Type:            i32
   - String:          ' size is greater than or equal to the max_widen_bitwidth threshold of '
   - Threshold:       '0'
   - String:          ' _XLX_SEP_ '
-  - AccessID:        scevgep1223seq
+  - AccessID:        scevgep115seq
   - String:          ' '
   - ArrayName:       output
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - LoopName:        VITIS_LOOP_58_6
+  - LoopName:        VITIS_LOOP_76_9
   - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:58:25'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:76:24'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Missed
 Pass:            reflow-burst-widen
 Name:            GreaterOrEqualThreshold
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 65, Column: 31 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 68, Column: 26 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Could not widen since type '
   - Type:            i32
   - String:          ' size is greater than or equal to the max_widen_bitwidth threshold of '
   - Threshold:       '0'
   - String:          ' _XLX_SEP_ '
-  - AccessID:        scevgep1221seq
+  - AccessID:        scevgep114seq
   - String:          ' '
   - ArrayName:       input
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - LoopName:        VITIS_LOOP_65_9
+  - LoopName:        VITIS_LOOP_68_8
   - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:65:31'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:68:26'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Missed
 Pass:            reflow-burst-widen
 Name:            GreaterOrEqualThreshold
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 44, Column: 24 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 45, Column: 27 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Could not widen since type '
   - Type:            i32
@@ -260,15 +296,15 @@ Args:
   - String:          ' '
   - LoopLoc:         'HLS_Optimized/conv2d.cpp:45:27'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Passed
 Pass:            reflow-burst-summary
 Name:            BurstInferredVerboseSummary
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 44, Column: 24 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 45, Column: 27 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Multiple burst '
   - Direction:       reads
@@ -285,15 +321,19 @@ Args:
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - LoopName:        VITIS_LOOP_45_4
+  - String:          ' '
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:45:27'
+  - String:          ' '
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Passed
 Pass:            reflow-burst-summary
 Name:            BurstInferredSummary
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 44, Column: 24 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 45, Column: 27 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Multiple burst '
   - Direction:       reads
@@ -301,6 +341,11 @@ Args:
   - Length:          variable
   - String:          ' length and bit width '
   - Width:           '32'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_45_4
+  - String:          '''('
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:45:27'
+  - String:          ')'
   - String:          ' has been inferred on bundle '''
   - BundleName:      gmem
   - String:          '''.'
@@ -309,11 +354,11 @@ Args:
 --- !Passed
 Pass:            reflow-burst-summary
 Name:            BurstInferredVerboseSummary
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 58, Column: 25 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 68, Column: 26 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Multiple burst '
-  - Direction:       writes
+  - Direction:       reads
   - String:          ' of '
   - Length:          variable
   - String:          ' length and bit width '
@@ -327,30 +372,30 @@ Args:
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - LoopName:        VITIS_LOOP_58_6
+  - LoopName:        VITIS_LOOP_68_8
   - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:58:25'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:68:26'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Passed
 Pass:            reflow-burst-summary
 Name:            BurstInferredSummary
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 58, Column: 25 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 68, Column: 26 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Multiple burst '
-  - Direction:       writes
+  - Direction:       reads
   - String:          ' of '
   - Length:          variable
   - String:          ' length and bit width '
   - Width:           '32'
   - String:          ' in loop '''
-  - LoopName:        VITIS_LOOP_58_6
+  - LoopName:        VITIS_LOOP_68_8
   - String:          '''('
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:58:25'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:68:26'
   - String:          ')'
   - String:          ' has been inferred on bundle '''
   - BundleName:      gmem
@@ -360,11 +405,11 @@ Args:
 --- !Passed
 Pass:            reflow-burst-summary
 Name:            BurstInferredVerboseSummary
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 65, Column: 31 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 76, Column: 24 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Multiple burst '
-  - Direction:       reads
+  - Direction:       writes
   - String:          ' of '
   - Length:          variable
   - String:          ' length and bit width '
@@ -378,30 +423,30 @@ Args:
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - LoopName:        VITIS_LOOP_65_9
+  - LoopName:        VITIS_LOOP_76_9
   - String:          ' '
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:65:31'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:76:24'
   - String:          ' '
-  - Function:        'Conv2D_HW(int*, int*, int*, int*, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<32>, ap_uint<1>)'
+  - Function:        'Conv2D_HW(int*, int*, int*, int*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, ap_uint<1>)'
     DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 22, Column: 0 }
   - String:          ' '
 ...
 --- !Passed
 Pass:            reflow-burst-summary
 Name:            BurstInferredSummary
-DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 65, Column: 31 }
-Function:        _Z9Conv2D_HWPiS_S_S_7ap_uintILi32EES1_S1_S1_S1_S1_S0_ILi1EE
+DebugLoc:        { File: HLS_Optimized/conv2d.cpp, Line: 76, Column: 24 }
+Function:        _Z9Conv2D_HWPiS_S_S_jjjjjj7ap_uintILi1EE
 Args:            
   - String:          'Multiple burst '
-  - Direction:       reads
+  - Direction:       writes
   - String:          ' of '
   - Length:          variable
   - String:          ' length and bit width '
   - Width:           '32'
   - String:          ' in loop '''
-  - LoopName:        VITIS_LOOP_65_9
+  - LoopName:        VITIS_LOOP_76_9
   - String:          '''('
-  - LoopLoc:         'HLS_Optimized/conv2d.cpp:65:31'
+  - LoopLoc:         'HLS_Optimized/conv2d.cpp:76:24'
   - String:          ')'
   - String:          ' has been inferred on bundle '''
   - BundleName:      gmem

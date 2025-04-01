@@ -73,6 +73,43 @@ ENTITY design_1_system_ila_0_0 IS
     SLOT_0_AXI_rresp : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
     SLOT_0_AXI_rvalid : IN STD_LOGIC;
     SLOT_0_AXI_rready : IN STD_LOGIC;
+    SLOT_1_AXI_awid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    SLOT_1_AXI_awaddr : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+    SLOT_1_AXI_awlen : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    SLOT_1_AXI_awsize : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SLOT_1_AXI_awlock : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    SLOT_1_AXI_awcache : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SLOT_1_AXI_awprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SLOT_1_AXI_awregion : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SLOT_1_AXI_awqos : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SLOT_1_AXI_awvalid : IN STD_LOGIC;
+    SLOT_1_AXI_awready : IN STD_LOGIC;
+    SLOT_1_AXI_wdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SLOT_1_AXI_wstrb : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SLOT_1_AXI_wlast : IN STD_LOGIC;
+    SLOT_1_AXI_wvalid : IN STD_LOGIC;
+    SLOT_1_AXI_wready : IN STD_LOGIC;
+    SLOT_1_AXI_bid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    SLOT_1_AXI_bresp : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+    SLOT_1_AXI_bvalid : IN STD_LOGIC;
+    SLOT_1_AXI_bready : IN STD_LOGIC;
+    SLOT_1_AXI_arid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    SLOT_1_AXI_araddr : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+    SLOT_1_AXI_arlen : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    SLOT_1_AXI_arsize : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SLOT_1_AXI_arlock : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    SLOT_1_AXI_arcache : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SLOT_1_AXI_arprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    SLOT_1_AXI_arregion : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SLOT_1_AXI_arqos : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    SLOT_1_AXI_arvalid : IN STD_LOGIC;
+    SLOT_1_AXI_arready : IN STD_LOGIC;
+    SLOT_1_AXI_rid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    SLOT_1_AXI_rdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SLOT_1_AXI_rresp : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+    SLOT_1_AXI_rlast : IN STD_LOGIC;
+    SLOT_1_AXI_rvalid : IN STD_LOGIC;
+    SLOT_1_AXI_rready : IN STD_LOGIC;
     resetn : IN STD_LOGIC
   );
 END design_1_system_ila_0_0;
@@ -100,6 +137,43 @@ ARCHITECTURE design_1_system_ila_0_0_arch OF design_1_system_ila_0_0 IS
       SLOT_0_AXI_rresp : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
       SLOT_0_AXI_rvalid : IN STD_LOGIC;
       SLOT_0_AXI_rready : IN STD_LOGIC;
+      SLOT_1_AXI_awid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      SLOT_1_AXI_awaddr : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+      SLOT_1_AXI_awlen : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      SLOT_1_AXI_awsize : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+      SLOT_1_AXI_awlock : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      SLOT_1_AXI_awcache : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      SLOT_1_AXI_awprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+      SLOT_1_AXI_awregion : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      SLOT_1_AXI_awqos : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      SLOT_1_AXI_awvalid : IN STD_LOGIC;
+      SLOT_1_AXI_awready : IN STD_LOGIC;
+      SLOT_1_AXI_wdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      SLOT_1_AXI_wstrb : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      SLOT_1_AXI_wlast : IN STD_LOGIC;
+      SLOT_1_AXI_wvalid : IN STD_LOGIC;
+      SLOT_1_AXI_wready : IN STD_LOGIC;
+      SLOT_1_AXI_bid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      SLOT_1_AXI_bresp : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+      SLOT_1_AXI_bvalid : IN STD_LOGIC;
+      SLOT_1_AXI_bready : IN STD_LOGIC;
+      SLOT_1_AXI_arid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      SLOT_1_AXI_araddr : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
+      SLOT_1_AXI_arlen : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+      SLOT_1_AXI_arsize : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+      SLOT_1_AXI_arlock : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      SLOT_1_AXI_arcache : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      SLOT_1_AXI_arprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+      SLOT_1_AXI_arregion : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      SLOT_1_AXI_arqos : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+      SLOT_1_AXI_arvalid : IN STD_LOGIC;
+      SLOT_1_AXI_arready : IN STD_LOGIC;
+      SLOT_1_AXI_rid : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      SLOT_1_AXI_rdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+      SLOT_1_AXI_rresp : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+      SLOT_1_AXI_rlast : IN STD_LOGIC;
+      SLOT_1_AXI_rvalid : IN STD_LOGIC;
+      SLOT_1_AXI_rready : IN STD_LOGIC;
       resetn : IN STD_LOGIC
     );
   END COMPONENT bd_f60c;
@@ -124,7 +198,46 @@ ARCHITECTURE design_1_system_ila_0_0_arch OF design_1_system_ila_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF SLOT_0_AXI_wready: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_0_AXI WREADY";
   ATTRIBUTE X_INTERFACE_INFO OF SLOT_0_AXI_wstrb: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_0_AXI WSTRB";
   ATTRIBUTE X_INTERFACE_INFO OF SLOT_0_AXI_wvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_0_AXI WVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME CLK.clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, ASSOCIATED_BUSIF SLOT_0_AXI, ASSOCIATED_RESET resetn, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_araddr: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arcache: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARCACHE";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arlen: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARLEN";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arlock: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARLOCK";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arprot: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARPROT";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arqos: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARQOS";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arready: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arregion: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARREGION";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arsize: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARSIZE";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_arvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI ARVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awaddr: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWADDR";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awcache: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWCACHE";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF SLOT_1_AXI_awid: SIGNAL IS "XIL_INTERFACENAME SLOT_1_AXI, DATA_WIDTH 32, PROTOCOL AXI4, FREQ_HZ 100000000, ID_WIDTH 1, ADDR_WIDTH 64, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 1, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 16, NUM_WRITE_OUTSTANDING 16, MAX_BURST_LENGTH 256, PHASE 0.0, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, NUM_READ_THR" & 
+"EADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awlen: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWLEN";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awlock: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWLOCK";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awprot: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWPROT";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awqos: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWQOS";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awready: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awregion: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWREGION";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awsize: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWSIZE";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_awvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI AWVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_bid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI BID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_bready: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI BREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_bresp: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI BRESP";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_bvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI BVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_rdata: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI RDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_rid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI RID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_rlast: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI RLAST";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_rready: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI RREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_rresp: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI RRESP";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_rvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI RVALID";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_wdata: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI WDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_wlast: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI WLAST";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_wready: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI WREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_wstrb: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI WSTRB";
+  ATTRIBUTE X_INTERFACE_INFO OF SLOT_1_AXI_wvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 SLOT_1_AXI WVALID";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME CLK.clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, ASSOCIATED_BUSIF SLOT_0_AXI:SLOT_1_AXI, ASSOCIATED_RESET resetn, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 CLK.clk CLK";
   ATTRIBUTE X_INTERFACE_PARAMETER OF resetn: SIGNAL IS "XIL_INTERFACENAME RST.resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF resetn: SIGNAL IS "xilinx.com:signal:reset:1.0 RST.resetn RST";
@@ -149,6 +262,43 @@ BEGIN
       SLOT_0_AXI_rresp => SLOT_0_AXI_rresp,
       SLOT_0_AXI_rvalid => SLOT_0_AXI_rvalid,
       SLOT_0_AXI_rready => SLOT_0_AXI_rready,
+      SLOT_1_AXI_awid => SLOT_1_AXI_awid,
+      SLOT_1_AXI_awaddr => SLOT_1_AXI_awaddr,
+      SLOT_1_AXI_awlen => SLOT_1_AXI_awlen,
+      SLOT_1_AXI_awsize => SLOT_1_AXI_awsize,
+      SLOT_1_AXI_awlock => SLOT_1_AXI_awlock,
+      SLOT_1_AXI_awcache => SLOT_1_AXI_awcache,
+      SLOT_1_AXI_awprot => SLOT_1_AXI_awprot,
+      SLOT_1_AXI_awregion => SLOT_1_AXI_awregion,
+      SLOT_1_AXI_awqos => SLOT_1_AXI_awqos,
+      SLOT_1_AXI_awvalid => SLOT_1_AXI_awvalid,
+      SLOT_1_AXI_awready => SLOT_1_AXI_awready,
+      SLOT_1_AXI_wdata => SLOT_1_AXI_wdata,
+      SLOT_1_AXI_wstrb => SLOT_1_AXI_wstrb,
+      SLOT_1_AXI_wlast => SLOT_1_AXI_wlast,
+      SLOT_1_AXI_wvalid => SLOT_1_AXI_wvalid,
+      SLOT_1_AXI_wready => SLOT_1_AXI_wready,
+      SLOT_1_AXI_bid => SLOT_1_AXI_bid,
+      SLOT_1_AXI_bresp => SLOT_1_AXI_bresp,
+      SLOT_1_AXI_bvalid => SLOT_1_AXI_bvalid,
+      SLOT_1_AXI_bready => SLOT_1_AXI_bready,
+      SLOT_1_AXI_arid => SLOT_1_AXI_arid,
+      SLOT_1_AXI_araddr => SLOT_1_AXI_araddr,
+      SLOT_1_AXI_arlen => SLOT_1_AXI_arlen,
+      SLOT_1_AXI_arsize => SLOT_1_AXI_arsize,
+      SLOT_1_AXI_arlock => SLOT_1_AXI_arlock,
+      SLOT_1_AXI_arcache => SLOT_1_AXI_arcache,
+      SLOT_1_AXI_arprot => SLOT_1_AXI_arprot,
+      SLOT_1_AXI_arregion => SLOT_1_AXI_arregion,
+      SLOT_1_AXI_arqos => SLOT_1_AXI_arqos,
+      SLOT_1_AXI_arvalid => SLOT_1_AXI_arvalid,
+      SLOT_1_AXI_arready => SLOT_1_AXI_arready,
+      SLOT_1_AXI_rid => SLOT_1_AXI_rid,
+      SLOT_1_AXI_rdata => SLOT_1_AXI_rdata,
+      SLOT_1_AXI_rresp => SLOT_1_AXI_rresp,
+      SLOT_1_AXI_rlast => SLOT_1_AXI_rlast,
+      SLOT_1_AXI_rvalid => SLOT_1_AXI_rvalid,
+      SLOT_1_AXI_rready => SLOT_1_AXI_rready,
       resetn => resetn
     );
 END design_1_system_ila_0_0_arch;

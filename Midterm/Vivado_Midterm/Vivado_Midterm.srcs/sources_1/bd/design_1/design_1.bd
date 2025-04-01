@@ -2401,7 +2401,7 @@
             "value": "INTERFACE"
           },
           "C_NUM_MONITOR_SLOTS": {
-            "value": "1"
+            "value": "2"
           },
           "C_SLOT_0_APC_EN": {
             "value": "0"
@@ -2438,10 +2438,51 @@
           },
           "C_SLOT_0_INTF_TYPE": {
             "value": "xilinx.com:interface:aximm_rtl:1.0"
+          },
+          "C_SLOT_1_APC_EN": {
+            "value": "0"
+          },
+          "C_SLOT_1_AXI_AR_SEL_DATA": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_AR_SEL_TRIG": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_AW_SEL_DATA": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_AW_SEL_TRIG": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_B_SEL_DATA": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_B_SEL_TRIG": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_R_SEL_DATA": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_R_SEL_TRIG": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_W_SEL_DATA": {
+            "value": "1"
+          },
+          "C_SLOT_1_AXI_W_SEL_TRIG": {
+            "value": "1"
+          },
+          "C_SLOT_1_INTF_TYPE": {
+            "value": "xilinx.com:interface:aximm_rtl:1.0"
           }
         },
         "interface_ports": {
           "SLOT_0_AXI": {
+            "mode": "Monitor",
+            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
+          },
+          "SLOT_1_AXI": {
             "mode": "Monitor",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
@@ -2450,8 +2491,8 @@
       },
       "Conv2D_HW_0": {
         "vlnv": "xilinx.com:hls:Conv2D_HW:1.0",
-        "xci_name": "design_1_Conv2D_HW_0_3",
-        "xci_path": "ip/design_1_Conv2D_HW_0_3/design_1_Conv2D_HW_0_3.xci",
+        "xci_name": "design_1_Conv2D_HW_0_7",
+        "xci_path": "ip/design_1_Conv2D_HW_0_7/design_1_Conv2D_HW_0_7.xci",
         "inst_hier_path": "Conv2D_HW_0",
         "interface_ports": {
           "m_axi_gmem": {
@@ -2479,8 +2520,17 @@
       "Conv2D_HW_0_m_axi_gmem": {
         "interface_ports": [
           "Conv2D_HW_0/m_axi_gmem",
-          "axi_mem_intercon/S00_AXI"
-        ]
+          "axi_mem_intercon/S00_AXI",
+          "system_ila_0/SLOT_1_AXI"
+        ],
+        "hdl_attributes": {
+          "DEBUG": {
+            "value": "true"
+          },
+          "MARK_DEBUG": {
+            "value": "true"
+          }
+        }
       },
       "axi_mem_intercon_M00_AXI": {
         "interface_ports": [

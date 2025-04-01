@@ -1,4 +1,4 @@
-#include <ap_int.h>
+//#include <ap_int.h>
 #include <stdint.h>
 #include <stdio.h>
 #include "conv2d.h"
@@ -15,9 +15,9 @@ inline TFXP FXP_Mult(TFXP a, TFXP b, uint32_t decimalBits = DECIMALS)
 
 
 void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
-      ap_uint<32> numChannels, ap_uint<32> numFilters,
-      ap_uint<32> inputWidth, ap_uint<32> inputHeight,
-      ap_uint<32> convWidth, ap_uint<32> convHeight, ap_uint<1> apply_relu)
+      uint32_t numChannels, uint32_t numFilters,
+      uint32_t inputWidth, uint32_t inputHeight,
+      uint32_t convWidth, uint32_t convHeight, ap_uint<1> apply_relu)
 
 {
 	#pragma HLS INTERFACE s_axilite port=return
@@ -35,13 +35,14 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
 	#pragma HLS INTERFACE s_axilite port=apply_relu
 
 
-	for (ap_uint<32> iFilter = 0; iFilter < numFilters; ++ iFilter) { // loop over each output channel
+	for (uint32_t iFilter = 0; iFilter < numFilters; ++ iFilter) { // loop over each output channel
 		TFXP coeff_cache[MAX_CHANNELS][3][3]; // local cache
+		#pragma HLS ARRAY_PARTITION variable=coeff_cache complete dim=3
 
 		// adding a new loop to load coefficients for the filter
-		for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++iChannel) {
-    		for (ap_uint<32> cy = 0; cy < convHeight; ++cy) {
-      			for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
+		for (uint32_t iChannel = 0; iChannel < numChannels; ++iChannel) {
+    		for (uint32_t cy = 0; cy < convHeight; ++cy) {
+      			for (uint32_t cx = 0; cx < convWidth; ++cx) {
 					// assign values using the same syntax as the original application originally loaded the filter values
         			coeff_cache[iChannel][cy][cx] =
           					*(coeffs + iFilter * numChannels * convHeight * convWidth +
@@ -54,38 +55,40 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
 
 		// the x and y loops are essentially the position of the "window" moving across and down (x and y)
 		// so first along the height (rows - y), then across the width (columns - x)
-	    for (ap_uint<32> y = 0; y < (inputHeight-2); ++y) {
-	    	TFXP row_buffer[3][MAX_CHANNELS][MAX_WIDTH]; // initialize buffer for three rows
+	    for (uint32_t y = 0; y < (inputHeight-2); ++y) {
+	    	TFXP row_buffer[3][4064]; // initialize buffer for three rows
+			#pragma HLS ARRAY_PARTITION variable=row_buffer complete dim=1
 
 	    	// then, now caching the rows (y), we move along each row and store accordingly
-	    	for (ap_uint<32> cy = 0; cy < convHeight; ++cy) {
-	    		ap_uint<32> iy = y + cy;
+	    	for (uint32_t cy = 0; cy < convHeight; ++cy) {
+	    		uint32_t iy = y + cy;
 	    		// ...which we do for each channel
-	    		for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++iChannel) {
+	    		for (uint32_t iChannel = 0; iChannel < numChannels; ++iChannel) {
 	    			//...and each component of the row, which of course moves in the x direction
-	    			for (ap_uint<32> x = 0; x < inputWidth; ++x) {
-	    				row_buffer[cy][iChannel][x] = *(input + iChannel*inputWidth*inputHeight + iy*inputWidth + x);
+	    			for (uint32_t x = 0; x < inputWidth; ++x) {
+						#pragma HLS PIPELINE II=1
+	    				row_buffer[cy][iChannel*inputWidth + x] = *(input + iChannel*inputWidth*inputHeight + iy*inputWidth + x);
 	    			}
 	    		}
 	    	}
 
 	    	// after that brief interlude, we go back to the moving of the window
-	    	for (ap_uint<32> x = 0; x < (inputWidth-2); ++ x) {
+	    	for (uint32_t x = 0; x < (inputWidth-2); ++ x) {
 	    		TFXP acc = 0;
 
 	    		// and again, we do this for each output channel
-	    		for (ap_uint<32> iChannel = 0; iChannel < numChannels; ++ iChannel) {
+	    		for (uint32_t iChannel = 0; iChannel < numChannels; ++ iChannel) {
 
 	    			// ...moving along the y components of the convolution window
-	    			for (ap_uint<32> cy = 0; cy < convHeight; ++ cy) { // this and the next line is the loop over convolution filter window
+	    			for (uint32_t cy = 0; cy < convHeight; ++ cy) { // this and the next line is the loop over convolution filter window
 				
 	    				//...and naturally the x components as well
-	    				for (ap_uint<32> cx = 0; cx < convWidth; ++cx) {
+	    				for (uint32_t cx = 0; cx < convWidth; ++cx) {
 	    					//filterValue = *(coeffs + iFilter*numChannels*convHeight*convWidth + iChannel*convHeight*convWidth + cy*convWidth + cx);
 	    					TFXP filterValue = coeff_cache[iChannel][cy][cx]; // still assigning filter value based on coefficients
 
 	    					//pixelValue = *(input + iChannel*inputWidth*inputHeight + (y+cy)*inputWidth + (x+cx));
-	    					TFXP pixelValue = row_buffer[cy][iChannel][x + cx];
+	    					TFXP pixelValue = row_buffer[cy][iChannel*inputWidth + x + cx];
 	    					acc += FXP_Mult(filterValue, pixelValue, DECIMALS);
 	    				}
 	    			}

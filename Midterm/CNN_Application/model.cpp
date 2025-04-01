@@ -386,7 +386,10 @@ TFXP Inference(TFXP * inputImageFxp,
   
   uint32_t iLayer, size;
   struct timespec start, end;
-  
+  //TFXP * buffer00 = nullptr;
+  TFXP * swBuffer = (TFXP*)malloc(4129024 * sizeof(TFXP));
+  printf("%u\n", swBuffer);
+  //eights[iLayer] = (float*) malloc(layerSize * sizeof(float));
   
   if(DEBUG) {
     printf("\n\nInitial Values\n");
@@ -399,6 +402,8 @@ TFXP Inference(TFXP * inputImageFxp,
   }
 
   uint32_t inc = 0;
+  uint32_t errors = 0;
+  uint32_t firstError = 0;
 
   //=============================Size256=============================//
 
@@ -413,8 +418,53 @@ TFXP Inference(TFXP * inputImageFxp,
                     size, size, // input width and height
                     3, 3,   // convWidth, convHeight
                     1);     // apply_relu
-  size -= 2;
+
+  //if(DEBUG) {
+  //  printf("After HW\n");
+  //  printf("\n\nInitial Values\n");
+  //  printf("inputImageFxp (first element) = %u\n", *inputImageFxp);
+  //  printf("buffer0 (first element) = %u\n", *buffer0);
+  //  printf("buffer1 (first element) = %u\n", *buffer1);
+  //  printf("fxpWeights[0] (first element) = %u\n", *fxpWeights[0]);
+  //  printf("fxpBiases[0] (first element) = %u\n", *fxpBiases[0]);
+  //  printf("=============================\n");
+  //}
   
+  Conv2D_SW(inputImageFxp, swBuffer, fxpWeights[iLayer], fxpBiases[iLayer],
+                    LayerShapes[iLayer][0],
+                    LayerShapes[iLayer][1],
+                    size, size, // input width and height
+                    3, 3,   // convWidth, convHeight
+                    1);     // apply_relu)
+ 
+ //if(DEBUG) {
+ //  printf("After SW\n");
+ //  printf("\n\nInitial Values\n");
+ //  printf("inputImageFxp (first element) = %u\n", *inputImageFxp);
+ //  printf("buffer0 (first element) = %u\n", *buffer0);
+ //  printf("buffer1 (first element) = %u\n", *buffer1);
+ //  printf("fxpWeights[0] (first element) = %u\n", *fxpWeights[0]);
+ //  printf("fxpBiases[0] (first element) = %u\n", *fxpBiases[0]);
+ //  printf("=============================\n");
+ //}
+  if (DEBUG) {
+    printf("Error index: ");
+    for(uint32_t i = 0; i < LayerShapes[iLayer][1] * size * size; i++) {
+      if (swBuffer[i] != buffer0[i]) {
+        if (firstError == 0) {
+          firstError = i;
+        }
+        //printf("Conv2D_SW: buffer00 = %u\n", buffer00[i]);
+        //printf("Conv2D_HW: buffer0 = %u\n", buffer0[i]);
+        //printf("Index: %u\n\n, ", i);
+        errors++;
+      }
+    }
+    printf("Total number of errors: %u\n", errors);
+    printf("Total number of iterations = %u\n", LayerShapes[iLayer][1] * size * size);
+    printf("First error = %u\n", firstError);
+  }
+  size -= 2;
   clock_gettime(CLOCK_MONOTONIC_RAW, &end);
   times.timeConv[iLayer] = CalcTimeDiff(end, start);
   if (DEBUG) {
@@ -598,6 +648,7 @@ TFXP Inference(TFXP * inputImageFxp,
   times.timeFlatten = CalcTimeDiff(end, start);
   if (DEBUG) {
     printf("Flatten %u: buffer0[0] = %u\n", incf, buffer0[0]);
+    printf("Flatten %u: buffer1[0] = %u\n", incf, buffer1[0]);
     ++ incf;
     printf("\n\n");
   }
@@ -613,17 +664,21 @@ TFXP Inference(TFXP * inputImageFxp,
   clock_gettime(CLOCK_MONOTONIC_RAW, &start);
   Dense(buffer0, buffer1, LayerShapes[iLayer][0], LayerShapes[iLayer][1],
         fxpWeights[iLayer], fxpBiases[iLayer]);
-  ReLU(buffer1, 1, LayerShapes[iLayer][1], 1);
-  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
-  times.timeDense[iLayer] = CalcTimeDiff(end, start);
   if (DEBUG) {
     printf("Dense %u: buffer0[0] = %u\n", incd, buffer0[0]);
     printf("Dense %u: buffer1[0] = %u\n", incd, buffer1[0]);
     ++ incd;
-    printf("ReLU %u: buffer1[0] = %u\n\n", inc, buffer0[0]);
+  }
+  ReLU(buffer1, 1, LayerShapes[iLayer][1], 1);
+  if (DEBUG) {
+    printf("ReLU %u: buffer0[0] = %u\n", inc, buffer0[0]);
+    printf("ReLU %u: buffer1[0] = %u\n\n", inc, buffer1[0]);
     ++ inc;
     printf("\n\n");
   }
+  clock_gettime(CLOCK_MONOTONIC_RAW, &end);
+  times.timeDense[iLayer] = CalcTimeDiff(end, start);
+  
 
   ++iLayer;
 
@@ -659,6 +714,7 @@ TFXP Inference(TFXP * inputImageFxp,
  
   return buffer0[0];
 }
+
 
 
 

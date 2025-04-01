@@ -970,10 +970,10 @@ namespace hls::sim
 
 
 extern "C"
-void Conv2D_HW_hw_stub_wrapper(void*, void*, void*, void*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<4>*, hls::sim::Byte<1>*);
+void Conv2D_HW_hw_stub_wrapper(void*, void*, void*, void*, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<1>*);
 
 extern "C"
-void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param_output_r, void* __xlx_apatb_param_coeffs, void* __xlx_apatb_param_biases, hls::sim::Byte<4>* __xlx_apatb_param_numChannels, hls::sim::Byte<4>* __xlx_apatb_param_numFilters, hls::sim::Byte<4>* __xlx_apatb_param_inputWidth, hls::sim::Byte<4>* __xlx_apatb_param_inputHeight, hls::sim::Byte<4>* __xlx_apatb_param_convWidth, hls::sim::Byte<4>* __xlx_apatb_param_convHeight, hls::sim::Byte<1>* __xlx_apatb_param_apply_relu)
+void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param_output_r, void* __xlx_apatb_param_coeffs, void* __xlx_apatb_param_biases, hls::sim::Byte<4> __xlx_apatb_param_numChannels, hls::sim::Byte<4> __xlx_apatb_param_numFilters, hls::sim::Byte<4> __xlx_apatb_param_inputWidth, hls::sim::Byte<4> __xlx_apatb_param_inputHeight, hls::sim::Byte<4> __xlx_apatb_param_convWidth, hls::sim::Byte<4> __xlx_apatb_param_convHeight, hls::sim::Byte<1>* __xlx_apatb_param_apply_relu)
 {
   hls::sim::Byte<4> __xlx_offset_byte_param_input_r;
   static hls::sim::Register port0 {
@@ -1032,7 +1032,7 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
     .iwriter = new hls::sim::Writer(AUTOTB_TVIN_numChannels),
 #endif
   };
-  port4.param = __xlx_apatb_param_numChannels;
+  port4.param = &__xlx_apatb_param_numChannels;
 
   static hls::sim::Register port5 {
     .name = "numFilters",
@@ -1043,7 +1043,7 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
     .iwriter = new hls::sim::Writer(AUTOTB_TVIN_numFilters),
 #endif
   };
-  port5.param = __xlx_apatb_param_numFilters;
+  port5.param = &__xlx_apatb_param_numFilters;
 
   static hls::sim::Register port6 {
     .name = "inputWidth",
@@ -1054,7 +1054,7 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
     .iwriter = new hls::sim::Writer(AUTOTB_TVIN_inputWidth),
 #endif
   };
-  port6.param = __xlx_apatb_param_inputWidth;
+  port6.param = &__xlx_apatb_param_inputWidth;
 
   static hls::sim::Register port7 {
     .name = "inputHeight",
@@ -1065,7 +1065,7 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
     .iwriter = new hls::sim::Writer(AUTOTB_TVIN_inputHeight),
 #endif
   };
-  port7.param = __xlx_apatb_param_inputHeight;
+  port7.param = &__xlx_apatb_param_inputHeight;
 
   static hls::sim::Register port8 {
     .name = "convWidth",
@@ -1076,7 +1076,7 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
     .iwriter = new hls::sim::Writer(AUTOTB_TVIN_convWidth),
 #endif
   };
-  port8.param = __xlx_apatb_param_convWidth;
+  port8.param = &__xlx_apatb_param_convWidth;
 
   static hls::sim::Register port9 {
     .name = "convHeight",
@@ -1087,7 +1087,7 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
     .iwriter = new hls::sim::Writer(AUTOTB_TVIN_convHeight),
 #endif
   };
-  port9.param = __xlx_apatb_param_convHeight;
+  port9.param = &__xlx_apatb_param_convHeight;
 
   static hls::sim::Register port10 {
     .name = "apply_relu",
