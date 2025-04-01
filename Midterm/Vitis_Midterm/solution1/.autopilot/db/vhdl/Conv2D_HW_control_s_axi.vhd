@@ -43,7 +43,7 @@ port (
     inputHeight           :out  STD_LOGIC_VECTOR(31 downto 0);
     convWidth             :out  STD_LOGIC_VECTOR(31 downto 0);
     convHeight            :out  STD_LOGIC_VECTOR(31 downto 0);
-    apply_relu            :out  STD_LOGIC_VECTOR(0 downto 0);
+    apply_relu            :out  STD_LOGIC_VECTOR(31 downto 0);
     ap_start              :out  STD_LOGIC;
     ap_done               :in   STD_LOGIC;
     ap_ready              :in   STD_LOGIC;
@@ -110,8 +110,7 @@ end entity Conv2D_HW_control_s_axi;
 --        bit 31~0 - convHeight[31:0] (Read/Write)
 -- 0x6c : reserved
 -- 0x70 : Data signal of apply_relu
---        bit 0  - apply_relu[0] (Read/Write)
---        others - reserved
+--        bit 31~0 - apply_relu[31:0] (Read/Write)
 -- 0x74 : reserved
 -- (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
@@ -188,7 +187,7 @@ architecture behave of Conv2D_HW_control_s_axi is
     signal int_inputHeight     : UNSIGNED(31 downto 0) := (others => '0');
     signal int_convWidth       : UNSIGNED(31 downto 0) := (others => '0');
     signal int_convHeight      : UNSIGNED(31 downto 0) := (others => '0');
-    signal int_apply_relu      : UNSIGNED(0 downto 0) := (others => '0');
+    signal int_apply_relu      : UNSIGNED(31 downto 0) := (others => '0');
 
 
 begin
@@ -346,7 +345,7 @@ begin
                     when ADDR_CONVHEIGHT_DATA_0 =>
                         rdata_data <= RESIZE(int_convHeight(31 downto 0), 32);
                     when ADDR_APPLY_RELU_DATA_0 =>
-                        rdata_data <= RESIZE(int_apply_relu(0 downto 0), 32);
+                        rdata_data <= RESIZE(int_apply_relu(31 downto 0), 32);
                     when others =>
                         NULL;
                     end case;
@@ -702,7 +701,7 @@ begin
         if (ACLK'event and ACLK = '1') then
             if (ACLK_EN = '1') then
                 if (w_hs = '1' and waddr = ADDR_APPLY_RELU_DATA_0) then
-                    int_apply_relu(0 downto 0) <= (UNSIGNED(WDATA(0 downto 0)) and wmask(0 downto 0)) or ((not wmask(0 downto 0)) and int_apply_relu(0 downto 0));
+                    int_apply_relu(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_apply_relu(31 downto 0));
                 end if;
             end if;
         end if;

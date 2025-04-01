@@ -62,8 +62,7 @@
 //        bit 31~0 - convHeight[31:0] (Read/Write)
 // 0x6c : reserved
 // 0x70 : Data signal of apply_relu
-//        bit 0  - apply_relu[0] (Read/Write)
-//        others - reserved
+//        bit 31~0 - apply_relu[31:0] (Read/Write)
 // 0x74 : reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
@@ -92,5 +91,5 @@
 #define XCONV2D_HW_CONTROL_ADDR_CONVHEIGHT_DATA  0x68
 #define XCONV2D_HW_CONTROL_BITS_CONVHEIGHT_DATA  32
 #define XCONV2D_HW_CONTROL_ADDR_APPLY_RELU_DATA  0x70
-#define XCONV2D_HW_CONTROL_BITS_APPLY_RELU_DATA  1
+#define XCONV2D_HW_CONTROL_BITS_APPLY_RELU_DATA  32
 

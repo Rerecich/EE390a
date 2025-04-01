@@ -237,9 +237,8 @@ class AESL_RUNTIME_BC {
     string mName;
 };
 using hls::sim::Byte;
-struct __cosim_s1__ { char data[1]; };
-extern "C" void Conv2D_HW(Byte<4>*, int, int, int, int, int, int, int, int, int, int, __cosim_s1__);
-extern "C" void apatb_Conv2D_HW_hw(volatile void * __xlx_apatb_param_input_r, volatile void * __xlx_apatb_param_output_r, volatile void * __xlx_apatb_param_coeffs, volatile void * __xlx_apatb_param_biases, int __xlx_apatb_param_numChannels, int __xlx_apatb_param_numFilters, int __xlx_apatb_param_inputWidth, int __xlx_apatb_param_inputHeight, int __xlx_apatb_param_convWidth, int __xlx_apatb_param_convHeight, __cosim_s1__* __xlx_apatb_param_apply_relu) {
+extern "C" void Conv2D_HW(Byte<4>*, int, int, int, int, int, int, int, int, int, int, int);
+extern "C" void apatb_Conv2D_HW_hw(volatile void * __xlx_apatb_param_input_r, volatile void * __xlx_apatb_param_output_r, volatile void * __xlx_apatb_param_coeffs, volatile void * __xlx_apatb_param_biases, int __xlx_apatb_param_numChannels, int __xlx_apatb_param_numFilters, int __xlx_apatb_param_inputWidth, int __xlx_apatb_param_inputHeight, int __xlx_apatb_param_convWidth, int __xlx_apatb_param_convHeight, int __xlx_apatb_param_apply_relu) {
 using hls::sim::createStream;
   // Collect __xlx_input_r_output_r_coeffs_biases__tmp_vec
 std::vector<Byte<4>> __xlx_input_r_output_r_coeffs_biases__tmp_vec;
@@ -268,7 +267,7 @@ __xlx_input_r_output_r_coeffs_biases__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_p
   int __xlx_offset_param_biases = 600000;
   int __xlx_offset_byte_param_biases = 600000*4;
   // DUT call
-  Conv2D_HW(__xlx_input_r_output_r_coeffs_biases__tmp_vec.data(), __xlx_offset_byte_param_input_r, __xlx_offset_byte_param_output_r, __xlx_offset_byte_param_coeffs, __xlx_offset_byte_param_biases, __xlx_apatb_param_numChannels, __xlx_apatb_param_numFilters, __xlx_apatb_param_inputWidth, __xlx_apatb_param_inputHeight, __xlx_apatb_param_convWidth, __xlx_apatb_param_convHeight, *__xlx_apatb_param_apply_relu);
+  Conv2D_HW(__xlx_input_r_output_r_coeffs_biases__tmp_vec.data(), __xlx_offset_byte_param_input_r, __xlx_offset_byte_param_output_r, __xlx_offset_byte_param_coeffs, __xlx_offset_byte_param_biases, __xlx_apatb_param_numChannels, __xlx_apatb_param_numFilters, __xlx_apatb_param_inputWidth, __xlx_apatb_param_inputHeight, __xlx_apatb_param_convWidth, __xlx_apatb_param_convHeight, __xlx_apatb_param_apply_relu);
 // print __xlx_apatb_param_input_r
 for (size_t i = 0; i < __xlx_size_param_input_r; ++i) {
 ((Byte<4>*)__xlx_apatb_param_input_r)[i] = __xlx_input_r_output_r_coeffs_biases__tmp_vec[__xlx_offset_param_input_r+i];

@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
---Date        : Tue Apr  1 19:57:50 2025
+--Date        : Tue Apr  1 22:34:10 2025
 --Host        : diskless running 64-bit Ubuntu 22.04 LTS
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -1512,7 +1512,7 @@ entity design_1 is
     FIXED_IO_ps_srstb : inout STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=1,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=14,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=11,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=4,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=1,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=16,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -1706,7 +1706,7 @@ architecture STRUCTURE of design_1 is
     SLOT_1_AXI_rready : in STD_LOGIC
   );
   end component design_1_system_ila_0_0;
-  component design_1_Conv2D_HW_0_7 is
+  component design_1_Conv2D_HW_0_8 is
   port (
     s_axi_control_AWADDR : in STD_LOGIC_VECTOR ( 6 downto 0 );
     s_axi_control_AWVALID : in STD_LOGIC;
@@ -1769,7 +1769,7 @@ architecture STRUCTURE of design_1 is
     m_axi_gmem_RVALID : in STD_LOGIC;
     m_axi_gmem_RREADY : out STD_LOGIC
   );
-  end component design_1_Conv2D_HW_0_7;
+  end component design_1_Conv2D_HW_0_8;
   signal Conv2D_HW_0_m_axi_gmem_ARADDR : STD_LOGIC_VECTOR ( 63 downto 0 );
   attribute CONN_BUS_INFO : string;
   attribute CONN_BUS_INFO of Conv2D_HW_0_m_axi_gmem_ARADDR : signal is "Conv2D_HW_0_m_axi_gmem xilinx.com:interface:aximm:1.0 AXI4 ARADDR";
@@ -2130,7 +2130,7 @@ architecture STRUCTURE of design_1 is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
-Conv2D_HW_0: component design_1_Conv2D_HW_0_7
+Conv2D_HW_0: component design_1_Conv2D_HW_0_8
      port map (
       ap_clk => processing_system7_0_FCLK_CLK0,
       ap_rst_n => rst_ps7_0_100M_peripheral_aresetn(0),

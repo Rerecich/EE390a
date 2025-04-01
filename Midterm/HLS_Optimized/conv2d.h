@@ -1,7 +1,7 @@
 #ifndef CONV2D_H
 #define CONV2D_H
 
-#include <ap_int.h>
+//include <ap_int.h>
 
 #define MAX_WIDTH 256
 #define MAX_HEIGHT 256
@@ -16,7 +16,7 @@ typedef int64_t TFXP_MULT;// Intermmediate results of multiplications
 void Conv2D_HW(TFXP *input, TFXP * output, TFXP * filters, TFXP *biases,
       uint32_t numChannels, uint32_t numFilters,
       uint32_t inputWidth, uint32_t inputHeight,
-      uint32_t convWidth = 3, uint32_t convHeight = 3, ap_uint<1> apply_relu = 1);
+      uint32_t convWidth = 3, uint32_t convHeight = 3, uint32_t apply_relu = 1);
 
 #endif // CONV2D_H
 

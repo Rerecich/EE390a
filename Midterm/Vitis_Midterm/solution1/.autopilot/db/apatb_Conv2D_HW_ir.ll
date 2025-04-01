@@ -3,12 +3,8 @@ source_filename = "llvm-link"
 target datalayout = "e-m:e-i64:64-i128:128-i256:256-i512:512-i1024:1024-i2048:2048-i4096:4096-n8:16:32:64-S128-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024"
 target triple = "fpga64-xilinx-none"
 
-%"struct.ap_uint<1>" = type { %"struct.ap_int_base<1, false>" }
-%"struct.ap_int_base<1, false>" = type { %"struct.ssdm_int<1, false>" }
-%"struct.ssdm_int<1, false>" = type { i1 }
-
 ; Function Attrs: noinline
-define void @apatb_Conv2D_HW_ir(i32* noalias nocapture nonnull readonly %input, i32* noalias nocapture nonnull %output, i32* noalias nocapture nonnull readonly %coeffs, i32* noalias nocapture nonnull readonly %biases, i32 %numChannels, i32 %numFilters, i32 %inputWidth, i32 %inputHeight, i32 %convWidth, i32 %convHeight, %"struct.ap_uint<1>"* nocapture readonly %apply_relu) local_unnamed_addr #0 {
+define void @apatb_Conv2D_HW_ir(i32* noalias nocapture nonnull readonly %input, i32* noalias nocapture nonnull %output, i32* noalias nocapture nonnull readonly %coeffs, i32* noalias nocapture nonnull readonly %biases, i32 %numChannels, i32 %numFilters, i32 %inputWidth, i32 %inputHeight, i32 %convWidth, i32 %convHeight, i32 %apply_relu) local_unnamed_addr #0 {
 entry:
   %malloccall = tail call i8* @malloc(i64 800000)
   %input_copy = bitcast i8* %malloccall to [200000 x i32]*
@@ -27,7 +23,7 @@ entry:
   %5 = getelementptr inbounds [200000 x i32], [200000 x i32]* %output_copy, i32 0, i32 0
   %6 = getelementptr inbounds [200000 x i32], [200000 x i32]* %coeffs_copy, i32 0, i32 0
   %7 = getelementptr inbounds [200000 x i32], [200000 x i32]* %biases_copy, i32 0, i32 0
-  call void @apatb_Conv2D_HW_hw(i32* %4, i32* %5, i32* %6, i32* %7, i32 %numChannels, i32 %numFilters, i32 %inputWidth, i32 %inputHeight, i32 %convWidth, i32 %convHeight, %"struct.ap_uint<1>"* %apply_relu)
+  call void @apatb_Conv2D_HW_hw(i32* %4, i32* %5, i32* %6, i32* %7, i32 %numChannels, i32 %numFilters, i32 %inputWidth, i32 %inputHeight, i32 %convWidth, i32 %convHeight, i32 %apply_relu)
   call void @copy_back([200000 x i32]* %0, [200000 x i32]* %input_copy, [200000 x i32]* %1, [200000 x i32]* %output_copy, [200000 x i32]* %2, [200000 x i32]* %coeffs_copy, [200000 x i32]* %3, [200000 x i32]* %biases_copy)
   tail call void @free(i8* %malloccall)
   tail call void @free(i8* %malloccall1)
@@ -85,7 +81,7 @@ entry:
 
 declare void @free(i8*) local_unnamed_addr
 
-declare void @apatb_Conv2D_HW_hw(i32*, i32*, i32*, i32*, i32, i32, i32, i32, i32, i32, %"struct.ap_uint<1>"*)
+declare void @apatb_Conv2D_HW_hw(i32*, i32*, i32*, i32*, i32, i32, i32, i32, i32, i32, i32)
 
 ; Function Attrs: argmemonly noinline norecurse
 define internal fastcc void @copy_back([200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly, [200000 x i32]* noalias, [200000 x i32]* noalias readonly) unnamed_addr #3 {
@@ -94,7 +90,7 @@ entry:
   ret void
 }
 
-define void @Conv2D_HW_hw_stub_wrapper(i32*, i32*, i32*, i32*, i32, i32, i32, i32, i32, i32, %"struct.ap_uint<1>"*) #4 {
+define void @Conv2D_HW_hw_stub_wrapper(i32*, i32*, i32*, i32*, i32, i32, i32, i32, i32, i32, i32) #4 {
 entry:
   %11 = bitcast i32* %0 to [200000 x i32]*
   %12 = bitcast i32* %1 to [200000 x i32]*
@@ -105,12 +101,12 @@ entry:
   %16 = bitcast [200000 x i32]* %12 to i32*
   %17 = bitcast [200000 x i32]* %13 to i32*
   %18 = bitcast [200000 x i32]* %14 to i32*
-  call void @Conv2D_HW_hw_stub(i32* %15, i32* %16, i32* %17, i32* %18, i32 %4, i32 %5, i32 %6, i32 %7, i32 %8, i32 %9, %"struct.ap_uint<1>"* %10)
+  call void @Conv2D_HW_hw_stub(i32* %15, i32* %16, i32* %17, i32* %18, i32 %4, i32 %5, i32 %6, i32 %7, i32 %8, i32 %9, i32 %10)
   call void @copy_in([200000 x i32]* null, [200000 x i32]* %11, [200000 x i32]* null, [200000 x i32]* %12, [200000 x i32]* null, [200000 x i32]* %13, [200000 x i32]* null, [200000 x i32]* %14)
   ret void
 }
 
-declare void @Conv2D_HW_hw_stub(i32*, i32*, i32*, i32*, i32, i32, i32, i32, i32, i32, %"struct.ap_uint<1>"*)
+declare void @Conv2D_HW_hw_stub(i32*, i32*, i32*, i32*, i32, i32, i32, i32, i32, i32, i32)
 
 attributes #0 = { noinline "fpga.wrapper.func"="wrapper" }
 attributes #1 = { argmemonly noinline norecurse "fpga.wrapper.func"="copyin" }

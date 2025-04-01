@@ -2491,8 +2491,8 @@
       },
       "Conv2D_HW_0": {
         "vlnv": "xilinx.com:hls:Conv2D_HW:1.0",
-        "xci_name": "design_1_Conv2D_HW_0_7",
-        "xci_path": "ip/design_1_Conv2D_HW_0_7/design_1_Conv2D_HW_0_7.xci",
+        "xci_name": "design_1_Conv2D_HW_0_8",
+        "xci_path": "ip/design_1_Conv2D_HW_0_8/design_1_Conv2D_HW_0_8.xci",
         "inst_hier_path": "Conv2D_HW_0",
         "interface_ports": {
           "m_axi_gmem": {

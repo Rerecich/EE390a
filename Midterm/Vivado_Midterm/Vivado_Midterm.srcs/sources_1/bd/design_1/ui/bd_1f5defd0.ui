@@ -27,6 +27,6 @@ pagesize -pg 1 -db -bbox -sgen 0 0 2080 700
 "
 }
 {
-   "da_axi4_cnt":"14",
+   "da_axi4_cnt":"16",
    "da_ps7_cnt":"1"
 }

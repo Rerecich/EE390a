@@ -970,10 +970,10 @@ namespace hls::sim
 
 
 extern "C"
-void Conv2D_HW_hw_stub_wrapper(void*, void*, void*, void*, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<1>*);
+void Conv2D_HW_hw_stub_wrapper(void*, void*, void*, void*, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>, hls::sim::Byte<4>);
 
 extern "C"
-void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param_output_r, void* __xlx_apatb_param_coeffs, void* __xlx_apatb_param_biases, hls::sim::Byte<4> __xlx_apatb_param_numChannels, hls::sim::Byte<4> __xlx_apatb_param_numFilters, hls::sim::Byte<4> __xlx_apatb_param_inputWidth, hls::sim::Byte<4> __xlx_apatb_param_inputHeight, hls::sim::Byte<4> __xlx_apatb_param_convWidth, hls::sim::Byte<4> __xlx_apatb_param_convHeight, hls::sim::Byte<1>* __xlx_apatb_param_apply_relu)
+void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param_output_r, void* __xlx_apatb_param_coeffs, void* __xlx_apatb_param_biases, hls::sim::Byte<4> __xlx_apatb_param_numChannels, hls::sim::Byte<4> __xlx_apatb_param_numFilters, hls::sim::Byte<4> __xlx_apatb_param_inputWidth, hls::sim::Byte<4> __xlx_apatb_param_inputHeight, hls::sim::Byte<4> __xlx_apatb_param_convWidth, hls::sim::Byte<4> __xlx_apatb_param_convHeight, hls::sim::Byte<4> __xlx_apatb_param_apply_relu)
 {
   hls::sim::Byte<4> __xlx_offset_byte_param_input_r;
   static hls::sim::Register port0 {
@@ -1091,14 +1091,14 @@ void apatb_Conv2D_HW_hw(void* __xlx_apatb_param_input_r, void* __xlx_apatb_param
 
   static hls::sim::Register port10 {
     .name = "apply_relu",
-    .width = 1,
+    .width = 32,
 #ifdef POST_CHECK
 #else
     .owriter = nullptr,
     .iwriter = new hls::sim::Writer(AUTOTB_TVIN_apply_relu),
 #endif
   };
-  port10.param = __xlx_apatb_param_apply_relu;
+  port10.param = &__xlx_apatb_param_apply_relu;
 
 #ifdef USE_BINARY_TV_FILE
   static hls::sim::Memory<hls::sim::Input, hls::sim::Output> port11 {

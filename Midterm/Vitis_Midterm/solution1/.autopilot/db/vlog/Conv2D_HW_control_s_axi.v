@@ -40,7 +40,7 @@ module Conv2D_HW_control_s_axi
     output wire [31:0]                   inputHeight,
     output wire [31:0]                   convWidth,
     output wire [31:0]                   convHeight,
-    output wire [0:0]                    apply_relu,
+    output wire [31:0]                   apply_relu,
     output wire                          ap_start,
     input  wire                          ap_done,
     input  wire                          ap_ready,
@@ -105,8 +105,7 @@ module Conv2D_HW_control_s_axi
 //        bit 31~0 - convHeight[31:0] (Read/Write)
 // 0x6c : reserved
 // 0x70 : Data signal of apply_relu
-//        bit 0  - apply_relu[0] (Read/Write)
-//        others - reserved
+//        bit 31~0 - apply_relu[31:0] (Read/Write)
 // 0x74 : reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
@@ -188,7 +187,7 @@ localparam
     reg  [31:0]                   int_inputHeight = 'b0;
     reg  [31:0]                   int_convWidth = 'b0;
     reg  [31:0]                   int_convHeight = 'b0;
-    reg  [0:0]                    int_apply_relu = 'b0;
+    reg  [31:0]                   int_apply_relu = 'b0;
 
 //------------------------Instantiation------------------
 
@@ -341,7 +340,7 @@ always @(posedge ACLK) begin
                     rdata <= int_convHeight[31:0];
                 end
                 ADDR_APPLY_RELU_DATA_0: begin
-                    rdata <= int_apply_relu[0:0];
+                    rdata <= int_apply_relu[31:0];
                 end
             endcase
         end
@@ -638,13 +637,13 @@ always @(posedge ACLK) begin
     end
 end
 
-// int_apply_relu[0:0]
+// int_apply_relu[31:0]
 always @(posedge ACLK) begin
     if (ARESET)
-        int_apply_relu[0:0] <= 0;
+        int_apply_relu[31:0] <= 0;
     else if (ACLK_EN) begin
         if (w_hs && waddr == ADDR_APPLY_RELU_DATA_0)
-            int_apply_relu[0:0] <= (WDATA[31:0] & wmask) | (int_apply_relu[0:0] & ~wmask);
+            int_apply_relu[31:0] <= (WDATA[31:0] & wmask) | (int_apply_relu[31:0] & ~wmask);
     end
 end
 
