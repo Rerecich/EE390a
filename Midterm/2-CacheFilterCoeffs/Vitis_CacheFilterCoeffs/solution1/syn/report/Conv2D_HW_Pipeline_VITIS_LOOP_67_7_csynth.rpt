@@ -1,0 +1,1096 @@
+
+
+================================================================
+== Vitis HLS Report for 'Conv2D_HW_Pipeline_VITIS_LOOP_67_7'
+================================================================
+* Date:           Thu Apr  3 20:02:13 2025
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        Vitis_CacheFilterCoeffs
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.300 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        ?|        ?|         ?|         ?|    ?|    ?|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------------------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                                                   |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |                     Loop Name                     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +---------------------------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_63_5_VITIS_LOOP_65_6_VITIS_LOOP_67_7  |        ?|        ?|        22|          1|          1|     ?|       yes|
+        +---------------------------------------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|   1242|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    8|     594|   1656|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|    117|    -|
+|Register         |        -|    -|    1527|    160|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    8|    2121|   3175|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    3|       1|      5|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +--------------------------+---------------------+---------+----+-----+------+-----+
+    |         Instance         |        Module       | BRAM_18K| DSP|  FF |  LUT | URAM|
+    +--------------------------+---------------------+---------+----+-----+------+-----+
+    |mul_32s_32s_52_2_1_U272   |mul_32s_32s_52_2_1   |        0|   3|  165|    50|    0|
+    |mul_62s_32ns_62_5_1_U270  |mul_62s_32ns_62_5_1  |        0|   5|  429|   244|    0|
+    |mux_2568_32_1_1_U271      |mux_2568_32_1_1      |        0|   0|    0|  1362|    0|
+    +--------------------------+---------------------+---------+----+-----+------+-----+
+    |Total                     |                     |        0|   8|  594|  1656|    0|
+    +--------------------------+---------------------+---------+----+-----+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +------------------------------------+----------+----+---+-----+------------+------------+
+    |            Variable Name           | Operation| DSP| FF| LUT | Bitwidth P0| Bitwidth P1|
+    +------------------------------------+----------+----+---+-----+------------+------------+
+    |acc_1_fu_5183_p2                    |         +|   0|  0|   39|          32|          32|
+    |add_ln1027_1_fu_4339_p2             |         +|   0|  0|   69|          62|          62|
+    |add_ln1027_2_fu_4351_p2             |         +|   0|  0|   71|          64|          64|
+    |add_ln1027_3_fu_4149_p2             |         +|   0|  0|   71|          64|           1|
+    |add_ln1027_fu_4120_p2               |         +|   0|  0|  103|          96|           1|
+    |add_ln70_fu_4320_p2                 |         +|   0|  0|    7|           4|           4|
+    |add_ln840_1_fu_4223_p2              |         +|   0|  0|   39|          32|           1|
+    |add_ln840_2_fu_4325_p2              |         +|   0|  0|   39|          32|           1|
+    |add_ln840_fu_4126_p2                |         +|   0|  0|   39|          32|           1|
+    |empty_44_fu_4276_p2                 |         +|   0|  0|   69|          62|          62|
+    |p_mid143_fu_4307_p2                 |         +|   0|  0|   69|          62|          62|
+    |tmp_fu_4189_p2                      |         +|   0|  0|   69|          62|          62|
+    |tmp_mid1_fu_4208_p2                 |         +|   0|  0|   69|          62|          62|
+    |sub_ln70_fu_4299_p2                 |         -|   0|  0|    7|           4|           4|
+    |ap_block_pp0_stage0_01001           |       and|   0|  0|    2|           1|           1|
+    |ap_block_state13_io                 |       and|   0|  0|    2|           1|           1|
+    |ap_block_state20_pp0_stage0_iter19  |       and|   0|  0|    2|           1|           1|
+    |icmp_ln1027_2_fu_4132_p2            |      icmp|   0|  0|   29|          64|          64|
+    |icmp_ln1027_3_fu_4212_p2            |      icmp|   0|  0|   18|          32|          32|
+    |icmp_ln1027_fu_4115_p2              |      icmp|   0|  0|   39|          96|          96|
+    |ap_block_pp0_stage0_11001           |        or|   0|  0|    2|           1|           1|
+    |or_ln1027_1_fu_4229_p2              |        or|   0|  0|    2|           1|           1|
+    |or_ln1027_2_fu_4235_p2              |        or|   0|  0|    2|           1|           1|
+    |or_ln1027_fu_4203_p2                |        or|   0|  0|    2|           1|           1|
+    |select_ln1027_1_fu_4137_p3          |    select|   0|  0|   32|           1|          32|
+    |select_ln1027_2_fu_4281_p3          |    select|   0|  0|   62|           1|          62|
+    |select_ln1027_3_fu_4286_p3          |    select|   0|  0|   62|           1|          62|
+    |select_ln1027_4_fu_4217_p3          |    select|   0|  0|    2|           1|           1|
+    |select_ln1027_5_fu_4240_p3          |    select|   0|  0|   32|           1|           1|
+    |select_ln1027_6_fu_4248_p3          |    select|   0|  0|   32|           1|          32|
+    |select_ln1027_7_fu_4313_p3          |    select|   0|  0|   62|           1|          62|
+    |select_ln1027_8_fu_4155_p3          |    select|   0|  0|   64|           1|           1|
+    |select_ln1027_fu_4196_p3            |    select|   0|  0|   32|           1|           1|
+    |ap_enable_pp0                       |       xor|   0|  0|    2|           1|           2|
+    +------------------------------------+----------+----+---+-----+------------+------------+
+    |Total                               |          |   0|  0| 1242|         879|         874|
+    +------------------------------------+----------+----+---+-----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------------+----+-----------+-----+-----------+
+    |                  Name                  | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------------+----+-----------+-----+-----------+
+    |acc_fu_614                              |   9|          2|   32|         64|
+    |ap_done_int                             |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1                 |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter6                 |   9|          2|    1|          2|
+    |ap_phi_mux_first_iter_2_phi_fu_4043_p4  |   9|          2|    1|          2|
+    |ap_sig_allocacmp_cx_V_load              |   9|          2|   32|         64|
+    |cx_V_fu_618                             |   9|          2|   32|         64|
+    |cy_V_fu_622                             |   9|          2|   32|         64|
+    |gmem_blk_n_AR                           |   9|          2|    1|          2|
+    |gmem_blk_n_R                            |   9|          2|    1|          2|
+    |iChannel_V_fu_630                       |   9|          2|   32|         64|
+    |indvar_flatten53_fu_626                 |   9|          2|   64|        128|
+    |indvar_flatten93_fu_634                 |   9|          2|   96|        192|
+    +----------------------------------------+----+-----------+-----+-----------+
+    |Total                                   | 117|         26|  326|        652|
+    +----------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------+----+----+-----+-----------+
+    |                Name               | FF | LUT| Bits| Const Bits|
+    +-----------------------------------+----+----+-----+-----------+
+    |acc_fu_614                         |  32|   0|   32|          0|
+    |add_ln70_reg_5388                  |   4|   0|    4|          0|
+    |add_ln840_1_reg_5354               |  32|   0|   32|          0|
+    |add_ln840_reg_5297                 |  32|   0|   32|          0|
+    |ap_CS_fsm                          |   1|   0|    1|          0|
+    |ap_done_reg                        |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter10           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter11           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter12           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter13           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter14           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter15           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter16           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter17           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter18           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter19           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter20           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter21           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter22           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter5            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter6            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter7            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter8            |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter9            |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter10_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter11_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter12_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter13_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter14_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter15_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter16_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter17_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter18_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter19_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter20_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter21_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter2_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter3_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter4_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter5_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter6_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter7_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter8_reg   |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter9_reg   |   1|   0|    1|          0|
+    |cx_V_fu_618                        |  32|   0|   32|          0|
+    |cy_V_1_reg_5332                    |  32|   0|   32|          0|
+    |cy_V_fu_622                        |  32|   0|   32|          0|
+    |empty_reg_5317                     |  62|   0|   62|          0|
+    |empty_reg_5317_pp0_iter3_reg       |  62|   0|   62|          0|
+    |filterValue_reg_6693               |  32|   0|   32|          0|
+    |first_iter_2_reg_4038              |   1|   0|    1|          0|
+    |iChannel_V_fu_630                  |  32|   0|   32|          0|
+    |icmp_ln1027_2_reg_5302             |   1|   0|    1|          0|
+    |icmp_ln1027_reg_5293               |   1|   0|    1|          0|
+    |indvar_flatten53_fu_626            |  64|   0|   64|          0|
+    |indvar_flatten93_fu_634            |  96|   0|   96|          0|
+    |inputWidth_cast12_cast_reg_5271    |  32|   0|   62|         30|
+    |mul_ln1027_reg_5393                |  62|   0|   62|          0|
+    |or_ln1027_1_reg_5359               |   1|   0|    1|          0|
+    |p_mid167_reg_5327                  |  62|   0|   62|          0|
+    |pixelValue_reg_6698                |  32|   0|   32|          0|
+    |select_ln1027_4_reg_5349           |   1|   0|    1|          0|
+    |select_ln1027_5_reg_5363           |  32|   0|   32|          0|
+    |select_ln1027_7_reg_5383           |  62|   0|   62|          0|
+    |sext_ln67_mid2_v_reg_5398          |  62|   0|   62|          0|
+    |tmp_mid1_reg_5343                  |  62|   0|   62|          0|
+    |tmp_reg_5337                       |  62|   0|   62|          0|
+    |trunc_ln1027_reg_5312              |   8|   0|    8|          0|
+    |trunc_ln2_reg_6713                 |  32|   0|   32|          0|
+    |trunc_ln70_1_reg_5373              |   2|   0|    2|          0|
+    |trunc_ln70_2_reg_5378              |   4|   0|    4|          0|
+    |trunc_ln70_reg_5368                |   4|   0|    4|          0|
+    |x_V_cast17_cast_reg_5266           |  32|   0|   62|         30|
+    |zext_ln1027_4_cast_reg_5276        |  32|   0|   62|         30|
+    |zext_ln38_cast_reg_5282            |  32|   0|   62|         30|
+    |add_ln70_reg_5388                  |  64|  32|    4|          0|
+    |icmp_ln1027_2_reg_5302             |  64|  32|    1|          0|
+    |icmp_ln1027_reg_5293               |  64|  32|    1|          0|
+    |or_ln1027_1_reg_5359               |  64|  32|    1|          0|
+    |trunc_ln1027_reg_5312              |  64|  32|    8|          0|
+    +-----------------------------------+----+----+-----+-----------+
+    |Total                              |1527| 160| 1342|        120|
+    +-----------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------+-----+-----+------------+------------------------------------+--------------+
+|         RTL Ports        | Dir | Bits|  Protocol  |            Source Object           |    C Type    |
++--------------------------+-----+-----+------------+------------------------------------+--------------+
+|ap_clk                    |   in|    1|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|ap_rst                    |   in|    1|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|ap_start                  |   in|    1|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|ap_done                   |  out|    1|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|ap_idle                   |  out|    1|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|ap_ready                  |  out|    1|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|grp_fu_1892_p_din0        |  out|   32|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|grp_fu_1892_p_din1        |  out|   32|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|grp_fu_1892_p_dout0       |   in|   62|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|grp_fu_1892_p_ce          |  out|    1|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|grp_fu_1898_p_din0        |  out|   32|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|grp_fu_1898_p_din1        |  out|   32|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|grp_fu_1898_p_dout0       |   in|   62|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|grp_fu_1898_p_ce          |  out|    1|  ap_ctrl_hs|  Conv2D_HW_Pipeline_VITIS_LOOP_67_7|  return value|
+|m_axi_gmem_AWVALID        |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWREADY        |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWADDR         |  out|   64|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWID           |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWLEN          |  out|   32|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWSIZE         |  out|    3|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWBURST        |  out|    2|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWLOCK         |  out|    2|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWCACHE        |  out|    4|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWPROT         |  out|    3|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWQOS          |  out|    4|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWREGION       |  out|    4|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_AWUSER         |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_WVALID         |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_WREADY         |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_WDATA          |  out|   32|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_WSTRB          |  out|    4|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_WLAST          |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_WID            |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_WUSER          |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARVALID        |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARREADY        |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARADDR         |  out|   64|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARID           |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARLEN          |  out|   32|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARSIZE         |  out|    3|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARBURST        |  out|    2|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARLOCK         |  out|    2|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARCACHE        |  out|    4|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARPROT         |  out|    3|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARQOS          |  out|    4|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARREGION       |  out|    4|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_ARUSER         |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_RVALID         |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_RREADY         |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_RDATA          |   in|   32|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_RLAST          |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_RID            |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_RFIFONUM       |   in|    9|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_RUSER          |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_RRESP          |   in|    2|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_BVALID         |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_BREADY         |  out|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_BRESP          |   in|    2|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_BID            |   in|    1|       m_axi|                                gmem|       pointer|
+|m_axi_gmem_BUSER          |   in|    1|       m_axi|                                gmem|       pointer|
+|zext_ln38                 |   in|   32|     ap_none|                           zext_ln38|        scalar|
+|zext_ln1027_4             |   in|   32|     ap_none|                       zext_ln1027_4|        scalar|
+|mul_ln17_1                |   in|   96|     ap_none|                          mul_ln17_1|        scalar|
+|convWidth                 |   in|   32|     ap_none|                           convWidth|        scalar|
+|mul_ln17                  |   in|   64|     ap_none|                            mul_ln17|        scalar|
+|icmp_ln1027_1             |   in|    1|     ap_none|                       icmp_ln1027_1|        scalar|
+|inputWidth_cast12         |   in|   32|     ap_none|                   inputWidth_cast12|        scalar|
+|x_V_cast17                |   in|   32|     ap_none|                          x_V_cast17|        scalar|
+|input_r                   |   in|   64|     ap_none|                             input_r|        scalar|
+|coeff_cache_address0      |  out|    4|   ap_memory|                         coeff_cache|         array|
+|coeff_cache_ce0           |  out|    1|   ap_memory|                         coeff_cache|         array|
+|coeff_cache_q0            |   in|   32|   ap_memory|                         coeff_cache|         array|
+|coeff_cache_1_address0    |  out|    4|   ap_memory|                       coeff_cache_1|         array|
+|coeff_cache_1_ce0         |  out|    1|   ap_memory|                       coeff_cache_1|         array|
+|coeff_cache_1_q0          |   in|   32|   ap_memory|                       coeff_cache_1|         array|
+|coeff_cache_2_address0    |  out|    4|   ap_memory|                       coeff_cache_2|         array|
+|coeff_cache_2_ce0         |  out|    1|   ap_memory|                       coeff_cache_2|         array|
+|coeff_cache_2_q0          |   in|   32|   ap_memory|                       coeff_cache_2|         array|
+|coeff_cache_3_address0    |  out|    4|   ap_memory|                       coeff_cache_3|         array|
+|coeff_cache_3_ce0         |  out|    1|   ap_memory|                       coeff_cache_3|         array|
+|coeff_cache_3_q0          |   in|   32|   ap_memory|                       coeff_cache_3|         array|
+|coeff_cache_4_address0    |  out|    4|   ap_memory|                       coeff_cache_4|         array|
+|coeff_cache_4_ce0         |  out|    1|   ap_memory|                       coeff_cache_4|         array|
+|coeff_cache_4_q0          |   in|   32|   ap_memory|                       coeff_cache_4|         array|
+|coeff_cache_5_address0    |  out|    4|   ap_memory|                       coeff_cache_5|         array|
+|coeff_cache_5_ce0         |  out|    1|   ap_memory|                       coeff_cache_5|         array|
+|coeff_cache_5_q0          |   in|   32|   ap_memory|                       coeff_cache_5|         array|
+|coeff_cache_6_address0    |  out|    4|   ap_memory|                       coeff_cache_6|         array|
+|coeff_cache_6_ce0         |  out|    1|   ap_memory|                       coeff_cache_6|         array|
+|coeff_cache_6_q0          |   in|   32|   ap_memory|                       coeff_cache_6|         array|
+|coeff_cache_7_address0    |  out|    4|   ap_memory|                       coeff_cache_7|         array|
+|coeff_cache_7_ce0         |  out|    1|   ap_memory|                       coeff_cache_7|         array|
+|coeff_cache_7_q0          |   in|   32|   ap_memory|                       coeff_cache_7|         array|
+|coeff_cache_8_address0    |  out|    4|   ap_memory|                       coeff_cache_8|         array|
+|coeff_cache_8_ce0         |  out|    1|   ap_memory|                       coeff_cache_8|         array|
+|coeff_cache_8_q0          |   in|   32|   ap_memory|                       coeff_cache_8|         array|
+|coeff_cache_9_address0    |  out|    4|   ap_memory|                       coeff_cache_9|         array|
+|coeff_cache_9_ce0         |  out|    1|   ap_memory|                       coeff_cache_9|         array|
+|coeff_cache_9_q0          |   in|   32|   ap_memory|                       coeff_cache_9|         array|
+|coeff_cache_10_address0   |  out|    4|   ap_memory|                      coeff_cache_10|         array|
+|coeff_cache_10_ce0        |  out|    1|   ap_memory|                      coeff_cache_10|         array|
+|coeff_cache_10_q0         |   in|   32|   ap_memory|                      coeff_cache_10|         array|
+|coeff_cache_11_address0   |  out|    4|   ap_memory|                      coeff_cache_11|         array|
+|coeff_cache_11_ce0        |  out|    1|   ap_memory|                      coeff_cache_11|         array|
+|coeff_cache_11_q0         |   in|   32|   ap_memory|                      coeff_cache_11|         array|
+|coeff_cache_12_address0   |  out|    4|   ap_memory|                      coeff_cache_12|         array|
+|coeff_cache_12_ce0        |  out|    1|   ap_memory|                      coeff_cache_12|         array|
+|coeff_cache_12_q0         |   in|   32|   ap_memory|                      coeff_cache_12|         array|
+|coeff_cache_13_address0   |  out|    4|   ap_memory|                      coeff_cache_13|         array|
+|coeff_cache_13_ce0        |  out|    1|   ap_memory|                      coeff_cache_13|         array|
+|coeff_cache_13_q0         |   in|   32|   ap_memory|                      coeff_cache_13|         array|
+|coeff_cache_14_address0   |  out|    4|   ap_memory|                      coeff_cache_14|         array|
+|coeff_cache_14_ce0        |  out|    1|   ap_memory|                      coeff_cache_14|         array|
+|coeff_cache_14_q0         |   in|   32|   ap_memory|                      coeff_cache_14|         array|
+|coeff_cache_15_address0   |  out|    4|   ap_memory|                      coeff_cache_15|         array|
+|coeff_cache_15_ce0        |  out|    1|   ap_memory|                      coeff_cache_15|         array|
+|coeff_cache_15_q0         |   in|   32|   ap_memory|                      coeff_cache_15|         array|
+|coeff_cache_16_address0   |  out|    4|   ap_memory|                      coeff_cache_16|         array|
+|coeff_cache_16_ce0        |  out|    1|   ap_memory|                      coeff_cache_16|         array|
+|coeff_cache_16_q0         |   in|   32|   ap_memory|                      coeff_cache_16|         array|
+|coeff_cache_17_address0   |  out|    4|   ap_memory|                      coeff_cache_17|         array|
+|coeff_cache_17_ce0        |  out|    1|   ap_memory|                      coeff_cache_17|         array|
+|coeff_cache_17_q0         |   in|   32|   ap_memory|                      coeff_cache_17|         array|
+|coeff_cache_18_address0   |  out|    4|   ap_memory|                      coeff_cache_18|         array|
+|coeff_cache_18_ce0        |  out|    1|   ap_memory|                      coeff_cache_18|         array|
+|coeff_cache_18_q0         |   in|   32|   ap_memory|                      coeff_cache_18|         array|
+|coeff_cache_19_address0   |  out|    4|   ap_memory|                      coeff_cache_19|         array|
+|coeff_cache_19_ce0        |  out|    1|   ap_memory|                      coeff_cache_19|         array|
+|coeff_cache_19_q0         |   in|   32|   ap_memory|                      coeff_cache_19|         array|
+|coeff_cache_20_address0   |  out|    4|   ap_memory|                      coeff_cache_20|         array|
+|coeff_cache_20_ce0        |  out|    1|   ap_memory|                      coeff_cache_20|         array|
+|coeff_cache_20_q0         |   in|   32|   ap_memory|                      coeff_cache_20|         array|
+|coeff_cache_21_address0   |  out|    4|   ap_memory|                      coeff_cache_21|         array|
+|coeff_cache_21_ce0        |  out|    1|   ap_memory|                      coeff_cache_21|         array|
+|coeff_cache_21_q0         |   in|   32|   ap_memory|                      coeff_cache_21|         array|
+|coeff_cache_22_address0   |  out|    4|   ap_memory|                      coeff_cache_22|         array|
+|coeff_cache_22_ce0        |  out|    1|   ap_memory|                      coeff_cache_22|         array|
+|coeff_cache_22_q0         |   in|   32|   ap_memory|                      coeff_cache_22|         array|
+|coeff_cache_23_address0   |  out|    4|   ap_memory|                      coeff_cache_23|         array|
+|coeff_cache_23_ce0        |  out|    1|   ap_memory|                      coeff_cache_23|         array|
+|coeff_cache_23_q0         |   in|   32|   ap_memory|                      coeff_cache_23|         array|
+|coeff_cache_24_address0   |  out|    4|   ap_memory|                      coeff_cache_24|         array|
+|coeff_cache_24_ce0        |  out|    1|   ap_memory|                      coeff_cache_24|         array|
+|coeff_cache_24_q0         |   in|   32|   ap_memory|                      coeff_cache_24|         array|
+|coeff_cache_25_address0   |  out|    4|   ap_memory|                      coeff_cache_25|         array|
+|coeff_cache_25_ce0        |  out|    1|   ap_memory|                      coeff_cache_25|         array|
+|coeff_cache_25_q0         |   in|   32|   ap_memory|                      coeff_cache_25|         array|
+|coeff_cache_26_address0   |  out|    4|   ap_memory|                      coeff_cache_26|         array|
+|coeff_cache_26_ce0        |  out|    1|   ap_memory|                      coeff_cache_26|         array|
+|coeff_cache_26_q0         |   in|   32|   ap_memory|                      coeff_cache_26|         array|
+|coeff_cache_27_address0   |  out|    4|   ap_memory|                      coeff_cache_27|         array|
+|coeff_cache_27_ce0        |  out|    1|   ap_memory|                      coeff_cache_27|         array|
+|coeff_cache_27_q0         |   in|   32|   ap_memory|                      coeff_cache_27|         array|
+|coeff_cache_28_address0   |  out|    4|   ap_memory|                      coeff_cache_28|         array|
+|coeff_cache_28_ce0        |  out|    1|   ap_memory|                      coeff_cache_28|         array|
+|coeff_cache_28_q0         |   in|   32|   ap_memory|                      coeff_cache_28|         array|
+|coeff_cache_29_address0   |  out|    4|   ap_memory|                      coeff_cache_29|         array|
+|coeff_cache_29_ce0        |  out|    1|   ap_memory|                      coeff_cache_29|         array|
+|coeff_cache_29_q0         |   in|   32|   ap_memory|                      coeff_cache_29|         array|
+|coeff_cache_30_address0   |  out|    4|   ap_memory|                      coeff_cache_30|         array|
+|coeff_cache_30_ce0        |  out|    1|   ap_memory|                      coeff_cache_30|         array|
+|coeff_cache_30_q0         |   in|   32|   ap_memory|                      coeff_cache_30|         array|
+|coeff_cache_31_address0   |  out|    4|   ap_memory|                      coeff_cache_31|         array|
+|coeff_cache_31_ce0        |  out|    1|   ap_memory|                      coeff_cache_31|         array|
+|coeff_cache_31_q0         |   in|   32|   ap_memory|                      coeff_cache_31|         array|
+|coeff_cache_32_address0   |  out|    4|   ap_memory|                      coeff_cache_32|         array|
+|coeff_cache_32_ce0        |  out|    1|   ap_memory|                      coeff_cache_32|         array|
+|coeff_cache_32_q0         |   in|   32|   ap_memory|                      coeff_cache_32|         array|
+|coeff_cache_33_address0   |  out|    4|   ap_memory|                      coeff_cache_33|         array|
+|coeff_cache_33_ce0        |  out|    1|   ap_memory|                      coeff_cache_33|         array|
+|coeff_cache_33_q0         |   in|   32|   ap_memory|                      coeff_cache_33|         array|
+|coeff_cache_34_address0   |  out|    4|   ap_memory|                      coeff_cache_34|         array|
+|coeff_cache_34_ce0        |  out|    1|   ap_memory|                      coeff_cache_34|         array|
+|coeff_cache_34_q0         |   in|   32|   ap_memory|                      coeff_cache_34|         array|
+|coeff_cache_35_address0   |  out|    4|   ap_memory|                      coeff_cache_35|         array|
+|coeff_cache_35_ce0        |  out|    1|   ap_memory|                      coeff_cache_35|         array|
+|coeff_cache_35_q0         |   in|   32|   ap_memory|                      coeff_cache_35|         array|
+|coeff_cache_36_address0   |  out|    4|   ap_memory|                      coeff_cache_36|         array|
+|coeff_cache_36_ce0        |  out|    1|   ap_memory|                      coeff_cache_36|         array|
+|coeff_cache_36_q0         |   in|   32|   ap_memory|                      coeff_cache_36|         array|
+|coeff_cache_37_address0   |  out|    4|   ap_memory|                      coeff_cache_37|         array|
+|coeff_cache_37_ce0        |  out|    1|   ap_memory|                      coeff_cache_37|         array|
+|coeff_cache_37_q0         |   in|   32|   ap_memory|                      coeff_cache_37|         array|
+|coeff_cache_38_address0   |  out|    4|   ap_memory|                      coeff_cache_38|         array|
+|coeff_cache_38_ce0        |  out|    1|   ap_memory|                      coeff_cache_38|         array|
+|coeff_cache_38_q0         |   in|   32|   ap_memory|                      coeff_cache_38|         array|
+|coeff_cache_39_address0   |  out|    4|   ap_memory|                      coeff_cache_39|         array|
+|coeff_cache_39_ce0        |  out|    1|   ap_memory|                      coeff_cache_39|         array|
+|coeff_cache_39_q0         |   in|   32|   ap_memory|                      coeff_cache_39|         array|
+|coeff_cache_40_address0   |  out|    4|   ap_memory|                      coeff_cache_40|         array|
+|coeff_cache_40_ce0        |  out|    1|   ap_memory|                      coeff_cache_40|         array|
+|coeff_cache_40_q0         |   in|   32|   ap_memory|                      coeff_cache_40|         array|
+|coeff_cache_41_address0   |  out|    4|   ap_memory|                      coeff_cache_41|         array|
+|coeff_cache_41_ce0        |  out|    1|   ap_memory|                      coeff_cache_41|         array|
+|coeff_cache_41_q0         |   in|   32|   ap_memory|                      coeff_cache_41|         array|
+|coeff_cache_42_address0   |  out|    4|   ap_memory|                      coeff_cache_42|         array|
+|coeff_cache_42_ce0        |  out|    1|   ap_memory|                      coeff_cache_42|         array|
+|coeff_cache_42_q0         |   in|   32|   ap_memory|                      coeff_cache_42|         array|
+|coeff_cache_43_address0   |  out|    4|   ap_memory|                      coeff_cache_43|         array|
+|coeff_cache_43_ce0        |  out|    1|   ap_memory|                      coeff_cache_43|         array|
+|coeff_cache_43_q0         |   in|   32|   ap_memory|                      coeff_cache_43|         array|
+|coeff_cache_44_address0   |  out|    4|   ap_memory|                      coeff_cache_44|         array|
+|coeff_cache_44_ce0        |  out|    1|   ap_memory|                      coeff_cache_44|         array|
+|coeff_cache_44_q0         |   in|   32|   ap_memory|                      coeff_cache_44|         array|
+|coeff_cache_45_address0   |  out|    4|   ap_memory|                      coeff_cache_45|         array|
+|coeff_cache_45_ce0        |  out|    1|   ap_memory|                      coeff_cache_45|         array|
+|coeff_cache_45_q0         |   in|   32|   ap_memory|                      coeff_cache_45|         array|
+|coeff_cache_46_address0   |  out|    4|   ap_memory|                      coeff_cache_46|         array|
+|coeff_cache_46_ce0        |  out|    1|   ap_memory|                      coeff_cache_46|         array|
+|coeff_cache_46_q0         |   in|   32|   ap_memory|                      coeff_cache_46|         array|
+|coeff_cache_47_address0   |  out|    4|   ap_memory|                      coeff_cache_47|         array|
+|coeff_cache_47_ce0        |  out|    1|   ap_memory|                      coeff_cache_47|         array|
+|coeff_cache_47_q0         |   in|   32|   ap_memory|                      coeff_cache_47|         array|
+|coeff_cache_48_address0   |  out|    4|   ap_memory|                      coeff_cache_48|         array|
+|coeff_cache_48_ce0        |  out|    1|   ap_memory|                      coeff_cache_48|         array|
+|coeff_cache_48_q0         |   in|   32|   ap_memory|                      coeff_cache_48|         array|
+|coeff_cache_49_address0   |  out|    4|   ap_memory|                      coeff_cache_49|         array|
+|coeff_cache_49_ce0        |  out|    1|   ap_memory|                      coeff_cache_49|         array|
+|coeff_cache_49_q0         |   in|   32|   ap_memory|                      coeff_cache_49|         array|
+|coeff_cache_50_address0   |  out|    4|   ap_memory|                      coeff_cache_50|         array|
+|coeff_cache_50_ce0        |  out|    1|   ap_memory|                      coeff_cache_50|         array|
+|coeff_cache_50_q0         |   in|   32|   ap_memory|                      coeff_cache_50|         array|
+|coeff_cache_51_address0   |  out|    4|   ap_memory|                      coeff_cache_51|         array|
+|coeff_cache_51_ce0        |  out|    1|   ap_memory|                      coeff_cache_51|         array|
+|coeff_cache_51_q0         |   in|   32|   ap_memory|                      coeff_cache_51|         array|
+|coeff_cache_52_address0   |  out|    4|   ap_memory|                      coeff_cache_52|         array|
+|coeff_cache_52_ce0        |  out|    1|   ap_memory|                      coeff_cache_52|         array|
+|coeff_cache_52_q0         |   in|   32|   ap_memory|                      coeff_cache_52|         array|
+|coeff_cache_53_address0   |  out|    4|   ap_memory|                      coeff_cache_53|         array|
+|coeff_cache_53_ce0        |  out|    1|   ap_memory|                      coeff_cache_53|         array|
+|coeff_cache_53_q0         |   in|   32|   ap_memory|                      coeff_cache_53|         array|
+|coeff_cache_54_address0   |  out|    4|   ap_memory|                      coeff_cache_54|         array|
+|coeff_cache_54_ce0        |  out|    1|   ap_memory|                      coeff_cache_54|         array|
+|coeff_cache_54_q0         |   in|   32|   ap_memory|                      coeff_cache_54|         array|
+|coeff_cache_55_address0   |  out|    4|   ap_memory|                      coeff_cache_55|         array|
+|coeff_cache_55_ce0        |  out|    1|   ap_memory|                      coeff_cache_55|         array|
+|coeff_cache_55_q0         |   in|   32|   ap_memory|                      coeff_cache_55|         array|
+|coeff_cache_56_address0   |  out|    4|   ap_memory|                      coeff_cache_56|         array|
+|coeff_cache_56_ce0        |  out|    1|   ap_memory|                      coeff_cache_56|         array|
+|coeff_cache_56_q0         |   in|   32|   ap_memory|                      coeff_cache_56|         array|
+|coeff_cache_57_address0   |  out|    4|   ap_memory|                      coeff_cache_57|         array|
+|coeff_cache_57_ce0        |  out|    1|   ap_memory|                      coeff_cache_57|         array|
+|coeff_cache_57_q0         |   in|   32|   ap_memory|                      coeff_cache_57|         array|
+|coeff_cache_58_address0   |  out|    4|   ap_memory|                      coeff_cache_58|         array|
+|coeff_cache_58_ce0        |  out|    1|   ap_memory|                      coeff_cache_58|         array|
+|coeff_cache_58_q0         |   in|   32|   ap_memory|                      coeff_cache_58|         array|
+|coeff_cache_59_address0   |  out|    4|   ap_memory|                      coeff_cache_59|         array|
+|coeff_cache_59_ce0        |  out|    1|   ap_memory|                      coeff_cache_59|         array|
+|coeff_cache_59_q0         |   in|   32|   ap_memory|                      coeff_cache_59|         array|
+|coeff_cache_60_address0   |  out|    4|   ap_memory|                      coeff_cache_60|         array|
+|coeff_cache_60_ce0        |  out|    1|   ap_memory|                      coeff_cache_60|         array|
+|coeff_cache_60_q0         |   in|   32|   ap_memory|                      coeff_cache_60|         array|
+|coeff_cache_61_address0   |  out|    4|   ap_memory|                      coeff_cache_61|         array|
+|coeff_cache_61_ce0        |  out|    1|   ap_memory|                      coeff_cache_61|         array|
+|coeff_cache_61_q0         |   in|   32|   ap_memory|                      coeff_cache_61|         array|
+|coeff_cache_62_address0   |  out|    4|   ap_memory|                      coeff_cache_62|         array|
+|coeff_cache_62_ce0        |  out|    1|   ap_memory|                      coeff_cache_62|         array|
+|coeff_cache_62_q0         |   in|   32|   ap_memory|                      coeff_cache_62|         array|
+|coeff_cache_63_address0   |  out|    4|   ap_memory|                      coeff_cache_63|         array|
+|coeff_cache_63_ce0        |  out|    1|   ap_memory|                      coeff_cache_63|         array|
+|coeff_cache_63_q0         |   in|   32|   ap_memory|                      coeff_cache_63|         array|
+|coeff_cache_64_address0   |  out|    4|   ap_memory|                      coeff_cache_64|         array|
+|coeff_cache_64_ce0        |  out|    1|   ap_memory|                      coeff_cache_64|         array|
+|coeff_cache_64_q0         |   in|   32|   ap_memory|                      coeff_cache_64|         array|
+|coeff_cache_65_address0   |  out|    4|   ap_memory|                      coeff_cache_65|         array|
+|coeff_cache_65_ce0        |  out|    1|   ap_memory|                      coeff_cache_65|         array|
+|coeff_cache_65_q0         |   in|   32|   ap_memory|                      coeff_cache_65|         array|
+|coeff_cache_66_address0   |  out|    4|   ap_memory|                      coeff_cache_66|         array|
+|coeff_cache_66_ce0        |  out|    1|   ap_memory|                      coeff_cache_66|         array|
+|coeff_cache_66_q0         |   in|   32|   ap_memory|                      coeff_cache_66|         array|
+|coeff_cache_67_address0   |  out|    4|   ap_memory|                      coeff_cache_67|         array|
+|coeff_cache_67_ce0        |  out|    1|   ap_memory|                      coeff_cache_67|         array|
+|coeff_cache_67_q0         |   in|   32|   ap_memory|                      coeff_cache_67|         array|
+|coeff_cache_68_address0   |  out|    4|   ap_memory|                      coeff_cache_68|         array|
+|coeff_cache_68_ce0        |  out|    1|   ap_memory|                      coeff_cache_68|         array|
+|coeff_cache_68_q0         |   in|   32|   ap_memory|                      coeff_cache_68|         array|
+|coeff_cache_69_address0   |  out|    4|   ap_memory|                      coeff_cache_69|         array|
+|coeff_cache_69_ce0        |  out|    1|   ap_memory|                      coeff_cache_69|         array|
+|coeff_cache_69_q0         |   in|   32|   ap_memory|                      coeff_cache_69|         array|
+|coeff_cache_70_address0   |  out|    4|   ap_memory|                      coeff_cache_70|         array|
+|coeff_cache_70_ce0        |  out|    1|   ap_memory|                      coeff_cache_70|         array|
+|coeff_cache_70_q0         |   in|   32|   ap_memory|                      coeff_cache_70|         array|
+|coeff_cache_71_address0   |  out|    4|   ap_memory|                      coeff_cache_71|         array|
+|coeff_cache_71_ce0        |  out|    1|   ap_memory|                      coeff_cache_71|         array|
+|coeff_cache_71_q0         |   in|   32|   ap_memory|                      coeff_cache_71|         array|
+|coeff_cache_72_address0   |  out|    4|   ap_memory|                      coeff_cache_72|         array|
+|coeff_cache_72_ce0        |  out|    1|   ap_memory|                      coeff_cache_72|         array|
+|coeff_cache_72_q0         |   in|   32|   ap_memory|                      coeff_cache_72|         array|
+|coeff_cache_73_address0   |  out|    4|   ap_memory|                      coeff_cache_73|         array|
+|coeff_cache_73_ce0        |  out|    1|   ap_memory|                      coeff_cache_73|         array|
+|coeff_cache_73_q0         |   in|   32|   ap_memory|                      coeff_cache_73|         array|
+|coeff_cache_74_address0   |  out|    4|   ap_memory|                      coeff_cache_74|         array|
+|coeff_cache_74_ce0        |  out|    1|   ap_memory|                      coeff_cache_74|         array|
+|coeff_cache_74_q0         |   in|   32|   ap_memory|                      coeff_cache_74|         array|
+|coeff_cache_75_address0   |  out|    4|   ap_memory|                      coeff_cache_75|         array|
+|coeff_cache_75_ce0        |  out|    1|   ap_memory|                      coeff_cache_75|         array|
+|coeff_cache_75_q0         |   in|   32|   ap_memory|                      coeff_cache_75|         array|
+|coeff_cache_76_address0   |  out|    4|   ap_memory|                      coeff_cache_76|         array|
+|coeff_cache_76_ce0        |  out|    1|   ap_memory|                      coeff_cache_76|         array|
+|coeff_cache_76_q0         |   in|   32|   ap_memory|                      coeff_cache_76|         array|
+|coeff_cache_77_address0   |  out|    4|   ap_memory|                      coeff_cache_77|         array|
+|coeff_cache_77_ce0        |  out|    1|   ap_memory|                      coeff_cache_77|         array|
+|coeff_cache_77_q0         |   in|   32|   ap_memory|                      coeff_cache_77|         array|
+|coeff_cache_78_address0   |  out|    4|   ap_memory|                      coeff_cache_78|         array|
+|coeff_cache_78_ce0        |  out|    1|   ap_memory|                      coeff_cache_78|         array|
+|coeff_cache_78_q0         |   in|   32|   ap_memory|                      coeff_cache_78|         array|
+|coeff_cache_79_address0   |  out|    4|   ap_memory|                      coeff_cache_79|         array|
+|coeff_cache_79_ce0        |  out|    1|   ap_memory|                      coeff_cache_79|         array|
+|coeff_cache_79_q0         |   in|   32|   ap_memory|                      coeff_cache_79|         array|
+|coeff_cache_80_address0   |  out|    4|   ap_memory|                      coeff_cache_80|         array|
+|coeff_cache_80_ce0        |  out|    1|   ap_memory|                      coeff_cache_80|         array|
+|coeff_cache_80_q0         |   in|   32|   ap_memory|                      coeff_cache_80|         array|
+|coeff_cache_81_address0   |  out|    4|   ap_memory|                      coeff_cache_81|         array|
+|coeff_cache_81_ce0        |  out|    1|   ap_memory|                      coeff_cache_81|         array|
+|coeff_cache_81_q0         |   in|   32|   ap_memory|                      coeff_cache_81|         array|
+|coeff_cache_82_address0   |  out|    4|   ap_memory|                      coeff_cache_82|         array|
+|coeff_cache_82_ce0        |  out|    1|   ap_memory|                      coeff_cache_82|         array|
+|coeff_cache_82_q0         |   in|   32|   ap_memory|                      coeff_cache_82|         array|
+|coeff_cache_83_address0   |  out|    4|   ap_memory|                      coeff_cache_83|         array|
+|coeff_cache_83_ce0        |  out|    1|   ap_memory|                      coeff_cache_83|         array|
+|coeff_cache_83_q0         |   in|   32|   ap_memory|                      coeff_cache_83|         array|
+|coeff_cache_84_address0   |  out|    4|   ap_memory|                      coeff_cache_84|         array|
+|coeff_cache_84_ce0        |  out|    1|   ap_memory|                      coeff_cache_84|         array|
+|coeff_cache_84_q0         |   in|   32|   ap_memory|                      coeff_cache_84|         array|
+|coeff_cache_85_address0   |  out|    4|   ap_memory|                      coeff_cache_85|         array|
+|coeff_cache_85_ce0        |  out|    1|   ap_memory|                      coeff_cache_85|         array|
+|coeff_cache_85_q0         |   in|   32|   ap_memory|                      coeff_cache_85|         array|
+|coeff_cache_86_address0   |  out|    4|   ap_memory|                      coeff_cache_86|         array|
+|coeff_cache_86_ce0        |  out|    1|   ap_memory|                      coeff_cache_86|         array|
+|coeff_cache_86_q0         |   in|   32|   ap_memory|                      coeff_cache_86|         array|
+|coeff_cache_87_address0   |  out|    4|   ap_memory|                      coeff_cache_87|         array|
+|coeff_cache_87_ce0        |  out|    1|   ap_memory|                      coeff_cache_87|         array|
+|coeff_cache_87_q0         |   in|   32|   ap_memory|                      coeff_cache_87|         array|
+|coeff_cache_88_address0   |  out|    4|   ap_memory|                      coeff_cache_88|         array|
+|coeff_cache_88_ce0        |  out|    1|   ap_memory|                      coeff_cache_88|         array|
+|coeff_cache_88_q0         |   in|   32|   ap_memory|                      coeff_cache_88|         array|
+|coeff_cache_89_address0   |  out|    4|   ap_memory|                      coeff_cache_89|         array|
+|coeff_cache_89_ce0        |  out|    1|   ap_memory|                      coeff_cache_89|         array|
+|coeff_cache_89_q0         |   in|   32|   ap_memory|                      coeff_cache_89|         array|
+|coeff_cache_90_address0   |  out|    4|   ap_memory|                      coeff_cache_90|         array|
+|coeff_cache_90_ce0        |  out|    1|   ap_memory|                      coeff_cache_90|         array|
+|coeff_cache_90_q0         |   in|   32|   ap_memory|                      coeff_cache_90|         array|
+|coeff_cache_91_address0   |  out|    4|   ap_memory|                      coeff_cache_91|         array|
+|coeff_cache_91_ce0        |  out|    1|   ap_memory|                      coeff_cache_91|         array|
+|coeff_cache_91_q0         |   in|   32|   ap_memory|                      coeff_cache_91|         array|
+|coeff_cache_92_address0   |  out|    4|   ap_memory|                      coeff_cache_92|         array|
+|coeff_cache_92_ce0        |  out|    1|   ap_memory|                      coeff_cache_92|         array|
+|coeff_cache_92_q0         |   in|   32|   ap_memory|                      coeff_cache_92|         array|
+|coeff_cache_93_address0   |  out|    4|   ap_memory|                      coeff_cache_93|         array|
+|coeff_cache_93_ce0        |  out|    1|   ap_memory|                      coeff_cache_93|         array|
+|coeff_cache_93_q0         |   in|   32|   ap_memory|                      coeff_cache_93|         array|
+|coeff_cache_94_address0   |  out|    4|   ap_memory|                      coeff_cache_94|         array|
+|coeff_cache_94_ce0        |  out|    1|   ap_memory|                      coeff_cache_94|         array|
+|coeff_cache_94_q0         |   in|   32|   ap_memory|                      coeff_cache_94|         array|
+|coeff_cache_95_address0   |  out|    4|   ap_memory|                      coeff_cache_95|         array|
+|coeff_cache_95_ce0        |  out|    1|   ap_memory|                      coeff_cache_95|         array|
+|coeff_cache_95_q0         |   in|   32|   ap_memory|                      coeff_cache_95|         array|
+|coeff_cache_96_address0   |  out|    4|   ap_memory|                      coeff_cache_96|         array|
+|coeff_cache_96_ce0        |  out|    1|   ap_memory|                      coeff_cache_96|         array|
+|coeff_cache_96_q0         |   in|   32|   ap_memory|                      coeff_cache_96|         array|
+|coeff_cache_97_address0   |  out|    4|   ap_memory|                      coeff_cache_97|         array|
+|coeff_cache_97_ce0        |  out|    1|   ap_memory|                      coeff_cache_97|         array|
+|coeff_cache_97_q0         |   in|   32|   ap_memory|                      coeff_cache_97|         array|
+|coeff_cache_98_address0   |  out|    4|   ap_memory|                      coeff_cache_98|         array|
+|coeff_cache_98_ce0        |  out|    1|   ap_memory|                      coeff_cache_98|         array|
+|coeff_cache_98_q0         |   in|   32|   ap_memory|                      coeff_cache_98|         array|
+|coeff_cache_99_address0   |  out|    4|   ap_memory|                      coeff_cache_99|         array|
+|coeff_cache_99_ce0        |  out|    1|   ap_memory|                      coeff_cache_99|         array|
+|coeff_cache_99_q0         |   in|   32|   ap_memory|                      coeff_cache_99|         array|
+|coeff_cache_100_address0  |  out|    4|   ap_memory|                     coeff_cache_100|         array|
+|coeff_cache_100_ce0       |  out|    1|   ap_memory|                     coeff_cache_100|         array|
+|coeff_cache_100_q0        |   in|   32|   ap_memory|                     coeff_cache_100|         array|
+|coeff_cache_101_address0  |  out|    4|   ap_memory|                     coeff_cache_101|         array|
+|coeff_cache_101_ce0       |  out|    1|   ap_memory|                     coeff_cache_101|         array|
+|coeff_cache_101_q0        |   in|   32|   ap_memory|                     coeff_cache_101|         array|
+|coeff_cache_102_address0  |  out|    4|   ap_memory|                     coeff_cache_102|         array|
+|coeff_cache_102_ce0       |  out|    1|   ap_memory|                     coeff_cache_102|         array|
+|coeff_cache_102_q0        |   in|   32|   ap_memory|                     coeff_cache_102|         array|
+|coeff_cache_103_address0  |  out|    4|   ap_memory|                     coeff_cache_103|         array|
+|coeff_cache_103_ce0       |  out|    1|   ap_memory|                     coeff_cache_103|         array|
+|coeff_cache_103_q0        |   in|   32|   ap_memory|                     coeff_cache_103|         array|
+|coeff_cache_104_address0  |  out|    4|   ap_memory|                     coeff_cache_104|         array|
+|coeff_cache_104_ce0       |  out|    1|   ap_memory|                     coeff_cache_104|         array|
+|coeff_cache_104_q0        |   in|   32|   ap_memory|                     coeff_cache_104|         array|
+|coeff_cache_105_address0  |  out|    4|   ap_memory|                     coeff_cache_105|         array|
+|coeff_cache_105_ce0       |  out|    1|   ap_memory|                     coeff_cache_105|         array|
+|coeff_cache_105_q0        |   in|   32|   ap_memory|                     coeff_cache_105|         array|
+|coeff_cache_106_address0  |  out|    4|   ap_memory|                     coeff_cache_106|         array|
+|coeff_cache_106_ce0       |  out|    1|   ap_memory|                     coeff_cache_106|         array|
+|coeff_cache_106_q0        |   in|   32|   ap_memory|                     coeff_cache_106|         array|
+|coeff_cache_107_address0  |  out|    4|   ap_memory|                     coeff_cache_107|         array|
+|coeff_cache_107_ce0       |  out|    1|   ap_memory|                     coeff_cache_107|         array|
+|coeff_cache_107_q0        |   in|   32|   ap_memory|                     coeff_cache_107|         array|
+|coeff_cache_108_address0  |  out|    4|   ap_memory|                     coeff_cache_108|         array|
+|coeff_cache_108_ce0       |  out|    1|   ap_memory|                     coeff_cache_108|         array|
+|coeff_cache_108_q0        |   in|   32|   ap_memory|                     coeff_cache_108|         array|
+|coeff_cache_109_address0  |  out|    4|   ap_memory|                     coeff_cache_109|         array|
+|coeff_cache_109_ce0       |  out|    1|   ap_memory|                     coeff_cache_109|         array|
+|coeff_cache_109_q0        |   in|   32|   ap_memory|                     coeff_cache_109|         array|
+|coeff_cache_110_address0  |  out|    4|   ap_memory|                     coeff_cache_110|         array|
+|coeff_cache_110_ce0       |  out|    1|   ap_memory|                     coeff_cache_110|         array|
+|coeff_cache_110_q0        |   in|   32|   ap_memory|                     coeff_cache_110|         array|
+|coeff_cache_111_address0  |  out|    4|   ap_memory|                     coeff_cache_111|         array|
+|coeff_cache_111_ce0       |  out|    1|   ap_memory|                     coeff_cache_111|         array|
+|coeff_cache_111_q0        |   in|   32|   ap_memory|                     coeff_cache_111|         array|
+|coeff_cache_112_address0  |  out|    4|   ap_memory|                     coeff_cache_112|         array|
+|coeff_cache_112_ce0       |  out|    1|   ap_memory|                     coeff_cache_112|         array|
+|coeff_cache_112_q0        |   in|   32|   ap_memory|                     coeff_cache_112|         array|
+|coeff_cache_113_address0  |  out|    4|   ap_memory|                     coeff_cache_113|         array|
+|coeff_cache_113_ce0       |  out|    1|   ap_memory|                     coeff_cache_113|         array|
+|coeff_cache_113_q0        |   in|   32|   ap_memory|                     coeff_cache_113|         array|
+|coeff_cache_114_address0  |  out|    4|   ap_memory|                     coeff_cache_114|         array|
+|coeff_cache_114_ce0       |  out|    1|   ap_memory|                     coeff_cache_114|         array|
+|coeff_cache_114_q0        |   in|   32|   ap_memory|                     coeff_cache_114|         array|
+|coeff_cache_115_address0  |  out|    4|   ap_memory|                     coeff_cache_115|         array|
+|coeff_cache_115_ce0       |  out|    1|   ap_memory|                     coeff_cache_115|         array|
+|coeff_cache_115_q0        |   in|   32|   ap_memory|                     coeff_cache_115|         array|
+|coeff_cache_116_address0  |  out|    4|   ap_memory|                     coeff_cache_116|         array|
+|coeff_cache_116_ce0       |  out|    1|   ap_memory|                     coeff_cache_116|         array|
+|coeff_cache_116_q0        |   in|   32|   ap_memory|                     coeff_cache_116|         array|
+|coeff_cache_117_address0  |  out|    4|   ap_memory|                     coeff_cache_117|         array|
+|coeff_cache_117_ce0       |  out|    1|   ap_memory|                     coeff_cache_117|         array|
+|coeff_cache_117_q0        |   in|   32|   ap_memory|                     coeff_cache_117|         array|
+|coeff_cache_118_address0  |  out|    4|   ap_memory|                     coeff_cache_118|         array|
+|coeff_cache_118_ce0       |  out|    1|   ap_memory|                     coeff_cache_118|         array|
+|coeff_cache_118_q0        |   in|   32|   ap_memory|                     coeff_cache_118|         array|
+|coeff_cache_119_address0  |  out|    4|   ap_memory|                     coeff_cache_119|         array|
+|coeff_cache_119_ce0       |  out|    1|   ap_memory|                     coeff_cache_119|         array|
+|coeff_cache_119_q0        |   in|   32|   ap_memory|                     coeff_cache_119|         array|
+|coeff_cache_120_address0  |  out|    4|   ap_memory|                     coeff_cache_120|         array|
+|coeff_cache_120_ce0       |  out|    1|   ap_memory|                     coeff_cache_120|         array|
+|coeff_cache_120_q0        |   in|   32|   ap_memory|                     coeff_cache_120|         array|
+|coeff_cache_121_address0  |  out|    4|   ap_memory|                     coeff_cache_121|         array|
+|coeff_cache_121_ce0       |  out|    1|   ap_memory|                     coeff_cache_121|         array|
+|coeff_cache_121_q0        |   in|   32|   ap_memory|                     coeff_cache_121|         array|
+|coeff_cache_122_address0  |  out|    4|   ap_memory|                     coeff_cache_122|         array|
+|coeff_cache_122_ce0       |  out|    1|   ap_memory|                     coeff_cache_122|         array|
+|coeff_cache_122_q0        |   in|   32|   ap_memory|                     coeff_cache_122|         array|
+|coeff_cache_123_address0  |  out|    4|   ap_memory|                     coeff_cache_123|         array|
+|coeff_cache_123_ce0       |  out|    1|   ap_memory|                     coeff_cache_123|         array|
+|coeff_cache_123_q0        |   in|   32|   ap_memory|                     coeff_cache_123|         array|
+|coeff_cache_124_address0  |  out|    4|   ap_memory|                     coeff_cache_124|         array|
+|coeff_cache_124_ce0       |  out|    1|   ap_memory|                     coeff_cache_124|         array|
+|coeff_cache_124_q0        |   in|   32|   ap_memory|                     coeff_cache_124|         array|
+|coeff_cache_125_address0  |  out|    4|   ap_memory|                     coeff_cache_125|         array|
+|coeff_cache_125_ce0       |  out|    1|   ap_memory|                     coeff_cache_125|         array|
+|coeff_cache_125_q0        |   in|   32|   ap_memory|                     coeff_cache_125|         array|
+|coeff_cache_126_address0  |  out|    4|   ap_memory|                     coeff_cache_126|         array|
+|coeff_cache_126_ce0       |  out|    1|   ap_memory|                     coeff_cache_126|         array|
+|coeff_cache_126_q0        |   in|   32|   ap_memory|                     coeff_cache_126|         array|
+|coeff_cache_127_address0  |  out|    4|   ap_memory|                     coeff_cache_127|         array|
+|coeff_cache_127_ce0       |  out|    1|   ap_memory|                     coeff_cache_127|         array|
+|coeff_cache_127_q0        |   in|   32|   ap_memory|                     coeff_cache_127|         array|
+|coeff_cache_128_address0  |  out|    4|   ap_memory|                     coeff_cache_128|         array|
+|coeff_cache_128_ce0       |  out|    1|   ap_memory|                     coeff_cache_128|         array|
+|coeff_cache_128_q0        |   in|   32|   ap_memory|                     coeff_cache_128|         array|
+|coeff_cache_129_address0  |  out|    4|   ap_memory|                     coeff_cache_129|         array|
+|coeff_cache_129_ce0       |  out|    1|   ap_memory|                     coeff_cache_129|         array|
+|coeff_cache_129_q0        |   in|   32|   ap_memory|                     coeff_cache_129|         array|
+|coeff_cache_130_address0  |  out|    4|   ap_memory|                     coeff_cache_130|         array|
+|coeff_cache_130_ce0       |  out|    1|   ap_memory|                     coeff_cache_130|         array|
+|coeff_cache_130_q0        |   in|   32|   ap_memory|                     coeff_cache_130|         array|
+|coeff_cache_131_address0  |  out|    4|   ap_memory|                     coeff_cache_131|         array|
+|coeff_cache_131_ce0       |  out|    1|   ap_memory|                     coeff_cache_131|         array|
+|coeff_cache_131_q0        |   in|   32|   ap_memory|                     coeff_cache_131|         array|
+|coeff_cache_132_address0  |  out|    4|   ap_memory|                     coeff_cache_132|         array|
+|coeff_cache_132_ce0       |  out|    1|   ap_memory|                     coeff_cache_132|         array|
+|coeff_cache_132_q0        |   in|   32|   ap_memory|                     coeff_cache_132|         array|
+|coeff_cache_133_address0  |  out|    4|   ap_memory|                     coeff_cache_133|         array|
+|coeff_cache_133_ce0       |  out|    1|   ap_memory|                     coeff_cache_133|         array|
+|coeff_cache_133_q0        |   in|   32|   ap_memory|                     coeff_cache_133|         array|
+|coeff_cache_134_address0  |  out|    4|   ap_memory|                     coeff_cache_134|         array|
+|coeff_cache_134_ce0       |  out|    1|   ap_memory|                     coeff_cache_134|         array|
+|coeff_cache_134_q0        |   in|   32|   ap_memory|                     coeff_cache_134|         array|
+|coeff_cache_135_address0  |  out|    4|   ap_memory|                     coeff_cache_135|         array|
+|coeff_cache_135_ce0       |  out|    1|   ap_memory|                     coeff_cache_135|         array|
+|coeff_cache_135_q0        |   in|   32|   ap_memory|                     coeff_cache_135|         array|
+|coeff_cache_136_address0  |  out|    4|   ap_memory|                     coeff_cache_136|         array|
+|coeff_cache_136_ce0       |  out|    1|   ap_memory|                     coeff_cache_136|         array|
+|coeff_cache_136_q0        |   in|   32|   ap_memory|                     coeff_cache_136|         array|
+|coeff_cache_137_address0  |  out|    4|   ap_memory|                     coeff_cache_137|         array|
+|coeff_cache_137_ce0       |  out|    1|   ap_memory|                     coeff_cache_137|         array|
+|coeff_cache_137_q0        |   in|   32|   ap_memory|                     coeff_cache_137|         array|
+|coeff_cache_138_address0  |  out|    4|   ap_memory|                     coeff_cache_138|         array|
+|coeff_cache_138_ce0       |  out|    1|   ap_memory|                     coeff_cache_138|         array|
+|coeff_cache_138_q0        |   in|   32|   ap_memory|                     coeff_cache_138|         array|
+|coeff_cache_139_address0  |  out|    4|   ap_memory|                     coeff_cache_139|         array|
+|coeff_cache_139_ce0       |  out|    1|   ap_memory|                     coeff_cache_139|         array|
+|coeff_cache_139_q0        |   in|   32|   ap_memory|                     coeff_cache_139|         array|
+|coeff_cache_140_address0  |  out|    4|   ap_memory|                     coeff_cache_140|         array|
+|coeff_cache_140_ce0       |  out|    1|   ap_memory|                     coeff_cache_140|         array|
+|coeff_cache_140_q0        |   in|   32|   ap_memory|                     coeff_cache_140|         array|
+|coeff_cache_141_address0  |  out|    4|   ap_memory|                     coeff_cache_141|         array|
+|coeff_cache_141_ce0       |  out|    1|   ap_memory|                     coeff_cache_141|         array|
+|coeff_cache_141_q0        |   in|   32|   ap_memory|                     coeff_cache_141|         array|
+|coeff_cache_142_address0  |  out|    4|   ap_memory|                     coeff_cache_142|         array|
+|coeff_cache_142_ce0       |  out|    1|   ap_memory|                     coeff_cache_142|         array|
+|coeff_cache_142_q0        |   in|   32|   ap_memory|                     coeff_cache_142|         array|
+|coeff_cache_143_address0  |  out|    4|   ap_memory|                     coeff_cache_143|         array|
+|coeff_cache_143_ce0       |  out|    1|   ap_memory|                     coeff_cache_143|         array|
+|coeff_cache_143_q0        |   in|   32|   ap_memory|                     coeff_cache_143|         array|
+|coeff_cache_144_address0  |  out|    4|   ap_memory|                     coeff_cache_144|         array|
+|coeff_cache_144_ce0       |  out|    1|   ap_memory|                     coeff_cache_144|         array|
+|coeff_cache_144_q0        |   in|   32|   ap_memory|                     coeff_cache_144|         array|
+|coeff_cache_145_address0  |  out|    4|   ap_memory|                     coeff_cache_145|         array|
+|coeff_cache_145_ce0       |  out|    1|   ap_memory|                     coeff_cache_145|         array|
+|coeff_cache_145_q0        |   in|   32|   ap_memory|                     coeff_cache_145|         array|
+|coeff_cache_146_address0  |  out|    4|   ap_memory|                     coeff_cache_146|         array|
+|coeff_cache_146_ce0       |  out|    1|   ap_memory|                     coeff_cache_146|         array|
+|coeff_cache_146_q0        |   in|   32|   ap_memory|                     coeff_cache_146|         array|
+|coeff_cache_147_address0  |  out|    4|   ap_memory|                     coeff_cache_147|         array|
+|coeff_cache_147_ce0       |  out|    1|   ap_memory|                     coeff_cache_147|         array|
+|coeff_cache_147_q0        |   in|   32|   ap_memory|                     coeff_cache_147|         array|
+|coeff_cache_148_address0  |  out|    4|   ap_memory|                     coeff_cache_148|         array|
+|coeff_cache_148_ce0       |  out|    1|   ap_memory|                     coeff_cache_148|         array|
+|coeff_cache_148_q0        |   in|   32|   ap_memory|                     coeff_cache_148|         array|
+|coeff_cache_149_address0  |  out|    4|   ap_memory|                     coeff_cache_149|         array|
+|coeff_cache_149_ce0       |  out|    1|   ap_memory|                     coeff_cache_149|         array|
+|coeff_cache_149_q0        |   in|   32|   ap_memory|                     coeff_cache_149|         array|
+|coeff_cache_150_address0  |  out|    4|   ap_memory|                     coeff_cache_150|         array|
+|coeff_cache_150_ce0       |  out|    1|   ap_memory|                     coeff_cache_150|         array|
+|coeff_cache_150_q0        |   in|   32|   ap_memory|                     coeff_cache_150|         array|
+|coeff_cache_151_address0  |  out|    4|   ap_memory|                     coeff_cache_151|         array|
+|coeff_cache_151_ce0       |  out|    1|   ap_memory|                     coeff_cache_151|         array|
+|coeff_cache_151_q0        |   in|   32|   ap_memory|                     coeff_cache_151|         array|
+|coeff_cache_152_address0  |  out|    4|   ap_memory|                     coeff_cache_152|         array|
+|coeff_cache_152_ce0       |  out|    1|   ap_memory|                     coeff_cache_152|         array|
+|coeff_cache_152_q0        |   in|   32|   ap_memory|                     coeff_cache_152|         array|
+|coeff_cache_153_address0  |  out|    4|   ap_memory|                     coeff_cache_153|         array|
+|coeff_cache_153_ce0       |  out|    1|   ap_memory|                     coeff_cache_153|         array|
+|coeff_cache_153_q0        |   in|   32|   ap_memory|                     coeff_cache_153|         array|
+|coeff_cache_154_address0  |  out|    4|   ap_memory|                     coeff_cache_154|         array|
+|coeff_cache_154_ce0       |  out|    1|   ap_memory|                     coeff_cache_154|         array|
+|coeff_cache_154_q0        |   in|   32|   ap_memory|                     coeff_cache_154|         array|
+|coeff_cache_155_address0  |  out|    4|   ap_memory|                     coeff_cache_155|         array|
+|coeff_cache_155_ce0       |  out|    1|   ap_memory|                     coeff_cache_155|         array|
+|coeff_cache_155_q0        |   in|   32|   ap_memory|                     coeff_cache_155|         array|
+|coeff_cache_156_address0  |  out|    4|   ap_memory|                     coeff_cache_156|         array|
+|coeff_cache_156_ce0       |  out|    1|   ap_memory|                     coeff_cache_156|         array|
+|coeff_cache_156_q0        |   in|   32|   ap_memory|                     coeff_cache_156|         array|
+|coeff_cache_157_address0  |  out|    4|   ap_memory|                     coeff_cache_157|         array|
+|coeff_cache_157_ce0       |  out|    1|   ap_memory|                     coeff_cache_157|         array|
+|coeff_cache_157_q0        |   in|   32|   ap_memory|                     coeff_cache_157|         array|
+|coeff_cache_158_address0  |  out|    4|   ap_memory|                     coeff_cache_158|         array|
+|coeff_cache_158_ce0       |  out|    1|   ap_memory|                     coeff_cache_158|         array|
+|coeff_cache_158_q0        |   in|   32|   ap_memory|                     coeff_cache_158|         array|
+|coeff_cache_159_address0  |  out|    4|   ap_memory|                     coeff_cache_159|         array|
+|coeff_cache_159_ce0       |  out|    1|   ap_memory|                     coeff_cache_159|         array|
+|coeff_cache_159_q0        |   in|   32|   ap_memory|                     coeff_cache_159|         array|
+|coeff_cache_160_address0  |  out|    4|   ap_memory|                     coeff_cache_160|         array|
+|coeff_cache_160_ce0       |  out|    1|   ap_memory|                     coeff_cache_160|         array|
+|coeff_cache_160_q0        |   in|   32|   ap_memory|                     coeff_cache_160|         array|
+|coeff_cache_161_address0  |  out|    4|   ap_memory|                     coeff_cache_161|         array|
+|coeff_cache_161_ce0       |  out|    1|   ap_memory|                     coeff_cache_161|         array|
+|coeff_cache_161_q0        |   in|   32|   ap_memory|                     coeff_cache_161|         array|
+|coeff_cache_162_address0  |  out|    4|   ap_memory|                     coeff_cache_162|         array|
+|coeff_cache_162_ce0       |  out|    1|   ap_memory|                     coeff_cache_162|         array|
+|coeff_cache_162_q0        |   in|   32|   ap_memory|                     coeff_cache_162|         array|
+|coeff_cache_163_address0  |  out|    4|   ap_memory|                     coeff_cache_163|         array|
+|coeff_cache_163_ce0       |  out|    1|   ap_memory|                     coeff_cache_163|         array|
+|coeff_cache_163_q0        |   in|   32|   ap_memory|                     coeff_cache_163|         array|
+|coeff_cache_164_address0  |  out|    4|   ap_memory|                     coeff_cache_164|         array|
+|coeff_cache_164_ce0       |  out|    1|   ap_memory|                     coeff_cache_164|         array|
+|coeff_cache_164_q0        |   in|   32|   ap_memory|                     coeff_cache_164|         array|
+|coeff_cache_165_address0  |  out|    4|   ap_memory|                     coeff_cache_165|         array|
+|coeff_cache_165_ce0       |  out|    1|   ap_memory|                     coeff_cache_165|         array|
+|coeff_cache_165_q0        |   in|   32|   ap_memory|                     coeff_cache_165|         array|
+|coeff_cache_166_address0  |  out|    4|   ap_memory|                     coeff_cache_166|         array|
+|coeff_cache_166_ce0       |  out|    1|   ap_memory|                     coeff_cache_166|         array|
+|coeff_cache_166_q0        |   in|   32|   ap_memory|                     coeff_cache_166|         array|
+|coeff_cache_167_address0  |  out|    4|   ap_memory|                     coeff_cache_167|         array|
+|coeff_cache_167_ce0       |  out|    1|   ap_memory|                     coeff_cache_167|         array|
+|coeff_cache_167_q0        |   in|   32|   ap_memory|                     coeff_cache_167|         array|
+|coeff_cache_168_address0  |  out|    4|   ap_memory|                     coeff_cache_168|         array|
+|coeff_cache_168_ce0       |  out|    1|   ap_memory|                     coeff_cache_168|         array|
+|coeff_cache_168_q0        |   in|   32|   ap_memory|                     coeff_cache_168|         array|
+|coeff_cache_169_address0  |  out|    4|   ap_memory|                     coeff_cache_169|         array|
+|coeff_cache_169_ce0       |  out|    1|   ap_memory|                     coeff_cache_169|         array|
+|coeff_cache_169_q0        |   in|   32|   ap_memory|                     coeff_cache_169|         array|
+|coeff_cache_170_address0  |  out|    4|   ap_memory|                     coeff_cache_170|         array|
+|coeff_cache_170_ce0       |  out|    1|   ap_memory|                     coeff_cache_170|         array|
+|coeff_cache_170_q0        |   in|   32|   ap_memory|                     coeff_cache_170|         array|
+|coeff_cache_171_address0  |  out|    4|   ap_memory|                     coeff_cache_171|         array|
+|coeff_cache_171_ce0       |  out|    1|   ap_memory|                     coeff_cache_171|         array|
+|coeff_cache_171_q0        |   in|   32|   ap_memory|                     coeff_cache_171|         array|
+|coeff_cache_172_address0  |  out|    4|   ap_memory|                     coeff_cache_172|         array|
+|coeff_cache_172_ce0       |  out|    1|   ap_memory|                     coeff_cache_172|         array|
+|coeff_cache_172_q0        |   in|   32|   ap_memory|                     coeff_cache_172|         array|
+|coeff_cache_173_address0  |  out|    4|   ap_memory|                     coeff_cache_173|         array|
+|coeff_cache_173_ce0       |  out|    1|   ap_memory|                     coeff_cache_173|         array|
+|coeff_cache_173_q0        |   in|   32|   ap_memory|                     coeff_cache_173|         array|
+|coeff_cache_174_address0  |  out|    4|   ap_memory|                     coeff_cache_174|         array|
+|coeff_cache_174_ce0       |  out|    1|   ap_memory|                     coeff_cache_174|         array|
+|coeff_cache_174_q0        |   in|   32|   ap_memory|                     coeff_cache_174|         array|
+|coeff_cache_175_address0  |  out|    4|   ap_memory|                     coeff_cache_175|         array|
+|coeff_cache_175_ce0       |  out|    1|   ap_memory|                     coeff_cache_175|         array|
+|coeff_cache_175_q0        |   in|   32|   ap_memory|                     coeff_cache_175|         array|
+|coeff_cache_176_address0  |  out|    4|   ap_memory|                     coeff_cache_176|         array|
+|coeff_cache_176_ce0       |  out|    1|   ap_memory|                     coeff_cache_176|         array|
+|coeff_cache_176_q0        |   in|   32|   ap_memory|                     coeff_cache_176|         array|
+|coeff_cache_177_address0  |  out|    4|   ap_memory|                     coeff_cache_177|         array|
+|coeff_cache_177_ce0       |  out|    1|   ap_memory|                     coeff_cache_177|         array|
+|coeff_cache_177_q0        |   in|   32|   ap_memory|                     coeff_cache_177|         array|
+|coeff_cache_178_address0  |  out|    4|   ap_memory|                     coeff_cache_178|         array|
+|coeff_cache_178_ce0       |  out|    1|   ap_memory|                     coeff_cache_178|         array|
+|coeff_cache_178_q0        |   in|   32|   ap_memory|                     coeff_cache_178|         array|
+|coeff_cache_179_address0  |  out|    4|   ap_memory|                     coeff_cache_179|         array|
+|coeff_cache_179_ce0       |  out|    1|   ap_memory|                     coeff_cache_179|         array|
+|coeff_cache_179_q0        |   in|   32|   ap_memory|                     coeff_cache_179|         array|
+|coeff_cache_180_address0  |  out|    4|   ap_memory|                     coeff_cache_180|         array|
+|coeff_cache_180_ce0       |  out|    1|   ap_memory|                     coeff_cache_180|         array|
+|coeff_cache_180_q0        |   in|   32|   ap_memory|                     coeff_cache_180|         array|
+|coeff_cache_181_address0  |  out|    4|   ap_memory|                     coeff_cache_181|         array|
+|coeff_cache_181_ce0       |  out|    1|   ap_memory|                     coeff_cache_181|         array|
+|coeff_cache_181_q0        |   in|   32|   ap_memory|                     coeff_cache_181|         array|
+|coeff_cache_182_address0  |  out|    4|   ap_memory|                     coeff_cache_182|         array|
+|coeff_cache_182_ce0       |  out|    1|   ap_memory|                     coeff_cache_182|         array|
+|coeff_cache_182_q0        |   in|   32|   ap_memory|                     coeff_cache_182|         array|
+|coeff_cache_183_address0  |  out|    4|   ap_memory|                     coeff_cache_183|         array|
+|coeff_cache_183_ce0       |  out|    1|   ap_memory|                     coeff_cache_183|         array|
+|coeff_cache_183_q0        |   in|   32|   ap_memory|                     coeff_cache_183|         array|
+|coeff_cache_184_address0  |  out|    4|   ap_memory|                     coeff_cache_184|         array|
+|coeff_cache_184_ce0       |  out|    1|   ap_memory|                     coeff_cache_184|         array|
+|coeff_cache_184_q0        |   in|   32|   ap_memory|                     coeff_cache_184|         array|
+|coeff_cache_185_address0  |  out|    4|   ap_memory|                     coeff_cache_185|         array|
+|coeff_cache_185_ce0       |  out|    1|   ap_memory|                     coeff_cache_185|         array|
+|coeff_cache_185_q0        |   in|   32|   ap_memory|                     coeff_cache_185|         array|
+|coeff_cache_186_address0  |  out|    4|   ap_memory|                     coeff_cache_186|         array|
+|coeff_cache_186_ce0       |  out|    1|   ap_memory|                     coeff_cache_186|         array|
+|coeff_cache_186_q0        |   in|   32|   ap_memory|                     coeff_cache_186|         array|
+|coeff_cache_187_address0  |  out|    4|   ap_memory|                     coeff_cache_187|         array|
+|coeff_cache_187_ce0       |  out|    1|   ap_memory|                     coeff_cache_187|         array|
+|coeff_cache_187_q0        |   in|   32|   ap_memory|                     coeff_cache_187|         array|
+|coeff_cache_188_address0  |  out|    4|   ap_memory|                     coeff_cache_188|         array|
+|coeff_cache_188_ce0       |  out|    1|   ap_memory|                     coeff_cache_188|         array|
+|coeff_cache_188_q0        |   in|   32|   ap_memory|                     coeff_cache_188|         array|
+|coeff_cache_189_address0  |  out|    4|   ap_memory|                     coeff_cache_189|         array|
+|coeff_cache_189_ce0       |  out|    1|   ap_memory|                     coeff_cache_189|         array|
+|coeff_cache_189_q0        |   in|   32|   ap_memory|                     coeff_cache_189|         array|
+|coeff_cache_190_address0  |  out|    4|   ap_memory|                     coeff_cache_190|         array|
+|coeff_cache_190_ce0       |  out|    1|   ap_memory|                     coeff_cache_190|         array|
+|coeff_cache_190_q0        |   in|   32|   ap_memory|                     coeff_cache_190|         array|
+|coeff_cache_191_address0  |  out|    4|   ap_memory|                     coeff_cache_191|         array|
+|coeff_cache_191_ce0       |  out|    1|   ap_memory|                     coeff_cache_191|         array|
+|coeff_cache_191_q0        |   in|   32|   ap_memory|                     coeff_cache_191|         array|
+|coeff_cache_192_address0  |  out|    4|   ap_memory|                     coeff_cache_192|         array|
+|coeff_cache_192_ce0       |  out|    1|   ap_memory|                     coeff_cache_192|         array|
+|coeff_cache_192_q0        |   in|   32|   ap_memory|                     coeff_cache_192|         array|
+|coeff_cache_193_address0  |  out|    4|   ap_memory|                     coeff_cache_193|         array|
+|coeff_cache_193_ce0       |  out|    1|   ap_memory|                     coeff_cache_193|         array|
+|coeff_cache_193_q0        |   in|   32|   ap_memory|                     coeff_cache_193|         array|
+|coeff_cache_194_address0  |  out|    4|   ap_memory|                     coeff_cache_194|         array|
+|coeff_cache_194_ce0       |  out|    1|   ap_memory|                     coeff_cache_194|         array|
+|coeff_cache_194_q0        |   in|   32|   ap_memory|                     coeff_cache_194|         array|
+|coeff_cache_195_address0  |  out|    4|   ap_memory|                     coeff_cache_195|         array|
+|coeff_cache_195_ce0       |  out|    1|   ap_memory|                     coeff_cache_195|         array|
+|coeff_cache_195_q0        |   in|   32|   ap_memory|                     coeff_cache_195|         array|
+|coeff_cache_196_address0  |  out|    4|   ap_memory|                     coeff_cache_196|         array|
+|coeff_cache_196_ce0       |  out|    1|   ap_memory|                     coeff_cache_196|         array|
+|coeff_cache_196_q0        |   in|   32|   ap_memory|                     coeff_cache_196|         array|
+|coeff_cache_197_address0  |  out|    4|   ap_memory|                     coeff_cache_197|         array|
+|coeff_cache_197_ce0       |  out|    1|   ap_memory|                     coeff_cache_197|         array|
+|coeff_cache_197_q0        |   in|   32|   ap_memory|                     coeff_cache_197|         array|
+|coeff_cache_198_address0  |  out|    4|   ap_memory|                     coeff_cache_198|         array|
+|coeff_cache_198_ce0       |  out|    1|   ap_memory|                     coeff_cache_198|         array|
+|coeff_cache_198_q0        |   in|   32|   ap_memory|                     coeff_cache_198|         array|
+|coeff_cache_199_address0  |  out|    4|   ap_memory|                     coeff_cache_199|         array|
+|coeff_cache_199_ce0       |  out|    1|   ap_memory|                     coeff_cache_199|         array|
+|coeff_cache_199_q0        |   in|   32|   ap_memory|                     coeff_cache_199|         array|
+|coeff_cache_200_address0  |  out|    4|   ap_memory|                     coeff_cache_200|         array|
+|coeff_cache_200_ce0       |  out|    1|   ap_memory|                     coeff_cache_200|         array|
+|coeff_cache_200_q0        |   in|   32|   ap_memory|                     coeff_cache_200|         array|
+|coeff_cache_201_address0  |  out|    4|   ap_memory|                     coeff_cache_201|         array|
+|coeff_cache_201_ce0       |  out|    1|   ap_memory|                     coeff_cache_201|         array|
+|coeff_cache_201_q0        |   in|   32|   ap_memory|                     coeff_cache_201|         array|
+|coeff_cache_202_address0  |  out|    4|   ap_memory|                     coeff_cache_202|         array|
+|coeff_cache_202_ce0       |  out|    1|   ap_memory|                     coeff_cache_202|         array|
+|coeff_cache_202_q0        |   in|   32|   ap_memory|                     coeff_cache_202|         array|
+|coeff_cache_203_address0  |  out|    4|   ap_memory|                     coeff_cache_203|         array|
+|coeff_cache_203_ce0       |  out|    1|   ap_memory|                     coeff_cache_203|         array|
+|coeff_cache_203_q0        |   in|   32|   ap_memory|                     coeff_cache_203|         array|
+|coeff_cache_204_address0  |  out|    4|   ap_memory|                     coeff_cache_204|         array|
+|coeff_cache_204_ce0       |  out|    1|   ap_memory|                     coeff_cache_204|         array|
+|coeff_cache_204_q0        |   in|   32|   ap_memory|                     coeff_cache_204|         array|
+|coeff_cache_205_address0  |  out|    4|   ap_memory|                     coeff_cache_205|         array|
+|coeff_cache_205_ce0       |  out|    1|   ap_memory|                     coeff_cache_205|         array|
+|coeff_cache_205_q0        |   in|   32|   ap_memory|                     coeff_cache_205|         array|
+|coeff_cache_206_address0  |  out|    4|   ap_memory|                     coeff_cache_206|         array|
+|coeff_cache_206_ce0       |  out|    1|   ap_memory|                     coeff_cache_206|         array|
+|coeff_cache_206_q0        |   in|   32|   ap_memory|                     coeff_cache_206|         array|
+|coeff_cache_207_address0  |  out|    4|   ap_memory|                     coeff_cache_207|         array|
+|coeff_cache_207_ce0       |  out|    1|   ap_memory|                     coeff_cache_207|         array|
+|coeff_cache_207_q0        |   in|   32|   ap_memory|                     coeff_cache_207|         array|
+|coeff_cache_208_address0  |  out|    4|   ap_memory|                     coeff_cache_208|         array|
+|coeff_cache_208_ce0       |  out|    1|   ap_memory|                     coeff_cache_208|         array|
+|coeff_cache_208_q0        |   in|   32|   ap_memory|                     coeff_cache_208|         array|
+|coeff_cache_209_address0  |  out|    4|   ap_memory|                     coeff_cache_209|         array|
+|coeff_cache_209_ce0       |  out|    1|   ap_memory|                     coeff_cache_209|         array|
+|coeff_cache_209_q0        |   in|   32|   ap_memory|                     coeff_cache_209|         array|
+|coeff_cache_210_address0  |  out|    4|   ap_memory|                     coeff_cache_210|         array|
+|coeff_cache_210_ce0       |  out|    1|   ap_memory|                     coeff_cache_210|         array|
+|coeff_cache_210_q0        |   in|   32|   ap_memory|                     coeff_cache_210|         array|
+|coeff_cache_211_address0  |  out|    4|   ap_memory|                     coeff_cache_211|         array|
+|coeff_cache_211_ce0       |  out|    1|   ap_memory|                     coeff_cache_211|         array|
+|coeff_cache_211_q0        |   in|   32|   ap_memory|                     coeff_cache_211|         array|
+|coeff_cache_212_address0  |  out|    4|   ap_memory|                     coeff_cache_212|         array|
+|coeff_cache_212_ce0       |  out|    1|   ap_memory|                     coeff_cache_212|         array|
+|coeff_cache_212_q0        |   in|   32|   ap_memory|                     coeff_cache_212|         array|
+|coeff_cache_213_address0  |  out|    4|   ap_memory|                     coeff_cache_213|         array|
+|coeff_cache_213_ce0       |  out|    1|   ap_memory|                     coeff_cache_213|         array|
+|coeff_cache_213_q0        |   in|   32|   ap_memory|                     coeff_cache_213|         array|
+|coeff_cache_214_address0  |  out|    4|   ap_memory|                     coeff_cache_214|         array|
+|coeff_cache_214_ce0       |  out|    1|   ap_memory|                     coeff_cache_214|         array|
+|coeff_cache_214_q0        |   in|   32|   ap_memory|                     coeff_cache_214|         array|
+|coeff_cache_215_address0  |  out|    4|   ap_memory|                     coeff_cache_215|         array|
+|coeff_cache_215_ce0       |  out|    1|   ap_memory|                     coeff_cache_215|         array|
+|coeff_cache_215_q0        |   in|   32|   ap_memory|                     coeff_cache_215|         array|
+|coeff_cache_216_address0  |  out|    4|   ap_memory|                     coeff_cache_216|         array|
+|coeff_cache_216_ce0       |  out|    1|   ap_memory|                     coeff_cache_216|         array|
+|coeff_cache_216_q0        |   in|   32|   ap_memory|                     coeff_cache_216|         array|
+|coeff_cache_217_address0  |  out|    4|   ap_memory|                     coeff_cache_217|         array|
+|coeff_cache_217_ce0       |  out|    1|   ap_memory|                     coeff_cache_217|         array|
+|coeff_cache_217_q0        |   in|   32|   ap_memory|                     coeff_cache_217|         array|
+|coeff_cache_218_address0  |  out|    4|   ap_memory|                     coeff_cache_218|         array|
+|coeff_cache_218_ce0       |  out|    1|   ap_memory|                     coeff_cache_218|         array|
+|coeff_cache_218_q0        |   in|   32|   ap_memory|                     coeff_cache_218|         array|
+|coeff_cache_219_address0  |  out|    4|   ap_memory|                     coeff_cache_219|         array|
+|coeff_cache_219_ce0       |  out|    1|   ap_memory|                     coeff_cache_219|         array|
+|coeff_cache_219_q0        |   in|   32|   ap_memory|                     coeff_cache_219|         array|
+|coeff_cache_220_address0  |  out|    4|   ap_memory|                     coeff_cache_220|         array|
+|coeff_cache_220_ce0       |  out|    1|   ap_memory|                     coeff_cache_220|         array|
+|coeff_cache_220_q0        |   in|   32|   ap_memory|                     coeff_cache_220|         array|
+|coeff_cache_221_address0  |  out|    4|   ap_memory|                     coeff_cache_221|         array|
+|coeff_cache_221_ce0       |  out|    1|   ap_memory|                     coeff_cache_221|         array|
+|coeff_cache_221_q0        |   in|   32|   ap_memory|                     coeff_cache_221|         array|
+|coeff_cache_222_address0  |  out|    4|   ap_memory|                     coeff_cache_222|         array|
+|coeff_cache_222_ce0       |  out|    1|   ap_memory|                     coeff_cache_222|         array|
+|coeff_cache_222_q0        |   in|   32|   ap_memory|                     coeff_cache_222|         array|
+|coeff_cache_223_address0  |  out|    4|   ap_memory|                     coeff_cache_223|         array|
+|coeff_cache_223_ce0       |  out|    1|   ap_memory|                     coeff_cache_223|         array|
+|coeff_cache_223_q0        |   in|   32|   ap_memory|                     coeff_cache_223|         array|
+|coeff_cache_224_address0  |  out|    4|   ap_memory|                     coeff_cache_224|         array|
+|coeff_cache_224_ce0       |  out|    1|   ap_memory|                     coeff_cache_224|         array|
+|coeff_cache_224_q0        |   in|   32|   ap_memory|                     coeff_cache_224|         array|
+|coeff_cache_225_address0  |  out|    4|   ap_memory|                     coeff_cache_225|         array|
+|coeff_cache_225_ce0       |  out|    1|   ap_memory|                     coeff_cache_225|         array|
+|coeff_cache_225_q0        |   in|   32|   ap_memory|                     coeff_cache_225|         array|
+|coeff_cache_226_address0  |  out|    4|   ap_memory|                     coeff_cache_226|         array|
+|coeff_cache_226_ce0       |  out|    1|   ap_memory|                     coeff_cache_226|         array|
+|coeff_cache_226_q0        |   in|   32|   ap_memory|                     coeff_cache_226|         array|
+|coeff_cache_227_address0  |  out|    4|   ap_memory|                     coeff_cache_227|         array|
+|coeff_cache_227_ce0       |  out|    1|   ap_memory|                     coeff_cache_227|         array|
+|coeff_cache_227_q0        |   in|   32|   ap_memory|                     coeff_cache_227|         array|
+|coeff_cache_228_address0  |  out|    4|   ap_memory|                     coeff_cache_228|         array|
+|coeff_cache_228_ce0       |  out|    1|   ap_memory|                     coeff_cache_228|         array|
+|coeff_cache_228_q0        |   in|   32|   ap_memory|                     coeff_cache_228|         array|
+|coeff_cache_229_address0  |  out|    4|   ap_memory|                     coeff_cache_229|         array|
+|coeff_cache_229_ce0       |  out|    1|   ap_memory|                     coeff_cache_229|         array|
+|coeff_cache_229_q0        |   in|   32|   ap_memory|                     coeff_cache_229|         array|
+|coeff_cache_230_address0  |  out|    4|   ap_memory|                     coeff_cache_230|         array|
+|coeff_cache_230_ce0       |  out|    1|   ap_memory|                     coeff_cache_230|         array|
+|coeff_cache_230_q0        |   in|   32|   ap_memory|                     coeff_cache_230|         array|
+|coeff_cache_231_address0  |  out|    4|   ap_memory|                     coeff_cache_231|         array|
+|coeff_cache_231_ce0       |  out|    1|   ap_memory|                     coeff_cache_231|         array|
+|coeff_cache_231_q0        |   in|   32|   ap_memory|                     coeff_cache_231|         array|
+|coeff_cache_232_address0  |  out|    4|   ap_memory|                     coeff_cache_232|         array|
+|coeff_cache_232_ce0       |  out|    1|   ap_memory|                     coeff_cache_232|         array|
+|coeff_cache_232_q0        |   in|   32|   ap_memory|                     coeff_cache_232|         array|
+|coeff_cache_233_address0  |  out|    4|   ap_memory|                     coeff_cache_233|         array|
+|coeff_cache_233_ce0       |  out|    1|   ap_memory|                     coeff_cache_233|         array|
+|coeff_cache_233_q0        |   in|   32|   ap_memory|                     coeff_cache_233|         array|
+|coeff_cache_234_address0  |  out|    4|   ap_memory|                     coeff_cache_234|         array|
+|coeff_cache_234_ce0       |  out|    1|   ap_memory|                     coeff_cache_234|         array|
+|coeff_cache_234_q0        |   in|   32|   ap_memory|                     coeff_cache_234|         array|
+|coeff_cache_235_address0  |  out|    4|   ap_memory|                     coeff_cache_235|         array|
+|coeff_cache_235_ce0       |  out|    1|   ap_memory|                     coeff_cache_235|         array|
+|coeff_cache_235_q0        |   in|   32|   ap_memory|                     coeff_cache_235|         array|
+|coeff_cache_236_address0  |  out|    4|   ap_memory|                     coeff_cache_236|         array|
+|coeff_cache_236_ce0       |  out|    1|   ap_memory|                     coeff_cache_236|         array|
+|coeff_cache_236_q0        |   in|   32|   ap_memory|                     coeff_cache_236|         array|
+|coeff_cache_237_address0  |  out|    4|   ap_memory|                     coeff_cache_237|         array|
+|coeff_cache_237_ce0       |  out|    1|   ap_memory|                     coeff_cache_237|         array|
+|coeff_cache_237_q0        |   in|   32|   ap_memory|                     coeff_cache_237|         array|
+|coeff_cache_238_address0  |  out|    4|   ap_memory|                     coeff_cache_238|         array|
+|coeff_cache_238_ce0       |  out|    1|   ap_memory|                     coeff_cache_238|         array|
+|coeff_cache_238_q0        |   in|   32|   ap_memory|                     coeff_cache_238|         array|
+|coeff_cache_239_address0  |  out|    4|   ap_memory|                     coeff_cache_239|         array|
+|coeff_cache_239_ce0       |  out|    1|   ap_memory|                     coeff_cache_239|         array|
+|coeff_cache_239_q0        |   in|   32|   ap_memory|                     coeff_cache_239|         array|
+|coeff_cache_240_address0  |  out|    4|   ap_memory|                     coeff_cache_240|         array|
+|coeff_cache_240_ce0       |  out|    1|   ap_memory|                     coeff_cache_240|         array|
+|coeff_cache_240_q0        |   in|   32|   ap_memory|                     coeff_cache_240|         array|
+|coeff_cache_241_address0  |  out|    4|   ap_memory|                     coeff_cache_241|         array|
+|coeff_cache_241_ce0       |  out|    1|   ap_memory|                     coeff_cache_241|         array|
+|coeff_cache_241_q0        |   in|   32|   ap_memory|                     coeff_cache_241|         array|
+|coeff_cache_242_address0  |  out|    4|   ap_memory|                     coeff_cache_242|         array|
+|coeff_cache_242_ce0       |  out|    1|   ap_memory|                     coeff_cache_242|         array|
+|coeff_cache_242_q0        |   in|   32|   ap_memory|                     coeff_cache_242|         array|
+|coeff_cache_243_address0  |  out|    4|   ap_memory|                     coeff_cache_243|         array|
+|coeff_cache_243_ce0       |  out|    1|   ap_memory|                     coeff_cache_243|         array|
+|coeff_cache_243_q0        |   in|   32|   ap_memory|                     coeff_cache_243|         array|
+|coeff_cache_244_address0  |  out|    4|   ap_memory|                     coeff_cache_244|         array|
+|coeff_cache_244_ce0       |  out|    1|   ap_memory|                     coeff_cache_244|         array|
+|coeff_cache_244_q0        |   in|   32|   ap_memory|                     coeff_cache_244|         array|
+|coeff_cache_245_address0  |  out|    4|   ap_memory|                     coeff_cache_245|         array|
+|coeff_cache_245_ce0       |  out|    1|   ap_memory|                     coeff_cache_245|         array|
+|coeff_cache_245_q0        |   in|   32|   ap_memory|                     coeff_cache_245|         array|
+|coeff_cache_246_address0  |  out|    4|   ap_memory|                     coeff_cache_246|         array|
+|coeff_cache_246_ce0       |  out|    1|   ap_memory|                     coeff_cache_246|         array|
+|coeff_cache_246_q0        |   in|   32|   ap_memory|                     coeff_cache_246|         array|
+|coeff_cache_247_address0  |  out|    4|   ap_memory|                     coeff_cache_247|         array|
+|coeff_cache_247_ce0       |  out|    1|   ap_memory|                     coeff_cache_247|         array|
+|coeff_cache_247_q0        |   in|   32|   ap_memory|                     coeff_cache_247|         array|
+|coeff_cache_248_address0  |  out|    4|   ap_memory|                     coeff_cache_248|         array|
+|coeff_cache_248_ce0       |  out|    1|   ap_memory|                     coeff_cache_248|         array|
+|coeff_cache_248_q0        |   in|   32|   ap_memory|                     coeff_cache_248|         array|
+|coeff_cache_249_address0  |  out|    4|   ap_memory|                     coeff_cache_249|         array|
+|coeff_cache_249_ce0       |  out|    1|   ap_memory|                     coeff_cache_249|         array|
+|coeff_cache_249_q0        |   in|   32|   ap_memory|                     coeff_cache_249|         array|
+|coeff_cache_250_address0  |  out|    4|   ap_memory|                     coeff_cache_250|         array|
+|coeff_cache_250_ce0       |  out|    1|   ap_memory|                     coeff_cache_250|         array|
+|coeff_cache_250_q0        |   in|   32|   ap_memory|                     coeff_cache_250|         array|
+|coeff_cache_251_address0  |  out|    4|   ap_memory|                     coeff_cache_251|         array|
+|coeff_cache_251_ce0       |  out|    1|   ap_memory|                     coeff_cache_251|         array|
+|coeff_cache_251_q0        |   in|   32|   ap_memory|                     coeff_cache_251|         array|
+|coeff_cache_252_address0  |  out|    4|   ap_memory|                     coeff_cache_252|         array|
+|coeff_cache_252_ce0       |  out|    1|   ap_memory|                     coeff_cache_252|         array|
+|coeff_cache_252_q0        |   in|   32|   ap_memory|                     coeff_cache_252|         array|
+|coeff_cache_253_address0  |  out|    4|   ap_memory|                     coeff_cache_253|         array|
+|coeff_cache_253_ce0       |  out|    1|   ap_memory|                     coeff_cache_253|         array|
+|coeff_cache_253_q0        |   in|   32|   ap_memory|                     coeff_cache_253|         array|
+|coeff_cache_254_address0  |  out|    4|   ap_memory|                     coeff_cache_254|         array|
+|coeff_cache_254_ce0       |  out|    1|   ap_memory|                     coeff_cache_254|         array|
+|coeff_cache_254_q0        |   in|   32|   ap_memory|                     coeff_cache_254|         array|
+|coeff_cache_255_address0  |  out|    4|   ap_memory|                     coeff_cache_255|         array|
+|coeff_cache_255_ce0       |  out|    1|   ap_memory|                     coeff_cache_255|         array|
+|coeff_cache_255_q0        |   in|   32|   ap_memory|                     coeff_cache_255|         array|
+|acc_2_out                 |  out|   32|      ap_vld|                           acc_2_out|       pointer|
+|acc_2_out_ap_vld          |  out|    1|      ap_vld|                           acc_2_out|       pointer|
++--------------------------+-----+-----+------------+------------------------------------+--------------+
+

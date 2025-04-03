@@ -1,0 +1,2159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdfg:DBCdfg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cdfg="http://www.autoesl.com/DBCdfg" timeStamp="1743697403843">
+  <ports id="1" name="gmem" type="PortType" coreId="3621216858" bitwidth="32" direction="DirInOut" iftype="IfTypeFifo">
+    <dataInputObjs>call</dataInputObjs>
+    <dataInputObjs>call</dataInputObjs>
+    <dataInputObjs>call</dataInputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+    <dataOutputObjs>call</dataOutputObjs>
+  </ports>
+  <ports id="2" name="input_r" type="PortType" originalName="input" coreId="38" bitwidth="64">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="3" name="output_r" type="PortType" originalName="output" coreId="3372481616" bitwidth="64">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="4" name="coeffs" type="PortType" originalName="coeffs" coreId="0" bitwidth="64">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="5" name="biases" type="PortType" originalName="biases" coreId="1061068560" bitwidth="64">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="6" name="numChannels" type="PortType" originalName="numChannels" coreId="3372478896" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="7" name="numFilters" type="PortType" originalName="numFilters" coreId="3372354768" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="8" name="inputWidth" type="PortType" originalName="inputWidth" coreId="3372478896" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="9" name="inputHeight" type="PortType" originalName="inputHeight" coreId="1061112637" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="10" name="convWidth" type="PortType" originalName="convWidth" coreId="3372478896" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="11" name="convHeight" type="PortType" originalName="convHeight" coreId="3372758064" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <ports id="12" name="apply_relu" type="PortType" originalName="apply_relu" coreId="3372740864" bitwidth="32">
+    <dataOutputObjs>read</dataOutputObjs>
+  </ports>
+  <edges id="196" source_obj="//@ports.11" sink_obj="//@blocks.0/@node_objs.6"/>
+  <edges id="198" source_obj="//@ports.10" sink_obj="//@blocks.0/@node_objs.7"/>
+  <edges id="200" source_obj="//@ports.9" sink_obj="//@blocks.0/@node_objs.8"/>
+  <edges id="202" source_obj="//@ports.8" sink_obj="//@blocks.0/@node_objs.9"/>
+  <edges id="204" source_obj="//@ports.7" sink_obj="//@blocks.0/@node_objs.10"/>
+  <edges id="206" source_obj="//@ports.6" sink_obj="//@blocks.0/@node_objs.11"/>
+  <edges id="208" source_obj="//@ports.5" sink_obj="//@blocks.0/@node_objs.12"/>
+  <edges id="211" source_obj="//@ports.4" sink_obj="//@blocks.0/@node_objs.13"/>
+  <edges id="213" source_obj="//@ports.3" sink_obj="//@blocks.0/@node_objs.14"/>
+  <edges id="215" source_obj="//@ports.2" sink_obj="//@blocks.0/@node_objs.15"/>
+  <edges id="217" source_obj="//@ports.1" sink_obj="//@blocks.0/@node_objs.16"/>
+  <edges id="227" source_obj="//@blocks.0/@node_objs.10" sink_obj="//@blocks.0/@node_objs.25"/>
+  <edges id="234" source_obj="//@blocks.0/@node_objs.9" sink_obj="//@blocks.0/@node_objs.32"/>
+  <edges id="237" source_obj="//@blocks.0/@node_objs.10" sink_obj="//@blocks.0/@node_objs.33"/>
+  <edges id="239" source_obj="//@blocks.0/@node_objs.6" sink_obj="//@blocks.0/@node_objs.34"/>
+  <edges id="242" source_obj="//@blocks.0/@node_objs.11" sink_obj="//@blocks.0/@node_objs.35"/>
+  <edges id="243" source_obj="//@blocks.0/@node_objs.7" sink_obj="//@blocks.0/@node_objs.36"/>
+  <edges id="244" source_obj="//@blocks.0/@node_objs.8" sink_obj="//@blocks.0/@node_objs.36"/>
+  <edges id="245" source_obj="//@blocks.0/@node_objs.36" sink_obj="//@blocks.0/@node_objs.37"/>
+  <edges id="246" source_obj="//@blocks.0/@node_objs.12" sink_obj="//@blocks.0/@node_objs.37"/>
+  <edges id="247" source_obj="//@blocks.0/@node_objs.37" sink_obj="//@blocks.0/@node_objs.38"/>
+  <edges id="248" source_obj="//@blocks.0/@node_objs.7" sink_obj="//@blocks.0/@node_objs.39"/>
+  <edges id="249" source_obj="//@blocks.0/@node_objs.8" sink_obj="//@blocks.0/@node_objs.40"/>
+  <edges id="250" source_obj="//@blocks.0/@node_objs.39" sink_obj="//@blocks.0/@node_objs.41"/>
+  <edges id="251" source_obj="//@blocks.0/@node_objs.40" sink_obj="//@blocks.0/@node_objs.41"/>
+  <edges id="252" source_obj="//@blocks.0/@node_objs.12" sink_obj="//@blocks.0/@node_objs.42"/>
+  <edges id="253" source_obj="//@blocks.0/@node_objs.41" sink_obj="//@blocks.0/@node_objs.43"/>
+  <edges id="254" source_obj="//@blocks.0/@node_objs.42" sink_obj="//@blocks.0/@node_objs.44"/>
+  <edges id="255" source_obj="//@blocks.0/@node_objs.43" sink_obj="//@blocks.0/@node_objs.44"/>
+  <edges id="256" source_obj="//@blocks.0/@node_objs.12" sink_obj="//@blocks.0/@node_objs.45"/>
+  <edges id="257" source_obj="//@blocks.0/@node_objs.10" sink_obj="//@blocks.0/@node_objs.46"/>
+  <edges id="258" source_obj="//@blocks.0/@node_objs.45" sink_obj="//@blocks.0/@node_objs.47"/>
+  <edges id="259" source_obj="//@blocks.0/@node_objs.46" sink_obj="//@blocks.0/@node_objs.47"/>
+  <edges id="260" source_obj="//@blocks.0/@node_objs.7" sink_obj="//@blocks.0/@node_objs.48"/>
+  <edges id="261" source_obj="//@blocks.0/@node_objs.47" sink_obj="//@blocks.0/@node_objs.49"/>
+  <edges id="262" source_obj="//@blocks.0/@node_objs.48" sink_obj="//@blocks.0/@node_objs.50"/>
+  <edges id="263" source_obj="//@blocks.0/@node_objs.49" sink_obj="//@blocks.0/@node_objs.50"/>
+  <edges id="264" source_obj="//@blocks.0/@node_objs.8" sink_obj="//@blocks.0/@node_objs.51"/>
+  <edges id="266" source_obj="//@blocks.0/@node_objs.10" sink_obj="//@blocks.0/@node_objs.52"/>
+  <edges id="270" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@blocks.0/@node_objs.53"/>
+  <edges id="272" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.0/@node_objs.54"/>
+  <edges id="273" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@blocks.0/@node_objs.55"/>
+  <edges id="274" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.1/@node_objs.0"/>
+  <edges id="275" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@blocks.1/@node_objs.1"/>
+  <edges id="276" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.1/@node_objs.2"/>
+  <edges id="277" source_obj="//@blocks.0/@node_objs.11" sink_obj="//@blocks.1/@node_objs.2"/>
+  <edges id="278" source_obj="//@blocks.1/@node_objs.1" sink_obj="//@blocks.1/@node_objs.3"/>
+  <edges id="280" source_obj="//@blocks.1/@node_objs.2" sink_obj="//@blocks.1/@node_objs.4"/>
+  <edges id="281" edge_type="CtrlEdge" source_obj="//@blocks.13" sink_obj="//@blocks.1/@node_objs.4"/>
+  <edges id="282" edge_type="CtrlEdge" source_obj="//@blocks.2" sink_obj="//@blocks.1/@node_objs.4"/>
+  <edges id="283" source_obj="//@blocks.1/@node_objs.1" sink_obj="//@blocks.2/@node_objs.0"/>
+  <edges id="284" source_obj="//@blocks.0/@node_objs.38" sink_obj="//@blocks.2/@node_objs.1"/>
+  <edges id="285" source_obj="//@blocks.2/@node_objs.0" sink_obj="//@blocks.2/@node_objs.1"/>
+  <edges id="288" source_obj="//@blocks.2/@node_objs.1" sink_obj="//@blocks.2/@node_objs.2"/>
+  <edges id="291" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.2/@node_objs.3"/>
+  <edges id="292" edge_type="CtrlEdge" source_obj="//@blocks.3" sink_obj="//@blocks.2/@node_objs.4"/>
+  <edges id="295" edge_type="CtrlEdge" source_obj="//@blocks.2" sink_obj="//@blocks.3/@node_objs.0"/>
+  <edges id="296" source_obj="//@blocks.3/@node_objs.4" sink_obj="//@blocks.3/@node_objs.0" is_back_edge="1"/>
+  <edges id="297" edge_type="CtrlEdge" source_obj="//@blocks.5" sink_obj="//@blocks.3/@node_objs.0" is_back_edge="1"/>
+  <edges id="299" edge_type="CtrlEdge" source_obj="//@blocks.2" sink_obj="//@blocks.3/@node_objs.1"/>
+  <edges id="300" source_obj="//@blocks.3/@node_objs.2" sink_obj="//@blocks.3/@node_objs.1" is_back_edge="1"/>
+  <edges id="301" edge_type="CtrlEdge" source_obj="//@blocks.5" sink_obj="//@blocks.3/@node_objs.1" is_back_edge="1"/>
+  <edges id="302" source_obj="//@blocks.3/@node_objs.1" sink_obj="//@blocks.3/@node_objs.2"/>
+  <edges id="303" source_obj="//@blocks.0/@node_objs.37" sink_obj="//@blocks.3/@node_objs.2"/>
+  <edges id="306" source_obj="//@blocks.3/@node_objs.0" sink_obj="//@blocks.3/@node_objs.3"/>
+  <edges id="309" source_obj="//@blocks.3/@node_objs.0" sink_obj="//@blocks.3/@node_objs.4"/>
+  <edges id="312" source_obj="//@blocks.3/@node_objs.3" sink_obj="//@blocks.3/@node_objs.5"/>
+  <edges id="313" edge_type="CtrlEdge" source_obj="//@blocks.4" sink_obj="//@blocks.3/@node_objs.5"/>
+  <edges id="314" edge_type="CtrlEdge" source_obj="//@blocks.6" sink_obj="//@blocks.3/@node_objs.5"/>
+  <edges id="317" source_obj="//@blocks.3/@node_objs.0" sink_obj="//@blocks.4/@node_objs.0"/>
+  <edges id="320" source_obj="//@blocks.3/@node_objs.0" sink_obj="//@blocks.4/@node_objs.1"/>
+  <edges id="321" source_obj="//@blocks.3/@node_objs.1" sink_obj="//@blocks.4/@node_objs.2"/>
+  <edges id="322" source_obj="//@blocks.2/@node_objs.2" sink_obj="//@blocks.4/@node_objs.2"/>
+  <edges id="323" source_obj="//@blocks.4/@node_objs.1" sink_obj="//@blocks.4/@node_objs.3"/>
+  <edges id="324" source_obj="//@blocks.2/@node_objs.3" sink_obj="//@blocks.4/@node_objs.3"/>
+  <edges id="325" source_obj="//@blocks.4/@node_objs.3" sink_obj="//@blocks.4/@node_objs.4"/>
+  <edges id="326" source_obj="//@blocks.0/@node_objs.35" sink_obj="//@blocks.4/@node_objs.4"/>
+  <edges id="327" source_obj="//@blocks.4/@node_objs.4" sink_obj="//@blocks.4/@node_objs.5"/>
+  <edges id="328" edge_type="CtrlEdge" source_obj="//@blocks.6" sink_obj="//@blocks.4/@node_objs.5"/>
+  <edges id="329" edge_type="CtrlEdge" source_obj="//@blocks.5" sink_obj="//@blocks.4/@node_objs.5"/>
+  <edges id="332" source_obj="//@ports.0" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="333" source_obj="//@blocks.0/@node_objs.36" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="334" source_obj="//@blocks.0/@node_objs.8" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="335" source_obj="//@blocks.4/@node_objs.2" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="336" source_obj="//@blocks.0/@node_objs.44" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="337" source_obj="//@blocks.0/@node_objs.41" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="338" source_obj="//@blocks.4/@node_objs.0" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="339" source_obj="//@blocks.4/@node_objs.2" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="340" source_obj="//@blocks.0/@node_objs.51" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="341" source_obj="//@blocks.0/@node_objs.26" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="342" source_obj="//@blocks.0/@node_objs.27" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="343" source_obj="//@blocks.0/@node_objs.28" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="344" source_obj="//@blocks.0/@node_objs.14" sink_obj="//@blocks.5/@node_objs.0"/>
+  <edges id="345" edge_type="CtrlEdge" source_obj="//@blocks.3" sink_obj="//@blocks.5/@node_objs.1"/>
+  <edges id="346" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.6/@node_objs.0"/>
+  <edges id="348" source_obj="//@blocks.6/@node_objs.0" sink_obj="//@blocks.6/@node_objs.1"/>
+  <edges id="349" source_obj="//@blocks.0/@node_objs.11" sink_obj="//@blocks.6/@node_objs.1"/>
+  <edges id="350" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.6/@node_objs.2"/>
+  <edges id="352" source_obj="//@blocks.6/@node_objs.2" sink_obj="//@blocks.6/@node_objs.3"/>
+  <edges id="353" source_obj="//@blocks.0/@node_objs.11" sink_obj="//@blocks.6/@node_objs.3"/>
+  <edges id="354" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.6/@node_objs.4"/>
+  <edges id="357" source_obj="//@blocks.6/@node_objs.4" sink_obj="//@blocks.6/@node_objs.5"/>
+  <edges id="358" source_obj="//@blocks.0/@node_objs.11" sink_obj="//@blocks.6/@node_objs.5"/>
+  <edges id="359" edge_type="CtrlEdge" source_obj="//@blocks.7" sink_obj="//@blocks.6/@node_objs.6"/>
+  <edges id="361" edge_type="CtrlEdge" source_obj="//@blocks.6" sink_obj="//@blocks.7/@node_objs.0"/>
+  <edges id="362" source_obj="//@blocks.7/@node_objs.4" sink_obj="//@blocks.7/@node_objs.0" is_back_edge="1"/>
+  <edges id="363" edge_type="CtrlEdge" source_obj="//@blocks.11" sink_obj="//@blocks.7/@node_objs.0" is_back_edge="1"/>
+  <edges id="365" edge_type="CtrlEdge" source_obj="//@blocks.6" sink_obj="//@blocks.7/@node_objs.1"/>
+  <edges id="366" source_obj="//@blocks.7/@node_objs.2" sink_obj="//@blocks.7/@node_objs.1" is_back_edge="1"/>
+  <edges id="367" edge_type="CtrlEdge" source_obj="//@blocks.11" sink_obj="//@blocks.7/@node_objs.1" is_back_edge="1"/>
+  <edges id="368" source_obj="//@blocks.7/@node_objs.1" sink_obj="//@blocks.7/@node_objs.2"/>
+  <edges id="369" source_obj="//@blocks.0/@node_objs.33" sink_obj="//@blocks.7/@node_objs.2"/>
+  <edges id="370" source_obj="//@blocks.7/@node_objs.0" sink_obj="//@blocks.7/@node_objs.3"/>
+  <edges id="371" source_obj="//@blocks.0/@node_objs.32" sink_obj="//@blocks.7/@node_objs.3"/>
+  <edges id="372" source_obj="//@blocks.7/@node_objs.0" sink_obj="//@blocks.7/@node_objs.4"/>
+  <edges id="374" source_obj="//@blocks.7/@node_objs.3" sink_obj="//@blocks.7/@node_objs.5"/>
+  <edges id="375" edge_type="CtrlEdge" source_obj="//@blocks.8" sink_obj="//@blocks.7/@node_objs.5"/>
+  <edges id="376" edge_type="CtrlEdge" source_obj="//@blocks.12" sink_obj="//@blocks.7/@node_objs.5"/>
+  <edges id="379" source_obj="//@ports.0" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="380" source_obj="//@blocks.7/@node_objs.0" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="381" source_obj="//@blocks.0/@node_objs.10" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="382" source_obj="//@blocks.0/@node_objs.9" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="383" source_obj="//@blocks.0/@node_objs.25" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="384" source_obj="//@blocks.0/@node_objs.50" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="385" source_obj="//@blocks.0/@node_objs.31" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="386" source_obj="//@blocks.0/@node_objs.30" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="387" source_obj="//@blocks.0/@node_objs.29" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="388" source_obj="//@blocks.0/@node_objs.47" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="389" source_obj="//@blocks.0/@node_objs.52" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="390" source_obj="//@blocks.0/@node_objs.16" sink_obj="//@blocks.8/@node_objs.0"/>
+  <edges id="391" edge_type="CtrlEdge" source_obj="//@blocks.9" sink_obj="//@blocks.8/@node_objs.1"/>
+  <edges id="393" edge_type="CtrlEdge" source_obj="//@blocks.8" sink_obj="//@blocks.9/@node_objs.0"/>
+  <edges id="394" source_obj="//@blocks.9/@node_objs.2" sink_obj="//@blocks.9/@node_objs.0" is_back_edge="1"/>
+  <edges id="395" edge_type="CtrlEdge" source_obj="//@blocks.10" sink_obj="//@blocks.9/@node_objs.0" is_back_edge="1"/>
+  <edges id="396" source_obj="//@blocks.9/@node_objs.0" sink_obj="//@blocks.9/@node_objs.1"/>
+  <edges id="397" source_obj="//@blocks.0/@node_objs.33" sink_obj="//@blocks.9/@node_objs.1"/>
+  <edges id="398" source_obj="//@blocks.9/@node_objs.0" sink_obj="//@blocks.9/@node_objs.2"/>
+  <edges id="400" source_obj="//@blocks.9/@node_objs.1" sink_obj="//@blocks.9/@node_objs.3"/>
+  <edges id="401" edge_type="CtrlEdge" source_obj="//@blocks.10" sink_obj="//@blocks.9/@node_objs.3"/>
+  <edges id="402" edge_type="CtrlEdge" source_obj="//@blocks.11" sink_obj="//@blocks.9/@node_objs.3"/>
+  <edges id="403" source_obj="//@blocks.0/@node_objs.2" sink_obj="//@blocks.10/@node_objs.0"/>
+  <edges id="404" source_obj="//@blocks.0/@node_objs.3" sink_obj="//@blocks.10/@node_objs.1"/>
+  <edges id="405" source_obj="//@blocks.0/@node_objs.4" sink_obj="//@blocks.10/@node_objs.2"/>
+  <edges id="406" source_obj="//@blocks.0/@node_objs.5" sink_obj="//@blocks.10/@node_objs.3"/>
+  <edges id="409" source_obj="//@blocks.10/@node_objs.3" sink_obj="//@blocks.10/@node_objs.4"/>
+  <edges id="410" source_obj="//@blocks.10/@node_objs.2" sink_obj="//@blocks.10/@node_objs.4"/>
+  <edges id="411" source_obj="//@blocks.10/@node_objs.1" sink_obj="//@blocks.10/@node_objs.4"/>
+  <edges id="412" source_obj="//@blocks.10/@node_objs.0" sink_obj="//@blocks.10/@node_objs.4"/>
+  <edges id="413" source_obj="//@blocks.0/@node_objs.24" sink_obj="//@blocks.10/@node_objs.4"/>
+  <edges id="414" source_obj="//@blocks.0/@node_objs.23" sink_obj="//@blocks.10/@node_objs.4"/>
+  <edges id="415" source_obj="//@blocks.0/@node_objs.22" sink_obj="//@blocks.10/@node_objs.4"/>
+  <edges id="416" source_obj="//@blocks.0/@node_objs.21" sink_obj="//@blocks.10/@node_objs.4"/>
+  <edges id="417" source_obj="//@blocks.0/@node_objs.24" sink_obj="//@blocks.10/@node_objs.5"/>
+  <edges id="418" source_obj="//@blocks.0/@node_objs.23" sink_obj="//@blocks.10/@node_objs.6"/>
+  <edges id="419" source_obj="//@blocks.0/@node_objs.22" sink_obj="//@blocks.10/@node_objs.7"/>
+  <edges id="420" source_obj="//@blocks.0/@node_objs.21" sink_obj="//@blocks.10/@node_objs.8"/>
+  <edges id="421" source_obj="//@blocks.9/@node_objs.0" sink_obj="//@blocks.10/@node_objs.9"/>
+  <edges id="424" source_obj="//@blocks.10/@node_objs.5" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="425" source_obj="//@blocks.10/@node_objs.6" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="426" source_obj="//@blocks.10/@node_objs.7" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="427" source_obj="//@blocks.10/@node_objs.8" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="428" source_obj="//@blocks.0/@node_objs.44" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="429" source_obj="//@blocks.0/@node_objs.41" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="430" source_obj="//@blocks.0/@node_objs.25" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="431" source_obj="//@blocks.0/@node_objs.8" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="432" source_obj="//@blocks.0/@node_objs.51" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="433" source_obj="//@blocks.0/@node_objs.26" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="434" source_obj="//@blocks.0/@node_objs.27" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="435" source_obj="//@blocks.0/@node_objs.28" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="436" source_obj="//@blocks.10/@node_objs.9" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="437" source_obj="//@blocks.0/@node_objs.29" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="438" source_obj="//@blocks.0/@node_objs.30" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="439" source_obj="//@blocks.0/@node_objs.31" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="440" source_obj="//@blocks.6/@node_objs.1" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="441" source_obj="//@blocks.6/@node_objs.3" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="442" source_obj="//@blocks.6/@node_objs.5" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="443" source_obj="//@blocks.0/@node_objs.20" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="444" source_obj="//@blocks.0/@node_objs.19" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="445" source_obj="//@blocks.0/@node_objs.18" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="446" source_obj="//@blocks.0/@node_objs.17" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="447" source_obj="//@blocks.0/@node_objs.20" sink_obj="//@blocks.10/@node_objs.11"/>
+  <edges id="448" source_obj="//@blocks.0/@node_objs.19" sink_obj="//@blocks.10/@node_objs.12"/>
+  <edges id="449" source_obj="//@blocks.0/@node_objs.18" sink_obj="//@blocks.10/@node_objs.13"/>
+  <edges id="450" source_obj="//@blocks.0/@node_objs.17" sink_obj="//@blocks.10/@node_objs.14"/>
+  <edges id="453" source_obj="//@blocks.10/@node_objs.11" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="454" source_obj="//@blocks.10/@node_objs.12" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="455" source_obj="//@blocks.10/@node_objs.13" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="456" source_obj="//@blocks.10/@node_objs.14" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="457" source_obj="//@ports.0" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="458" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="459" source_obj="//@blocks.0/@node_objs.11" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="460" source_obj="//@blocks.0/@node_objs.13" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="461" source_obj="//@blocks.0/@node_objs.34" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="462" source_obj="//@blocks.0/@node_objs.33" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="463" source_obj="//@blocks.0/@node_objs.32" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="464" source_obj="//@blocks.7/@node_objs.1" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="465" source_obj="//@blocks.9/@node_objs.0" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="466" source_obj="//@blocks.0/@node_objs.15" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="467" source_obj="//@blocks.0/@node_objs.5" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="468" source_obj="//@blocks.0/@node_objs.4" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="469" source_obj="//@blocks.0/@node_objs.3" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="470" source_obj="//@blocks.0/@node_objs.2" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="471" edge_type="CtrlEdge" source_obj="//@blocks.9" sink_obj="//@blocks.10/@node_objs.16"/>
+  <edges id="472" edge_type="CtrlEdge" source_obj="//@blocks.7" sink_obj="//@blocks.11/@node_objs.0"/>
+  <edges id="473" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.12/@node_objs.0"/>
+  <edges id="476" source_obj="//@blocks.1/@node_objs.3" sink_obj="//@blocks.12/@node_objs.1"/>
+  <edges id="477" source_obj="//@blocks.0/@node_objs.1" sink_obj="//@blocks.12/@node_objs.1"/>
+  <edges id="478" source_obj="//@blocks.12/@node_objs.0" sink_obj="//@blocks.12/@node_objs.2"/>
+  <edges id="479" source_obj="//@blocks.0/@node_objs.0" sink_obj="//@blocks.12/@node_objs.2"/>
+  <edges id="480" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@blocks.12/@node_objs.3"/>
+  <edges id="1001" edge_type="CtrlEdge" source_obj="//@blocks.0" sink_obj="//@blocks.1"/>
+  <edges id="1002" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@blocks.2"/>
+  <edges id="1003" edge_type="CtrlEdge" source_obj="//@blocks.1" sink_obj="//@blocks.13"/>
+  <edges id="1004" edge_type="CtrlEdge" source_obj="//@blocks.2" sink_obj="//@blocks.3"/>
+  <edges id="1005" edge_type="CtrlEdge" source_obj="//@blocks.3" sink_obj="//@blocks.6"/>
+  <edges id="1006" edge_type="CtrlEdge" source_obj="//@blocks.3" sink_obj="//@blocks.4"/>
+  <edges id="1007" edge_type="CtrlEdge" source_obj="//@blocks.4" sink_obj="//@blocks.5"/>
+  <edges id="1008" edge_type="CtrlEdge" source_obj="//@blocks.4" sink_obj="//@blocks.6"/>
+  <edges id="1009" edge_type="CtrlEdge" source_obj="//@blocks.5" sink_obj="//@blocks.3" is_back_edge="1"/>
+  <edges id="1010" edge_type="CtrlEdge" source_obj="//@blocks.6" sink_obj="//@blocks.7"/>
+  <edges id="1011" edge_type="CtrlEdge" source_obj="//@blocks.7" sink_obj="//@blocks.12"/>
+  <edges id="1012" edge_type="CtrlEdge" source_obj="//@blocks.7" sink_obj="//@blocks.8"/>
+  <edges id="1013" edge_type="CtrlEdge" source_obj="//@blocks.8" sink_obj="//@blocks.9"/>
+  <edges id="1014" edge_type="CtrlEdge" source_obj="//@blocks.9" sink_obj="//@blocks.11"/>
+  <edges id="1015" edge_type="CtrlEdge" source_obj="//@blocks.9" sink_obj="//@blocks.10"/>
+  <edges id="1016" edge_type="CtrlEdge" source_obj="//@blocks.10" sink_obj="//@blocks.9" is_back_edge="1"/>
+  <edges id="1017" edge_type="CtrlEdge" source_obj="//@blocks.11" sink_obj="//@blocks.7" is_back_edge="1"/>
+  <edges id="1018" edge_type="CtrlEdge" source_obj="//@blocks.12" sink_obj="//@blocks.1" is_back_edge="1"/>
+  <edges id="1019" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.10" sink_obj="//@blocks.10/@node_objs.11"/>
+  <edges id="1020" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.10" sink_obj="//@blocks.10/@node_objs.12"/>
+  <edges id="1021" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.10" sink_obj="//@blocks.10/@node_objs.13"/>
+  <edges id="1022" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.10" sink_obj="//@blocks.10/@node_objs.14"/>
+  <edges id="1023" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.4" sink_obj="//@blocks.10/@node_objs.5"/>
+  <edges id="1024" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.4" sink_obj="//@blocks.10/@node_objs.6"/>
+  <edges id="1025" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.4" sink_obj="//@blocks.10/@node_objs.7"/>
+  <edges id="1026" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.4" sink_obj="//@blocks.10/@node_objs.8"/>
+  <edges id="1027" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.3" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="1028" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.2" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="1029" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.1" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="1030" edge_type="VirtEdge" source_obj="//@blocks.10/@node_objs.0" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="1031" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.53" sink_obj="//@blocks.1/@node_objs.1"/>
+  <edges id="1032" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.54" sink_obj="//@blocks.1/@node_objs.0"/>
+  <edges id="1033" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.53" sink_obj="//@blocks.12/@node_objs.1"/>
+  <edges id="1034" edge_type="VirtEdge" source_obj="//@blocks.0/@node_objs.54" sink_obj="//@blocks.12/@node_objs.2"/>
+  <edges id="1035" edge_type="VirtEdge" source_obj="//@blocks.1/@node_objs.0" sink_obj="//@blocks.12/@node_objs.2"/>
+  <edges id="1036" edge_type="VirtEdge" source_obj="//@blocks.1/@node_objs.1" sink_obj="//@blocks.12/@node_objs.1"/>
+  <edges id="1037" edge_type="VirtEdge" source_obj="//@blocks.8/@node_objs.0" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="1038" edge_type="VirtEdge" source_obj="//@blocks.8/@node_objs.0" sink_obj="//@blocks.10/@node_objs.10"/>
+  <edges id="1039" edge_type="VirtEdge" source_obj="//@blocks.8/@node_objs.0" sink_obj="//@blocks.10/@node_objs.15"/>
+  <edges id="-332" source_obj="//@blocks.5/@node_objs.0" sink_obj="//@ports.0"/>
+  <edges id="-379" source_obj="//@blocks.8/@node_objs.0" sink_obj="//@ports.0"/>
+  <edges id="-457" source_obj="//@blocks.10/@node_objs.15" sink_obj="//@ports.0"/>
+  <blocks id="102" name="entry" type="BlockType">
+    <controlOutputObjs>VITIS_LOOP_45_2</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="13" name="iFilterBase" originalName="iFilterBase" coreId="3372473088" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="1" m_clusterGroupNumber="-1">
+      <dataOutputObjs>store</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="14" name="indvar" coreId="256" bitwidth="64" opcode="alloca" m_display="0" m_topoIndex="2" m_clusterGroupNumber="-1">
+      <dataOutputObjs>store</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="15" name="acc_0_0" coreId="3373060256" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="3" m_clusterGroupNumber="-1">
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="16" name="acc_1_0" coreId="0" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="4" m_clusterGroupNumber="-1">
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="17" name="acc_2_0" coreId="1060966929" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="5" m_clusterGroupNumber="-1">
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="18" name="acc_3_0" coreId="3373005664" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="6" m_clusterGroupNumber="-1">
+      <dataOutputObjs>load</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="19" name="apply_relu_read" originalName="apply_relu" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="32" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="7" m_clusterGroupNumber="-1">
+      <dataInputObjs>apply_relu</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="20" name="convHeight_read" originalName="convHeight" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="32" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="8" m_clusterGroupNumber="-1">
+      <dataInputObjs>convHeight</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="21" name="convWidth_read" originalName="convWidth" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="32" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="9" m_clusterGroupNumber="-1">
+      <dataInputObjs>convWidth</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="22" name="inputHeight_read" originalName="inputHeight" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="32" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="10" m_clusterGroupNumber="-1">
+      <dataInputObjs>inputHeight</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="23" name="inputWidth_read" originalName="inputWidth" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="32" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="11" m_clusterGroupNumber="-1">
+      <dataInputObjs>inputWidth</dataInputObjs>
+      <dataOutputObjs>trunc</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="24" name="numFilters_read" originalName="numFilters" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="32" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="12" m_clusterGroupNumber="-1">
+      <dataInputObjs>numFilters</dataInputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="25" name="numChannels_read" originalName="numChannels" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="32" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="13" m_clusterGroupNumber="-1">
+      <dataInputObjs>numChannels</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="26" name="biases_read" originalName="biases" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="64" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="14" m_clusterGroupNumber="-1">
+      <dataInputObjs>biases</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="27" name="coeffs_read" originalName="coeffs" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="64" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="15" m_clusterGroupNumber="-1">
+      <dataInputObjs>coeffs</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="28" name="output_r_read" originalName="output" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="64" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="16" m_clusterGroupNumber="-1">
+      <dataInputObjs>output_r</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="29" name="input_r_read" originalName="input" coreName="s_axilite" implIndex="s_axilite" control="no" opType="adapter" coreId="114" bitwidth="64" opcode="read" m_display="0" m_delay="1.0" m_topoIndex="17" m_clusterGroupNumber="-1">
+      <dataInputObjs>input_r</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="30" name="acc_0_7_loc" coreId="176" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="18" m_clusterGroupNumber="-1">
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="31" name="acc_1_7_loc" coreId="0" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="19" m_clusterGroupNumber="-1">
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="32" name="acc_2_7_loc" coreId="3372967712" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="20" m_clusterGroupNumber="-1">
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="33" name="acc_3_7_loc" coreId="0" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="21" m_clusterGroupNumber="-1">
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="34" name="acc_0_32_loc" coreId="176" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="22" m_clusterGroupNumber="-1">
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="35" name="acc_1_3_loc" coreId="3372967712" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="23" m_clusterGroupNumber="-1">
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="36" name="acc_2_3_loc" coreId="128" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="24" m_clusterGroupNumber="-1">
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="37" name="acc_3_3_loc" coreId="3372329904" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="25" m_clusterGroupNumber="-1">
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>load</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="38" name="trunc_ln19" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="trunc_ln19_fu_440_p1" coreId="3372780144" contextFuncName="Conv2D_HW" bitwidth="12" opcode="trunc" m_display="0" m_topoIndex="26" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="72" name="coeff_cache" lineNumber="41" originalName="coeff_cache" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="coeff_cache_U" coreName="RAM_1WnR" implIndex="auto" control="no" opType="rom_np" coreId="83" contextFuncName="Conv2D_HW" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="27" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="41" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="73" name="coeff_cache_1" lineNumber="41" originalName="coeff_cache" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="coeff_cache_1_U" coreName="RAM_1WnR" implIndex="auto" control="no" opType="rom_np" coreId="83" contextFuncName="Conv2D_HW" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="28" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="41" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="74" name="coeff_cache_2" lineNumber="41" originalName="coeff_cache" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32s_32s_32_2_1_U110" coreName="RAM_1WnR" implIndex="auto" control="no" opType="rom_np" coreId="83" contextFuncName="Conv2D_HW" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="29" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="41" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="75" name="row_buffer" lineNumber="67" originalName="row_buffer" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="row_buffer_U" coreName="RAM" implIndex="auto" control="no" opType="ram_1p" coreId="82" contextFuncName="Conv2D_HW" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="30" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="67" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="76" name="row_buffer_1" lineNumber="67" originalName="row_buffer" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="row_buffer_1_U" coreName="RAM" implIndex="auto" control="no" opType="ram_1p" coreId="82" contextFuncName="Conv2D_HW" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="31" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="67" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="77" name="row_buffer_2" lineNumber="67" originalName="row_buffer" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="row_buffer_2_U" coreName="RAM" implIndex="auto" control="no" opType="ram_1p" coreId="82" contextFuncName="Conv2D_HW" bitwidth="32" opcode="alloca" m_display="0" m_topoIndex="32" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="67" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="78" name="sub" rtlName="sub_fu_516_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" bitwidth="32" opcode="add" nodeLabel="7.0" m_display="0" m_delay="2.55" m_topoIndex="50" m_clusterGroupNumber="-1">
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="79" name="sub93" rtlName="sub93_fu_521_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" bitwidth="32" opcode="add" nodeLabel="7.0" m_display="0" m_delay="2.55" m_topoIndex="51" m_clusterGroupNumber="-1">
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="80" name="tobool" rtlName="tobool_fu_444_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" bitwidth="1" opcode="icmp" m_display="0" m_delay="2.47" m_topoIndex="33" m_clusterGroupNumber="-1">
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="81" name="zext_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="zext_ln40_fu_526_p1" coreId="3372925728" contextFuncName="Conv2D_HW" bitwidth="33" opcode="zext" nodeLabel="7.0" m_display="0" m_topoIndex="52" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="82" name="mul_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32s_32s_32_2_1_U107" coreName="Multiplier" implIndex="auto" control="no" opType="mul" coreId="3" contextFuncName="Conv2D_HW" bitwidth="32" opcode="mul" nodeLabel="3.0" nodeLatency="1" m_display="0" m_delay="6.91" m_topoIndex="42" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="83" name="mul_ln40_1" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32s_32s_32_2_1_U110" coreName="Multiplier" implIndex="auto" control="no" opType="mul" coreId="3" contextFuncName="Conv2D_HW" bitwidth="32" opcode="mul" nodeLabel="6.0" nodeLatency="1" m_display="0" m_delay="6.91" m_topoIndex="49" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>trunc</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="84" name="trunc_ln41" lineNumber="41" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32s_32s_32_2_1_U107" coreId="3373030320" contextFuncName="Conv2D_HW" bitwidth="30" opcode="trunc" nodeLabel="7.0" m_display="0" m_topoIndex="53" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="41" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="85" name="zext_ln19" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32s_32s_32_2_1_U110" coreId="3373044424" contextFuncName="Conv2D_HW" bitwidth="64" opcode="zext" nodeLabel="1.0" m_display="0" m_topoIndex="36" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="86" name="zext_ln19_1" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_466_p10" coreId="0" contextFuncName="Conv2D_HW" bitwidth="64" opcode="zext" nodeLabel="1.0" m_display="0" m_topoIndex="37" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="87" name="mul_ln19" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32ns_32ns_64_2_1_U105" coreName="Multiplier" implIndex="auto" control="no" opType="mul" coreId="3" contextFuncName="Conv2D_HW" bitwidth="64" opcode="mul" nodeLabel="1.0" nodeLatency="1" m_display="0" m_delay="6.91" m_topoIndex="38" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="88" name="zext_ln19_2" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_494_p00" coreId="0" contextFuncName="Conv2D_HW" bitwidth="96" opcode="zext" nodeLabel="3.0" m_display="0" m_topoIndex="43" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="89" name="zext_ln19_3" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_494_p10" coreId="0" contextFuncName="Conv2D_HW" bitwidth="96" opcode="zext" nodeLabel="3.0" m_display="0" m_topoIndex="44" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="90" name="mul_ln19_1" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32ns_64ns_96_5_1_U108" coreName="Multiplier" implIndex="auto" control="no" opType="mul" coreId="3" contextFuncName="Conv2D_HW" bitwidth="96" opcode="mul" nodeLabel="3.0" nodeLatency="4" m_display="0" m_delay="6.97" m_topoIndex="45" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="91" name="zext_ln19_4" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_478_p00" coreId="3372974344" contextFuncName="Conv2D_HW" bitwidth="64" opcode="zext" nodeLabel="1.0" m_display="0" m_topoIndex="39" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="92" name="zext_ln19_5" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_478_p10" coreId="0" contextFuncName="Conv2D_HW" bitwidth="64" opcode="zext" nodeLabel="1.0" m_display="0" m_topoIndex="40" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="93" name="mul_ln19_2" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32s_32s_32_2_1_U113" coreName="Multiplier" implIndex="auto" control="no" opType="mul" coreId="3" contextFuncName="Conv2D_HW" bitwidth="64" opcode="mul" nodeLabel="1.0" nodeLatency="1" m_display="0" m_delay="6.91" m_topoIndex="41" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="94" name="zext_ln19_6" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_506_p00" coreId="0" contextFuncName="Conv2D_HW" bitwidth="96" opcode="zext" nodeLabel="3.0" m_display="0" m_topoIndex="46" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="95" name="zext_ln19_7" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_506_p10" coreId="3373040720" contextFuncName="Conv2D_HW" bitwidth="96" opcode="zext" nodeLabel="3.0" m_display="0" m_topoIndex="47" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="96" name="mul_ln19_3" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_32ns_64ns_96_5_1_U109" coreName="Multiplier" implIndex="auto" control="no" opType="mul" coreId="3" contextFuncName="Conv2D_HW" bitwidth="96" opcode="mul" nodeLabel="3.0" nodeLatency="4" m_display="0" m_delay="6.97" m_topoIndex="48" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="97" name="icmp_ln52" lineNumber="52" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln52_fu_533_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="7.0" m_display="0" m_delay="2.47" m_topoIndex="54" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="52" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="98" name="icmp_ln77" lineNumber="77" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln77_fu_538_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="7.0" m_display="0" m_delay="2.47" m_topoIndex="55" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="77" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="99" name="indvar_write_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3373052864" contextFuncName="Conv2D_HW" opcode="store" m_display="0" m_delay="1.58" m_topoIndex="34" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="100" name="iFilterBase_write_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372478896" contextFuncName="Conv2D_HW" opcode="store" m_display="0" m_delay="1.58" m_topoIndex="35" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="101" name="br_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="1852793600" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="7.0" m_display="0" m_topoIndex="56" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <controlInputObjs>VITIS_LOOP_45_2</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>19</validLinenumbers>
+      <validLinenumbers>41</validLinenumbers>
+      <validLinenumbers>67</validLinenumbers>
+      <validLinenumbers>40</validLinenumbers>
+      <validLinenumbers>52</validLinenumbers>
+      <validLinenumbers>77</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="108" name="VITIS_LOOP_45_2" type="BlockType">
+    <controlInputObjs>entry</controlInputObjs>
+    <controlInputObjs>for.inc210.loopexit</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>VITIS_LOOP_45_2.split</controlOutputObjs>
+    <controlOutputObjs>for.end213.loopexit</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="103" name="iFilterBase_2" lineNumber="40" originalName="iFilterBase" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" bitwidth="32" opcode="load" nodeLabel="8.0" m_display="0" m_topoIndex="57" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <dataOutputObjs>or</dataOutputObjs>
+      <dataOutputObjs>or</dataOutputObjs>
+      <dataOutputObjs>or</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="104" name="indvar_load" lineNumber="41" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372719776" contextFuncName="Conv2D_HW" bitwidth="64" opcode="load" nodeLabel="8.0" m_display="0" m_topoIndex="58" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="41" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>trunc</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="105" name="icmp_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln40_fu_549_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="8.0" m_display="0" m_delay="2.47" m_topoIndex="59" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>br</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="106" name="add_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="add_ln40_fu_554_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="64" opcode="add" nodeLabel="8.0" m_display="0" m_delay="3.52" m_topoIndex="60" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="107" name="br_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="8.0" m_display="0" m_topoIndex="61" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>icmp</dataInputObjs>
+      <controlInputObjs>for.end213.loopexit</controlInputObjs>
+      <controlInputObjs>VITIS_LOOP_45_2.split</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>40</validLinenumbers>
+      <validLinenumbers>41</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="115" name="VITIS_LOOP_45_2.split" type="BlockType">
+    <controlInputObjs>VITIS_LOOP_45_2</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>for.body4</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="110" name="trunc_ln41_1" lineNumber="41" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_fu_564_p1" coreId="0" contextFuncName="Conv2D_HW" bitwidth="30" opcode="trunc" nodeLabel="8.0" m_display="0" m_topoIndex="62" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="41" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataOutputObjs>mul</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="111" name="mul_ln41" lineNumber="41" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="mul_30s_30s_30_2_1_U111" coreName="Multiplier" implIndex="auto" control="no" opType="mul" coreId="3" contextFuncName="Conv2D_HW" bitwidth="30" opcode="mul" nodeLabel="8.0" nodeLatency="1" m_display="0" m_delay="6.91" m_topoIndex="63" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="41" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>trunc</dataInputObjs>
+      <dataInputObjs>trunc</dataInputObjs>
+      <dataOutputObjs>bitconcatenate</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="112" name="shl_ln" lineNumber="41" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="shl_ln_fu_569_p3" coreId="1304" contextFuncName="Conv2D_HW" bitwidth="32" opcode="bitconcatenate" nodeLabel="9.0" m_display="0" m_topoIndex="65" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="41" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="113" name="zext_ln45" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="zext_ln45_fu_577_p1" coreId="3372905448" contextFuncName="Conv2D_HW" bitwidth="33" opcode="zext" nodeLabel="9.0" m_display="0" m_topoIndex="66" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="114" name="br_ln45" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372906952" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="9.0" m_display="0" m_delay="1.58" m_topoIndex="67" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <controlInputObjs>for.body4</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>41</validLinenumbers>
+      <validLinenumbers>45</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="123" name="for.body4" type="BlockType">
+    <controlInputObjs>VITIS_LOOP_45_2.split</controlInputObjs>
+    <controlInputObjs>VITIS_LOOP_51_4.preheader</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>VITIS_LOOP_66_6</controlOutputObjs>
+    <controlOutputObjs>for.body4.split</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="116" name="pf" lineNumber="45" originalName="pf" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372719632" contextFuncName="Conv2D_HW" bitwidth="3" opcode="phi" nodeLabel="10.0" m_display="0" m_topoIndex="68" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>bitselect</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>bitconcatenate</dataOutputObjs>
+      <dataOutputObjs>zext</dataOutputObjs>
+      <controlInputObjs>VITIS_LOOP_45_2.split</controlInputObjs>
+      <controlInputObjs>VITIS_LOOP_51_4.preheader</controlInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="117" name="phi_mul" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372727968" contextFuncName="Conv2D_HW" bitwidth="32" opcode="phi" nodeLabel="10.0" m_display="0" m_topoIndex="69" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <controlInputObjs>VITIS_LOOP_45_2.split</controlInputObjs>
+      <controlInputObjs>VITIS_LOOP_51_4.preheader</controlInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="118" name="add_ln45_1" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="add_ln45_1_fu_580_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="32" opcode="add" nodeLabel="10.0" m_display="0" m_delay="2.55" m_topoIndex="70" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataOutputObjs>phi</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="119" name="tmp" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="tmp_fu_585_p3" coreId="1060855340" contextFuncName="Conv2D_HW" bitwidth="1" opcode="bitselect" nodeLabel="10.0" m_display="0" m_topoIndex="71" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>br</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="121" name="add_ln45" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="add_ln45_fu_593_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="3" opcode="add" nodeLabel="10.0" m_display="0" m_delay="1.65" m_topoIndex="72" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>phi</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="122" name="br_ln45" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="1060847821" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="10.0" m_display="0" m_topoIndex="73" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>bitselect</dataInputObjs>
+      <controlInputObjs>for.body4.split</controlInputObjs>
+      <controlInputObjs>VITIS_LOOP_66_6</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>45</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="131" name="for.body4.split" type="BlockType">
+    <controlInputObjs>for.body4</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>VITIS_LOOP_51_4.preheader</controlOutputObjs>
+    <controlOutputObjs>VITIS_LOOP_66_6</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="124" name="tmp_3" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="tmp_3_fu_599_p3" coreId="0" contextFuncName="Conv2D_HW" bitwidth="11" opcode="bitconcatenate" nodeLabel="10.0" m_display="0" m_topoIndex="74" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="125" name="zext_ln45_1" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="zext_ln45_1_fu_608_p1" coreId="3372737008" contextFuncName="Conv2D_HW" bitwidth="33" opcode="zext" nodeLabel="10.0" m_display="0" m_topoIndex="75" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="127" name="add_ln46" lineNumber="46" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="add_ln46_fu_612_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="32" opcode="add" nodeLabel="10.0" m_display="0" m_delay="2.55" m_topoIndex="76" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="46" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>bitconcatenate</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="128" name="add_ln46_1" lineNumber="46" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="add_ln46_1_fu_619_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="33" opcode="add" nodeLabel="10.0" m_display="0" m_delay="2.55" m_topoIndex="77" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="46" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="129" name="icmp_ln47" lineNumber="47" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln47_fu_624_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="10.0" m_display="0" m_delay="2.48" m_topoIndex="78" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="47" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataInputObjs>zext</dataInputObjs>
+      <dataOutputObjs>br</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="130" name="br_ln47" lineNumber="47" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372960320" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="10.0" m_display="0" m_topoIndex="79" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="47" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>icmp</dataInputObjs>
+      <controlInputObjs>VITIS_LOOP_66_6</controlInputObjs>
+      <controlInputObjs>VITIS_LOOP_51_4.preheader</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>45</validLinenumbers>
+      <validLinenumbers>46</validLinenumbers>
+      <validLinenumbers>47</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="134" name="VITIS_LOOP_51_4.preheader" type="BlockType">
+    <controlInputObjs>for.body4.split</controlInputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>for.body4</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="132" name="_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_52_5_fu_340" coreId="0" contextFuncName="Conv2D_HW" opcode="call" nodeLabel="10.0" nodeLatency="1" m_display="0" m_topoIndex="80" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>gmem</dataInputObjs>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>add</dataInputObjs>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataInputObjs>bitconcatenate</dataInputObjs>
+      <dataInputObjs>add</dataInputObjs>
+      <dataInputObjs>icmp</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>gmem</dataOutputObjs>
+      <constName>Conv2D_HW_Pipeline_VITIS_LOOP_52_5</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="133" name="br_ln45" lineNumber="45" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372982568" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="11.0" m_display="0" m_topoIndex="88" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="45" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <controlInputObjs>for.body4</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>40</validLinenumbers>
+      <validLinenumbers>45</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="142" name="VITIS_LOOP_66_6" type="BlockType">
+    <controlInputObjs>for.body4</controlInputObjs>
+    <controlInputObjs>for.body4.split</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>VITIS_LOOP_72_7</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="135" name="or_ln107" lineNumber="107" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="or_ln107_fu_629_p2" coreId="3372388832" contextFuncName="Conv2D_HW" bitwidth="32" opcode="or" nodeLabel="10.0" m_display="0" m_topoIndex="81" m_clusterGroupNumber="1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="107" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="136" name="icmp_ln107" lineNumber="107" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln107_fu_634_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="10.0" m_display="0" m_delay="2.47" m_topoIndex="82" m_clusterGroupNumber="1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="107" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>or</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="137" name="or_ln107_1" lineNumber="107" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="or_ln107_1_fu_639_p2" coreId="763" contextFuncName="Conv2D_HW" bitwidth="32" opcode="or" nodeLabel="10.0" m_display="0" m_topoIndex="83" m_clusterGroupNumber="2">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="107" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="138" name="icmp_ln107_1" lineNumber="107" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln107_1_fu_644_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="10.0" m_display="0" m_delay="2.47" m_topoIndex="84" m_clusterGroupNumber="2">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="107" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>or</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="139" name="or_ln107_2" lineNumber="107" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="or_ln107_2_fu_649_p2" coreId="0" contextFuncName="Conv2D_HW" bitwidth="32" opcode="or" nodeLabel="10.0" m_display="0" m_topoIndex="85" m_clusterGroupNumber="3">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="107" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="140" name="icmp_ln107_2" lineNumber="107" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln107_2_fu_654_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="10.0" m_display="0" m_delay="2.47" m_topoIndex="86" m_clusterGroupNumber="3">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="107" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>or</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="141" name="br_ln66" lineNumber="66" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372990608" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="10.0" m_display="0" m_delay="1.58" m_topoIndex="87" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <controlInputObjs>VITIS_LOOP_72_7</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>107</validLinenumbers>
+      <validLinenumbers>66</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="149" name="VITIS_LOOP_72_7" type="BlockType">
+    <controlInputObjs>VITIS_LOOP_66_6</controlInputObjs>
+    <controlInputObjs>for.inc206.loopexit</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>for.inc210.loopexit</controlOutputObjs>
+    <controlOutputObjs>VITIS_LOOP_72_7.split</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="143" name="y" lineNumber="66" originalName="y" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" bitwidth="32" opcode="phi" nodeLabel="12.0" m_display="0" m_topoIndex="89" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <controlInputObjs>VITIS_LOOP_66_6</controlInputObjs>
+      <controlInputObjs>for.inc206.loopexit</controlInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="144" name="phi_mul267" lineNumber="66" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="1060591084" contextFuncName="Conv2D_HW" bitwidth="32" opcode="phi" nodeLabel="12.0" m_display="0" m_topoIndex="90" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <controlInputObjs>VITIS_LOOP_66_6</controlInputObjs>
+      <controlInputObjs>for.inc206.loopexit</controlInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="145" name="add_ln66_1" lineNumber="66" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="add_ln66_1_fu_659_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="32" opcode="add" nodeLabel="12.0" m_display="0" m_delay="2.55" m_topoIndex="91" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>phi</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="146" name="icmp_ln66" lineNumber="66" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln66_fu_664_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="12.0" m_display="0" m_delay="2.47" m_topoIndex="92" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>br</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="147" name="add_ln66" lineNumber="66" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="add_ln66_fu_669_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="32" opcode="add" nodeLabel="12.0" m_display="0" m_delay="2.55" m_topoIndex="93" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>phi</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="148" name="br_ln66" lineNumber="66" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372738720" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="12.0" m_display="0" m_topoIndex="94" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>icmp</dataInputObjs>
+      <controlInputObjs>VITIS_LOOP_72_7.split</controlInputObjs>
+      <controlInputObjs>for.inc210.loopexit</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>66</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="153" name="VITIS_LOOP_72_7.split" type="BlockType">
+    <controlInputObjs>VITIS_LOOP_72_7</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>for.body96</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="151" name="_ln66" lineNumber="66" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_77_9_fu_358" coreId="1684622687" contextFuncName="Conv2D_HW" opcode="call" nodeLabel="12.0" nodeLatency="1" m_display="0" m_topoIndex="95" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>gmem</dataInputObjs>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>trunc</dataInputObjs>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataInputObjs>icmp</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataOutputObjs>gmem</dataOutputObjs>
+      <constName>Conv2D_HW_Pipeline_VITIS_LOOP_77_9</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="152" name="br_ln89" lineNumber="89" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372765520" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="13.0" m_display="0" m_delay="1.58" m_topoIndex="100" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="89" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <controlInputObjs>for.body96</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>66</validLinenumbers>
+      <validLinenumbers>89</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="158" name="for.body96" type="BlockType">
+    <controlInputObjs>VITIS_LOOP_72_7.split</controlInputObjs>
+    <controlInputObjs>for.body96.split</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>for.inc206.loopexit</controlOutputObjs>
+    <controlOutputObjs>for.body96.split</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="154" name="x" lineNumber="127" originalName="x" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="176" contextFuncName="Conv2D_HW" bitwidth="32" opcode="phi" nodeLabel="14.0" m_display="0" m_topoIndex="101" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="127" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>icmp</dataOutputObjs>
+      <dataOutputObjs>add</dataOutputObjs>
+      <dataOutputObjs>trunc</dataOutputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+      <controlInputObjs>VITIS_LOOP_72_7.split</controlInputObjs>
+      <controlInputObjs>for.body96.split</controlInputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="155" name="icmp_ln89" lineNumber="89" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="icmp_ln89_fu_689_p2" coreName="Cmp" implIndex="auto" control="no" opType="icmp" coreId="9" contextFuncName="Conv2D_HW" bitwidth="1" opcode="icmp" nodeLabel="14.0" m_display="0" m_delay="2.47" m_topoIndex="102" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="89" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>add</dataInputObjs>
+      <dataOutputObjs>br</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="156" name="add_ln89" lineNumber="89" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="add_ln89_fu_694_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="32" opcode="add" nodeLabel="14.0" m_display="0" m_delay="2.55" m_topoIndex="103" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="89" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>phi</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="157" name="br_ln89" lineNumber="89" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3372772720" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="14.0" m_display="0" m_topoIndex="104" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="89" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>icmp</dataInputObjs>
+      <controlInputObjs>for.body96.split</controlInputObjs>
+      <controlInputObjs>for.inc206.loopexit</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>127</validLinenumbers>
+      <validLinenumbers>89</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="177" name="for.body96.split" type="BlockType">
+    <controlInputObjs>for.body96</controlInputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>for.body96</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="159" name="acc_0_0_load" coreId="1060430119" bitwidth="32" opcode="load" nodeLabel="14.0" m_display="0" m_topoIndex="105" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="160" name="acc_1_0_load" coreId="176" bitwidth="32" opcode="load" nodeLabel="14.0" m_display="0" m_topoIndex="106" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="161" name="acc_2_0_load" coreId="1060433111" bitwidth="32" opcode="load" nodeLabel="14.0" m_display="0" m_topoIndex="107" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="162" name="acc_3_0_load" coreId="3373005664" bitwidth="32" opcode="load" nodeLabel="14.0" m_display="0" m_topoIndex="108" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="164" name="_ln0" rtlName="grp_Conv2D_HW_Pipeline_3_fu_376" coreId="0" opcode="call" nodeLabel="14.0" nodeLatency="1" m_display="0" m_delay="1.58" m_topoIndex="109" m_clusterGroupNumber="-1">
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>Conv2D_HW_Pipeline_3</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="165" name="acc_3_3_loc_load" coreId="1060164612" bitwidth="32" opcode="load" nodeLabel="16.0" m_display="0" m_topoIndex="111" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="166" name="acc_2_3_loc_load" coreId="0" bitwidth="32" opcode="load" nodeLabel="16.0" m_display="0" m_topoIndex="112" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="167" name="acc_1_3_loc_load" coreId="3373026384" bitwidth="32" opcode="load" nodeLabel="16.0" m_display="0" m_topoIndex="113" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="168" name="acc_0_32_loc_load" coreId="0" bitwidth="32" opcode="load" nodeLabel="16.0" m_display="0" m_topoIndex="114" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="169" name="empty_80" lineNumber="127" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="empty_80_fu_732_p1" coreId="3373027296" contextFuncName="Conv2D_HW" bitwidth="12" opcode="trunc" nodeLabel="16.0" m_display="0" m_topoIndex="115" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="127" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="170" name="_ln19" lineNumber="19" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_93_11_VITIS_LOOP_96_12_VITIS_LOOP_99_13_fu_388" coreId="0" contextFuncName="Conv2D_HW" opcode="call" nodeLabel="16.0" nodeLatency="1" m_display="0" m_delay="1.58" m_topoIndex="116" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="19" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataInputObjs>mul</dataInputObjs>
+      <dataInputObjs>trunc</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>icmp</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>trunc</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>icmp</dataInputObjs>
+      <dataInputObjs>icmp</dataInputObjs>
+      <dataInputObjs>icmp</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <constName>Conv2D_HW_Pipeline_VITIS_LOOP_93_11_VITIS_LOOP_96_12_VITIS_LOOP_99_13</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="171" name="acc_3_7_loc_load" coreId="3373013056" bitwidth="32" opcode="load" nodeLabel="18.0" m_display="0" m_topoIndex="117" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="172" name="acc_2_7_loc_load" coreId="3373027488" bitwidth="32" opcode="load" nodeLabel="18.0" m_display="0" m_topoIndex="118" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="173" name="acc_1_7_loc_load" coreId="0" bitwidth="32" opcode="load" nodeLabel="18.0" m_display="0" m_topoIndex="119" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="174" name="acc_0_7_loc_load" coreId="3373027488" bitwidth="32" opcode="load" nodeLabel="18.0" m_display="0" m_topoIndex="120" m_clusterGroupNumber="-1">
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>call</dataOutputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="175" name="_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_117_15_fu_415" coreId="1060172534" contextFuncName="Conv2D_HW" opcode="call" nodeLabel="18.0" nodeLatency="1" m_display="0" m_delay="6.91" m_topoIndex="121" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>gmem</dataInputObjs>
+      <dataInputObjs>load</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>icmp</dataInputObjs>
+      <dataInputObjs>add</dataInputObjs>
+      <dataInputObjs>add</dataInputObjs>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>phi</dataInputObjs>
+      <dataInputObjs>read</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+      <dataOutputObjs>gmem</dataOutputObjs>
+      <constName>Conv2D_HW_Pipeline_VITIS_LOOP_117_15</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="176" name="br_ln89" lineNumber="89" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3373033568" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="19.0" m_display="0" m_topoIndex="122" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="89" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <controlInputObjs>for.body96</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>127</validLinenumbers>
+      <validLinenumbers>19</validLinenumbers>
+      <validLinenumbers>40</validLinenumbers>
+      <validLinenumbers>89</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="179" name="for.inc206.loopexit" type="BlockType">
+    <controlInputObjs>for.body96</controlInputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>phi</controlOutputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>VITIS_LOOP_72_7</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="178" name="br_ln66" lineNumber="66" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="176" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="14.0" m_display="0" m_topoIndex="110" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="66" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <controlInputObjs>VITIS_LOOP_72_7</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>66</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="184" name="for.inc210.loopexit" type="BlockType">
+    <controlInputObjs>VITIS_LOOP_72_7</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <controlOutputObjs>VITIS_LOOP_45_2</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="180" name="iFilterBase_3" lineNumber="40" originalName="iFilterBase" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." rtlName="iFilterBase_3_fu_675_p2" coreName="Adder" implIndex="fabric" control="no" opType="add" coreId="1" contextFuncName="Conv2D_HW" bitwidth="32" opcode="add" nodeLabel="12.0" m_display="0" m_delay="2.55" m_topoIndex="96" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>load</dataInputObjs>
+      <dataOutputObjs>store</dataOutputObjs>
+      <constName>empty</constName>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="181" name="indvar_write_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3373037904" contextFuncName="Conv2D_HW" opcode="store" nodeLabel="12.0" m_display="0" m_delay="1.58" m_topoIndex="97" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="182" name="iFilterBase_write_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="3373028144" contextFuncName="Conv2D_HW" opcode="store" nodeLabel="12.0" m_display="0" m_delay="1.58" m_topoIndex="98" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <dataInputObjs>add</dataInputObjs>
+      <dataInputObjs>alloca</dataInputObjs>
+    </node_objs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="183" name="br_ln40" lineNumber="40" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="0" contextFuncName="Conv2D_HW" opcode="br" nodeLabel="12.0" m_display="0" m_topoIndex="99" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="40" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+      <controlInputObjs>VITIS_LOOP_45_2</controlInputObjs>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>40</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <blocks id="186" name="for.end213.loopexit" type="BlockType">
+    <controlInputObjs>VITIS_LOOP_45_2</controlInputObjs>
+    <controlOutputObjs>br</controlOutputObjs>
+    <node_objs xsi:type="cdfg:CdfgNode" id="185" name="_ln132" lineNumber="132" fileName="HLS_Midterm/conv2d.cpp" fileDirectory=".." coreId="784" contextFuncName="Conv2D_HW" opcode="ret" nodeLabel="8.0" m_display="0" m_topoIndex="64" m_clusterGroupNumber="-1">
+      <inlineStackInfo fileName="HLS_Midterm/conv2d.cpp" linenumber="132" fileDirectory="/home/rerecich/EE-390a/CNN/Midterm/Midterm/4-Parallelization" functionName="Conv2D_HW"/>
+    </node_objs>
+    <fileValidLineNumbers fileName="HLS_Midterm/conv2d.cpp">
+      <validLinenumbers>132</validLinenumbers>
+    </fileValidLineNumbers>
+  </blocks>
+  <ScheduleInfo time="0"/>
+  <ScheduleInfo time="1"/>
+  <ScheduleInfo time="2"/>
+  <ScheduleInfo time="3"/>
+  <ScheduleInfo time="4"/>
+  <ScheduleInfo time="5"/>
+  <ScheduleInfo time="6"/>
+  <ScheduleInfo time="7"/>
+  <ScheduleInfo time="8"/>
+  <ScheduleInfo time="9"/>
+  <ScheduleInfo time="10"/>
+  <ScheduleInfo time="11"/>
+  <ScheduleInfo time="12"/>
+  <ScheduleInfo time="13"/>
+  <ScheduleInfo time="14"/>
+  <ScheduleInfo time="15"/>
+  <ScheduleInfo time="16"/>
+  <ScheduleInfo time="17"/>
+  <ScheduleInfo time="18"/>
+  <ScheduleInfo time="19"/>
+  <regnodes realName="phi_mul_reg_293">
+    <nodeIds>117</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_1_3_loc_reg_888">
+    <nodeIds>35</nodeIds>
+  </regnodes>
+  <regnodes realName="empty_80_reg_1141">
+    <nodeIds>169</nodeIds>
+  </regnodes>
+  <regnodes realName="indvar_reg_760">
+    <nodeIds>14</nodeIds>
+  </regnodes>
+  <regnodes realName="tmp_3_reg_1067">
+    <nodeIds>124</nodeIds>
+  </regnodes>
+  <regnodes realName="biases_read_reg_838">
+    <nodeIds>26</nodeIds>
+  </regnodes>
+  <regnodes realName="phi_mul267_reg_316">
+    <nodeIds>144</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_2_0_reg_779">
+    <nodeIds>17</nodeIds>
+  </regnodes>
+  <regnodes realName="output_r_read_reg_848">
+    <nodeIds>28</nodeIds>
+  </regnodes>
+  <regnodes realName="pf_reg_282">
+    <nodeIds>116</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln19_4_reg_927">
+    <nodeIds>91</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln66_1_reg_1096">
+    <nodeIds>145</nodeIds>
+  </regnodes>
+  <regnodes realName="mul_ln19_3_reg_1010">
+    <nodeIds>96</nodeIds>
+  </regnodes>
+  <regnodes realName="y_reg_304">
+    <nodeIds>143</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_3_0_reg_785">
+    <nodeIds>18</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln107_2_reg_1091">
+    <nodeIds>140</nodeIds>
+  </regnodes>
+  <regnodes realName="x_reg_328">
+    <nodeIds>154</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_2_3_loc_reg_894">
+    <nodeIds>36</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_3_3_loc_reg_900">
+    <nodeIds>37</nodeIds>
+  </regnodes>
+  <regnodes realName="mul_ln40_1_reg_994">
+    <nodeIds>83</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_0_32_loc_reg_882">
+    <nodeIds>34</nodeIds>
+  </regnodes>
+  <regnodes realName="mul_ln19_2_reg_944">
+    <nodeIds>93</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln19_6_reg_960">
+    <nodeIds>94</nodeIds>
+  </regnodes>
+  <regnodes realName="iFilterBase_reg_753">
+    <nodeIds>13</nodeIds>
+  </regnodes>
+  <regnodes realName="trunc_ln19_reg_906">
+    <nodeIds>38</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln77_reg_1021">
+    <nodeIds>98</nodeIds>
+  </regnodes>
+  <regnodes realName="inputHeight_read_reg_807">
+    <nodeIds>22</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln45_reg_1062">
+    <nodeIds>121</nodeIds>
+  </regnodes>
+  <regnodes realName="mul_ln19_1_reg_1004">
+    <nodeIds>90</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln107_reg_1081">
+    <nodeIds>136</nodeIds>
+  </regnodes>
+  <regnodes realName="trunc_ln41_1_reg_1039">
+    <nodeIds>110</nodeIds>
+  </regnodes>
+  <regnodes realName="inputWidth_read_reg_813">
+    <nodeIds>23</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln46_reg_1072">
+    <nodeIds>127</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln52_reg_1015">
+    <nodeIds>97</nodeIds>
+  </regnodes>
+  <regnodes realName="convHeight_read_reg_791">
+    <nodeIds>20</nodeIds>
+  </regnodes>
+  <regnodes realName="numChannels_read_reg_831">
+    <nodeIds>25</nodeIds>
+  </regnodes>
+  <regnodes realName="sub93_reg_982">
+    <nodeIds>79</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln19_3_reg_955">
+    <nodeIds>89</nodeIds>
+  </regnodes>
+  <regnodes realName="shl_ln_reg_1044">
+    <nodeIds>112</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_1_7_loc_reg_864">
+    <nodeIds>31</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln19_5_reg_932">
+    <nodeIds>92</nodeIds>
+  </regnodes>
+  <regnodes realName="convWidth_read_reg_798">
+    <nodeIds>21</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln89_reg_1112">
+    <nodeIds>156</nodeIds>
+  </regnodes>
+  <regnodes realName="coeffs_read_reg_843">
+    <nodeIds>27</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln19_2_reg_950">
+    <nodeIds>88</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln40_reg_1034">
+    <nodeIds>106</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_2_7_loc_reg_870">
+    <nodeIds>32</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_0_0_reg_767">
+    <nodeIds>15</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln40_reg_989">
+    <nodeIds>81</nodeIds>
+  </regnodes>
+  <regnodes realName="mul_ln40_reg_970">
+    <nodeIds>82</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln19_1_reg_922">
+    <nodeIds>86</nodeIds>
+  </regnodes>
+  <regnodes realName="iFilterBase_2_reg_1026">
+    <nodeIds>103</nodeIds>
+  </regnodes>
+  <regnodes realName="icmp_ln107_1_reg_1086">
+    <nodeIds>138</nodeIds>
+  </regnodes>
+  <regnodes realName="tobool_reg_912">
+    <nodeIds>80</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln19_7_reg_965">
+    <nodeIds>95</nodeIds>
+  </regnodes>
+  <regnodes realName="input_r_read_reg_853">
+    <nodeIds>29</nodeIds>
+  </regnodes>
+  <regnodes realName="mul_ln19_reg_937">
+    <nodeIds>87</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_3_7_loc_reg_876">
+    <nodeIds>33</nodeIds>
+  </regnodes>
+  <regnodes realName="sub_reg_976">
+    <nodeIds>78</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln66_reg_1104">
+    <nodeIds>147</nodeIds>
+  </regnodes>
+  <regnodes realName="numFilters_read_reg_821">
+    <nodeIds>24</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln45_reg_1049">
+    <nodeIds>113</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_1_0_reg_773">
+    <nodeIds>16</nodeIds>
+  </regnodes>
+  <regnodes realName="trunc_ln41_reg_999">
+    <nodeIds>84</nodeIds>
+  </regnodes>
+  <regnodes realName="zext_ln19_reg_917">
+    <nodeIds>85</nodeIds>
+  </regnodes>
+  <regnodes realName="acc_0_7_loc_reg_858">
+    <nodeIds>30</nodeIds>
+  </regnodes>
+  <regnodes realName="add_ln45_1_reg_1054">
+    <nodeIds>118</nodeIds>
+  </regnodes>
+  <expressionNodes realName="row_buffer_alloca_fu_204">
+    <nodeIds>75</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln45_1_fu_608">
+    <nodeIds>125</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_2_3_loc_fu_184">
+    <nodeIds>36</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="tmp_3_fu_599">
+    <nodeIds>124</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_2_7_loc_fu_168">
+    <nodeIds>32</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="or_ln107_fu_629">
+    <nodeIds>135</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln46_fu_612">
+    <nodeIds>127</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="iFilterBase_3_fu_675">
+    <nodeIds>180</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="or_ln107_1_fu_639">
+    <nodeIds>137</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_1_fu_463">
+    <nodeIds>86</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln19_fu_440">
+    <nodeIds>38</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="sub_fu_516">
+    <nodeIds>78</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln89_fu_689">
+    <nodeIds>155</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="x_phi_fu_332">
+    <nodeIds>154</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln41_1_fu_560">
+    <nodeIds>110</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="tmp_fu_585">
+    <nodeIds>119</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln52_fu_533">
+    <nodeIds>97</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="indvar_fu_140">
+    <nodeIds>14</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="y_phi_fu_308">
+    <nodeIds>143</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="coeff_cache_2_alloca_fu_200">
+    <nodeIds>74</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_6_fu_500">
+    <nodeIds>94</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln107_fu_634">
+    <nodeIds>136</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_0_32_loc_fu_176">
+    <nodeIds>34</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_0_7_loc_fu_160">
+    <nodeIds>30</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_2_0_fu_152">
+    <nodeIds>17</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="phi_mul267_phi_fu_320">
+    <nodeIds>144</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_3_7_loc_fu_172">
+    <nodeIds>33</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln45_fu_593">
+    <nodeIds>121</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="or_ln107_2_fu_649">
+    <nodeIds>139</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_3_fu_491">
+    <nodeIds>89</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_4_fu_472">
+    <nodeIds>91</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_3_0_fu_156">
+    <nodeIds>18</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln66_1_fu_659">
+    <nodeIds>145</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln107_1_fu_644">
+    <nodeIds>138</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_3_3_loc_fu_188">
+    <nodeIds>37</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln40_fu_554">
+    <nodeIds>106</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="trunc_ln41_fu_529">
+    <nodeIds>84</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln47_fu_624">
+    <nodeIds>129</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln40_fu_526">
+    <nodeIds>81</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_1_3_loc_fu_180">
+    <nodeIds>35</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln40_fu_549">
+    <nodeIds>105</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln45_fu_577">
+    <nodeIds>113</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="phi_mul_phi_fu_297">
+    <nodeIds>117</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_1_0_fu_148">
+    <nodeIds>16</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_1_7_loc_fu_164">
+    <nodeIds>31</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="tobool_fu_444">
+    <nodeIds>80</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln45_1_fu_580">
+    <nodeIds>118</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="row_buffer_1_alloca_fu_208">
+    <nodeIds>76</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="coeff_cache_alloca_fu_192">
+    <nodeIds>72</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_2_fu_488">
+    <nodeIds>88</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="acc_0_0_fu_144">
+    <nodeIds>15</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln89_fu_694">
+    <nodeIds>156</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="iFilterBase_fu_136">
+    <nodeIds>13</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln107_2_fu_654">
+    <nodeIds>140</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="shl_ln_fu_569">
+    <nodeIds>112</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="coeff_cache_1_alloca_fu_196">
+    <nodeIds>73</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="pf_phi_fu_286">
+    <nodeIds>116</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="sub93_fu_521">
+    <nodeIds>79</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_7_fu_503">
+    <nodeIds>95</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_fu_460">
+    <nodeIds>85</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="empty_80_fu_732">
+    <nodeIds>169</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln66_fu_664">
+    <nodeIds>146</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="icmp_ln77_fu_538">
+    <nodeIds>98</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="row_buffer_2_alloca_fu_212">
+    <nodeIds>77</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="zext_ln19_5_fu_475">
+    <nodeIds>92</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln46_1_fu_619">
+    <nodeIds>128</nodeIds>
+  </expressionNodes>
+  <expressionNodes realName="add_ln66_fu_669">
+    <nodeIds>147</nodeIds>
+  </expressionNodes>
+  <moduleNodes realName="grp_Conv2D_HW_Pipeline_3_fu_376">
+    <nodeIds>164</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_fu_506">
+    <nodeIds>96</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_fu_512">
+    <nodeIds>83</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_93_11_VITIS_LOOP_96_12_VITIS_LOOP_99_13_fu_388">
+    <nodeIds>170</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_117_15_fu_415">
+    <nodeIds>175</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_fu_564">
+    <nodeIds>111</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_fu_466">
+    <nodeIds>87</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_fu_478">
+    <nodeIds>93</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_77_9_fu_358">
+    <nodeIds>151</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_fu_494">
+    <nodeIds>90</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_fu_484">
+    <nodeIds>82</nodeIds>
+  </moduleNodes>
+  <moduleNodes realName="grp_Conv2D_HW_Pipeline_VITIS_LOOP_52_5_fu_340">
+    <nodeIds>132</nodeIds>
+  </moduleNodes>
+  <ioNodes realName="acc_2_7_loc_load_load_fu_741">
+    <nodeIds>172</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_3_7_loc_load_load_fu_737">
+    <nodeIds>171</nodeIds>
+  </ioNodes>
+  <ioNodes realName="numChannels_read_read_fu_252">
+    <nodeIds>25</nodeIds>
+  </ioNodes>
+  <ioNodes realName="indvar_load_load_fu_546">
+    <nodeIds>104</nodeIds>
+  </ioNodes>
+  <ioNodes realName="coeffs_read_read_fu_264">
+    <nodeIds>27</nodeIds>
+  </ioNodes>
+  <ioNodes realName="store_ln40_store_fu_684">
+    <nodeIds>182</nodeIds>
+  </ioNodes>
+  <ioNodes realName="convHeight_read_read_fu_222">
+    <nodeIds>20</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_2_0_load_load_fu_708">
+    <nodeIds>161</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_0_0_load_load_fu_700">
+    <nodeIds>159</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_1_0_load_load_fu_704">
+    <nodeIds>160</nodeIds>
+  </ioNodes>
+  <ioNodes realName="biases_read_read_fu_258">
+    <nodeIds>26</nodeIds>
+  </ioNodes>
+  <ioNodes realName="iFilterBase_2_load_fu_543">
+    <nodeIds>103</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_3_3_loc_load_load_fu_716">
+    <nodeIds>165</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_0_32_loc_load_load_fu_728">
+    <nodeIds>168</nodeIds>
+  </ioNodes>
+  <ioNodes realName="inputHeight_read_read_fu_234">
+    <nodeIds>22</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_2_3_loc_load_load_fu_720">
+    <nodeIds>166</nodeIds>
+  </ioNodes>
+  <ioNodes realName="input_r_read_read_fu_276">
+    <nodeIds>29</nodeIds>
+  </ioNodes>
+  <ioNodes realName="store_ln40_store_fu_455">
+    <nodeIds>100</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_1_7_loc_load_load_fu_745">
+    <nodeIds>173</nodeIds>
+  </ioNodes>
+  <ioNodes realName="store_ln40_store_fu_450">
+    <nodeIds>99</nodeIds>
+  </ioNodes>
+  <ioNodes realName="store_ln40_store_fu_680">
+    <nodeIds>181</nodeIds>
+  </ioNodes>
+  <ioNodes realName="numFilters_read_read_fu_246">
+    <nodeIds>24</nodeIds>
+  </ioNodes>
+  <ioNodes realName="output_r_read_read_fu_270">
+    <nodeIds>28</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_0_7_loc_load_load_fu_749">
+    <nodeIds>174</nodeIds>
+  </ioNodes>
+  <ioNodes realName="convWidth_read_read_fu_228">
+    <nodeIds>21</nodeIds>
+  </ioNodes>
+  <ioNodes realName="inputWidth_read_read_fu_240">
+    <nodeIds>23</nodeIds>
+  </ioNodes>
+  <ioNodes realName="apply_relu_read_read_fu_216">
+    <nodeIds>19</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_1_3_loc_load_load_fu_724">
+    <nodeIds>167</nodeIds>
+  </ioNodes>
+  <ioNodes realName="acc_3_0_load_load_fu_712">
+    <nodeIds>162</nodeIds>
+  </ioNodes>
+  <ioPorts name="apply_relu">
+    <contents name="read">
+      <nodeIds>19</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="biases">
+    <contents name="read">
+      <nodeIds>26</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="coeffs">
+    <contents name="read">
+      <nodeIds>27</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="convHeight">
+    <contents name="read">
+      <nodeIds>20</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="convWidth">
+    <contents name="read">
+      <nodeIds>21</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="gmem">
+    <contents name="call">
+      <nodeIds>132</nodeIds>
+      <nodeIds>151</nodeIds>
+      <nodeIds>175</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="inputHeight">
+    <contents name="read">
+      <nodeIds>22</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="inputWidth">
+    <contents name="read">
+      <nodeIds>23</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="input_r">
+    <contents name="read">
+      <nodeIds>29</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="numChannels">
+    <contents name="read">
+      <nodeIds>25</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="numFilters">
+    <contents name="read">
+      <nodeIds>24</nodeIds>
+    </contents>
+  </ioPorts>
+  <ioPorts name="output_r">
+    <contents name="read">
+      <nodeIds>28</nodeIds>
+    </contents>
+  </ioPorts>
+  <fsm>
+    <states id="1">
+      <operations id="13" stage="1" latency="1"/>
+      <operations id="14" stage="1" latency="1"/>
+      <operations id="15" stage="1" latency="1"/>
+      <operations id="16" stage="1" latency="1"/>
+      <operations id="17" stage="1" latency="1"/>
+      <operations id="18" stage="1" latency="1"/>
+      <operations id="19" stage="1" latency="1"/>
+      <operations id="20" stage="1" latency="1"/>
+      <operations id="21" stage="1" latency="1"/>
+      <operations id="22" stage="1" latency="1"/>
+      <operations id="23" stage="1" latency="1"/>
+      <operations id="24" stage="1" latency="1"/>
+      <operations id="25" stage="1" latency="1"/>
+      <operations id="26" stage="1" latency="1"/>
+      <operations id="27" stage="1" latency="1"/>
+      <operations id="28" stage="1" latency="1"/>
+      <operations id="29" stage="1" latency="1"/>
+      <operations id="30" stage="1" latency="1"/>
+      <operations id="31" stage="1" latency="1"/>
+      <operations id="32" stage="1" latency="1"/>
+      <operations id="33" stage="1" latency="1"/>
+      <operations id="34" stage="1" latency="1"/>
+      <operations id="35" stage="1" latency="1"/>
+      <operations id="36" stage="1" latency="1"/>
+      <operations id="37" stage="1" latency="1"/>
+      <operations id="38" stage="1" latency="1"/>
+      <operations id="72" stage="1" latency="1"/>
+      <operations id="73" stage="1" latency="1"/>
+      <operations id="74" stage="1" latency="1"/>
+      <operations id="75" stage="1" latency="1"/>
+      <operations id="76" stage="1" latency="1"/>
+      <operations id="77" stage="1" latency="1"/>
+      <operations id="80" stage="1" latency="1"/>
+      <operations id="99" stage="1" latency="1"/>
+      <operations id="100" stage="1" latency="1"/>
+    </states>
+    <states id="2">
+      <operations id="85" stage="1" latency="1"/>
+      <operations id="86" stage="1" latency="1"/>
+      <operations id="87" stage="2" latency="2"/>
+      <operations id="91" stage="1" latency="1"/>
+      <operations id="92" stage="1" latency="1"/>
+      <operations id="93" stage="2" latency="2"/>
+    </states>
+    <states id="3">
+      <operations id="87" stage="1" latency="2"/>
+      <operations id="93" stage="1" latency="2"/>
+    </states>
+    <states id="4">
+      <operations id="82" stage="2" latency="2"/>
+      <operations id="88" stage="1" latency="1"/>
+      <operations id="89" stage="1" latency="1"/>
+      <operations id="90" stage="5" latency="5"/>
+      <operations id="94" stage="1" latency="1"/>
+      <operations id="95" stage="1" latency="1"/>
+      <operations id="96" stage="5" latency="5"/>
+    </states>
+    <states id="5">
+      <operations id="82" stage="1" latency="2"/>
+      <operations id="90" stage="4" latency="5"/>
+      <operations id="96" stage="4" latency="5"/>
+    </states>
+    <states id="6">
+      <operations id="90" stage="3" latency="5"/>
+      <operations id="96" stage="3" latency="5"/>
+    </states>
+    <states id="7">
+      <operations id="83" stage="2" latency="2"/>
+      <operations id="90" stage="2" latency="5"/>
+      <operations id="96" stage="2" latency="5"/>
+    </states>
+    <states id="8">
+      <operations id="39" stage="1" latency="1"/>
+      <operations id="40" stage="1" latency="1"/>
+      <operations id="41" stage="1" latency="1"/>
+      <operations id="42" stage="1" latency="1"/>
+      <operations id="43" stage="1" latency="1"/>
+      <operations id="44" stage="1" latency="1"/>
+      <operations id="45" stage="1" latency="1"/>
+      <operations id="46" stage="1" latency="1"/>
+      <operations id="47" stage="1" latency="1"/>
+      <operations id="48" stage="1" latency="1"/>
+      <operations id="49" stage="1" latency="1"/>
+      <operations id="50" stage="1" latency="1"/>
+      <operations id="51" stage="1" latency="1"/>
+      <operations id="52" stage="1" latency="1"/>
+      <operations id="53" stage="1" latency="1"/>
+      <operations id="54" stage="1" latency="1"/>
+      <operations id="55" stage="1" latency="1"/>
+      <operations id="56" stage="1" latency="1"/>
+      <operations id="57" stage="1" latency="1"/>
+      <operations id="58" stage="1" latency="1"/>
+      <operations id="59" stage="1" latency="1"/>
+      <operations id="60" stage="1" latency="1"/>
+      <operations id="61" stage="1" latency="1"/>
+      <operations id="62" stage="1" latency="1"/>
+      <operations id="63" stage="1" latency="1"/>
+      <operations id="64" stage="1" latency="1"/>
+      <operations id="65" stage="1" latency="1"/>
+      <operations id="66" stage="1" latency="1"/>
+      <operations id="67" stage="1" latency="1"/>
+      <operations id="68" stage="1" latency="1"/>
+      <operations id="69" stage="1" latency="1"/>
+      <operations id="70" stage="1" latency="1"/>
+      <operations id="71" stage="1" latency="1"/>
+      <operations id="78" stage="1" latency="1"/>
+      <operations id="79" stage="1" latency="1"/>
+      <operations id="81" stage="1" latency="1"/>
+      <operations id="83" stage="1" latency="2"/>
+      <operations id="84" stage="1" latency="1"/>
+      <operations id="90" stage="1" latency="5"/>
+      <operations id="96" stage="1" latency="5"/>
+      <operations id="97" stage="1" latency="1"/>
+      <operations id="98" stage="1" latency="1"/>
+      <operations id="101" stage="1" latency="1"/>
+    </states>
+    <states id="9">
+      <operations id="103" stage="1" latency="1"/>
+      <operations id="104" stage="1" latency="1"/>
+      <operations id="105" stage="1" latency="1"/>
+      <operations id="106" stage="1" latency="1"/>
+      <operations id="107" stage="1" latency="1"/>
+      <operations id="110" stage="1" latency="1"/>
+      <operations id="111" stage="2" latency="2"/>
+      <operations id="185" stage="1" latency="1"/>
+    </states>
+    <states id="10">
+      <operations id="109" stage="1" latency="1"/>
+      <operations id="111" stage="1" latency="2"/>
+      <operations id="112" stage="1" latency="1"/>
+      <operations id="113" stage="1" latency="1"/>
+      <operations id="114" stage="1" latency="1"/>
+    </states>
+    <states id="11">
+      <operations id="116" stage="1" latency="1"/>
+      <operations id="117" stage="1" latency="1"/>
+      <operations id="118" stage="1" latency="1"/>
+      <operations id="119" stage="1" latency="1"/>
+      <operations id="120" stage="1" latency="1"/>
+      <operations id="121" stage="1" latency="1"/>
+      <operations id="122" stage="1" latency="1"/>
+      <operations id="124" stage="1" latency="1"/>
+      <operations id="125" stage="1" latency="1"/>
+      <operations id="126" stage="1" latency="1"/>
+      <operations id="127" stage="1" latency="1"/>
+      <operations id="128" stage="1" latency="1"/>
+      <operations id="129" stage="1" latency="1"/>
+      <operations id="130" stage="1" latency="1"/>
+      <operations id="132" stage="2" latency="2"/>
+      <operations id="135" stage="1" latency="1"/>
+      <operations id="136" stage="1" latency="1"/>
+      <operations id="137" stage="1" latency="1"/>
+      <operations id="138" stage="1" latency="1"/>
+      <operations id="139" stage="1" latency="1"/>
+      <operations id="140" stage="1" latency="1"/>
+      <operations id="141" stage="1" latency="1"/>
+    </states>
+    <states id="12">
+      <operations id="132" stage="1" latency="2"/>
+      <operations id="133" stage="1" latency="1"/>
+    </states>
+    <states id="13">
+      <operations id="143" stage="1" latency="1"/>
+      <operations id="144" stage="1" latency="1"/>
+      <operations id="145" stage="1" latency="1"/>
+      <operations id="146" stage="1" latency="1"/>
+      <operations id="147" stage="1" latency="1"/>
+      <operations id="148" stage="1" latency="1"/>
+      <operations id="151" stage="2" latency="2"/>
+      <operations id="180" stage="1" latency="1"/>
+      <operations id="181" stage="1" latency="1"/>
+      <operations id="182" stage="1" latency="1"/>
+      <operations id="183" stage="1" latency="1"/>
+    </states>
+    <states id="14">
+      <operations id="150" stage="1" latency="1"/>
+      <operations id="151" stage="1" latency="2"/>
+      <operations id="152" stage="1" latency="1"/>
+    </states>
+    <states id="15">
+      <operations id="154" stage="1" latency="1"/>
+      <operations id="155" stage="1" latency="1"/>
+      <operations id="156" stage="1" latency="1"/>
+      <operations id="157" stage="1" latency="1"/>
+      <operations id="159" stage="1" latency="1"/>
+      <operations id="160" stage="1" latency="1"/>
+      <operations id="161" stage="1" latency="1"/>
+      <operations id="162" stage="1" latency="1"/>
+      <operations id="164" stage="2" latency="2"/>
+      <operations id="178" stage="1" latency="1"/>
+    </states>
+    <states id="16">
+      <operations id="164" stage="1" latency="2"/>
+    </states>
+    <states id="17">
+      <operations id="165" stage="1" latency="1"/>
+      <operations id="166" stage="1" latency="1"/>
+      <operations id="167" stage="1" latency="1"/>
+      <operations id="168" stage="1" latency="1"/>
+      <operations id="169" stage="1" latency="1"/>
+      <operations id="170" stage="2" latency="2"/>
+    </states>
+    <states id="18">
+      <operations id="170" stage="1" latency="2"/>
+    </states>
+    <states id="19">
+      <operations id="171" stage="1" latency="1"/>
+      <operations id="172" stage="1" latency="1"/>
+      <operations id="173" stage="1" latency="1"/>
+      <operations id="174" stage="1" latency="1"/>
+      <operations id="175" stage="2" latency="2"/>
+    </states>
+    <states id="20">
+      <operations id="163" stage="1" latency="1"/>
+      <operations id="175" stage="1" latency="2"/>
+      <operations id="176" stage="1" latency="1"/>
+    </states>
+    <transitions inState="1" outState="2">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="2" outState="3">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="3" outState="4">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="4" outState="5">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="5" outState="6">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="6" outState="7">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="7" outState="8">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="8" outState="9">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="9" outState="10">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="10" outState="11">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="11" outState="12">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="12" outState="11">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="11" outState="13">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="13" outState="14">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="14" outState="15">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="15" outState="16">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="16" outState="17">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="17" outState="18">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="18" outState="19">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="19" outState="20">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="20" outState="15">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="15" outState="13">
+      <condition id="-1"/>
+    </transitions>
+    <transitions inState="13" outState="9">
+      <condition id="-1"/>
+    </transitions>
+  </fsm>
+  <CFGRegionsRoot>
+    <cfgRegions mId="1" mTag="Conv2D_HW" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-1" mMaxLatency="-1">
+      <subRegions>2</subRegions>
+      <subRegions>3</subRegions>
+      <subRegions>12</subRegions>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="2" mTag="Entry" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="7" mMaxLatency="7">
+      <basicBlocks>102</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="3" mTag="VITIS_LOOP_40_1" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-1" mMaxLatency="-1" mType="1">
+      <subRegions>4</subRegions>
+      <subRegions>5</subRegions>
+      <subRegions>6</subRegions>
+      <subRegions>7</subRegions>
+      <subRegions>11</subRegions>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="4" mTag="Region 1" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMaxLatency="1">
+      <basicBlocks>108</basicBlocks>
+      <basicBlocks>115</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="5" mTag="VITIS_LOOP_45_2" mII="-1" mDepth="-1" mMinTripCount="1" mMaxTripCount="4" mMinLatency="-1" mMaxLatency="-1" mType="1">
+      <basicBlocks>123</basicBlocks>
+      <basicBlocks>131</basicBlocks>
+      <basicBlocks>134</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="6" mTag="Region 2" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>142</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="7" mTag="VITIS_LOOP_66_6" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-1" mMaxLatency="-1" mType="1">
+      <subRegions>8</subRegions>
+      <subRegions>9</subRegions>
+      <subRegions>10</subRegions>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="8" mTag="Region 3" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-2" mMaxLatency="-2">
+      <basicBlocks>149</basicBlocks>
+      <basicBlocks>153</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="9" mTag="VITIS_LOOP_89_10" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1" mMinLatency="-1" mMaxLatency="-1" mType="1">
+      <basicBlocks>158</basicBlocks>
+      <basicBlocks>177</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="10" mTag="Region 4" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>179</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="11" mTag="Region 5" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>184</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+    <cfgRegions mId="12" mTag="Return" mII="-1" mDepth="-1" mMinTripCount="-1" mMaxTripCount="-1">
+      <basicBlocks>186</basicBlocks>
+      <mDfPipe/>
+    </cfgRegions>
+  </CFGRegionsRoot>
+</cdfg:DBCdfg>

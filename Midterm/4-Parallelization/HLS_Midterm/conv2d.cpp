@@ -64,8 +64,8 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
 		// the x and y loops are essentially the position of the "window" moving across and down (x and y)
 		// so first along the height (rows - y), then across the width (columns - x)
 	    for (uint32_t y = 0; y < (inputHeight-2); ++y) {
-	    	//TFXP row_buffer[3][4064]; // initialize buffer for TWO rows using the maximum product of the size and number of channels (but not the maximum size * maximum channels cuz pynq cannot handle it [BRAM related? i think?] and does weird things)
-			TFXP row_buffer[3 * 4064];
+	    	TFXP row_buffer[3][4064]; // initialize buffer for TWO rows using the maximum product of the size and number of channels (but not the maximum size * maximum channels cuz pynq cannot handle it [BRAM related? i think?] and does weird things)
+			//TFXP row_buffer[3 * 4064];
 			#pragma HLS ARRAY_PARTITION variable=row_buffer complete dim=1
 
 	    	// then, now caching the rows (y), we move along each row and store accordingly
@@ -78,9 +78,8 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
 						#pragma HLS PIPELINE II=1
 						// and we changed this slightly because now row_buffer has two dimensions instead of three
 
-	    				//row_buffer[cy][iChannel*inputWidth + x] = *(input + iChannel*inputWidth*inputHeight + iy*inputWidth + x);
-						//WRONG: row_buffer[cy + iChannel*inputWidth + x*inputHeight] = *(input + iChannel*inputWidth*inputHeight + iy*inputWidth + x);
-						row_buffer[cy * ROW_SIZE + iChannel * inputWidth + x] = *(input + iChannel * inputWidth * inputHeight + iy * inputWidth + x);
+	    				row_buffer[cy][iChannel*inputWidth + x] = *(input + iChannel*inputWidth*inputHeight + iy*inputWidth + x);
+						//row_buffer[cy * ROW_SIZE + iChannel * inputWidth + x] = *(input + iChannel * inputWidth * inputHeight + iy * inputWidth + x);
 
 	    			}
 	    		}
@@ -98,9 +97,8 @@ void Conv2D_HW(TFXP *input, TFXP * output, TFXP * coeffs, TFXP *biases,
 				
 	    				//...and naturally the x components as well
 	    				for (uint32_t cx = 0; cx < convWidth; ++cx) {
-							// TFXP pixelValue = row_buffer[cy + iChannel*inputWidth + x + cx];
-	    					//WRONG: TFXP pixelValue = row_buffer[cy + iChannel*inputWidth + (x + cx)*inputHeight];
-							TFXP pixelValue = row_buffer[cy * ROW_SIZE + iChannel * inputWidth + (x + cx)];
+							TFXP pixelValue = row_buffer[cy][iChannel*inputWidth + x + cx];
+							// TFXP pixelValue = row_buffer[cy * ROW_SIZE + iChannel * inputWidth + (x + cx)];
 
 
 							// compute multiply-accumulate for each parallel filter
